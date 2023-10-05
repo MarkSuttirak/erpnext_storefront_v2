@@ -68,7 +68,7 @@ const StoreLocation = () => {
             <>
               <div className="p-5 pb-0">
                 <h3 className="text-[#F2F2F2] text-sm font-bold absolute text-end px-[10px] py-[6px]" style={{width:"calc(100% - 40px)"}}>Now open</h3>
-                <img src={`${import.meta.env.VITE_ERP_URL}${d.image}`} className="rounded-[8px]"/>
+                <img src={`${import.meta.env.VITE_ERP_URL}${d.store_image}`} className="rounded-[8px]"/>
               </div>
 
               <Accordion items={[{

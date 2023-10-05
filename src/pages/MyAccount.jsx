@@ -26,10 +26,13 @@ import {
 } from '@untitled-ui/icons-react'
 import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
+import { useUser } from '../hooks/useUser';
 
 const MyAccount = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);
   const [silverLevel, setSilverLevel] = useState(true);
+
+  const { user } = useUser()
 
   const [openLogout, setOpenLogout] = useState(false);
 
@@ -204,7 +207,7 @@ const MyAccount = () => {
                 <span className='text-[#1BB040]'>฿ </span>850
               </div>
               <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                230 <span className='text-[#FFA800]'>coins</span>
+                {user?.loyalty_points} <span className='text-[#FFA800]'>coins</span>
               </div>
               <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
                 {couponNum} <span className='text-[#BC0000]'>codes</span>

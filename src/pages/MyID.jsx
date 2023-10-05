@@ -8,12 +8,17 @@ import coupon from '../img/coupon.svg'
 import TitleHeader from '../components/TitleHeader'
 import QRCode from "react-qr-code";
 import Barcode from 'react-barcode';
+import { useUser } from '../hooks/useUser';
+import { useFrappeGetDocCount } from 'frappe-react-sdk';
 
 const MyID = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);
   const [silverLevel, setSilverLevel] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1)
+
+  const { user } = useUser()
+  const { data:couponNum } = useFrappeGetDocCount('Coupon Code')
 
   return (
     <>
@@ -49,11 +54,11 @@ const MyID = () => {
               </div>
               <div className='basis-1/3 flex gap-x-1 text-[13px]'>
                 <img src={coin}/>
-                230
+                {user ? user.loyalty_points : '...'}
               </div>
               <div className='basis-1/3 flex gap-x-1 text-[13px]'>
                 <img src={coupon}/>
-                8
+                {couponNum ? couponNum : '...'}
               </div>
             </div>
 
@@ -62,7 +67,7 @@ const MyID = () => {
                 <Link to="/my-account">Wallet</Link>
               </div>
               <div className='basis-1/3 inter text-xs text-[#4C4B4F]'>
-                Coins
+                {user?.loyalty_points === 1 ? "Coin" : "Coins"}
               </div>
               <div className='basis-1/3 inter text-xs text-[#4C4B4F]'>
                 Coupon
