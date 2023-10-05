@@ -51,14 +51,13 @@ const Home = () => {
     })
 
     const { data:dataBlog, isLoading:isLoadingBlog, error:errorBlog } = useFrappeGetDocList('Blog Post', {
-      fields: ['name', 'title', 'meta_image', 'published_on']
+      fields: ['name', 'title', 'meta_image', 'published_on', 'post_display'],
+      filters: [['post_display', '=', 'Storefront']]
     })
 
     const { data:dataBanner, isLoading:isLoadingBanner, error:errorBanner } = useFrappeGetDocList('Promotion Banner', {
       fields: ['name', 'title', 'image', 'expiration_date']
     })
-
-    const [activities, setActivities] = useState([])
 
     return (
         <>
