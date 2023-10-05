@@ -39,9 +39,9 @@ const CategoryPage = () => {
       <main>
         <nav className="border-b border-b-[#F2F2F2] overflow-auto">
           <ul className="flex">
-            <li className="px-[60px] py-5" onClick={() => setSelectedCate('')}>ALL</li>
+            <li className="px-10 py-5" onClick={() => setSelectedCate('')}>ALL</li>
             {(dataItemCate ?? []).map((d) => 
-              <li className="px-[60px] py-5" key={d.name} onClick={() => setSelectedCate(d.name)}>{d.item_category}</li>
+              <li className="px-10 py-5" key={d.name} onClick={() => setSelectedCate(d.name)}>{d.item_category}</li>
             )}
           </ul>
         </nav>

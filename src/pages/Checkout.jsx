@@ -348,7 +348,7 @@ const Checkout = () => {
                 </p>
               </div>
               <div>
-                <input type="radio" id="transfer" name="payment-method" className='payment-check' checked/>
+                <input type="radio" id="transfer" name="payment-method" className='payment-check' checked onChange={formik.handleChange}/>
                 <span className='payment-radios'></span>
               </div>
             </label>
@@ -361,7 +361,7 @@ const Checkout = () => {
                 </p>
               </div>
               <div>
-                <input type="radio" id="credit" name="payment-method" className='payment-check'/>
+                <input type="radio" id="credit" name="payment-method" className='payment-check' onChange={formik.handleChange}/>
                 <span className='payment-radios'></span>
               </div>
             </label>
