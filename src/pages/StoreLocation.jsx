@@ -7,7 +7,7 @@ import { useFrappeGetDocList } from 'frappe-react-sdk'
 
 const StoreLocation = () => {
   const { data } = useFrappeGetDocList('Store Location', {
-    fields: ['name', 'store_name', 'location', 'image', 'opening_time', 'closing_time', 'contact_phone', 'map', 'store_location']
+    fields: ['name', 'store_name', 'location', 'store_image', 'opening_time_monday', 'closing_time_monday', 'opening_time_tuesday', 'closing_time_tuesday', 'opening_time_wednesday', 'closing_time_wednesday', 'opening_time_thursday', 'closing_time_thursday', 'opening_time_friday', 'closing_time_friday', 'opening_time_saturday', 'closing_time_saturday', 'opening_time_sunday', 'closing_time_sunday', 'contact_phone', 'map', 'store_location']
   })
 
   const Accordion = ({items}) => {
@@ -87,16 +87,32 @@ const StoreLocation = () => {
                       <h2 className="text-[#111111] text-[15px] font-bold mb-[10px]">เวลาเปิด-ปิด</h2>
                       <div className="flex flex-col gap-y-[10px]">
                         <div className="flex text-[#333333] text-xs">
-                          <p className="w-[40%]">วันจันทร์ - วันศุกร์ :</p>
-                          <p className="w-[60%]">{d.opening_time} - {d.closing_time}</p>
+                          <p className="w-[40%]">วันจันทร์:</p>
+                          <p className="w-[60%]">{d.opening_time_monday} - {d.closing_time_monday}</p>
+                        </div>
+                        <div className="flex text-[#333333] text-xs">
+                          <p className="w-[40%]">วันอังคาร:</p>
+                          <p className="w-[60%]">{d.opening_time_tuesday} - {d.closing_time_tuesday}</p>
+                        </div>
+                        <div className="flex text-[#333333] text-xs">
+                          <p className="w-[40%]">วันพุธ:</p>
+                          <p className="w-[60%]">{d.opening_time_wednesday} - {d.closing_time_wednesday}</p>
+                        </div>
+                        <div className="flex text-[#333333] text-xs">
+                          <p className="w-[40%]">วันพฤหัสบดี:</p>
+                          <p className="w-[60%]">{d.opening_time_thursday} - {d.closing_time_thursday}</p>
+                        </div>
+                        <div className="flex text-[#333333] text-xs">
+                          <p className="w-[40%]">วันศุกร์:</p>
+                          <p className="w-[60%]">{d.opening_time_friday} - {d.closing_time_friday}</p>
                         </div>
                         <div className="flex text-[#333333] text-xs">
                           <p className="w-[40%]">วันเสาร์:</p>
-                          <p className="w-[60%]">10:00 - 20:00</p>
+                          <p className="w-[60%]">{d.opening_time_saturday} - {d.closing_time_saturday}</p>
                         </div>
                         <div className="flex text-[#333333] text-xs">
                           <p className="w-[40%]">วันอาทิตย์:</p>
-                          <p className="w-[60%]">10:00 - 21:00</p>
+                          <p className="w-[60%]">{d.opening_time_sunday} - {d.closing_time_sunday}</p>
                         </div>
                       </div>
                     </div>

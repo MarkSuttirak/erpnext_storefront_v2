@@ -3,11 +3,26 @@ import searchIcon from '../../img/search-md-black.svg'
 import { useCart } from '../../hooks/useCart';
 import { ShoppingBag01, ChevronRight } from "@untitled-ui/icons-react";
 import { Link } from 'react-router-dom'
+import { useFrappeGetDocList } from "frappe-react-sdk";
+import { useState } from "react";
 
 const CategoryPage = () => {
   const { cartCount, setIsOpen } = useCart()
 
-  const allCates = ['ไอเท็มใหม่', 'เสื้อ', 'กางเกง', 'กระโปรง', 'รองเท้า']
+  const { data:dataItemCate } = useFrappeGetDocList('Item Category', {
+    fields: ['name', 'item_category']
+  })
+
+  const [selectedCate, setSelectedCate] = useState('');
+
+  const { data:dataItemSubcateAll } = useFrappeGetDocList('Item Subcategory', {
+    fields: ['name', 'subcategory'],
+  })
+
+  const { data:dataItemSubcate } = useFrappeGetDocList('Item Subcategory', {
+    fields: ['name', 'subcategory'],
+    filters: [['parent_category', '=', selectedCate]],
+  })
 
   return (
     <>
@@ -24,25 +39,45 @@ const CategoryPage = () => {
       <main>
         <nav className="border-b border-b-[#F2F2F2] overflow-auto">
           <ul className="flex">
-            <li className="px-[60px] py-5">ALL</li>
-            <li className="px-[60px] py-5">WOMEN</li>
-            <li className="px-[60px] py-5">MEN</li>
+            <li className="px-[60px] py-5" onClick={() => setSelectedCate('')}>ALL</li>
+            {(dataItemCate ?? []).map((d) => 
+              <li className="px-[60px] py-5" key={d.name} onClick={() => setSelectedCate(d.name)}>{d.item_category}</li>
+            )}
           </ul>
         </nav>
         <div className="flex relative">
           <div className="flex flex-col grow">
-            {allCates.map((cate) => {
-              return (
-                <Link to='/shop' className='flex justify-between items-center px-5 py-[17px] w-full border-b border-b-[#E3E3E3]'>
-                  <div className='flex gap-x-[10px]'>
-                    {cate}
-                  </div>
-                  <div>
-                    <ChevronRight />
-                  </div>
-                </Link>
-              )
-            })}
+            {selectedCate === "" ? (
+              <>
+                {(dataItemSubcateAll ?? []).map((cate) => {
+                  return (
+                    <Link to='/shop' className='flex justify-between items-center px-5 py-[17px] w-full border-b border-b-[#E3E3E3]'>
+                      <div className='flex gap-x-[10px]'>
+                        {cate.subcategory}
+                      </div>
+                      <div>
+                        <ChevronRight />
+                      </div>
+                    </Link>
+                  )
+                })}
+              </>
+            ) : (
+              <>
+                {(dataItemSubcate ?? []).map((cate) => {
+                  return (
+                    <Link to='/shop' className='flex justify-between items-center px-5 py-[17px] w-full border-b border-b-[#E3E3E3]'>
+                      <div className='flex gap-x-[10px]'>
+                        {cate.subcategory}
+                      </div>
+                      <div>
+                        <ChevronRight />
+                      </div>
+                    </Link>
+                  )
+                })}
+              </>
+            )}
           </div>
         </div>
       </main>

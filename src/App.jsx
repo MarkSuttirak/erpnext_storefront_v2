@@ -45,6 +45,8 @@ import Wishlist from "./pages/Wishlist";
 import PaymentMethods from "./components/PaymentMethods";
 import MyCoupon from "./pages/MyCoupon";
 import SingleBlog from "./pages/SingleBlog";
+import MemberLevel from "./pages/MemberLevel";
+import MemberPrivileges from "./pages/MemberPrivileges";
 
 function App() {
   const navigate = useNavigate();
@@ -104,6 +106,8 @@ function App() {
               <Route path="/store-location" element={<StoreLocation />} />
               <Route path="/store-location" element={<StoreLocation />} />
               <Route path="/tax-invoice-request" element={<TaxInvoiceRequest />} />
+              <Route path="/member-level" element={<MemberLevel />}/>
+              <Route path="/member-privileges" element={<MemberPrivileges />}/>
               <Route path="/single-blog/:id" element={<SingleBlog />} />
             </Routes>
             <Cart />
