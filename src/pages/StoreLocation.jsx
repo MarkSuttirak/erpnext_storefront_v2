@@ -7,7 +7,7 @@ import { useFrappeGetDocList } from 'frappe-react-sdk'
 
 const StoreLocation = () => {
   const { data } = useFrappeGetDocList('Store Location', {
-    fields: ['name', 'store_name', 'location', 'image', 'opening_time', 'closing_time', 'map', 'store_location']
+    fields: ['name', 'store_name', 'location', 'image', 'opening_time', 'closing_time', 'contact_phone', 'map', 'store_location']
   })
 
   const Accordion = ({items}) => {
@@ -78,10 +78,10 @@ const StoreLocation = () => {
                 content: (
                   <>
                     <p className="text-[#333333] text-xs mb-5">{d.location}</p>
-                    <button className='w-full bg-white border border-[#111111] text-[#111111] rounded-[9px] p-3 flex justify-center items-center gap-x-[10px] text-xs font-bold'>
+                    <a href={`tel:${d.contact_phone}`} className='w-full bg-white border border-[#111111] text-[#111111] rounded-[9px] p-3 flex justify-center items-center gap-x-[10px] text-xs font-bold'>
                       <PhoneCall01 viewBox='0 0 24 24' width='18' height='18' />
                       ติดต่อสาขา
-                    </button>
+                    </a>
 
                     <div className="mt-5">
                       <h2 className="text-[#111111] text-[15px] font-bold mb-[10px]">เวลาเปิด-ปิด</h2>
