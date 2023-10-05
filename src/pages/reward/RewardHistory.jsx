@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react'
-import TitleHeader from '../components/TitleHeader'
-import coinHand from '../img/coins-hand.svg'
-import spentCoins from '../img/spentCoins.png'
+import TitleHeader from '../../components/TitleHeader'
+import coinHand from '../../img/coins-hand.svg'
+import spentCoins from '../../img/spentCoins.png'
 import { Link } from 'react-router-dom';
-import { useUser } from '../hooks/useUser';
+import { useUser } from '../../hooks/useUser';
 import { useFrappeGetCall, useFrappeGetDoc } from 'frappe-react-sdk';
-import FooterMenu from '../components/FooterMenu';
-import Skeleton from '../components/Skeleton';
+import FooterMenu from '../../components/FooterMenu';
+import Skeleton from '../../components/Skeleton';
 
 function RewardHistory() {
     const [currentTab, setCurrentTab] = useState('คะแนนที่ได้รับ');

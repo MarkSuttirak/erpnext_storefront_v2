@@ -1,20 +1,20 @@
-import FooterMenu from "../components/FooterMenu"
+import FooterMenu from "../../components/FooterMenu"
 import { useFrappeAuth, useFrappeGetDoc } from 'frappe-react-sdk';
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "@untitled-ui/icons-react";
-import silverCard from '../img/silvercard-reward.svg'
-import coin from '../img/coin2.svg'
-import iconRightHead from '../img/iconRightHead.svg'
-import bookClosed from "../img/book-closed.svg"
-import transferPoints from '../img/transfer-point.svg'
-import redeemPoints from '../img/redeem-points.svg'
-import myTickets from '../img/my-tickets.svg'
-import { useProducts } from "../hooks/useProducts";
+import silverCard from '../../img/silvercard-reward.svg'
+import coin from '../../img/coin2.svg'
+import iconRightHead from '../../img/iconRightHead.svg'
+import bookClosed from "../../img/book-closed.svg"
+import transferPoints from '../../img/transfer-point.svg'
+import redeemPoints from '../../img/redeem-points.svg'
+import myTickets from '../../img/my-tickets.svg'
+import { useProducts } from "../../hooks/useProducts";
 import { SfIconArrowForward } from "@storefront-ui/react";
-import ProductCard from "../components/ProductCard";
-import NavHeader from "../components/NavHeader";
-import { useUser } from '../hooks/useUser';
+import ProductCard from "../../components/ProductCard";
+import NavHeader from "../../components/NavHeader";
+import { useUser } from '../../hooks/useUser';
 
 const RewardPage = () => {
   const { currentUser, updateCurrentUser } = useFrappeAuth();

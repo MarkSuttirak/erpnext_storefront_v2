@@ -23,8 +23,8 @@ import MemberConditions from "./pages/instructions/MemberConditions";
 import CollectPoints from "./pages/instructions/CollectPoints";
 import MyOrder from "./pages/MyOrder";
 import MyOrderDetails from "./pages/MyOrderDetails";
-import RewardHistory from "./pages/RewardHistory";
-import RewardPage from "./pages/RewardPage";
+import RewardHistory from "./pages/reward/RewardHistory";
+import RewardPage from "./pages/reward/RewardPage";
 import ShippingAddress from "./pages/address/ShippingAddress";
 import AddShippingAddress from "./pages/address/ShippingAddressAdd";
 import EditShippingAddress from "./pages/address/ShippingAddressEdit";
@@ -44,6 +44,7 @@ import EditProfile from "./pages/EditProfile";
 import Wishlist from "./pages/Wishlist";
 import PaymentMethods from "./components/PaymentMethods";
 import MyCoupon from "./pages/MyCoupon";
+import SingleBlog from "./pages/SingleBlog";
 
 function App() {
   const navigate = useNavigate();
@@ -103,6 +104,7 @@ function App() {
               <Route path="/store-location" element={<StoreLocation />} />
               <Route path="/store-location" element={<StoreLocation />} />
               <Route path="/tax-invoice-request" element={<TaxInvoiceRequest />} />
+              <Route path="/single-blog/:id" element={<SingleBlog />} />
             </Routes>
             <Cart />
           </CartProvider>

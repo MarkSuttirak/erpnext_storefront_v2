@@ -1,7 +1,7 @@
 import React from 'react'
-import TitleHeader from '../components/TitleHeader'
-import bannerBagProduct from "../img/banner-product.png"
-import giftIcon from "../img/giftIcon.svg"
+import TitleHeader from '../../components/TitleHeader'
+import bannerBagProduct from "../../img/banner-product.png"
+import giftIcon from "../../img/giftIcon.svg"
 import { useState } from 'react'
 
 function RewardDetails() {

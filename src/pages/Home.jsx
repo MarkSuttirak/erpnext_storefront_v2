@@ -21,6 +21,7 @@ import promotion1 from '../img/promotion1.png'
 import promotion2 from '../img/promotion2.png'
 import NavHeader from '../components/NavHeader';
 import FooterMenu from '../components/FooterMenu'
+import { useUser } from '../hooks/useUser';
 
 const Home = () => {
     const { updateCurrentUser } = useFrappeAuth();
@@ -29,6 +30,8 @@ const Home = () => {
     const [data, setUserdata] = useState(null);
     const navigate = useNavigate();
     const [profileloading, setProfileloading] = useState(true);
+
+    const { user } = useUser()
 
     const { data:couponNum } = useFrappeGetDocCount('Coupon Code')
 
@@ -42,6 +45,10 @@ const Home = () => {
         setLoading(false)
       }
     }, [userdata]);
+
+    const { data:dataShortcut, isLoading:isLoadingShortcut, error:errorShortcut } = useFrappeGetDocList('Shortcut Menus', {
+      fields: ['name', 'image', 'title', 'link']
+    })
 
     const { data:dataBlog, isLoading:isLoadingBlog, error:errorBlog } = useFrappeGetDocList('Blog Post', {
       fields: ['name', 'title', 'meta_image', 'published_on']
@@ -66,11 +73,11 @@ const Home = () => {
                   </div>
                   <div className='basis-1/3 flex gap-x-1 text-[13px]'>
                     <img src={coin}/>
-                    230
+                    {user ? user.loyalty_points : '...'}
                   </div>
                   <div className='basis-1/3 flex gap-x-1 text-[13px]'>
                     <img src={coupon}/>
-                    {couponNum}
+                    {couponNum ? couponNum : '...'}
                   </div>
                 </div>
 
@@ -97,42 +104,18 @@ const Home = () => {
             </header>
             <main className='relative top-[-10px] pb-[94px]'>
               <div className='grid grid-cols-4 gap-2 px-5'>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity1} className='w-fit mx-auto'/>
-                  <p className='text-xs text-[#1C1C1C] mt-3'>Offer ส่วนลด</p>
-                </picture>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity2} className='w-fit mx-auto' />
-                  <p className='text-xs text-[#1C1C1C] mt-3'>โปรโมชั่น <br/>50 %</p>
-                </picture>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity3} className='w-fit mx-auto'/>
-                  <p className='text-xs text-[#1C1C1C] mt-3'>Boxing Day <br/>ขายยกลัง</p>
-                </picture>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity4} className='w-fit mx-auto' />
-                  <p className='text-xs text-[#1C1C1C] mt-3'>โปรสุดคุ้ม <br/>Mege Sale</p>
-                </picture>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity5} className='w-fit mx-auto'/>
-                  <p className='text-xs text-[#1C1C1C] mt-3'>ใส่ CYBER ลด <br/>100 บ.</p>
-                </picture>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity6} className='w-fit mx-auto' />
-                  <p className='text-xs text-[#1C1C1C] mt-3'>ยินดีต้อนรับ <br/>กลับมา</p>
-                </picture>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity7} className='w-fit mx-auto'/>
-                  <p className='text-xs text-[#1C1C1C] mt-3'>ลดสูงสุด <br/>60 %</p>
-                </picture>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={activity8} className='w-fit mx-auto' />
-                  <p className='text-xs text-[#1C1C1C] mt-3'>อื่นๆ</p>
-                </picture>
+                {(dataShortcut ?? []).map((d) => 
+                  <a href={d.link} key={d.name}>
+                    <picture className='basis-1/4 flex flex-col justify-start text-center'>
+                      <img src={`${import.meta.env.VITE_ERP_URL}${d.image}`} className='w-fit mx-auto'/>
+                      <p className='text-xs text-[#1C1C1C] mt-3'>{d.name}</p>
+                    </picture>
+                  </a>
+                )}
               </div>
 
               <h2 className='mt-[30px] px-5 inter font-semibold text-[#3D3D3D]'>Celebrate Mid Year Festival</h2>
-              
+
               <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5'>
                 {(dataBanner ?? []).map((banner) => 
                   <PromotionCard key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
@@ -218,7 +201,7 @@ const Home = () => {
 
                 <div className="flex overflow-x-auto gap-x-5 mx-auto px-5">
                   {(dataBlog ?? []).map((d) => 
-                    <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} />
+                    <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`}/>
                   )}
                 </div>
               </div>

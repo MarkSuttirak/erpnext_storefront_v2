@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import TitleHeader from '../components/TitleHeader';
-import couponImaage1 from '../img/couponImage1.png'
-import couponImaage2 from '../img/couponImage2.png'
-import couponImaage3 from '../img/couponImage3.png'
-import couponImaage4 from '../img/couponImage4.png'
+import TitleHeader from '../../../components/TitleHeader';
+import couponImaage1 from '../../img/couponImage1.png'
+import couponImaage2 from '../../img/couponImage2.png'
+import couponImaage3 from '../../img/couponImage3.png'
+import couponImaage4 from '../../img/couponImage4.png'
 
 function RewardCouponPage() {
     const [currentTab, setCurrentTab] = useState('รางวัลของฉัน');
