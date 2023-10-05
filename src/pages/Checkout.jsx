@@ -22,8 +22,26 @@ const Checkout = () => {
 
     const [modified, setModified] = useState(false)
 
-    const { call, isCompleted, result } = useFrappePostCall('headless_e_commerce.api.place_order');
+    const { call, isCompleted, result, error } = useFrappePostCall('headless_e_commerce.api.place_order');
     
+    const cartContents = useMemo(() => {
+      return Object.entries(cart).reduce((acc, [item_code]) => {
+          const product = getByItemCode(item_code);
+          if (product?.item_group === 'Gift' || product?.item_group === 'Gift and Cards') {
+              return {
+                  ...acc,
+                  hasGiftItem: true,
+              }
+          }
+          return {
+              ...acc,
+              hasNormalItem: true,
+          }
+      }, {
+          hasNormalItem: false,
+          hasGiftItem: false,
+      })
+    }, [cart, getByItemCode])
 
     const [checkoutPage, setCheckoutPage] = useState(true)
     const [selectShippingAddress, setSelectShippingAddress] = useState(false)
@@ -37,6 +55,7 @@ const Checkout = () => {
 
     const formik = useFormik({
         initialValues: {
+          cartContents,
           billing_address: '',
           shipping_address: '',
           use_different_shipping: false,
@@ -50,8 +69,9 @@ const Checkout = () => {
     });
 
     useEffect(() => {
-        formik.setFieldValue('items', Object.entries(cart).map(([item_code, qty]) => ({ item_code, qty })))
-    }, [cartCount])
+      formik.setFieldValue('items', Object.entries(cart).map(([item_code, qty]) => ({ item_code, qty })))
+      formik.setFieldValue('cartContents', cartContents)
+    }, [cartCount, cartContents])
 
     useEffect(() => {
       if (isCompleted) {
@@ -60,7 +80,10 @@ const Checkout = () => {
           navigate(`/thankyou?order_id=${result.message.name}&amount=${result.message.grand_total}`)
         }
       }
-    }, [isCompleted])
+      if (error) {
+        setErrorAlert(JSON.parse(JSON.parse(error?._server_messages)[0]).message);
+      }
+    }, [isCompleted, error])
 
     const tooltipHide = {
       visibility:"hidden",
