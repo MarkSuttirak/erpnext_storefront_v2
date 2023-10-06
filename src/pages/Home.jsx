@@ -62,8 +62,9 @@ const Home = () => {
     return (
         <>
           <NavHeader />
-          <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/>
-            <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
+          <div className='lg:mt-[92px]'>
+            <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/>
+            <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
               <div className='w-[80%] py-2'>
                 <div className='flex'>
                   <div className='basis-1/3 flex gap-x-1 text-[13px]'>
@@ -101,8 +102,8 @@ const Home = () => {
                 </div>
               </div>
             </header>
-            <main className='relative top-[-10px] pb-[94px]'>
-              <div className='grid grid-cols-4 gap-2 px-5'>
+            <main className='relative top-[-10px] lg:top-5 pb-[94px]'>
+              <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-8 px-5 lg:px-10'>
                 {(dataShortcut ?? []).map((d) => 
                   <a href={d.link} key={d.name}>
                     <picture className='basis-1/4 flex flex-col justify-start text-center'>
@@ -113,7 +114,7 @@ const Home = () => {
                 )}
               </div>
 
-              <h2 className='mt-[30px] px-5 inter font-semibold text-[#3D3D3D]'>Celebrate Mid Year Festival</h2>
+              <h2 className='mt-[30px] px-5 inter font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>Celebrate Mid Year Festival</h2>
 
               <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5'>
                 {(dataBanner ?? []).map((banner) => 
@@ -205,7 +206,8 @@ const Home = () => {
                 </div>
               </div>
             </main>
-            <FooterMenu active={0}/>
+          </div>
+          <FooterMenu active={0}/>
         </>
     )
 }
