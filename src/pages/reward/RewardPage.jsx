@@ -34,16 +34,18 @@ const RewardPage = () => {
     <>
       <NavHeader />
       <header className="px-5 pb-[60px] bg-[#BBE5BB] w-full pt-20">
-        <div className='flex items-center'>
-          <img src={data?.user_image} width="64" className='rounded-[99px]'/>
-          <div className='ml-3 flex flex-col'>
-            <span className='font-bold'>{data?.full_name}</span>
-            <Link className='flex items-center gap-x-1' to='/edit-profile'>
-              แก้ไขโปรไฟล์ของฉัน
-              <ChevronRight color="#333333" />
-            </Link>
+        {data && (
+          <div className='flex items-center'>
+            <img src={data.user_image} width="64" className='rounded-[99px]'/>
+            <div className='ml-3 flex flex-col'>
+              <span className='font-bold'>{data.full_name}</span>
+              <Link className='flex items-center gap-x-1' to='/edit-profile'>
+                แก้ไขโปรไฟล์ของฉัน
+                <ChevronRight color="#333333" />
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
         {isLoading || error && (
           <div className='flex items-center'>
             <svg className="h-[64px] w-[64px] bg-white text-gray-300 rounded-[99px]" fill="currentColor" viewBox="0 0 24 24">

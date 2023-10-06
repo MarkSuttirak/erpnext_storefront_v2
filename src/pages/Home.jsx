@@ -9,14 +9,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import banner from '../img/banner.png'
 import coin from '../img/coin.svg'
 import coupon from '../img/coupon.svg'
-import activity1 from '../img/activity1.svg'
-import activity2 from '../img/activity2.svg'
-import activity3 from '../img/activity3.svg'
-import activity4 from '../img/activity4.svg'
-import activity5 from '../img/activity5.svg'
-import activity6 from '../img/activity6.svg'
-import activity7 from '../img/activity7.svg'
-import activity8 from '../img/activity8.svg'
 import promotion1 from '../img/promotion1.png'
 import promotion2 from '../img/promotion2.png'
 import NavHeader from '../components/NavHeader';
@@ -35,6 +27,37 @@ const Home = () => {
 
     const { data:couponNum } = useFrappeGetDocCount('Coupon Code')
 
+    const PromotionCardDesktop = ({title, image, date, link}) => {
+      return (
+        <Link to={link}>
+          <div className='relative w-full h-[500px] rounded-[10px] overflow-hidden pro-card-desktop' style={{backgroundImage:`url(${import.meta.env.VITE_ERP_URL}${image})`,backgroundSize:"cover"}}>
+            <div className='absolute p-6 w-full rounded-b-[10px] pro-card-desktop-info' style={{background:"linear-gradient(103deg, rgba(35, 35, 35, 0.42) 41.01%, rgba(0, 0, 0, 0.25) 113.14%)",backdropFilter: "blur(8px)"}}>
+              <h1 className='text-white'>{title}</h1>
+              <p className='text-white'><SfIconCalendarToday className="w-[11px] mr-[6px]"/>{date}</p>
+            </div>
+          </div>
+        </Link>
+      )
+    }
+
+    const dataPromotion = [
+      {
+        title:'ของขวัญชิ้นแรกของเรา',
+        image:promotion1,
+        expiration_date:'อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง'
+      },
+      {
+        title:'ของขวัญชิ้นแรกของเรา',
+        image:promotion1,
+        expiration_date:'อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง'
+      },
+      {
+        title:'ของขวัญชิ้นแรกของเรา',
+        image:promotion1,
+        expiration_date:'อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง'
+      },
+    ]
+
     useEffect(() => {
       if (userdata) {
         setUserdata(userdata.user);
@@ -47,7 +70,8 @@ const Home = () => {
     }, [userdata]);
 
     const { data:dataShortcut, isLoading:isLoadingShortcut, error:errorShortcut } = useFrappeGetDocList('Shortcut Menus', {
-      fields: ['name', 'image', 'title', 'link']
+      fields: ['name', 'image', 'title', 'link'],
+      limit: 8
     })
 
     const { data:dataBlog, isLoading:isLoadingBlog, error:errorBlog } = useFrappeGetDocList('Blog Post', {
@@ -57,6 +81,11 @@ const Home = () => {
 
     const { data:dataBanner, isLoading:isLoadingBanner, error:errorBanner } = useFrappeGetDocList('Promotion Banner', {
       fields: ['name', 'title', 'image', 'expiration_date']
+    })
+
+    const { data:dataBannerDesktop, isLoading:isLoadingBannerDesktop, error:errorBannerDesktop } = useFrappeGetDocList('Promotion Banner', {
+      fields: ['name', 'title', 'image', 'expiration_date'],
+      limit: 3
     })
 
     return (
@@ -114,17 +143,23 @@ const Home = () => {
                 )}
               </div>
 
-              <h2 className='mt-[30px] px-5 inter font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>Celebrate Mid Year Festival</h2>
+              <h2 className='mt-[30px] px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>Celebrate Mid Year Festival</h2>
 
-              <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5'>
+              <div className={`px-5 hidden lg:grid ${dataBanner?.length >= 2 ? 'grid-cols-2 gap-x-6' : ''}`}>
+                {(dataBannerDesktop ?? []).map((banner) => 
+                  <PromotionCardDesktop link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
+                )}
+              </div>
+
+              <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5 lg:hidden'>
                 {(dataBanner ?? []).map((banner) => 
                   <PromotionCard key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
                 )}
               </div>
 
-              <div className='flex flex-col gap-y-[11px] mt-[30px] px-5'>
-                <img src={promotion1} />
-                <img src={promotion2} />
+              <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] px-5'>
+                <img src={promotion1} className='lg:w-1/2'/>
+                <img src={promotion2} className='lg:w-1/2'/>
               </div>
 
               <div className='mt-[22px]'>
