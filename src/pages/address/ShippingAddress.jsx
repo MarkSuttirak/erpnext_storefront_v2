@@ -4,6 +4,8 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import TitleHeader from '../../components/TitleHeader'
 import { useFrappeDeleteDoc, useFrappeDocumentEventListener, useFrappeGetDocList } from 'frappe-react-sdk'
+import NavHeader from '../../components/NavHeader'
+import DesktopSidebar from '../../components/DesktopSidebar'
 
 const ShippingAddress = () => {
   const [openDelete, setOpenDelete] = useState(false)
@@ -50,9 +52,23 @@ const ShippingAddress = () => {
 
   return (
     <>
-      <TitleHeader title="ที่อยู่ของคุณ" link="/my-account" />
+      {/* header for mobile version */}
+      <div className='lg:hidden'>
+        <TitleHeader title="ที่อยู่ของคุณ" link="/my-account" />
+      </div>
 
-      <main className='p-5 flex flex-col gap-y-[12px] mt-[53px]'>
+      {/* header for desktop version */}
+      <div className='hidden lg:block'>
+        <NavHeader />
+      </div>
+
+      {/* main page for desktop version */}
+      <main className='px-5 pt-10 mt-[92px] max-w-[1200px] mx-auto hidden lg:block'>
+        <DesktopSidebar />
+      </main>
+
+      {/* main page for mobile version */}
+      <main className='p-5 flex flex-col gap-y-[12px] mt-[53px] lg:hidden'>
         {(data ?? []).map((d, index) => 
           <AddressInfo index={index} name={`${d.first_name} ${d.surname}`} address={`${d.address} ${d.district} ${d.province} ${d.postal_code}`}/>
         )}

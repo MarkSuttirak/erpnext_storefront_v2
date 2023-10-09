@@ -6,6 +6,8 @@ import chevronDropdown from '../../img/chevron-right.svg'
 import TitleHeader from '../../components/TitleHeader'
 import { useFrappeCreateDoc } from 'frappe-react-sdk'
 import { useFormik } from 'formik'
+import NavHeader from '../../components/NavHeader'
+import DesktopSidebar from '../../components/DesktopSidebar'
 
 const AddShippingAddress = () => {
   const [province, setProvince] = useState([]);
@@ -31,7 +33,21 @@ const AddShippingAddress = () => {
   const [openSuccess, setOpenSuccess] = useState(false)
   return (
     <>
-      <TitleHeader title="ใส่ที่อยู่การจัดส่ง" link="/shipping-address" />
+      {/* header for mobile version */}
+      <div className='lg:hidden'>
+        <TitleHeader title="ใส่ที่อยู่การจัดส่ง" link="/shipping-address" />
+      </div>
+
+      {/* header for desktop version */}
+      <div className='hidden lg:block'>
+        <NavHeader />
+      </div>
+
+      {/* main page for desktop version */}
+      <main className='px-5 pt-10 mt-[92px] max-w-[1200px] mx-auto hidden lg:block'>
+        <DesktopSidebar />
+      </main>
+
       <main className='p-5 pb-[100px] mt-[53px]'>
         <form className='flex flex-col gap-y-5' onSubmit={formik.handleSubmit}>
           <div className='flex flex-col'>

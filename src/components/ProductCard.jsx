@@ -53,12 +53,6 @@ const ProductCard = ({
                         <div dangerouslySetInnerHTML={{ __html: desc }} />
                     </p>
                     <span className="block pb-2 font-bold typography-text-lg">{price}</span>
-                    <SfButton type="button" size="sm" slotPrefix={<SfIconShoppingCart size="sm" />} onClick={(e) => {
-                        e.preventDefault();
-                        addToCart(itemCode)
-                    }}>
-                        Add to cart
-                    </SfButton>
                 </div>
             </div>
         </Link>

@@ -142,7 +142,7 @@ const FooterMenu = ({active}) => {
                 Making the world a better place through constructing elegant hierarchies.
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-3 gap-6">
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">Info</h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -169,7 +169,7 @@ const FooterMenu = ({active}) => {
               </div>
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">Contact</h3>
-                <div className="flex space-x-6 mt-6">
+                <div className="flex space-x-3 mt-6">
                   {navigation.social.map((item) => (
                     <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
                       <span className="sr-only">{item.name}</span>
@@ -181,7 +181,7 @@ const FooterMenu = ({active}) => {
             </div>
           </div>
         </div>
-        <div className="mt-16 px-6 py-1 bg-[#66BC89]">
+        <div className="mt-16 py-1 bg-[#66BC89]">
           <div className="max-w-[1200px] px-5 mx-auto">
             <p className="text-xs leading-5 text-white">&copy; 2020 Your Company, Inc. All rights reserved.</p>
           </div>

@@ -27,6 +27,7 @@ import {
 import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
 import { useUser } from '../hooks/useUser';
+import DesktopSidebar from '../components/DesktopSidebar'
 
 const MyAccount = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);
@@ -144,9 +145,10 @@ const MyAccount = () => {
     },
   ]
   return (
-    <div className='bg-[#F4F4F4] h-full'>
+    <div className='bg-[#F4F4F4] lg:bg-white h-full lg:mt-[92px]'>
       <NavHeader />
-      <header className="pt-20 pb-[60px] px-5 bg-[#BBE5BB] w-full">
+
+      <header className="pt-20 pb-[60px] px-5 bg-[#BBE5BB] w-full lg:max-w-[1200px] block lg:hidden">
         {data && (
           <div className='flex items-center'>
             <img src={data.user_image} width="64" className='rounded-[99px]'/>
@@ -174,108 +176,114 @@ const MyAccount = () => {
           </div>
         )}
       </header>
-      <main className='px-5 relative top-[-40px] pb-[100px]'>
-        <div className='bg-white rounded-[6px] items-center' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          <div className='flex justify-between p-5'>
-            <div className='flex items-center gap-x-[14px]'>
-              <img src={silverLevel ? silverCard : ""} />
-              <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
+      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex lg:max-w-[1200px] mx-auto'>
+        <DesktopSidebar />
+        <div className='flex flex-col lg:w-full'>
+          <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+            <div className='flex justify-between p-5 lg:w-1/2'>
+              <div className='flex items-center gap-x-[14px]'>
+                <img src={silverLevel ? silverCard : ""} />
+                <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
+              </div>
+              <div className='lg:hidden'>
+                <Link to="/my-id" className='bg-[#00B14F] flex gap-x-2 text-white items-center text-sm p-1 rounded-[4px]'>
+                  <img src={qrcode} />
+                  ID ของฉัน
+                </Link>
+              </div>
             </div>
-            <div>
-              <Link to="/my-id" className='bg-[#00B14F] flex gap-x-2 text-white items-center text-sm p-1 rounded-[4px]'>
-                <img src={qrcode} />
-                ID ของฉัน
+
+            <div className='p-5 lg:w-1/2'>
+              <div className='flex'>
+                <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                  Wallet
+                </div>
+                <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                  Coins
+                </div>
+                <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                  <Link to="/my-coupon">Coupon</Link>
+                </div>
+              </div>
+
+              <div className='flex'>
+                <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                  <span className='text-[#1BB040]'>฿ </span>850
+                </div>
+                <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                  {user?.loyalty_points} <span className='text-[#FFA800]'>coins</span>
+                </div>
+                <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                  {couponNum} <span className='text-[#BC0000]'>codes</span>
+                </div>
+              </div>
+            </div>
+
+            <hr style={{borderColor:"#F2F2F2"}}/>
+
+            <div className='p-5 w-full flex lg:hidden'>
+              <Link to="/wishlist" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
+                <Heart color='#333333'/>
+                รายการสินค้า<br/>ที่ถูกใจ
+              </Link>
+              <Link to="/my-order" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
+                <File06 color='#333333'/>
+                คำสั่งซื้อ<br/>ของฉัน
+              </Link>
+              <Link to="#" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
+                <ClockRewind color='#333333'/>
+                สินค้าที่<br/>ดูล่าสุด
+              </Link>
+            </div>
+
+            <hr style={{borderColor:"#F2F2F2"}} className='lg:hidden'/>
+
+            <div className='inline-block w-full lg:hidden'>
+              <Link to='/reward-history'>
+                <button className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2] text-[#333333] text-[15px] font-bold'>การใช้งานคะแนน</button>
+              </Link>
+              <Link to=''>
+                <button className='p-4 my-2 w-1/2 text-[#333333] text-[15px] font-bold'>ระดับคะแนน</button>
               </Link>
             </div>
           </div>
 
-          <div className='p-5'>
-            <div className='flex'>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                Wallet
-              </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                Coins
-              </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                <Link to="/my-coupon">Coupon</Link>
-              </div>
+          {/* Menu for mobile version */}
+          <div className='lg:hidden'>
+            <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>การตั้งค่า</h2>
+            <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+              {settingsMenu.map((menu) => 
+                <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
+              )}
             </div>
 
-            <div className='flex'>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                <span className='text-[#1BB040]'>฿ </span>850
-              </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                {user?.loyalty_points} <span className='text-[#FFA800]'>coins</span>
-              </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                {couponNum} <span className='text-[#BC0000]'>codes</span>
-              </div>
+            <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>ความช่วยเหลือ</h2>
+            <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+              {helpMenu.map((menu) => 
+                <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
+              )}
+            </div>
+
+            <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>ข้อมูลเพิ่มเติม</h2>
+            <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+              {additionMenu.map((menu) => 
+                <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
+              )}
+            </div>
+
+            <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>บัญชี</h2>
+            <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+              <button className='flex justify-between items-center px-5 py-[17px] w-full' onClick={() => setOpenLogout(true)}>
+                <div className='flex gap-x-[10px] text-sm text-[#111111] items-center'>
+                  <LogOut02 />
+                  ออกจากระบบ
+                </div>
+                <div>
+                  <ChevronRight />
+                </div>
+              </button>
             </div>
           </div>
-
-          <hr style={{borderColor:"#F2F2F2"}}/>
-
-          <div className='p-5 w-full flex'>
-            <Link to="/wishlist" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
-              <Heart color='#333333'/>
-              รายการสินค้า<br/>ที่ถูกใจ
-            </Link>
-            <Link to="/my-order" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
-              <File06 color='#333333'/>
-              คำสั่งซื้อ<br/>ของฉัน
-            </Link>
-            <Link to="#" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
-              <ClockRewind color='#333333'/>
-              สินค้าที่<br/>ดูล่าสุด
-            </Link>
-          </div>
-
-          <hr style={{borderColor:"#F2F2F2"}}/>
-
-          <div className='inline-block w-full'>
-            <Link to='/reward-history'>
-              <button className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2] text-[#333333] text-[15px] font-bold'>การใช้งานคะแนน</button>
-            </Link>
-            <Link to=''>
-              <button className='p-4 my-2 w-1/2 text-[#333333] text-[15px] font-bold'>ระดับคะแนน</button>
-            </Link>
-          </div>
-        </div>
-
-        <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>การตั้งค่า</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          {settingsMenu.map((menu) => 
-            <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
-          )}
-        </div>
-
-        <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>ความช่วยเหลือ</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          {helpMenu.map((menu) => 
-            <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
-          )}
-        </div>
-
-        <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>ข้อมูลเพิ่มเติม</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          {additionMenu.map((menu) => 
-            <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
-          )}
-        </div>
-
-        <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>บัญชี</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          <button className='flex justify-between items-center px-5 py-[17px] w-full' onClick={() => setOpenLogout(true)}>
-            <div className='flex gap-x-[10px] text-sm text-[#111111] items-center'>
-              <LogOut02 />
-              ออกจากระบบ
-            </div>
-            <div>
-              <ChevronRight />
-            </div>
-          </button>
         </div>
       </main>
       <FooterMenu active={3} />

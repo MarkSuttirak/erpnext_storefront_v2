@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { SfCheckbox, SfButton, SfIconCheckCircle, SfIconClose, SfLink } from '@storefront-ui/react';
 import { useCart } from '../hooks/useCart';
 import PaymentMethods from '../components/PaymentMethods';
