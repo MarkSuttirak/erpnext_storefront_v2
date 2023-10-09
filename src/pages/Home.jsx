@@ -93,7 +93,7 @@ const Home = () => {
           <NavHeader />
           <div className='lg:mt-[92px]'>
             <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/>
-            <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
+            <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex lg:hidden max-w-[1200px] mx-auto' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
               <div className='w-[80%] py-2'>
                 <div className='flex'>
                   <div className='basis-1/3 flex gap-x-1 text-[13px]'>
@@ -131,7 +131,7 @@ const Home = () => {
                 </div>
               </div>
             </header>
-            <main className='relative top-[-10px] lg:top-5 pb-[94px]'>
+            <main className='relative top-[-10px] lg:top-5 pb-[94px] max-w-[1200px] mx-auto'>
               <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-8 px-5 lg:px-10'>
                 {(dataShortcut ?? []).map((d) => 
                   <a href={d.link} key={d.name}>
