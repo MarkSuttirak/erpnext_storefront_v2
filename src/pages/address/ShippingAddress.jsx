@@ -105,7 +105,7 @@ const ShippingAddress = () => {
       {/* main page for desktop version */}
       <main className='px-5 pt-10 mt-[92px] max-w-[1200px] mx-auto hidden lg:flex'>
         <DesktopSidebar />
-        <section className='p-5 lg:flex flex-col gap-y-3 lg:gap-y-5 mt-[53px] hidden w-full'>
+        <section className='p-5 lg:flex flex-col gap-y-3 lg:gap-y-5 hidden w-full'>
           <div className='flex items-center justify-between'>
             <h2 className='text-[#333333] text-[22px] font-bold'>โปรไฟล์ของฉัน</h2>
             <button onClick={() => setOpenAdd(true)} className='bg-[#F4F4F4] lg:bg-white lg:border lg:border-[#333333] p-5 rounded-[7px] lg:py-3'>
