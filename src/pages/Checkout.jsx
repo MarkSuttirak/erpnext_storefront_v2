@@ -100,6 +100,8 @@ const Checkout = () => {
       transition:"all 300ms",
     }
 
+    console.log(formik)
+
     const [showTooltipCVV, setShowTooltipCVV] = useState(tooltipHide);
 
     const [informationAlert, setInformationAlert] = useState(false);
@@ -147,7 +149,7 @@ const Checkout = () => {
           กดรับของขวัญฟรี 🎁
         </header>
         <div className='flex flex-col md:flex-row justify-center'>
-            <form action="#" className="p-4 md:w-3/5 flex gap-4 flex-wrap text-neutral-900">
+            <form className="p-4 md:w-3/5 flex gap-4 flex-wrap text-neutral-900">
               <button className='flex justify-between items-center py-2 w-full' onClick={(e) => {e.preventDefault();switchToShippingAddress();}}>
                 <div className='flex gap-x-[10px]'>
                   <MarkerPin01 />
@@ -224,7 +226,7 @@ const Checkout = () => {
                           <p>Points ที่คุณจะได้รับ</p>
                           <p>Points 149</p>
                         </div>
-                        <SfButton size="lg" className="w-full" style={{backgroundColor:"black"}} onClick={(e) => {e.preventDefault();switchToSelectPayment()}}>
+                        <SfButton size="lg" className="w-full" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
                             ชำระเงิน
                         </SfButton>
                     </div>
