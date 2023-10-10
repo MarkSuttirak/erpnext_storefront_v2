@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { SfCheckbox, SfButton, SfIconCheckCircle, SfIconClose, SfLink } from '@storefront-ui/react';
+import { SfCheckbox, SfButton, SfIconCheckCircle, SfIconClose, SfLink, SfInput } from '@storefront-ui/react';
 import { useCart } from '../hooks/useCart';
 import PaymentMethods from '../components/PaymentMethods';
 import AddressCard from '../components/AddressCard';
@@ -13,8 +13,10 @@ import { useProducts } from '../hooks/useProducts'
 import { ShoppingBag01 } from '@untitled-ui/icons-react';
 import banks from '../img/banks.svg'
 import visaIcon from '../img/visa-icon.svg'
+import { useUser } from '../hooks/useUser';
 
 const Checkout = () => {
+  const { user } = useUser()
     const { cart, cartCount, getTotal, resetCart } = useCart();
     const navigate = useNavigate();
 
@@ -26,20 +28,20 @@ const Checkout = () => {
     
     const cartContents = useMemo(() => {
       return Object.entries(cart).reduce((acc, [item_code]) => {
-          const product = getByItemCode(item_code);
-          if (product?.item_group === 'Gift' || product?.item_group === 'Gift and Cards') {
-              return {
-                  ...acc,
-                  hasGiftItem: true,
-              }
-          }
+        const product = getByItemCode(item_code);
+        if (product?.item_group === 'Gift' || product?.item_group === 'Gift and Cards') {
           return {
-              ...acc,
-              hasNormalItem: true,
+            ...acc,
+            hasGiftItem: true,
           }
+        }
+        return {
+          ...acc,
+          hasNormalItem: true,
+        }
       }, {
-          hasNormalItem: false,
-          hasGiftItem: false,
+        hasNormalItem: false,
+        hasGiftItem: false,
       })
     }, [cart, getByItemCode])
 
@@ -224,6 +226,14 @@ const Checkout = () => {
                           <p>Points ที่คุณจะได้รับ</p>
                           <p>Points 149</p>
                         </div>
+                        <SfInput
+                            placeholder='Enter loyalty points to redeem'
+                            slotSuffix={<strong className='w-16'>of {user?.loyalty_points}</strong>}
+                            maxLength={user?.loyalty_points?.toString().length}
+                            name="loyalty_points"
+                            value={formik.values.loyalty_points}
+                            onChange={formik.handleChange}
+                        />
                         <SfButton size="lg" className="w-full" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
                             ชำระเงิน
                         </SfButton>
