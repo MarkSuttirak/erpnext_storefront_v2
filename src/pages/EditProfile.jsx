@@ -54,9 +54,9 @@ const EditProfile = () => {
     setChangedSuccessfully(true);
   }
 
-  if (!user) {
-    return <div>Loading...</div>
-  }
+  // if (!user) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     <>
