@@ -24,16 +24,18 @@ import {
     LogOut02,
     AlertTriangle
 } from '@untitled-ui/icons-react'
-import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount, useFrappePostCall } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
 import { useUser } from '../hooks/useUser';
 import DesktopSidebar from '../components/DesktopSidebar'
+import { useFormik } from 'formik'
 
 const MyAccount = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);
   const [silverLevel, setSilverLevel] = useState(true);
 
   const { user } = useUser()
+  const { call } = useFrappePostCall("honda_api.api.update_profile")
 
   const [openLogout, setOpenLogout] = useState(false);
 
@@ -62,6 +64,59 @@ const MyAccount = () => {
       </Link>
     )
   }
+
+  const ProfileForm = ({
+    initialValues,
+    onSubmit
+  }) => {
+    const formik = useFormik({
+      initialValues: initialValues,
+      onSubmit: onSubmit
+    })
+  
+    return (
+      <form className='flex flex-col gap-y-5 mt-6' onSubmit={formik.handleSubmit}>
+        <div className='flex flex-col'>
+          <label htmlFor='name'>ชื่อ</label>
+          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='first_name' value={formik.values.first_name} onChange={formik.handleChange} />
+        </div>
+  
+        <div className='flex flex-col'>
+          <label htmlFor='surname'>นามสกุล</label>
+          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='last_name' value={formik.values.last_name} onChange={formik.handleChange} />
+        </div>
+  
+        <div className='flex flex-col'>
+          <label htmlFor='email'>อีเมล</label>
+          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='email' type='email' value={formik.values.email} onChange={formik.handleChange} />
+        </div>
+  
+        <div className='flex flex-col relative'>
+          <label htmlFor='phone'>เบอร์โทร</label>
+          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='phone' type='tel' value={formik.values.phone} onChange={formik.handleChange} />
+  
+          <button className="absolute translate-y-[38px] right-[4px] bg-black text-white px-3 py-[6px] rounded-[6px]">แก้ไข</button>
+        </div>
+  
+        <div className='flex flex-col'>
+          <label htmlFor='birth_date'>วัน/เดือน/ปีเกิด</label>
+          <input
+            className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+            type='date'
+            name='birth_date'
+            value={formik.values.birth_date}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <footer className="w-full">
+          <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter bg-[#111111]`} style={{ fontFamily: "Eventpop" }}>
+            บันทึก
+          </button>
+        </footer>
+      </form>
+    )
+  }
+  
 
   const settingsMenu = [
     {
@@ -248,6 +303,19 @@ const MyAccount = () => {
             </div>
           </div>
 
+          <div className='hidden lg:block'>
+            <h2 className='text-[#333333] text-[22px] font-bold'>โปรไฟล์ของฉัน</h2>
+            <ProfileForm 
+              initialValues={{
+                first_name: user?.user.first_name,
+                last_name: user?.user.last_name,
+                email: user?.email_id,
+                phone: user?.phone,
+                birth_date: user?.customer_details
+              }}
+              onSubmit={call}
+            />
+          </div>
           {/* Menu for mobile version */}
           <div className='lg:hidden'>
             <h2 className='mt-[30px] mb-[10px] font-bold text-[#333333]'>การตั้งค่า</h2>

@@ -47,7 +47,7 @@ const DesktopSidebar = () => {
   const myPoint = [
     {
       title:'ID ของฉัน',
-      link:'#'
+      link:'/my-id'
     },
     {
       title:'แลกคะแนน',

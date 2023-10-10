@@ -32,9 +32,6 @@ const MyCoupon = () => {
               <p className={`text-xs font-bold ${used === 1 ? "text-[#D10000]" : "text-[#5B6CFFCF]"}`}>{used === 1 ? "ใช้แล้ว" : "ใช้ส่วนลด"}</p>
             </div>
           </div>
-
-          <div className='absolute w-[20px] h-[40px] border border-[#D6D6D6] bg-white rounded-r-[99px] left-[-1px] border-l-0 top-[35%]'></div>
-          <div className='absolute w-[20px] h-[40px] border border-[#D6D6D6] bg-white rounded-l-[99px] right-[-1px] border-r-0 top-[35%]'></div>
         </div>
       </>
     )

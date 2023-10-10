@@ -1,4 +1,4 @@
-import { ArrowLeft, MarkerPin01, AlertTriangle } from '@untitled-ui/icons-react'
+import { ArrowLeft, MarkerPin01, AlertTriangle, Download01 } from '@untitled-ui/icons-react'
 import { Link } from 'react-router-dom'
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
@@ -10,6 +10,8 @@ import QRCode from "react-qr-code";
 import Barcode from 'react-barcode';
 import { useUser } from '../hooks/useUser';
 import { useFrappeGetDocCount } from 'frappe-react-sdk';
+import NavHeader from '../components/NavHeader'
+import DesktopSidebar from '../components/DesktopSidebar'
 
 const MyID = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);
@@ -22,11 +24,59 @@ const MyID = () => {
 
   return (
     <>
-      <TitleHeader title="ID ของฉัน" link="/my-account" />
-      <main className='p-5 mt-[53px]'>
+      {/* header for mobile version */}
+      <div className='lg:hidden'>
+        <TitleHeader title="ID ของฉัน" link="/my-account" />
+      </div>
+
+      {/* header for desktop version */}
+      <div className='hidden lg:block'>
+        <NavHeader />
+      </div>
+
+      <main className='p-5 mt-[53px] lg:mt-[92px] lg:flex max-w-[1200px] mx-auto'>
+        <DesktopSidebar />
         <div className='inline-block w-full'>
-          <button className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]' onClick={() => setCurrentPage(1)}>QR Code</button>
-          <button className='p-4 my-2 w-1/2' onClick={() => setCurrentPage(2)}>Barcode</button>
+          <div className='hidden lg:flex flex-col w-full pb-8 border-b border-b-[#F2F2F2]'>
+            <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between'>
+              <div className='flex justify-between p-5 lg:w-1/2'>
+                <div className='flex items-center gap-x-[14px]'>
+                  <img src={silverLevel ? silverCard : ""} />
+                  <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
+                </div>
+              </div>
+
+              <div className='p-5 lg:w-1/2'>
+                <div className='flex'>
+                  <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                    Wallet
+                  </div>
+                  <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                    Coins
+                  </div>
+                  <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                    <Link to="/my-coupon">Coupon</Link>
+                  </div>
+                </div>
+
+                <div className='flex'>
+                  <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                    <span className='text-[#1BB040]'>฿ </span>850
+                  </div>
+                  <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                    {user?.loyalty_points} <span className='text-[#FFA800]'>coins</span>
+                  </div>
+                  <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+                    {couponNum} <span className='text-[#BC0000]'>codes</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='lg:max-w-[400px] mx-auto lg:mt-8'>
+            <button className={`p-4 my-2 w-1/2 border-r border-r-[#F2F2F2] ${currentPage === 1 ? 'text-[#66BC89]' : 'text-[#1C1C1C]'}`} onClick={() => setCurrentPage(1)}>QR Code</button>
+            <button className={`p-4 my-2 w-1/2 ${currentPage === 2 ? 'text-[#66BC89]' : 'text-[#1C1C1C]'}`} onClick={() => setCurrentPage(2)}>Barcode</button>
+          </div>
 
           <div className='flex flex-col justify-center'>
             {currentPage === 1 && (
@@ -40,12 +90,18 @@ const MyID = () => {
             )}
 
             <div className='flex items-center gap-x-[14px] mt-6 justify-center'>
-              <img src={silverLevel ? silverCard : ""} />
-              <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver Member" : ""}</div>
+              <div className='lg:hidden'>
+                <img src={silverLevel ? silverCard : ""} />
+                <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver Member" : ""}</div>
+              </div>
+              <button className='hidden lg:flex gap-x-2 items-center px-10 py-4 border border-[#111111] text-[#111111] rounded-lg'>
+                <Download01 />
+                บันทึกรูปภาพ
+              </button>
             </div>
           </div>
 
-          <div className='p-5 border border-[#E8E8E8] rounded-[6px] mt-7' style={{filter:"drop-shadow(0 4px 20px #6363630D)"}}>
+          <div className='p-5 border border-[#E8E8E8] rounded-[6px] mt-7 lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D)"}}>
             <h2 className='mb-[6px] text-[#333333] text-sm'>ยอดของคุณ</h2>
             <div className='flex'>
               <div className='basis-1/3 flex gap-x-1 text-[13px]'>
