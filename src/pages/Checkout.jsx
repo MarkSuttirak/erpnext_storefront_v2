@@ -54,18 +54,18 @@ const Checkout = () => {
     const total = getTotal() + delivery - discount
 
     const formik = useFormik({
-        initialValues: {
-          cartContents,
-          billing_address: '',
-          shipping_address: '',
-          use_different_shipping: false,
-          loyalty_points: '',
-          items: cart,
-          payment_method: 'bank-transfer',
-        },
-        validationSchema: orderSchema,
-        validateOnChange: false,
-        onSubmit: call
+      initialValues: {
+        cartContents,
+        billing_address: '',
+        shipping_address: '',
+        use_different_shipping: false,
+        loyalty_points: '',
+        items: cart,
+        payment_method: 'bank-transfer',
+      },
+      validationSchema: orderSchema,
+      validateOnChange: false,
+      onSubmit: call
     });
 
     useEffect(() => {
@@ -99,8 +99,6 @@ const Checkout = () => {
       filter:"drop-shadow(0 12px 16px #10182814)",
       transition:"all 300ms",
     }
-
-    console.log(formik)
 
     const [showTooltipCVV, setShowTooltipCVV] = useState(tooltipHide);
 
@@ -160,12 +158,12 @@ const Checkout = () => {
                 </div>
               </button>
                 <AddressOptions
-                    onChange={(value) => {
-                      formik.setFieldValue('billing_address', value);
-                    }}
-                    onClick={(e) => e.preventDefault()}
-                    value={formik.values.billing_address}
-                    error={formik.errors.billing_address}
+                  onChange={(value) => {
+                    formik.setFieldValue('billing_address', value);
+                  }}
+                  onClick={(e) => e.preventDefault()}
+                  value={formik.values.billing_address}
+                  error={formik.errors.billing_address}
                 />
                 <PaymentMethods onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method} />
             </form>

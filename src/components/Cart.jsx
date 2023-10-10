@@ -15,8 +15,6 @@ const Cart = () => {
     const { getByItemCode } = useProducts()
     const navigate = useNavigate()
 
-    console.log(getTotal)
-
     useTrapFocus(drawerRef, { activeState: isOpen });
 
     const [cartPage, setCartPage] = useState(true);
