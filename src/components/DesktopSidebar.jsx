@@ -29,7 +29,7 @@ const DesktopSidebar = () => {
     },
     {
       title:'ที่อยู่ในการจัดส่ง',
-      link:'#'
+      link:'/shipping-address'
     },
     {
       title:'สินค้าที่ดูล่าสุด',
@@ -135,10 +135,10 @@ const DesktopSidebar = () => {
         </button>
         <div className='flex flex-col gap-y-3 mt-3'>
           {myAccount.map((m) => 
-            <button className='flex items-center gap-x-[10px] text-[#858585]'>
+            <Link to={m.link} className='flex items-center gap-x-[10px] text-[#858585]'>
               <User02 className='invisible'/>
               {m.title}
-            </button>
+            </Link>
           )}
         </div>
         <button className='flex items-center gap-x-[10px] mt-3'>

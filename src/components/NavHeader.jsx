@@ -57,20 +57,20 @@ const NavHeader = () => {
                 หมวดหมู่
                 <ChevronDown />
               </button>
-              <a
-                href="/"
-                aria-label="SF Homepage"
-                className="lg:flex-1 lg:justify-center flex focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
-              >
-                <picture>
+              <picture>
+                <a
+                  href="/"
+                  aria-label="SF Homepage"
+                  className="lg:flex-1 lg:justify-center flex focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
+                >
                   <source srcSet={brandLogo} media="(min-width: 768px)" />
                   <img
                     src={brandLogo}
                     alt="Sf Logo"
                     className="w-[100px]"
                   />
-                </picture>
-              </a>
+                </a>
+              </picture>
 
               <nav className="flex-1 flex justify-end lg:order-last lg:ml-4">
                 <div className="flex flex-row flex-nowrap">

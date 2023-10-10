@@ -339,9 +339,8 @@ const ShippingAddress = () => {
                           <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='phone_number' name='phone_number' value={formik.values.phone_number} onChange={formik.handleChange} type='tel'/>
                         </div>
                       </div>
-            
-                      <footer className="pt-5 w-full lg:flex lg:w-[400px] lg:mx-auto lg:gap-x-3">
-                        <button onClick={(e) => {e.preventDefault();setOpenAdd(false)}} className={`block w-1/2 text-black rounded-[9px] p-3 text-center w-full bg-white border border-black`}>ยกเลิก</button>
+
+                      <footer className="pt-5 w-full lg:flex lg:w-[200px] lg:mx-auto lg:gap-x-3">
                         <button type='submit' onClick={() => setOpenSuccess(true)} className={`block w-1/2 text-white rounded-[9px] p-3 text-center w-full ${!modified ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!modified}>บันทึกที่อยู่</button>
                       </footer>
                     </form>
@@ -409,7 +408,7 @@ const ShippingAddress = () => {
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 py-4 lg:px-8 lg:py-6 text-left shadow-xl transition-all w-full lg:w-fit max-w-[600px]">
                   <div className='flex items-center justify-between mb-8'>
                     <h2 className='text-[#333333] text-[20px] font-bold'>แก้ไขที่อยู่การจัดส่ง: {data && data[rowNum].name}</h2>
-                    <XClose onClick={() => setOpenAdd(false)}/>
+                    <XClose onClick={() => setOpenUpdate(false)}/>
                   </div>
                   {!isSaving ? (
                     <form className='flex flex-col gap-y-3' onSubmit={formikUpdate.handleSubmit}>
@@ -464,8 +463,7 @@ const ShippingAddress = () => {
                         </div>
                       </div>
             
-                      <footer className="pt-5 w-full lg:flex lg:w-[400px] lg:mx-auto lg:gap-x-3">
-                        <button onClick={(e) => {e.preventDefault();setOpenAdd(false)}} className={`block w-1/2 text-black rounded-[9px] p-3 text-center w-full bg-white border border-black`}>ยกเลิก</button>
+                      <footer className="pt-5 w-full lg:flex lg:w-[200px] lg:mx-auto lg:gap-x-3">
                         <button type='submit' onClick={() => setOpenSuccess(true)} className={`block w-1/2 text-white rounded-[9px] p-3 text-center w-full ${!modified ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!modified}>บันทึกที่อยู่</button>
                       </footer>
                     </form>
