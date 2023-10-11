@@ -47,6 +47,8 @@ import MyCoupon from "./pages/MyCoupon";
 import SingleBlog from "./pages/SingleBlog";
 import MemberLevel from "./pages/MemberLevel";
 import MemberPrivileges from "./pages/MemberPrivileges";
+import FooterMenuDesktop from "./components/desktop/FooterMenuDesktop";
+import HeaderDesktop from "./components/desktop/HeaderDesktop";
 
 function App() {
   const navigate = useNavigate();
@@ -68,6 +70,7 @@ function App() {
       <UserProvider>
         <ProductsProvider>
           <CartProvider>
+            <HeaderDesktop />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/consent" element={<Consent />} />
@@ -111,6 +114,7 @@ function App() {
               <Route path="/single-blog/:id" element={<SingleBlog />} />
             </Routes>
             <Cart />
+            <FooterMenuDesktop />
           </CartProvider>
         </ProductsProvider>
       </UserProvider>

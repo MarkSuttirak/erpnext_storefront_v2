@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import TitleHeader from '../../components/TitleHeader'
-import { useFrappeDeleteDoc, useFrappeDocumentEventListener, useFrappeGetDocList, useFrappeCreateDoc } from 'frappe-react-sdk'
+import { useFrappeDeleteDoc, useFrappeDocumentEventListener, useFrappeGetDocList, useFrappeCreateDoc, useFrappeGetCall, useFrappePostCall, useFrappeDeleteCall } from 'frappe-react-sdk'
 import NavHeader from '../../components/NavHeader'
 import DesktopSidebar from '../../components/DesktopSidebar'
 import { useFormik } from 'formik'
 import chevronDropdown from '../../img/chevron-right.svg'
+import AddressForm from '../../components/forms/AddressForm'
+import { addressSchema } from '../../components/forms/addressFormSchema';
 
 const ShippingAddress = () => {
   const [openAdd, setOpenAdd] = useState(false)
@@ -17,50 +19,50 @@ const ShippingAddress = () => {
   const [modified, setModified] = useState(true);
   const [rowNum, setRowNum] = useState(0)
 
-  const { data, loading, error, mutate } = useFrappeGetDocList('Shipping Address', {
-    fields: ['name', 'first_name', 'surname', 'address', 'province', 'district', 'postal_code', 'phone_number']
+  const { data:dataShipping } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-0`)
+  const { call, isCompleted } = useFrappePostCall('headless_e_commerce.api.add_address')
+
+  const { data } = useFrappeGetDocList('Address', {
+    fields: ['name', 'address_title', 'address_line1', 'address_line2', 'city', 'state', 'country', 'pincode', 'phone']
   })
+
+  console.log(data)
 
   const [isSaving, setIsSaving] = useState(false)
 
-  const { createDoc } = useFrappeCreateDoc()
-
   const formik = useFormik({
     initialValues: {
-      first_name:'',
-      surname:'',
-      address:'',
-      province:'',
-      district:'',
-      postal_code:'',
-      phone_number:''
+      address_line1: "",
+      address_line2: "",
+      city: "",
+      state: "",
+      country: "",
+      pincode: "",
+      is_primary_address: 1,
+      is_shipping_address: 0,
     },
-    onSubmit: (data) => {
-      createDoc('Shipping Address', data)
-    }
-  })
+    validationSchema: addressSchema,
+    validateOnChange: false,
+    onSubmit: call
+  });
 
   const formikUpdate = useFormik({
     initialValues: {
-      first_name:data?.first_name,
-      surname:data?.surname,
-      address:data?.address,
-      province:data?.province,
-      district:data?.district,
-      postal_code:data?.postal_code,
-      phone_number:data?.phone_number
+      first_name:dataShipping?.message?.first_name,
+      surname:dataShipping?.message?.surname,
+      address:dataShipping?.message?.address,
+      province:dataShipping?.message?.province,
+      district:dataShipping?.message?.district,
+      postal_code:dataShipping?.message?.postal_code,
+      phone_number:dataShipping?.message?.phone_number
     },
     onSubmit: (data) => {
       updateDoc('Shipping Address', id, data)
     }
   })
 
-  const { deleteDoc } = useFrappeDeleteDoc()
-
   const handleDeleteInfo = () => {
-    deleteDoc('Shipping Address', data && data[rowNum].name)
-    .then(() => mutate())
-    setOpenDelete(false)
+    callDelete()
   }
 
   useFrappeDocumentEventListener((d) => {
@@ -97,11 +99,6 @@ const ShippingAddress = () => {
         <TitleHeader title="ที่อยู่ของคุณ" link="/my-account" />
       </div>
 
-      {/* header for desktop version */}
-      <div className='hidden lg:block'>
-        <NavHeader />
-      </div>
-
       {/* main page for desktop version */}
       <main className='px-5 pt-10 mt-[92px] max-w-[1200px] mx-auto hidden lg:flex'>
         <DesktopSidebar />
@@ -115,19 +112,17 @@ const ShippingAddress = () => {
               </div>
             </button>
           </div>
-          {(data ?? []).map((d, index) => 
-            <AddressInfo index={index} name={`${d.first_name} ${d.surname}`} address={`${d.address} ${d.district} ${d.province} ${d.postal_code}`}/>
+          {(dataShipping?.message ?? []).map((d, index) => 
+            <AddressInfo index={index} name={`${d.address_title}`} address={`${d.address_line1} ${d.address_line2} ${d.city} ${d.country}`}/>
           )}
-          <AddressInfo index={0} name={`Max Schmidt`} address={`Frankfurt am Main, Deutschland`}/>
         </section>
       </main>
 
       {/* main page for mobile version */}
       <main className='p-5 flex flex-col gap-y-[12px] mt-[53px] lg:hidden'>
-        {(data ?? []).map((d, index) => 
-          <AddressInfo index={index} name={`${d.first_name} ${d.surname}`} address={`${d.address} ${d.district} ${d.province} ${d.postal_code}`}/>
+        {(dataShipping?.message ?? []).map((d, index) => 
+          <AddressInfo index={index} name={`${d.address_title}`} address={`${d.address_line1} ${d.address_line2} ${d.city} ${d.country}`}/>
         )}
-        <AddressInfo index={0} name={`Max Schmidt`} address={`Frankfurt am Main, Deutschland`}/>
         <button onClick={() => setOpenAdd(true)} className='bg-[#F4F4F4] p-5 rounded-[7px]'>
           <div className='flex gap-x-[7px] justify-center'>
             <MarkerPin01 />
@@ -288,62 +283,7 @@ const ShippingAddress = () => {
                     <XClose onClick={() => setOpenAdd(false)}/>
                   </div>
                   {!isSaving ? (
-                    <form className='flex flex-col gap-y-3' onSubmit={formik.handleSubmit}>
-                      <div className='lg:flex lg:gap-x-3'>
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='first_name'>ชื่อผู้รับ</label>
-                          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='first_name' name='first_name' type='text' value={formik.values.first_name} onChange={formik.handleChange}/>
-                        </div>
-
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='surname'>นามสกุล</label>
-                          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='surname' name='surname' type='text' value={formik.values.surname} onChange={formik.handleChange}/>
-                        </div>
-                      </div>
-
-                      <div className='flex flex-col w-full'>
-                        <label htmlFor='address'>ที่อยู่ (ห้องเลขที่, ตึก, ถนน)</label>
-                        <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='address' name='address' type='text' value={formik.values.address} onChange={formik.handleChange}/>
-                      </div>
-
-                      <div className='lg:flex lg:gap-x-3'>
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='province'>จังหวัด</label>
-                          <select className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 pl-3 pr-10 mt-[11px] appearance-none' defaultValue='กรุงเทพมหานคร' value={formik.values.province} onChange={formik.handleChange} id='province' name='province' style={{backgroundImage:"url(" + chevronDropdown + ")",backgroundPosition:"right 0.5rem center",backgroundRepeat:"no-repeat"}}>
-                            <option value='กรุงเทพมหานคร'>กรุงเทพมหานคร</option>
-                            <option value='สมุทรปราการ'>สมุทรปราการ</option>
-                            <option value='สมุทรสาคร'>สมุทรสาคร</option>
-                            <option value='ปทุมธานี'>ปทุมธานี</option>
-                          </select>
-                        </div>
-
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='district'>เมือง / เขต</label>
-                          <select className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 pl-3 pr-10 mt-[11px] appearance-none' id='district' name='district' defaultValue='สวนหลวง' value={formik.values.district} onChange={formik.handleChange} style={{backgroundImage:"url(" + chevronDropdown + ")",backgroundPosition:"right 0.5rem center",backgroundRepeat:"no-repeat"}}>
-                            <option value='สวนหลวง'>สวนหลวง</option>
-                            <option value='บางกะปิ'>บางกะปิ</option>
-                            <option value='บางนา'>บางนา</option>
-                            <option value='ห้วยขวาง'>ห้วยขวาง</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className='lg:flex lg:gap-x-3'>
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='postal_code'>รหัสไปรษณีย์</label>
-                          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='postal_code' name='postal_code' value={formik.values.postal_code} onChange={formik.handleChange} type='text'/>
-                        </div>
-
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='phone_number'>เบอร์โทรศัพท์</label>
-                          <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='phone_number' name='phone_number' value={formik.values.phone_number} onChange={formik.handleChange} type='tel'/>
-                        </div>
-                      </div>
-
-                      <footer className="pt-5 w-full lg:flex lg:w-[200px] lg:mx-auto lg:gap-x-3">
-                        <button type='submit' onClick={() => setOpenSuccess(true)} className={`block w-1/2 text-white rounded-[9px] p-3 text-center w-full ${!modified ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!modified}>บันทึกที่อยู่</button>
-                      </footer>
-                    </form>
+                    <AddressForm onSuccess={() => setOpenAdd(false)}/>
                   ) : (
                     <>
                       <div>
@@ -407,7 +347,7 @@ const ShippingAddress = () => {
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 py-4 lg:px-8 lg:py-6 text-left shadow-xl transition-all w-full lg:w-fit max-w-[600px]">
                   <div className='flex items-center justify-between mb-8'>
-                    <h2 className='text-[#333333] text-[20px] font-bold'>แก้ไขที่อยู่การจัดส่ง: {data && data[rowNum].name}</h2>
+                    <h2 className='text-[#333333] text-[20px] font-bold'>แก้ไขที่อยู่การจัดส่ง</h2>
                     <XClose onClick={() => setOpenUpdate(false)}/>
                   </div>
                   {!isSaving ? (

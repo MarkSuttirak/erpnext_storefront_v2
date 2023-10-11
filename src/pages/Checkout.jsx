@@ -14,6 +14,7 @@ import { ShoppingBag01 } from '@untitled-ui/icons-react';
 import banks from '../img/banks.svg'
 import visaIcon from '../img/visa-icon.svg'
 import { useUser } from '../hooks/useUser';
+import AddressForm from '../components/forms/AddressForm';
 
 const Checkout = () => {
   const { user } = useUser()
@@ -309,7 +310,7 @@ const Checkout = () => {
               ใส่ที่อยู่ในการจัดส่ง
             </header>
             <main className='p-5 pb-[100px]'>
-              <form action="#" className='flex flex-col gap-y-5'>
+              {/* <form action="#" className='flex flex-col gap-y-5'>
                 <div className='flex flex-col'>
                   <label htmlFor='receiver-name'>ชื่อผู้รับ</label>
                   <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='receiver-name' name='receiver-name' type='text' />
@@ -355,7 +356,8 @@ const Checkout = () => {
                   <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='phone' name='phone' type='tel'/>
                   <p className="text-xs text-[#474747] mt-[11px]">ที่ให้ต้องการให้ค้นส่งติดต่อแจ้งเมื่อมีการจัดส่ง</p>
                 </div>
-              </form>
+              </form> */}
+              <AddressForm />
             </main>
             <footer className="p-5 fixed bottom-0 w-full">
               <button onClick={() => setOpenSuccess(true)} className={`block mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full ${!modified ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!modified}>บันทึกที่อยู่</button>
@@ -474,6 +476,8 @@ function AddressOptions({
     error
 }) {
     const { data } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-0`)
+
+    console.log(data?.message[0])
 
     return (
         <>

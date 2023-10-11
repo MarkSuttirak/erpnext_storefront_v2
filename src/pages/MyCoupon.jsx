@@ -6,12 +6,12 @@ const MyCoupon = () => {
   const [currentSec, setCurrentSec] = useState(1)
 
   const { data:canUseCoupon } = useFrappeGetDocList('Coupon Code', {
-    fields: ['name', 'coupon_name', 'used', 'valid_upto', 'coupon_code', 'description'],
+    fields: ['name', 'coupon_name', 'used', 'valid_upto', 'coupon_code', 'description', 'coupon_type'],
     filters: [['used', '=', '0']]
   })
 
   const { data:usedCoupon } = useFrappeGetDocList('Coupon Code', {
-    fields: ['name', 'coupon_name', 'used', 'valid_upto', 'coupon_code', 'description'],
+    fields: ['name', 'coupon_name', 'used', 'valid_upto', 'coupon_code', 'description', 'coupon_type'],
     filters: [['used', '=', '1']]
   })
 
@@ -60,6 +60,9 @@ const MyCoupon = () => {
             {(canUseCoupon ?? []).map((c) => 
               <CouponSheet proTitle={c.coupon_name} code={c.coupon_code} desc={c.description} date={c.valid_upto} used={c.used}/>
             )}
+            {/* <CouponSheet proTitle='ลด 25%' code='PAY25TH' desc='เมื่อช้อป 1,499.00 ลดถึง 950' date='14 July 2023' used={false}/>
+            <CouponSheet proTitle='ลด 25%' code='PAY25TH' desc='เมื่อช้อป 1,499.00 ลดถึง 950' date='14 July 2023' used={false}/>
+            <CouponSheet proTitle='ลด 25%' code='PAY25TH' desc='เมื่อช้อป 1,499.00 ลดถึง 950' date='14 July 2023' used={false}/> */}
           </div>
         )}
 
@@ -68,6 +71,9 @@ const MyCoupon = () => {
             {(usedCoupon ?? []).map((c) => 
               <CouponSheet proTitle={c.coupon_name} code={c.coupon_code} desc={c.description} date={c.valid_upto} used={c.used}/>
             )}
+            {/* <CouponSheet proTitle='ลด 25%' code='PAY25TH' desc='เมื่อช้อป 1,499.00 ลดถึง 950' date='14 July 2023' used={true}/>
+            <CouponSheet proTitle='ลด 25%' code='PAY25TH' desc='เมื่อช้อป 1,499.00 ลดถึง 950' date='14 July 2023' used={true}/>
+            <CouponSheet proTitle='ลด 25%' code='PAY25TH' desc='เมื่อช้อป 1,499.00 ลดถึง 950' date='14 July 2023' used={true}/> */}
           </div>
         )}
       </main>

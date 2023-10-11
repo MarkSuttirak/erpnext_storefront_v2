@@ -19,4 +19,4 @@ const PromotionCard = ({title, image, date, link}) => {
   )
 }
 
-  export default PromotionCard
+export default PromotionCard

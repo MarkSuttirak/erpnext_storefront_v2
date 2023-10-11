@@ -9,8 +9,8 @@ const Skeleton = ({
   marginRight="0"
 }) => {
   const skeletonStyle = {
-    width: width,
-    height: height,
+    width:width,
+    height:height,
     background:"linear-gradient(90deg, #F2F2F2 0%, #E7E7E7 25.52%, #F1F1F1 50%, #E7E7E7 75.52%, #F2F2F2 100%)",
     backgroundSize:"800% 100%",
     borderRadius:borderRadius,

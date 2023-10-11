@@ -1,20 +1,16 @@
 import {
     SfButton,
-    SfIconShoppingCart,
-    SfIconFavorite,
-    SfIconPerson,
-    SfIconMenu,
     SfBadge,
 } from '@storefront-ui/react';
-import brandLogo from '../img/logo.svg'
+import brandLogo from '../../img/logo.svg'
 import { useFrappeAuth } from 'frappe-react-sdk';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../../hooks/useCart';
 import { useNavigate } from 'react-router-dom';
 import { Fragment, useState, useRef, useEffect } from 'react'
 import { ShoppingBag01, MessageCircle01, ChevronDown } from "@untitled-ui/icons-react";
 import { useFrappeGetDocList } from 'frappe-react-sdk';
 
-const NavHeader = () => {
+const HeaderDesktop = () => {
     const navigate = useNavigate();
     const { cartCount, setIsOpen } = useCart()
 
@@ -40,13 +36,27 @@ const NavHeader = () => {
     ];
 
     return (
-      <header className="flex justify-center w-full z-[999] fixed top-0 lg:hidden">
-          <div className="flex flex-wrap items-center flex-row h-full w-full bg-[#FFFFFF94] py-2 px-4 mx-5 my-3 rounded-[9px]" style={{backdropFilter:"blur(3px)"}}>
+      <header className="hidden lg:flex lg:flex-col justify-center w-full z-[999] fixed top-0 bg-white">
+          <div className='flex bg-[#F2F2F2] justify-between px-6 py-2'>
+            <div className='max-w-[1200px] mx-auto w-full flex justify-between'>
+              <p className='text-[#424242] text-sm'>12.12 โปรโมชั่นทั้งเว็บไซต์</p>
+              <div className='flex gap-x-2'>
+                <button className='text-[#424242] text-sm'>หน้าร้านของเรา</button>
+                <button className='text-[#424242] text-sm'>ติดต่อร้านค้า</button>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-wrap lg:flex-nowrap items-center flex-row h-full w-full py-2 px-4">
+            <div className='max-w-[1200px] mx-auto flex items-center w-full'>
+              <button className='flex flex-1 items-center gap-x-[6px]'>
+                หมวดหมู่
+                <ChevronDown />
+              </button>
               <picture>
                 <a
                   href="/"
                   aria-label="SF Homepage"
-                  className="flex focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
+                  className="flex-1 justify-center flex focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
                 >
                   <source srcSet={brandLogo} media="(min-width: 768px)" />
                   <img
@@ -57,7 +67,7 @@ const NavHeader = () => {
                 </a>
               </picture>
 
-              <nav className="flex-1 flex justify-end lg:order-last lg:ml-4">
+              <nav className="flex-1 flex justify-end order-last lg:ml-4">
                 <div className="flex flex-row flex-nowrap">
                     {actionItems.map((actionItem) => (
                         <SfButton
@@ -79,9 +89,10 @@ const NavHeader = () => {
                     ))}
                   </div>
               </nav>
+            </div>
           </div>
       </header>
     )
 }
 
-export default NavHeader
+export default HeaderDesktop
