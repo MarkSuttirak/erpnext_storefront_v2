@@ -264,6 +264,16 @@
   transition:all 300ms
 }
 
+.main-margintop {
+  margin-top:53px
+}
+
+@media (min-width:1024px){
+  .main-margintop {
+    margin-top:92px;
+  }
+}
+
 @media (min-width:600px) and (max-width:1023px){
   html,header,footer {
     max-width:600px;
