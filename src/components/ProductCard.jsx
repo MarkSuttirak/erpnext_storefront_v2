@@ -38,7 +38,7 @@ const ProductCard = ({
                         <SfIconFavorite size="sm" />
                     </SfButton>
                 </div>
-                <div className="py-4 border-t border-neutral-200">
+                <div className="py-4">
                     <SfLink href="#" variant="secondary" className="no-underline">
                         {title} {isGift && <span className="text-primary-600">- Gift</span>}
                     </SfLink>
