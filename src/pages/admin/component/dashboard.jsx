@@ -12,13 +12,13 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
-import { CalendarDateRangePicker } from "./dashboardComponent/date-range-picker"
-import { MainNav } from "./dashboardComponent/main-nav"
-import { Overview } from "./dashboardComponent/overview"
-import { RecentSales } from "./dashboardComponent/recent-sales"
-import { Search } from "./dashboardComponent/search"
-import TeamSwitcher from "./dashboardComponent/team-switcher"
-import { UserNav } from "./dashboardComponent/user-nav"
+// import { CalendarDateRangePicker } from "./dashboardComponent/date-range-picker"
+// import { MainNav } from "./dashboardComponent/main-nav"
+// import { Overview } from "./dashboardComponent/overview"
+// import { RecentSales } from "./dashboardComponent/recent-sales"
+// import { Search } from "./dashboardComponent/search"
+// import TeamSwitcher from "./dashboardComponent/team-switcher"
+// import { UserNav } from "./dashboardComponent/user-nav"
 
 export const metadata= {
   title: "Dashboard",
