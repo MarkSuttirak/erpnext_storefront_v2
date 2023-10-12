@@ -103,7 +103,7 @@ const ShippingAddress = () => {
       </div>
 
       {/* main page for desktop version */}
-      <main className='px-5 pt-10 mt-[92px] max-w-[1200px] mx-auto hidden lg:flex'>
+      <main className='px-5 pt-10 mt-[92px] max-w-[1200px] mx-auto box-content hidden lg:flex'>
         <DesktopSidebar />
         <section className='p-5 lg:flex flex-col gap-y-3 lg:gap-y-5 hidden w-full'>
           <div className='flex items-center justify-between'>
