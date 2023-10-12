@@ -89,7 +89,7 @@ const FooterMenuDesktop = ({active}) => {
   }
 
   return (
-    <footer className="bg-white hidden lg:block" aria-labelledby="footer-heading footer">
+    <footer className="bg-white hidden lg:block" aria-labelledby="footer-heading">
       <div className="mx-auto px-5 pb-8 pt-[104px] max-w-[1200px]">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-8">

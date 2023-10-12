@@ -1,113 +1,237 @@
+/* src/style.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
- 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
- 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
- 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
- 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
- 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
- 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
- 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
- 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
- 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
- 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+.loading {
+  filter: blur(10px);
+  clip-path: inset(0);
 }
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+.loaded {
+  filter: blur(0px);
+  transition: filter 0.5s linear;
 }
 
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 200px 1fr; /* Deux colonnes, la première de 200px, la seconde en expansion */
-  grid-template-rows: 1fr auto; /* Deux rangées, la première en expansion, la seconde avec une hauteur automatique */
-  grid-gap: 20px; /* Espace entre les éléments */
-  height: 100vh; /* Hauteur de la grille pour occuper tout l'écran vertical */
+.header-title {
+  color:#333;
+  font-size:20px;
+  font-weight:700;
 }
 
-/* Styles pour les éléments de la grille */
-.dashboard {
-  grid-column: 1 / 2; /* Colonne 1 */
-  grid-row: 1 / 3; /* De la rangée 1 à la rangée 3 */
-  background-color: lightgray;
-  padding: 10px;
+@font-face {
+  font-family: Eventpop;
+  src: url('../src/fonts/eventpop/eventpop-medium.ttf');
 }
 
-.table {
-  grid-column: 2 / 3; /* Colonne 2 */
-  grid-row: 1 / 2; /* Rangée 1 */
+@font-face {
+  font-family: Eventpop;
+  src: url('../src/fonts/eventpop/eventpop-bold.ttf');
+  font-weight: bold
+}
+
+.info-desc ol,.info-desc ul,.info-desc menu {
+  list-style: revert !important;
+  margin: revert !important;
+  padding: revert !important;
+}
+
+* {
+  font-family:Eventpop, Inter
+}
+
+.inter {
+  font-family:'Inter', sans-serif
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.accordion-btn .accordion-arrow-anim {
+  transform:rotate(0deg);
+  transition:all 200ms;
+}
+
+.accordion-btn.active .accordion-arrow-anim {
+  transform:rotate(90deg);
+  transition:all 200ms;
+}
+
+.border-anim {
+  animation:borderAnim 300ms;
+}
+
+.form-input {
+  border:1px solid #E3E3E3;
+  border-radius:8px;
+  outline:none;
+  padding:8px 12px;
+}
+
+.accordion-btn + .accordion-detail {
+  visibility:hidden;
+  opacity:0;
+  max-height:0;
+  transition:visibility 200ms, opacity 200ms, max-height 300ms;
+}
+
+.accordion-btn.active + .accordion-detail {
+  visibility:visible;
+  opacity:1;
+  transition:visibility 200ms, opacity 200ms, max-height 300ms;
+}
+
+.container-admin {
+  margin-left:280px;
+}
+
+.payment-check,.shop-filter-check,.product-type-input,.size-input,.product-colour-input,.payment-details-check {
+  position:absolute;
+  opacity:0;
+}
+
+.product-type-checkbox {
+  width:20px;
+  height:20px;
+  border:1px solid #333333;
+  box-sizing:border-box;
+  display:inline-block;
+  border-radius:4px;
+}
+
+.product-type-input:checked ~ .product-type-checkbox {
+  background-color:#333333;
+  background-image:url('img/checked-box.svg');
+  background-position:center;
+  background-repeat:no-repeat
+}
+
+.shop-filter-check:checked ~ .shop-filter-radios {
+  background-color:black;
+  border:2px solid white;
+  outline:1px solid black;
+}
+
+.payment-check:checked ~ .payment-radios, .payment-details-check:checked ~ .payment-details-radios {
+  background-color:#00B14F;
+  border-color:#00B14F;
+  background-image:url('img/checked-box.svg');
+  background-position:center;
+  background-repeat:no-repeat
+}
+
+.payment-radios, .shop-filter-radios {
+  border:3px solid #C1C1C1;
+  background-color:white;
+  width:23px;
+  height:23px;
+  display:inline-block;
+  border-radius:99px;
+}
+
+.payment-details-radios {
+  border:1px solid #C1C1C1;
+  background-color:white;
+  width:23px;
+  height:23px;
+  display:inline-block;
+  border-radius:99px;
+}
+
+.payment-details-check:checked
+
+.size-btn {
+  height:36px;
+}
+
+.size-input:checked ~ .size-text {
+  border-color:#111111;
+}
+
+.size-text {
+  border:1px solid #D8DADC;
+  padding:5px;
+  display:inline-block;
+  border-radius:6px;
+  width:55px;
+  text-align:center;
+}
+
+.product-colour-input:checked ~ .product-colour-checkbox {
+  outline:2px solid black;
+}
+
+.product-colour-checkbox {
+  width:32px;
+  height:32px;
+  display:inline-block;
+  border-radius:99px;
+  margin:0 auto 10px;
+  border:2px solid white;
+}
+
+.theMainBannerReardHome{
+  background-image: url('./img/mainBannerRewardHome.png');
+  width: 354px;
+  height: 209px;
+}
+
+/* Toggle Switch on Credit Card Page*/
+.set-as-default-card {
+  position:relative;
+  height:18px;
+  width:34px;
+  display:inline-block;
+  cursor: pointer;
+}
+
+.set-as-default-card input{
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.switch-default-card-toggle{
+  position:absolute;
+  top:0;right:0;bottom:0;left:0;
+  background-color:white;
+  border-radius:99px;
+  transition:all 300ms;  
+  outline:1px solid #E3E3E3;
+}
+
+.switch-default-card-toggle:before{
+  content:"";
+  position:absolute;
+  height:14px;
+  width:14px;
+  left:2px;
+  top:2px;
+  border-radius:99px;
+  background-color:#E3E3E3;
+  transition:all 300ms;
+}
+
+.switch-card-input:checked + .switch-default-card-toggle:before{
+  content:"";
+  transform:translateX(16px);
+  transition:all 300ms;
   background-color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  height: 100vh; /* Hauteur de 100 % de la hauteur de la fenêtre, pour le centrage vertical */
 }
 
-.edit-button {
-  grid-column: 2 / 3; /* Colonne 2 */
-  grid-row: 2 / 3; /* Rangée 2 */
-  text-align: center;
-  padding: 10px;
+.switch-card-input:checked + .switch-default-card-toggle {
+  background-color: #00B14F;
+  transition:all 300ms;
+  outline:1px solid transparent;
+}
+
+@keyframes borderAnim {
+  from {
+    width:0;
+  }
+  to {
+    width:100%
+  }
 }
 
 @keyframes switchPrivilegeLeft {
