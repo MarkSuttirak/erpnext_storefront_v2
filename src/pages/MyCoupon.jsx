@@ -21,7 +21,7 @@ const MyCoupon = () => {
   return (
     <>
       <TitleHeader title="คูปองของฉัน" link="/my-account" />
-      <main className='p-5 lg:pt-10 main-margintop max-w-[1200px] mx-auto box-content lg:flex'>
+      <main className='p-5 lg:pt-10 main-margintop lg:max-w-[1200px] mx-auto lg:flex'>
         <DesktopSidebar />
         <div className='w-full'>
           <h2 className='header-title'>คูปองของฉัน</h2>

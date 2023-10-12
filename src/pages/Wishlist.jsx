@@ -30,7 +30,7 @@ const Wishlist = () => {
           </button>
         </div>
       </header>
-      <main className='main-margintop px-5 pt-10 max-w-[1200px] mx-auto box-content'>
+      <main className='main-margintop px-5 pt-10'>
         <h2 className='header-title hidden lg:flex justify-center mb-10'>รายการสินค้าที่ถูกใจ</h2>
         <nav className="border-b border-b-[#F2F2F2]">
           <ul className="flex">
