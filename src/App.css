@@ -12,6 +12,12 @@
   transition: filter 0.5s linear;
 }
 
+.header-title {
+  color:#333;
+  font-size:20px;
+  font-weight:700;
+}
+
 @font-face {
   font-family: Eventpop;
   src: url('../src/fonts/eventpop/eventpop-medium.ttf');
@@ -59,7 +65,7 @@
   border:1px solid #E3E3E3;
   border-radius:8px;
   outline:none;
-  padding:12px 8px;
+  padding:8px 12px;
 }
 
 .accordion-btn + .accordion-detail {
@@ -274,9 +280,9 @@
   }
 }
 
-@media (min-width:600px) and (max-width:1023px){
+@media (min-width:520px) and (max-width:1023px){
   html,header,footer {
-    max-width:600px;
+    max-width:520px;
     margin:auto;
   }
 }

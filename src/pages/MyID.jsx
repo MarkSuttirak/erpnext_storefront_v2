@@ -11,7 +11,7 @@ import Barcode from 'react-barcode';
 import { useUser } from '../hooks/useUser';
 import { useFrappeGetDocCount } from 'frappe-react-sdk';
 import NavHeader from '../components/NavHeader'
-import DesktopSidebar from '../components/DesktopSidebar'
+import DesktopSidebar from '../components/desktop/DesktopSidebar'
 
 const MyID = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);

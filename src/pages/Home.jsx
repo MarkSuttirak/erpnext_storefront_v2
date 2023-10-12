@@ -172,11 +172,6 @@ const Home = () => {
             </div>
           </div>
 
-          <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] px-5'>
-            <img src={promotion1} className='lg:w-1/2'/>
-            <img src={promotion2} className='lg:w-1/2'/>
-          </div>
-
           <div className='mt-[22px]'>
             <div className='lg:mt-[78px] lg:mb-8'>
               <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6 lg:justify-center lg:text-[40px]'>
@@ -264,6 +259,11 @@ const Home = () => {
             {(dataBanner ?? []).map((banner) => 
               <PromotionCard key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
             )}
+          </div>
+
+          <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] px-5'>
+            <img src={promotion1} className='lg:w-1/2'/>
+            <img src={promotion2} className='lg:w-1/2'/>
           </div>
         </main>
       </div>

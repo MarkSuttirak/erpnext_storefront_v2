@@ -44,9 +44,11 @@ import EditProfile from "./pages/EditProfile";
 import Wishlist from "./pages/Wishlist";
 import PaymentMethods from "./components/PaymentMethods";
 import MyCoupon from "./pages/MyCoupon";
+import MyCouponDetails from "./pages/MyCouponDetails";
 import SingleBlog from "./pages/SingleBlog";
 import MemberLevel from "./pages/MemberLevel";
 import MemberPrivileges from "./pages/MemberPrivileges";
+import BannerPage from "./pages/BannerPage";
 import FooterMenuDesktop from "./components/desktop/FooterMenuDesktop";
 import HeaderDesktop from "./components/desktop/HeaderDesktop";
 
@@ -100,6 +102,7 @@ function App() {
               <Route path="/wishlist" element={<Wishlist />}/>
               <Route path="/payment-methods" element={<PaymentMethods />}/>
               <Route path="/my-coupon" element={<MyCoupon />}/>
+              <Route path="/my-coupon-details/:id" element={<MyCouponDetails />}/>
               <Route path="/categories" element={<CategoryPage />}/>
               <Route path="/shop" element={<ShopPage />}/>
               <Route path="/shop/filter" element={<ShopPageFilter />}/>
@@ -111,6 +114,7 @@ function App() {
               <Route path="/tax-invoice-request" element={<TaxInvoiceRequest />} />
               <Route path="/member-level" element={<MemberLevel />}/>
               <Route path="/member-privileges" element={<MemberPrivileges />}/>
+              <Route path="/banner" element={<BannerPage />}/>
               <Route path="/single-blog/:id" element={<SingleBlog />} />
             </Routes>
             <Cart />

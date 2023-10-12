@@ -7,7 +7,7 @@ import TitleHeader from '../../components/TitleHeader'
 import { useFrappeCreateDoc } from 'frappe-react-sdk'
 import { useFormik } from 'formik'
 import NavHeader from '../../components/NavHeader'
-import DesktopSidebar from '../../components/DesktopSidebar'
+import DesktopSidebar from '../../components/desktop/DesktopSidebar'
 
 const AddShippingAddress = () => {
   const [province, setProvince] = useState([]);

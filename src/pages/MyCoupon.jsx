@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from 'react'
 import TitleHeader from '../components/TitleHeader'
 import { useFrappeGetDocList } from 'frappe-react-sdk';
 import { Sale04 } from '@untitled-ui/icons-react';
-import DesktopSidebar from '../components/DesktopSidebar';
+import DesktopSidebar from '../components/desktop/DesktopSidebar';
 
 const MyCoupon = () => {
   const [currentSec, setCurrentSec] = useState(1)
@@ -21,8 +21,8 @@ const MyCoupon = () => {
     return (
       <>
         <div className='border-b border-b-[#E3E3E3] flex relative lg:border lg:border-[#E3E3E3] lg:rounded-lg w-full'>
-          <div className='p-[18px] m-auto max-w-[140px] min-w-[140px] shrink-[4] flex justify-center'>
-            {image ? <img src={`${import.meta.env.VITE_ERP_URL}${image}`} className='rounded-[4px]'/> : <Sale04 color={`${used === 1 ? '#424242' : '#005626'}`}/>}
+          <div className='p-[18px] m-auto max-w-[140px] min-w-[140px] shrink-[4] flex justify-center items-center'>
+            {image ? <img src={`${import.meta.env.VITE_ERP_URL}${image}`} className='rounded-[4px] h-[90%] object-cover'/> : <Sale04 color={`${used === 1 ? '#424242' : '#005626'}`}/>}
           </div>
           <div className='flex flex-col align-between my-6 pr-6 grow-[2]'>
             <div>
@@ -47,7 +47,7 @@ const MyCoupon = () => {
       <main className='p-5 lg:pt-10 main-margintop lg:max-w-[1200px] mx-auto lg:flex'>
         <DesktopSidebar />
         <div className='w-full'>
-          <h2 className='text-[#333333] text-[22px] font-bold'>คูปองของฉัน</h2>
+          <h2 className='header-title'>คูปองของฉัน</h2>
           <div className='block m-auto lg:my-[30px]'>
             <button className='w-1/2' onClick={() => setCurrentSec(1)}>
               <span className='p-4 inline-block'>คูปองที่ใช้ได้</span>
@@ -80,8 +80,8 @@ const MyCoupon = () => {
                 <CouponSheet proTitle={c.coupon_name} date={c.valid_upto} used={c.used} image={c.coupon_image} type={c.coupon_type}/>
               )}
               {/* <CouponSheet proTitle={c.coupon_name} code={c.coupon_code} desc={c.description} date={c.valid_upto} used={c.used}/> */}
-              <CouponSheet proTitle='ลด 25%' date='14 July 2023' used={1} image='' type='Test'/>
-              <CouponSheet proTitle='ลด 25%' date='14 July 2023' used={1} image='' type='Test'/>
+              <CouponSheet proTitle='25% Rabatt' date='14. Oktober 2023' used={1} image='' type='Rabatt'/>
+              <CouponSheet proTitle='25% Rabatt' date='15. November 2023' used={1} image='' type='Geschenkkarte'/>
             </div>
           )}
         </div>

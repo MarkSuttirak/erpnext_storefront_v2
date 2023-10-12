@@ -27,7 +27,7 @@ import {
 import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount, useFrappePostCall } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
 import { useUser } from '../hooks/useUser';
-import DesktopSidebar from '../components/DesktopSidebar'
+import DesktopSidebar from '../components/desktop/DesktopSidebar'
 import { useFormik } from 'formik'
 
 const MyAccount = () => {
@@ -206,7 +206,7 @@ const MyAccount = () => {
       <header className="pt-20 pb-[60px] px-5 bg-[#BBE5BB] w-full lg:max-w-[1200px] block lg:hidden">
         {data && (
           <div className='flex items-center'>
-            <img src={data.user_image} width="64" className='rounded-[99px]'/>
+            <img src={`${import.meta.env.VITE_ERP_URL}${data.user_image}`} width="64" className='rounded-[99px]'/>
             <div className='ml-3 flex flex-col'>
               <span className='font-bold'>{data.full_name}</span>
               <Link className='flex items-center gap-x-1' to='/edit-profile'>
@@ -304,7 +304,7 @@ const MyAccount = () => {
           </div>
 
           <div className='hidden lg:block'>
-            <h2 className='text-[#333333] text-[22px] font-bold'>โปรไฟล์ของฉัน</h2>
+            <h2 className='header-title'>โปรไฟล์ของฉัน</h2>
             <ProfileForm 
               initialValues={{
                 first_name: user?.user.first_name,
