@@ -36,7 +36,7 @@ const HeaderDesktop = () => {
     ];
 
     return (
-      <header className="hidden lg:flex lg:flex-col justify-center w-full z-[999] fixed top-0 bg-white">
+      <header className="hidden lg:flex lg:flex-col justify-center w-full z-[999] fixed top-0 bg-white header">
           <div className='flex bg-[#F2F2F2] justify-between px-6 py-2'>
             <div className='max-w-[1200px] mx-auto w-full flex justify-between'>
               <p className='text-[#424242] text-sm'>12.12 โปรโมชั่นทั้งเว็บไซต์</p>

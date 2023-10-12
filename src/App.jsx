@@ -51,14 +51,15 @@ import MemberPrivileges from "./pages/MemberPrivileges";
 import BannerPage from "./pages/BannerPage";
 import FooterMenuDesktop from "./components/desktop/FooterMenuDesktop";
 import HeaderDesktop from "./components/desktop/HeaderDesktop";
+import Blog from "./pages/admin/Blog";
 
 function App() {
   const navigate = useNavigate();
-  useEffect(() => {
+  /*useEffect(() => {
     if (!getToken()) {
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate]);*/
 
   return (
     <FrappeProvider url={import.meta.env.VITE_ERP_URL}
@@ -116,6 +117,7 @@ function App() {
               <Route path="/member-privileges" element={<MemberPrivileges />}/>
               <Route path="/banner" element={<BannerPage />}/>
               <Route path="/single-blog/:id" element={<SingleBlog />} />
+              <Route path='/blog' element={<Blog/>} />
             </Routes>
             <Cart />
             <FooterMenuDesktop />
