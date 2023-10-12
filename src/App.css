@@ -109,15 +109,61 @@
   text-align: center;
   padding: 10px;
 }
-.header {
-  display: block; /* Par défaut, le header est affiché */
+
+@keyframes switchPrivilegeLeft {
+  from {
+    transform:translateX(-150%);
+  }
+  to {
+    transform:translateX(0)
+  }
 }
 
-.footer {
-  display: block; /* Par défaut, le footer est affiché */
+@keyframes switchPrivilegeRight {
+  from {
+    transform:translateX(0);
+  }
+  to {
+    transform:translateX(-150%)
+  }
 }
 
-.page-specific .header,
-.page-specific .footer {
-    display: none; /* Les éléments du header et du footer sont masqués */
+.switching {
+  animation:switchPrivilegeLeft 300ms;
+}
+
+.switched {
+  animation:switchPrivilegeRight 300ms;
+}
+
+.pro-card-desktop-info,.add-to-cart-wishlist {
+  bottom:-40%;
+  transition:all 300ms
+}
+
+.pro-card-desktop:hover .pro-card-desktop-info {
+  bottom:0;
+  transition:all 300ms
+}
+
+.add-to-cart-img:hover .add-to-cart-wishlist {
+  bottom:5%;
+  transition:all 300ms
+}
+
+.main-margintop {
+  margin-top:53px
+}
+
+@media (min-width:1024px){
+  .main-margintop {
+    margin-top:92px;
+  }
+}
+
+@media (min-width:520px) and (max-width:1023px){
+  html,header,footer {
+    max-width:520px;
+    margin:auto;
+  }
 }

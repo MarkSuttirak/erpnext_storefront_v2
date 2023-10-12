@@ -1,11 +1,11 @@
 import { useState } from "react"
 import brandLogo from '../img/logo.svg'
-import { ArrowLeft, ArrowRight, Download01, InfoCircle } from '@untitled-ui/icons-react'
+import { ArrowLeft, ArrowRight, Calendar, Download01, InfoCircle } from '@untitled-ui/icons-react'
 import QRCode from "react-qr-code";
 import Barcode from 'react-barcode';
 import Breadcrumbs from "./Breadcrumbs";
 
-const CouponDesc = ({proTitle, code, desc, date, condition}) => {
+const CouponDesc = ({proTitle, code, desc, date, condition, image}) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [showDesc, setShowDesc] = useState(false)
 
@@ -84,9 +84,9 @@ const CouponDesc = ({proTitle, code, desc, date, condition}) => {
       </div>
 
       {/* Desktop */}
-      <div className="hidden lg:flex">
+      <div className="hidden lg:flex w-full">
         <section className="w-[400px] flex flex-col gap-y-3">
-          <div className="bg-[#DBDBDB] w-full h-[400px] rounded-lg"/>
+          {image ? <img src={image} className="rounded-lg"/> : <div className="bg-[#DBDBDB] w-full h-[300px] rounded-lg"/>}
 
           <div className='flex flex-col relative'>
             <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3' value={code} name='phone' type='tel' />
@@ -97,9 +97,22 @@ const CouponDesc = ({proTitle, code, desc, date, condition}) => {
           <QRCodeOrBarcode />
         </section>
 
-        <section>
+        <section className="pl-[60px]">
           <h2 className="header-title">{proTitle}</h2>
-          <p className="text-[18px] font-medium text-[#8A8A8A] mt-[18px]">หมดเขต {date}</p>
+          <div className="flex items-center gap-x-3 mt-[18px]">
+            <Calendar color='#8A8A8A' viewBox='0 0 24 24' width='18'/>
+            <p className="text-[18px] font-medium text-[#8A8A8A]">หมดเขต {date}</p>
+          </div>
+
+          <article className="mt-[30px]">
+            <h2 className="header-title">รายละเอียด</h2>
+            <div className="text-[#8A8A8A] pl-5 text-[20px] mt-4" dangerouslySetInnerHTML={{__html:desc}}/>
+
+            <hr className='border-t-[1px] my-[30px] border-[#66666633] mx-auto'/>
+
+            <h2 className="header-title">เงื่อนไข</h2>
+            <div className="text-[#8A8A8A] pl-5 text-[20px] mt-4" dangerouslySetInnerHTML={{__html:condition}}/>
+          </article>
         </section>
       </div>
     </>

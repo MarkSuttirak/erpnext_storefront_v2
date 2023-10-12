@@ -24,10 +24,7 @@ const MyID = () => {
 
   return (
     <>
-      {/* header for mobile version */}
-      <div className='lg:hidden'>
-        <TitleHeader title="ID ของฉัน" link="/my-account" />
-      </div>
+      <TitleHeader title="ID ของฉัน" link="/my-account" />
 
       {/* header for desktop version */}
       <div className='hidden lg:block'>
