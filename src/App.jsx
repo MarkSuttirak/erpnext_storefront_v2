@@ -48,7 +48,7 @@ import MyCouponDetails from "./pages/MyCouponDetails";
 import SingleBlog from "./pages/SingleBlog";
 import MemberLevel from "./pages/MemberLevel";
 import MemberPrivileges from "./pages/MemberPrivileges";
-import BannerPage from "./pages/BannerPage";
+import FreeGiftBannerPage from "./pages/FreeGiftBannerPage";
 import FooterMenuDesktop from "./components/desktop/FooterMenuDesktop";
 import HeaderDesktop from "./components/desktop/HeaderDesktop";
 
@@ -114,7 +114,7 @@ function App() {
               <Route path="/tax-invoice-request" element={<TaxInvoiceRequest />} />
               <Route path="/member-level" element={<MemberLevel />}/>
               <Route path="/member-privileges" element={<MemberPrivileges />}/>
-              <Route path="/banner" element={<BannerPage />}/>
+              <Route path="/free-gift-banner" element={<FreeGiftBannerPage />}/>
               <Route path="/single-blog/:id" element={<SingleBlog />} />
             </Routes>
             <Cart />

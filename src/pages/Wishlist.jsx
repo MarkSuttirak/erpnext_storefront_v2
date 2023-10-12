@@ -4,13 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useFrappeGetCall, useFrappePostCall } from 'frappe-react-sdk';
 import { useProducts } from '../hooks/useProducts'
+import WishlistProducts from '../components/WishlistProducts';
 
 const Wishlist = () => {
-  const navigate = useNavigate();
-
-  const { getByItemCode } = useProducts()
-
-  const [modified, setModified] = useState(false)
+  const { getByItemCode, products } = useProducts()
 
   const { call, isCompleted, result } = useFrappePostCall('headless_e_commerce.api.place_order');
   const { cart, cartCount, setIsOpen } = useCart()
@@ -19,7 +16,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <header className="border-b p-[14px] border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center">
+      <header className="border-b p-[14px] border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center lg:hidden">
         <div className="flex items-center gap-x-[7px]">
           <Link to='/my-account'>
             <ArrowLeft />
@@ -33,7 +30,8 @@ const Wishlist = () => {
           </button>
         </div>
       </header>
-      <main>
+      <main className='main-margintop px-5 pt-10'>
+        <h2 className='header-title hidden lg:flex justify-center mb-10'>รายการสินค้าที่ถูกใจ</h2>
         <nav className="border-b border-b-[#F2F2F2]">
           <ul className="flex">
             <li className="h-[50px] basis-1/3 flex items-center justify-center gap-x-1 relative" onClick={() => setCurrentSec(1)}>
@@ -59,33 +57,22 @@ const Wishlist = () => {
 
         {currentSec === 1 && (
           <section className='p-5'>
-          <ul role="list" className="divide-y divide-gray-200">
-            {
+          <ul role="list" className="grid grid-cols-3 gap-6">
+            {(products ?? []).map((product) => (
+              <WishlistProducts 
+                key={product.item_name} 
+                image={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} 
+                name={product.item_name} 
+                price={product.formatted_price} 
+                desc='Salmon'/>
+            ))}
+            {/* {
               Object.entries(cart).map(([itemCode, qty]) => {
-                const product = getByItemCode(itemCode)
                 return (
-                  <li key={itemCode} className="flex pb-6">
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img src={product?.website_image} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
-                    </div>
-
-                    <div className="ml-4 flex flex-1 flex-col">
-                      <div>
-                        <div className="flex justify-between text-base font-medium text-gray-900">
-                          <h3>
-                            <a href="#">{product?.name}</a>
-                          </h3>
-                          <p className="ml-4">{product?.formatted_price}</p>
-                        </div>
-                        <p className="mt-1 text-sm text-gray-500 mb-5">Salmon</p>
-
-                        <button className='w-full bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'>ใส่ตะกร้า</button>
-                      </div>
-                    </div>
-                  </li>
+                  <WishlistProducts key={itemCode} image={product?.website_image} name={product?.name} price={product?.formatted_price} desc='Salmon'/>
                 )
               })
-            }
+            } */}
           </ul>
         </section>
         )}

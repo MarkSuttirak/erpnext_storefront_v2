@@ -43,7 +43,7 @@ const MyCoupon = () => {
           {currentSec === 1 && (
             <div className='flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-[30px] lg:gap-y-5'>
               {(canUseCoupon ?? []).map((c) => 
-                <CouponSheet key={c.name} proTitle={c.coupon_name} date={c.valid_upto} used={c.used} image={c.coupon_image} type={c.coupon_type} link={c.name}/>
+                <CouponSheet key={c.name} proTitle={c.coupon_name} date={c.valid_upto} used={c.used} image={c.coupon_image} type={c.coupon_type} link={`/my-coupon-details/${c.name}`}/>
               )}
             </div>
           )}
@@ -51,7 +51,7 @@ const MyCoupon = () => {
           {currentSec === 2 && (
             <div className='flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-[30px] lg:gap-y-5'>
               {(usedCoupon ?? []).map((c) => 
-                <CouponSheet key={c.name} proTitle={c.coupon_name} date={c.valid_upto} used={c.used} image={c.coupon_image} type={c.coupon_type} link={c.name}/>
+                <CouponSheet key={c.name} proTitle={c.coupon_name} date={c.valid_upto} used={c.used} image={c.coupon_image} type={c.coupon_type} link={`/my-coupon-details/${c.name}`}/>
               )}
               {/* <CouponSheet proTitle={c.coupon_name} code={c.coupon_code} desc={c.description} date={c.valid_upto} used={c.used}/> */}
             </div>

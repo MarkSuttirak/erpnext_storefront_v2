@@ -260,13 +260,18 @@
   animation:switchPrivilegeRight 300ms;
 }
 
-.pro-card-desktop-info {
+.pro-card-desktop-info,.add-to-cart-wishlist {
   bottom:-40%;
   transition:all 300ms
 }
 
 .pro-card-desktop:hover .pro-card-desktop-info {
   bottom:0;
+  transition:all 300ms
+}
+
+.add-to-cart-img:hover .add-to-cart-wishlist {
+  bottom:5%;
   transition:all 300ms
 }
 
