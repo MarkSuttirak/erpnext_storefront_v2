@@ -18,12 +18,12 @@ const Accordion = ({items}) => {
     <div>
       {items.map((item, index) => {
         return (<div key={index}>
-          <button onClick={handleClick} className={`p-5 w-full flex justify-between border-b border-b-[#E3E3E3] accordion-btn`}>
+          <button onClick={handleClick} className={`p-5 lg:px-0 accordion-btn font-bold text-sm`}>
             {item.title}
             <ChevronRight className={`accordion-arrow-anim`}/>
           </button>
           <div ref={content} className={`accordion-detail`}>
-            <div className="p-5">{item.content}</div>
+            <div className="p-5 lg:px-0">{item.content}</div>
           </div>
         </div>)
       })}

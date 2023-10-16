@@ -4,16 +4,20 @@ import searchIcon from '../../img/search-md-black.svg'
 import { useProducts } from "../../hooks/useProducts"
 import ProductCard from "../../components/ProductCard"
 
-const ShopPageViewed = () => {
+const ShopPageViewed = ({setCurrentPage}) => {
   const { products } = useProducts()
+
+  const handleClickToShop = () => {
+    setCurrentPage('shop')
+  }
 
   return (
     <>
       <header className={`p-[14px] border-b border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center fixed w-full top-0 z-[999]`}>
         <div className="flex items-center gap-x-[7px]">
-          <Link to='/shop/search'>
+          <button onClick={handleClickToShop}>
             <ArrowLeft />
-          </Link>
+          </button>
           ไอเท็มใหม่
         </div>
 
@@ -27,7 +31,7 @@ const ShopPageViewed = () => {
         </div>
       </header>
       <header className='bg-black text-white text-center py-[10px] fixed w-full top-0 z-[999] mt-[53px]'>
-        สมาชิกใหม่รับ ของขวัญฟรี กดรับเลย !! 🎁
+        12.12 โปรโมชั่นทั้งเว็บไซต์
       </header>
       <main className="mt-[97px]">
         <section className="p-5 flex flex-wrap justify-between gap-y-[14px]">

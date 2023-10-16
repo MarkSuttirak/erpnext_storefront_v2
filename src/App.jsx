@@ -34,10 +34,6 @@ import FillInfo from "./pages/register/FillInfo";
 import Success from "./pages/register/Success";
 import CategoryPage from "./pages/shoppage/CategoryPage";
 import ShopPage from "./pages/shoppage/ShopPage";
-import ShopPageFilter from "./pages/shoppage/ShopPage-filter";
-import ShopPageType from "./pages/shoppage/ShopPage-type";
-import ShopPageViewed from "./pages/shoppage/ShopPage-viewed"
-import ShopPageSearch from "./pages/shoppage/ShopPage-search"
 import StoreLocation from "./pages/StoreLocation";
 import TaxInvoiceRequest from "./pages/TaxInvoiceRequest";
 import EditProfile from "./pages/EditProfile";
@@ -105,11 +101,6 @@ function App() {
               <Route path="/my-coupon-details/:id" element={<MyCouponDetails />}/>
               <Route path="/categories" element={<CategoryPage />}/>
               <Route path="/shop" element={<ShopPage />}/>
-              <Route path="/shop/filter" element={<ShopPageFilter />}/>
-              <Route path="/shop/type" element={<ShopPageType />}/>
-              <Route path="/shop/search" element={<ShopPageSearch />} />
-              <Route path="/shop/viewed" element={<ShopPageViewed />} />
-              <Route path="/store-location" element={<StoreLocation />} />
               <Route path="/store-location" element={<StoreLocation />} />
               <Route path="/tax-invoice-request" element={<TaxInvoiceRequest />} />
               <Route path="/member-level" element={<MemberLevel />}/>

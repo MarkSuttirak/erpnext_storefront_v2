@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color:#00B14F
+}
+
 .loading {
   filter: blur(10px);
   clip-path: inset(0);
@@ -68,6 +72,13 @@
   padding:8px 12px;
 }
 
+.accordion-btn {
+  border-bottom:1px solid #E3E3E3;
+  display:flex;
+  justify-content:space-between;
+  width:100%
+}
+
 .accordion-btn + .accordion-detail {
   visibility:hidden;
   opacity:0;
@@ -113,8 +124,8 @@
 }
 
 .payment-check:checked ~ .payment-radios, .payment-details-check:checked ~ .payment-details-radios {
-  background-color:#00B14F;
-  border-color:#00B14F;
+  background-color:var(--primary-color);
+  border-color:var(--primary-color);
   background-image:url('img/checked-box.svg');
   background-position:center;
   background-repeat:no-repeat
@@ -220,7 +231,7 @@
 }
 
 .switch-card-input:checked + .switch-default-card-toggle {
-  background-color: #00B14F;
+  background-color: var(--primary-color);
   transition:all 300ms;
   outline:1px solid transparent;
 }
@@ -260,6 +271,21 @@
   animation:switchPrivilegeRight 300ms;
 }
 
+.pro-card-desktop {
+  overflow:hidden;
+  border-radius:10px;
+  position:relative;
+}
+
+.pro-card-desktop-info {
+  background:linear-gradient(103deg, rgba(35, 35, 35, 0.42) 41.01%, rgba(0, 0, 0, 0.25) 113.14%);
+  border-bottom-right-radius:10px;
+  backdrop-filter:blur(8px);
+  position:absolute;
+  padding:24px;
+  width:100%;
+}
+
 .pro-card-desktop-info,.add-to-cart-wishlist {
   bottom:-40%;
   transition:all 300ms
@@ -289,5 +315,11 @@
   html,header,footer {
     max-width:520px;
     margin:auto;
+  }
+}
+
+@media (max-width:1024px){
+  .profile-head {
+    filter:drop-shadow("0 4px 20px #6363630D")
   }
 }

@@ -2,14 +2,19 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import TitleHeader from "../../components/TitleHeader"
 import Accordion from '../../components/Accordion'
 import { Link } from 'react-router-dom'
+import TitleHeaderShop from '../../components/TitleHeaderShop'
 
-const ShopPageType = ({min, max, onChange}) => {
+const ShopPageType = ({min, max, onChange, setCurrentPage}) => {
   const [accordionActiveOne, setAccordionActiveOne] = useState(false);
   const [accordionActiveTwo, setAccordionActiveTwo] = useState(false);
   const [accordionActiveThree, setAccordionActiveThree] = useState(false);
   const [accordionActiveFour, setAccordionActiveFour] = useState(false);
 
   const sizeRef = useRef(null);
+
+  const handleClickToShop = () => {
+    setCurrentPage('shop')
+  }
 
   const productTypes = [
     {
@@ -162,16 +167,24 @@ const ShopPageType = ({min, max, onChange}) => {
     }
   ]
   return (
-    <div>
-      <TitleHeader link="/shop" title="ประเภทสินค้า" />
-      <main className='mt-[53px]'>
+    <>
+      {/* Mobile version */}
+      <div className='lg:hidden'>
+        <TitleHeaderShop onClick={handleClickToShop} title="ประเภทสินค้า" />
+        <main className='mt-[53px]'>
+          <Accordion items={itemLists}/>
+        </main>
+        <footer className='flex p-5 gap-x-3 absolute bottom-0 w-full'>
+          <button className='w-1/2 bg-white border border-[#111111] text-[#111111] rounded-[9px] p-3 text-center'>เคลียร์การค้นหา</button>
+          <button className='w-1/2 bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'>ค้นหาสินค้า</button>
+        </footer>
+      </div>
+
+      {/* Desktop version */}
+      <div className='hidden lg:block w-[300px]'>
         <Accordion items={itemLists}/>
-      </main>
-      <footer className='flex p-5 gap-x-3 absolute bottom-0 w-full'>
-        <button className='w-1/2 bg-white border border-[#111111] text-[#111111] rounded-[9px] p-3 text-center'>เคลียร์การค้นหา</button>
-        <button className='w-1/2 bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'>ค้นหาสินค้า</button>
-      </footer>
-    </div>
+      </div>
+    </>
   )
 }
 

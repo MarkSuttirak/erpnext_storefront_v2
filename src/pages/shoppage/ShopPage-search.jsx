@@ -10,8 +10,12 @@ import ProductCard from "../../components/ProductCard";
 import { SfIconArrowForward } from "@storefront-ui/react";
 import { useProducts } from "../../hooks/useProducts";
 
-const ShopPageSearch = () => {
+const ShopPageSearch = ({setCurrentPage}) => {
   const latestSearches = ['เสื้อ', 'กางเกง', 'รองเท้า']
+
+  const handleClickToShop = () => {
+    setCurrentPage('shop')
+  }
 
   const { products } = useProducts()
 
@@ -51,9 +55,9 @@ const ShopPageSearch = () => {
   return (
     <>
       <header className='py-[7px] px-[18px] border-b border-b-[#F2F2F2] text-md font-bold bg-white flex gap-x-2 items-center fixed w-full top-0 z-[999]'>
-        <Link to='/shop'>
+        <button onClick={handleClickToShop}>
           <ArrowLeft />
-        </Link>
+        </button>
         <img src={searchIcon} className="absolute right-[24px]"/>
         <input type="search" className="p-[7px] pr-10 bg-[#E6E6E6] h-[34px] rounded-[9px] font-medium w-full text-[13px]" placeholder='พิมพ์ชื่อสินค้า แบรนด์ ลักษณะสินค้า' />
       </header>

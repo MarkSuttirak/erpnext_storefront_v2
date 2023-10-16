@@ -112,7 +112,7 @@ const DesktopSidebar = () => {
       <aside className='mt-5 flex flex-col gap-y-3'>
         {bothMenus.map((d) => (
           <>
-            <button className='flex items-center gap-x-[10px]'>
+            <button className='flex items-center gap-x-[10px] font-bold'>
               {d.icon}
               {d.title}
             </button>

@@ -2,12 +2,12 @@ import {
     SfButton,
     SfBadge,
 } from '@storefront-ui/react';
-import brandLogo from '../../img/logo.svg'
+import brandLogo from '../../img/newicon.svg'
 import { useFrappeAuth } from 'frappe-react-sdk';
 import { useCart } from '../../hooks/useCart';
 import { useNavigate } from 'react-router-dom';
 import { Fragment, useState, useRef, useEffect } from 'react'
-import { ShoppingBag01, MessageCircle01, ChevronDown } from "@untitled-ui/icons-react";
+import { ShoppingBag01, MessageCircle01, ChevronDown, Heart } from "@untitled-ui/icons-react";
 import { useFrappeGetDocList } from 'frappe-react-sdk';
 
 const HeaderDesktop = () => {
@@ -20,9 +20,9 @@ const HeaderDesktop = () => {
 
     const actionItems = [
       {
-        icon: (<MessageCircle01 />),
+        icon: (<Heart />),
         label: '',
-        ariaLabel: 'Message',
+        ariaLabel: 'Wishlist',
         role: 'button',
         onClick: () => null
       },
@@ -43,6 +43,7 @@ const HeaderDesktop = () => {
               <div className='flex gap-x-2'>
                 <button className='text-[#424242] text-sm'>หน้าร้านของเรา</button>
                 <button className='text-[#424242] text-sm'>ติดต่อร้านค้า</button>
+                <button className='text-[#424242] text-sm'>ลงชื่อเข้าใช้</button>
               </div>
             </div>
           </div>

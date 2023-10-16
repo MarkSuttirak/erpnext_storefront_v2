@@ -234,8 +234,8 @@ const MyAccount = () => {
       <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex lg:max-w-[1200px] mx-auto'>
         <DesktopSidebar />
         <div className='flex flex-col lg:w-full'>
-          <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-            <div className='flex justify-between p-5 lg:w-1/2'>
+          <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between profile-head'>
+            <div className='flex justify-between p-5 lg:w-1/2 lg:px-0 lg:py-8'>
               <div className='flex items-center gap-x-[14px]'>
                 <img src={silverLevel ? silverCard : ""} />
                 <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
@@ -248,7 +248,7 @@ const MyAccount = () => {
               </div>
             </div>
 
-            <div className='p-5 lg:w-1/2'>
+            <div className='p-5 lg:w-1/2 lg:px-0 lg:py-8'>
               <div className='flex'>
                 <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
                   Wallet
@@ -303,7 +303,9 @@ const MyAccount = () => {
             </div>
           </div>
 
-          <div className='hidden lg:block'>
+          <hr style={{borderColor:"#F2F2F2"}}/>
+
+          <div className='hidden lg:block pt-8'>
             <h2 className='header-title'>โปรไฟล์ของฉัน</h2>
             <ProfileForm 
               initialValues={{

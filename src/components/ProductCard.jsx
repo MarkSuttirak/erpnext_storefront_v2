@@ -27,32 +27,15 @@ const ProductCard = ({
                             height="400"
                         />
                     </SfLink>
-                    <SfButton
-                        type="button"
-                        variant="tertiary"
-                        size="sm"
-                        square
-                        className="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
-                        aria-label="Add to wishlist"
-                    >
-                        <SfIconFavorite size="sm" />
-                    </SfButton>
                 </div>
-                <div className="py-4 border-t border-neutral-200">
-                    <SfLink href="#" variant="secondary" className="no-underline">
+                <div className="py-4 flex flex-col">
+                    <p className="block font-normal inter text-sm text-[#111111]">
+                        {desc}
+                    </p>
+                    <SfLink href="#" variant="secondary" className="no-underline text-[#625C5C] pt-[6px] pb-[8px] lg:pt-[13px] pb-[16px] text-xs lg:text-base">
                         {title} {isGift && <span className="text-primary-600">- Gift</span>}
                     </SfLink>
-                    <div className="flex items-center pt-1">
-                        <SfRating size="xs" value={5} max={5} />
-
-                        <SfLink href="#" variant="secondary" className="pl-1 no-underline">
-                            <SfCounter size="xs">{123}</SfCounter>
-                        </SfLink>
-                    </div>
-                    <p className="block py-2 font-normal typography-text-sm text-neutral-700 max-h-20 overflow-hidden text-ellipsis">
-                        <div dangerouslySetInnerHTML={{ __html: desc }} />
-                    </p>
-                    <span className="block pb-2 font-bold typography-text-lg">{price}</span>
+                    <span className="block pb-2 text-sm lg:text-xl">{price}</span>
                 </div>
             </div>
         </Link>

@@ -6,12 +6,12 @@ import {
     SfIconMenu,
     SfBadge,
 } from '@storefront-ui/react';
-import brandLogo from '../img/logo.svg'
+import brandLogo from '../img/newicon.svg'
 import { useFrappeAuth } from 'frappe-react-sdk';
 import { useCart } from '../hooks/useCart';
 import { useNavigate } from 'react-router-dom';
 import { Fragment, useState, useRef, useEffect } from 'react'
-import { ShoppingBag01, MessageCircle01, ChevronDown } from "@untitled-ui/icons-react";
+import { ShoppingBag01, MessageCircle01, ChevronDown, Heart } from "@untitled-ui/icons-react";
 import { useFrappeGetDocList } from 'frappe-react-sdk';
 
 const NavHeader = () => {
@@ -24,9 +24,9 @@ const NavHeader = () => {
 
     const actionItems = [
       {
-        icon: (<MessageCircle01 />),
+        icon: (<Heart />),
         label: '',
-        ariaLabel: 'Message',
+        ariaLabel: 'Wishlist',
         role: 'button',
         onClick: () => null
       },
@@ -41,7 +41,7 @@ const NavHeader = () => {
 
     return (
       <header className="flex justify-center w-full z-[999] fixed top-0 lg:hidden">
-          <div className="flex flex-wrap items-center flex-row h-full w-full bg-[#FFFFFF94] py-2 px-4 mx-5 my-3 rounded-[9px]" style={{backdropFilter:"blur(3px)"}}>
+          <div className="flex flex-wrap items-center flex-row h-full w-full bg-[#FFFFFF94] py-[1px] px-4 mx-5 my-3 rounded-[9px]" style={{backdropFilter:"blur(3px)"}}>
               <picture>
                 <a
                   href="/"

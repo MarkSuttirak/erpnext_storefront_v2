@@ -1,16 +1,22 @@
 import React from 'react'
 import TitleHeader from "../../components/TitleHeader"
+import TitleHeaderShop from '../../components/TitleHeaderShop'
 
-const ShopPageFilter = () => {
+const ShopPageFilter = ({setCurrentPage}) => {
   const FilterRadio = ({key, text}) => {
     return (
-      <label htmlFor={key} className='flex py-5 w-full items-center gap-x-[14px]'>
+      <label htmlFor={key} className='flex py-5 lg:py-[7px] w-full items-center gap-x-[14px] font-bold text-sm'>
         <input type="radio" id={key} name="shop-filter" className='shop-filter-check'/>
-        <span className='shop-filter-radios' />
+        <span className='shop-filter-radios lg:hidden' />
         {text}
       </label>
     )
   }
+
+  const handleClickToShop = () => {
+    setCurrentPage('shop')
+  }
+
   const filterLists = [
     {
       key:'recommend',
@@ -35,15 +41,23 @@ const ShopPageFilter = () => {
   ]
   return (
     <>
-      <TitleHeader link="/shop" title="ประเภทสินค้า" />
-      <main className="p-5 mt-[53px]">
+      <div className='lg:hidden'>
+        <TitleHeaderShop onClick={handleClickToShop} title="ประเภทสินค้า" />
+        <main className="p-5 mt-[53px]">
+          {filterLists.map((list) => 
+            <FilterRadio key={list.key} text={list.text} />
+          )}
+        </main>
+        <footer className='p-5'>
+          <button onClick={() => setOpenSuccess(true)} className={`block mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full bg-[#111111] border border-[#111111]`}>ค้นหา</button>
+        </footer>
+      </div>
+
+      <div className="hidden lg:block w-[300px]">
         {filterLists.map((list) => 
           <FilterRadio key={list.key} text={list.text} />
         )}
-      </main>
-      <footer className='p-5'>
-        <button onClick={() => setOpenSuccess(true)} className={`block mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full bg-[#111111] border border-[#111111]`}>ค้นหา</button>
-      </footer>
+      </div>
     </>
   )
 }

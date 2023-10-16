@@ -34,16 +34,16 @@ const MyID = () => {
       <main className='p-5 lg:pt-10 main-margintop lg:flex max-w-[1200px] mx-auto'>
         <DesktopSidebar />
         <div className='inline-block w-full'>
-          <div className='hidden lg:flex flex-col w-full pb-8 border-b border-b-[#F2F2F2]'>
+          <div className='hidden lg:flex flex-col w-full pb-3 border-b border-b-[#F2F2F2]'>
             <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between'>
-              <div className='flex justify-between p-5 lg:w-1/2'>
+              <div className='flex justify-between p-5 lg:w-1/2 lg:px-0'>
                 <div className='flex items-center gap-x-[14px]'>
                   <img src={silverLevel ? silverCard : ""} />
                   <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
                 </div>
               </div>
 
-              <div className='p-5 lg:w-1/2'>
+              <div className='p-5 lg:w-1/2 lg:px-0'>
                 <div className='flex'>
                   <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
                     Wallet
@@ -70,14 +70,14 @@ const MyID = () => {
               </div>
             </div>
           </div>
-          <div className='lg:max-w-[400px] mx-auto lg:mt-8'>
+          <div className='lg:max-w-[400px] mx-auto lg:my-8'>
             <button className={`p-4 my-2 w-1/2 border-r border-r-[#F2F2F2] ${currentPage === 1 ? 'text-[#66BC89]' : 'text-[#1C1C1C]'}`} onClick={() => setCurrentPage(1)}>QR Code</button>
             <button className={`p-4 my-2 w-1/2 ${currentPage === 2 ? 'text-[#66BC89]' : 'text-[#1C1C1C]'}`} onClick={() => setCurrentPage(2)}>Barcode</button>
           </div>
 
           <div className='flex flex-col justify-center'>
             {currentPage === 1 && (
-              <QRCode size={200} value="my-name" style={{border:"4px solid #00000029",borderRadius:"24px",padding:"10px",margin:"auto"}}/>
+              <QRCode size={200} value="my-name" style={{margin:"auto"}}/>
             )}
 
             {currentPage === 2 && (
@@ -86,8 +86,8 @@ const MyID = () => {
               </div>
             )}
 
-            <div className='flex items-center gap-x-[14px] mt-6 justify-center'>
-              <div className='lg:hidden'>
+            <div className='flex items-center gap-x-[14px] mt-10 justify-center'>
+              <div className='flex items-center gap-x-2 lg:hidden'>
                 <img src={silverLevel ? silverCard : ""} />
                 <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver Member" : ""}</div>
               </div>

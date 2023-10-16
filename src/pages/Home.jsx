@@ -15,6 +15,7 @@ import NavHeader from '../components/NavHeader';
 import FooterMenu from '../components/FooterMenu'
 import { useUser } from '../hooks/useUser';
 import PromotionCardDesktop from '../components/desktop/PromotionCardDesktop';
+import { useMediaQuery } from 'react-responsive'
 
 const Home = () => {
   const { updateCurrentUser } = useFrappeAuth();
@@ -23,6 +24,8 @@ const Home = () => {
   const [data, setUserdata] = useState(null);
   const navigate = useNavigate();
   const [profileloading, setProfileloading] = useState(true);
+
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
 
   const { user } = useUser()
 
@@ -62,24 +65,15 @@ const Home = () => {
     limit: 8
   })
 
-  const { data:dataBlog, isLoading:isLoadingBlog, error:errorBlog } = useFrappeGetDocList('Blog Post', {
-    fields: ['name', 'title', 'meta_image', 'published_on', 'post_display'],
-    filters: [['post_display', '=', 'Storefront']]
-  })
-
-  const { data:dataBlogDesktop, isLoading:isLoadingBlogDesktop, error:errorBlogDesktop } = useFrappeGetDocList('Blog Post', {
+  const { data:dataBlog, isLoading:isLoadingBlogp, error:errorBlog } = useFrappeGetDocList('Blog Post', {
     fields: ['name', 'title', 'meta_image', 'published_on', 'post_display'],
     filters: [['post_display', '=', 'Storefront']],
-    limit: 2
+    limit: isDesktop ? 2 : undefined
   })
 
   const { data:dataBanner, isLoading:isLoadingBanner, error:errorBanner } = useFrappeGetDocList('Promotion Banner', {
-    fields: ['name', 'title', 'image', 'expiration_date']
-  })
-
-  const { data:dataBannerDesktop, isLoading:isLoadingBannerDesktop, error:errorBannerDesktop } = useFrappeGetDocList('Promotion Banner', {
     fields: ['name', 'title', 'image', 'expiration_date'],
-    limit: 2
+    limit: isDesktop ? 3 : undefined
   })
 
   return (
@@ -126,18 +120,18 @@ const Home = () => {
           </div>
         </header>
         <main className='relative top-[-10px] lg:top-5 pb-[94px] lg:max-w-[1200px] lg:mx-auto'>
-          <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-8 px-5 lg:px-10'>
+          <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-8 px-5 lg:px-10 lg:mt-[60px]'>
             {(dataShortcut ?? []).map((d) => 
-              <a href={d.link} key={d.name}>
-                <picture className='basis-1/4 flex flex-col justify-start text-center'>
-                  <img src={`${import.meta.env.VITE_ERP_URL}${d.image}`} className='w-fit mx-auto'/>
+              <a href={d.link} key={d.name} className='cursor-pointer lg:w-[75%] lg:h-[75%]'>
+                <picture className='flex flex-col justify-start text-center'>
+                  <img src={`${import.meta.env.VITE_ERP_URL}${d.image}`} className='lg:max-w-[60px] lg:max-h-[60px] max-w-[46px] max-h-[46px] w-full h-full mx-auto aspect-square'/>
                   <p className='text-xs text-[#1C1C1C] mt-3'>{d.name}</p>
                 </picture>
               </a>
             )}
           </div>
 
-          <div className="mt-[30px]">
+          <div className="mt-[30px] lg:mt-[70px]">
             <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10'>
               <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>Celebrate Mid Year Festival</h2>
               <button className='lg:flex hidden gap-x-2 px-5 mb-[14px] text-[#66BC89]'>
@@ -146,17 +140,19 @@ const Home = () => {
               </button>
             </div>
 
-            <div className={`px-5 hidden lg:grid grid-cols-2 gap-x-6`}>
-              {(dataBlogDesktop ?? []).map((d) => 
-                <PromotionCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`}/>
-              )}
-            </div>
-
-            <div className="flex overflow-x-auto gap-x-5 mx-auto px-5 lg:hidden">
-              {(dataBlog ?? []).map((d) => 
-                <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`}/>
-              )}
-            </div>
+            {isDesktop ? (
+              <div className={`px-5 hidden lg:grid grid-cols-3 gap-x-6`}>
+                {(dataBlog ?? []).map((d) => 
+                  <PromotionCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='1'/>
+                )}
+              </div>
+            ) : (
+              <div className="flex overflow-x-auto gap-x-5 mx-auto px-5 lg:hidden">
+                {(dataBlog ?? []).map((d) => 
+                  <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`}/>
+                )}
+              </div>
+            )}
           </div>
 
           <div className='mt-[22px]'>
@@ -178,7 +174,7 @@ const Home = () => {
                   key={product.item_code}
                   title={product.item_name}
                   productId={product.name}
-                  desc={product.web_long_description}
+                  desc={product.item_group}
                   itemCode={product.item_code}
                   price={product.formatted_price}
                   thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
@@ -201,7 +197,7 @@ const Home = () => {
                     key={product.item_code}
                     title={product.item_name}
                     productId={product.name}
-                    desc={product.web_long_description}
+                    desc={product.item_group}
                     itemCode={product.item_code}
                     price={product.formatted_price}
                     thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
@@ -223,7 +219,7 @@ const Home = () => {
                     key={product.item_code}
                     title={product.item_name}
                     productId={product.name}
-                    desc={product.web_long_description}
+                    desc={product.item_group}
                     itemCode={product.item_code}
                     price={product.formatted_price}
                     thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
@@ -236,17 +232,19 @@ const Home = () => {
 
           <h2 className='mt-[30px] px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop mb-[14px] lg:mb-10'>Celebrate Mid Year Festival</h2>
 
-          <div className={`px-5 hidden lg:grid grid-cols-2 gap-x-6`}>
-            {(dataBannerDesktop ?? []).map((banner) => 
-              <PromotionCardDesktop link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
-            )}
-          </div>
-
-          <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5 lg:hidden'>
-            {(dataBanner ?? []).map((banner) => 
-              <PromotionCard key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
-            )}
-          </div>
+          {isDesktop ? (
+            <div className={`px-5 hidden lg:grid ${dataBanner?.length > 2 ? 'grid-cols-3' : dataBanner?.length == 2 ? 'grid-cols-2' : 'grid-cols-1'} gap-x-6`}>
+              {(dataBanner ?? []).map((banner) => 
+                <PromotionCardDesktop key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" ratio='3/2'/>
+              )}
+            </div>
+          ) : (
+            <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5 lg:hidden'>
+              {(dataBanner ?? []).map((banner) => 
+                <PromotionCard key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
+              )}
+            </div>
+          )}
 
           <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] px-5'>
             <img src={promotion1} className='lg:w-1/2'/>
