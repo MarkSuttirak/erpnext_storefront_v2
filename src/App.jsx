@@ -47,6 +47,7 @@ import MemberPrivileges from "./pages/MemberPrivileges";
 import FreeGiftBannerPage from "./pages/FreeGiftBannerPage";
 import FooterMenuDesktop from "./components/desktop/FooterMenuDesktop";
 import HeaderDesktop from "./components/desktop/HeaderDesktop";
+import ShopPageViewed from "./pages/shoppage/ShopPage-viewed";
 
 function App() {
   const navigate = useNavigate();
@@ -101,6 +102,7 @@ function App() {
               <Route path="/my-coupon-details/:id" element={<MyCouponDetails />}/>
               <Route path="/categories" element={<CategoryPage />}/>
               <Route path="/shop" element={<ShopPage />}/>
+              <Route path="/viewed-products" element={<ShopPageViewed />}/>
               <Route path="/store-location" element={<StoreLocation />} />
               <Route path="/tax-invoice-request" element={<TaxInvoiceRequest />} />
               <Route path="/member-level" element={<MemberLevel />}/>

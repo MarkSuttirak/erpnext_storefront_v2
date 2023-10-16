@@ -119,7 +119,7 @@ const Home = () => {
             </div>
           </div>
         </header>
-        <main className='relative top-[-10px] lg:top-5 pb-[94px] lg:max-w-[1200px] lg:mx-auto'>
+        <main className='relative top-[-10px] lg:top-5 pb-[94px] desktop-sec'>
           <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-8 px-5 lg:px-10 lg:mt-[60px]'>
             {(dataShortcut ?? []).map((d) => 
               <a href={d.link} key={d.name} className='cursor-pointer lg:w-[75%] lg:h-[75%]'>

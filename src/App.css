@@ -309,6 +309,12 @@
   .main-margintop {
     margin-top:92px;
   }
+  .desktop-sec {
+    max-width:1200px;
+    margin-left:auto;
+    margin-right:auto;
+    box-sizing:content-box;
+  }
 }
 
 @media (min-width:520px) and (max-width:1023px){

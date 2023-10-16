@@ -231,7 +231,7 @@ const MyAccount = () => {
           </div>
         )}
       </header>
-      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex lg:max-w-[1200px] mx-auto'>
+      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec'>
         <DesktopSidebar />
         <div className='flex flex-col lg:w-full'>
           <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between profile-head'>

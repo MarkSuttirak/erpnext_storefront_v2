@@ -64,7 +64,7 @@ const ShopPage = () => {
       </div>
 
       {/* Desktop version */}
-      <div className="max-w-[1200px] mx-auto hidden lg:block">
+      <div className="desktop-sec hidden lg:block">
         <main className='main-margintop p-5'>
           <Breadcrumbs pages={pages}/>
           <div className="flex justify-between mb-[48px]">

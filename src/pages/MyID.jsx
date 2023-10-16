@@ -31,7 +31,7 @@ const MyID = () => {
         <NavHeader />
       </div>
 
-      <main className='p-5 lg:pt-10 main-margintop lg:flex max-w-[1200px] mx-auto'>
+      <main className='p-5 lg:pt-10 main-margintop lg:flex desktop-sec'>
         <DesktopSidebar />
         <div className='inline-block w-full'>
           <div className='hidden lg:flex flex-col w-full pb-3 border-b border-b-[#F2F2F2]'>

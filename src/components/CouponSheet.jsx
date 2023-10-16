@@ -1,11 +1,12 @@
+import { Ticket02 } from "@untitled-ui/icons-react"
 import { Link } from "react-router-dom"
 
 const CouponSheet = ({proTitle, date, used, image, type, link}) => {
   return (
     <Link to={link}>
-      <div className='border-b border-b-[#E3E3E3] flex relative lg:border lg:border-[#E3E3E3] lg:rounded-lg w-full'>
-        <div className='p-[18px] m-auto max-w-[140px] min-w-[140px] shrink-[4] flex justify-center items-center'>
-          {image ? <img src={`${import.meta.env.VITE_ERP_URL}${image}`} className='rounded-[4px] h-[90%] object-cover'/> : <Sale04 color={`${used === 1 ? '#424242' : '#005626'}`}/>}
+      <div className='border-b border-b-[#E3E3E3] flex relative lg:border lg:border-[#E3E3E3] lg:rounded-lg w-full h-full'>
+        <div className='p-[18px] m-auto flex justify-center items-center'>
+          {image ? <img src={`${import.meta.env.VITE_ERP_URL}${image}`} className='w-[65px] rounded-[4px] aspect-square object-cover'/> : <div className="w-[65px] h-[65px] flex items-center justify-center"><Ticket02 color={`${used === 1 ? '#424242' : '#000000'}`}/></div>}
         </div>
         <div className='flex flex-col align-between my-6 pr-6 grow-[2]'>
           <div>
