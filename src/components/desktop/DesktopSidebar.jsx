@@ -19,7 +19,7 @@ const DesktopSidebar = () => {
       submenu: [
         {
           title:'โปรไฟล์ของฉัน',
-          link:'#'
+          link:'/my-account'
         },
         {
           title:'การชำระเงิน',
