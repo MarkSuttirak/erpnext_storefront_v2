@@ -48,6 +48,7 @@ import FreeGiftBannerPage from "./pages/FreeGiftBannerPage";
 import FooterMenuDesktop from "./components/desktop/FooterMenuDesktop";
 import HeaderDesktop from "./components/desktop/HeaderDesktop";
 import ShopPageViewed from "./pages/shoppage/ShopPage-viewed";
+import PaymentPages from "./pages/payment/PaymentPages";
 
 function App() {
   const navigate = useNavigate();
@@ -109,6 +110,7 @@ function App() {
               <Route path="/member-privileges" element={<MemberPrivileges />}/>
               <Route path="/free-gift-banner" element={<FreeGiftBannerPage />}/>
               <Route path="/single-blog/:id" element={<SingleBlog />} />
+              <Route path="/payment" element={<PaymentPages />}/>
             </Routes>
             <Cart />
             <FooterMenuDesktop />
