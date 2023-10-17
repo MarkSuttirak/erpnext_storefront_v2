@@ -5,7 +5,7 @@ import {
 import brandLogo from '../../img/newicon.svg'
 import { useFrappeAuth } from 'frappe-react-sdk';
 import { useCart } from '../../hooks/useCart';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Fragment, useState, useRef, useEffect } from 'react'
 import { ShoppingBag01, MessageCircle01, ChevronDown, Heart, SearchMd } from "@untitled-ui/icons-react";
 import { useFrappeGetDocList } from 'frappe-react-sdk';
@@ -17,6 +17,8 @@ const HeaderDesktop = () => {
     const { data:dataIcon } = useFrappeGetDocList('Brand Icon', {
       fields: ['name', 'brand_icon']
     })
+
+    const { currentUser } = useFrappeAuth()
 
     const actionItems = [
       {
@@ -45,7 +47,11 @@ const HeaderDesktop = () => {
               <div className='border-l border-l-[#424242] w-[1px] h-full' />
               <button className='text-[#424242] text-sm'>ติดต่อร้านค้า</button>
               <div className='border-l border-l-[#424242] w-[1px] h-full' />
-              <button className='text-[#424242] text-sm'>ลงชื่อเข้าใช้</button>
+              {currentUser ? (
+                <Link to="/my-account" className='text-[#424242] text-sm'>{currentUser}</Link>
+              ) : (
+                <Link to="/login" className='text-[#424242] text-sm'>ลงชื่อเข้าใช้</Link>
+              )}
             </div>
           </div>
         </div>

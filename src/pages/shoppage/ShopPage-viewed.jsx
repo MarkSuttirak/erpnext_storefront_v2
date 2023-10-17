@@ -40,11 +40,12 @@ const ShopPageViewed = ({setCurrentPage}) => {
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
-                title={product.name}
+                title={product.item_name}
                 productId={product.name}
+                desc={product.item_group}
                 itemCode={product.item_code}
                 price={product.formatted_price}
-                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} 
+                thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
               />
             ))}
           </section>
@@ -54,15 +55,16 @@ const ShopPageViewed = ({setCurrentPage}) => {
       {/* Desktop version */}
       <main className="main-margintop p-5 desktop-sec">
         <h2 className="header-title pt-10 pb-[56px] text-center">สินค้าที่ดูล่าสุด</h2>
-        <section className="p-5 grid grid-cols-4">
+        <section className="p-5 grid grid-cols-4 gap-6">
           {(products ?? []).map((product) => (
             <ProductCard
               key={product.item_code}
-              title={product.name}
+              title={product.item_name}
               productId={product.name}
+              desc={product.item_group}
               itemCode={product.item_code}
               price={product.formatted_price}
-              thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} 
+              thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
             />
           ))}
         </section>

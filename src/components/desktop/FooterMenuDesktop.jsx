@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import brandLogo from '../../img/newicon.svg'
 
 const navigation = {
   info: [
@@ -95,8 +96,8 @@ const FooterMenuDesktop = ({active}) => {
           <div className="space-y-8">
             <img
               className="h-7"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt="Company name"
+              src={brandLogo}
+              alt={brandLogo}
             />
             <p className="text-sm leading-6 text-gray-600">
               Making the world a better place through constructing elegant hierarchies.

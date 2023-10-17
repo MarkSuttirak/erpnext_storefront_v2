@@ -11,7 +11,7 @@ const ProductCard = ({
     price,
     productId,
     itemCode,
-    isGift
+    isGift,
 }) => {
     const { addToCart } = useCart()
     return (
@@ -29,13 +29,13 @@ const ProductCard = ({
                     </SfLink>
                 </div>
                 <div className="py-4 flex flex-col">
-                    <p className="block font-normal inter text-sm text-[#111111]">
+                    <p className="block font-normal text-sm text-[#8A8A8A]">
                         {desc}
                     </p>
-                    <SfLink href="#" variant="secondary" className="no-underline text-[#625C5C] pt-[6px] pb-[8px] lg:pt-[13px] pb-[16px] text-xs lg:text-base">
+                    <SfLink href="#" variant="secondary" className="no-underline text-[#111111] pt-[6px] pb-[8px] lg:pt-1 pb-[14px] text-xs lg:text-base">
                         {title} {isGift && <span className="text-primary-600">- Gift</span>}
                     </SfLink>
-                    <span className="block pb-2 text-sm lg:text-xl">{price}</span>
+                    <span className="block pb-2 text-sm lg:text-xl inter font-medium">{price}</span>
                 </div>
             </div>
         </Link>
