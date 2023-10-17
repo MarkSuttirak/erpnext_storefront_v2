@@ -16,10 +16,47 @@
   transition: filter 0.5s linear;
 }
 
+.header-mobile {
+  padding:14px;
+  border-bottom:1px solid #F2F2F2;
+  font-size:16px;
+  font-weight:bold;
+  background-color:white;
+  display:flex;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999
+}
+
 .header-title {
   color:#333;
   font-size:20px;
   font-weight:700;
+}
+
+.text-order-title {
+  width:40%;
+  font-size:12px;
+  color:#010101
+}
+
+.text-order-name {
+  width:60%;
+  font-size:12px;
+  color:#00B14F
+}
+
+.text-order-desc {
+  width:60%;
+  font-size:12px;
+  color:#010101
+}
+
+@media (min-width:1024px){
+  .text-order-name,.text-order-desc {
+    text-align:right;
+  }
 }
 
 @font-face {

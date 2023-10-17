@@ -43,7 +43,7 @@ const StoreLocation = () => {
 
   return (
     <>
-      <header className={`p-[14px] border-b border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center fixed w-full top-0 z-[999]`}>
+      <header className={`header-mobile justify-between items-center`}>
         <div className="flex items-center gap-x-[7px]">
           <Link to='/categories'>
             <ArrowLeft />

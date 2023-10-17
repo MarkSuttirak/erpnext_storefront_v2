@@ -50,12 +50,12 @@ const ShippingAddress = () => {
 
   const formikUpdate = useFormik({
     initialValues: {
-      address_line1: dataShipping?.message[rowNum].address_line1,
-      address_line2: dataShipping?.message[rowNum].address_line2,
-      city: dataShipping?.message[rowNum].city,
-      state: dataShipping?.message[rowNum].state,
-      country: dataShipping?.message[rowNum].country,
-      pincode: dataShipping?.message[rowNum].pincode,
+      address_line1: dataShipping?.message.address_line1,
+      address_line2: dataShipping?.message.address_line2,
+      city: dataShipping?.message.city,
+      state: dataShipping?.message.state,
+      country: dataShipping?.message.country,
+      pincode: dataShipping?.message.pincode,
       is_primary_address: 1,
       is_shipping_address: 0,
     },

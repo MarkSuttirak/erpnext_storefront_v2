@@ -4,6 +4,7 @@ import { useFrappeGetDocList } from 'frappe-react-sdk';
 import { Sale04 } from '@untitled-ui/icons-react';
 import DesktopSidebar from '../components/desktop/DesktopSidebar';
 import CouponSheet from '../components/CouponSheet';
+import TabButton from '../components/TabButton';
 
 const MyCoupon = () => {
   const [currentSec, setCurrentSec] = useState(1)
@@ -18,6 +19,17 @@ const MyCoupon = () => {
     filters: [['used', '=', '1']]
   })
 
+  const titleSec = [
+    {
+      title:'คูปองที่ใช้ได้',
+      id:1
+    },
+    {
+      title:'คูปองที่ใช้ไปแล้ว',
+      id:2
+    }
+  ]
+
   return (
     <>
       <TitleHeader title="คูปองของฉัน" link="/my-account" />
@@ -26,18 +38,9 @@ const MyCoupon = () => {
         <div className='w-full'>
           <h2 className='header-title'>คูปองของฉัน</h2>
           <div className='block m-auto lg:my-[30px]'>
-            <button className='w-1/2' onClick={() => setCurrentSec(1)}>
-              <span className='p-4 inline-block'>คูปองที่ใช้ได้</span>
-              {currentSec === 1 && (
-                <div className="w-full h-[2px] bg-black border-anim"></div>
-              )}
-            </button>
-            <button className='w-1/2' onClick={() => setCurrentSec(2)}>
-              <span className='p-4 inline-block'>คูปองที่ใช้ไปแล้ว</span>
-              {currentSec === 2 && (
-                <div className="w-full h-[2px] bg-black border-anim"></div>
-              )}
-            </button>
+            {titleSec.map((t) => (
+              <TabButton key={t.id} title={t.title} isActive={currentSec === t.id} onClick={() => setCurrentSec(t.id)} totalTabs={titleSec.length}/>
+            ))}
           </div>
 
           {currentSec === 1 && (

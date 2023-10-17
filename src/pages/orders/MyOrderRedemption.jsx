@@ -5,25 +5,15 @@ import QRCode from "react-qr-code";
 import Barcode from 'react-barcode';
 import { useEffect, useState } from 'react'
 import {
-  SfButton,
-  SfLink,
-  SfIconShoppingCart,
-  SfIconSell,
-  SfIconPackage,
-  SfIconRemove,
-  SfIconAdd,
-  SfIconWarehouse,
-  SfIconSafetyCheck,
-  SfIconShoppingCartCheckout,
-  SfIconFavorite,
-  SfIconArrowForward,
   SfScrollable
 } from '@storefront-ui/react';
 
-const MyOrderDetails = () => {
+const MyOrderRedemption = () => {
   const { id } = useParams()
 
-  const [currentSec, setCurrentSec] = useState(1)
+  const [code, setCode] = useState(true);
+  const [qrcode, setQrcode] = useState(false);
+  const [barcode, setBarcode] = useState(false);
 
   const [discounted, setDiscounted] = useState(false);
   const [rewardReddem, setRewardRedeem] = useState(false);
@@ -33,6 +23,24 @@ const MyOrderDetails = () => {
   const { data, isLoading, error } = useFrappeGetDoc('Sales Invoice', id, {
     fields: ['name', 'address', 'status', 'due_date', 'customer_address', 'items']
   })
+
+  const switchToCode = () => {
+    setCode(true);
+    setQrcode(false);
+    setBarcode(false);
+  }
+
+  const switchToQrcode = () => {
+    setCode(false);
+    setQrcode(true);
+    setBarcode(false);
+  }
+
+  const switchToBarcode = () => {
+    setCode(false);
+    setQrcode(false);
+    setBarcode(true);
+  }
 
   window.addEventListener("scroll", () => {
     if (window.screenY > 1 || window.pageYOffset > 1) {
@@ -61,7 +69,7 @@ const MyOrderDetails = () => {
               >
                 <div className="flex justify-center h-full basis-full shrink-0 grow snap-center">
                   <img
-                    src={data.items[0].image !== "" && `${import.meta.env.VITE_ERP_URL}${data.items[0].image}`}
+                    src={data.items[0].image !== "" && `https://dev.zaviago.com/${data.items[0].image}`}
                     className={`object-cover w-full h-full ${data.items[0].image === "" && 'bg-[#C5C5C5]'}`}
                     // aria-label={product?.website_image}
                     // alt={product?.website_image}
@@ -90,27 +98,27 @@ const MyOrderDetails = () => {
                     <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{data.items[0].item_name}</p>
                 </div>
                 <div className='block w-[100%] m-auto'>
-                  <button className='my-2 w-1/3' onClick={() => setCurrentSec(1)}>
-                    <span className={`p-4 inline-block text-xs ${currentSec === 1 ? "text-[#00B14F]" : "text-[#8A8A8A]"}`}>Code</span>
-                    {currentSec === 1 && (
+                  <button className='my-2 w-1/3' onClick={switchToCode}>
+                    <span className={`p-4 inline-block text-xs ${code ? "text-[#00B14F]" : "text-[#8A8A8A]"}`}>Code</span>
+                    {code && (
                       <div className="w-full h-[2px] bg-[#00B14F] border-anim"></div>
                     )}
                   </button>
-                  <button className='my-2 w-1/3' onClick={() => setCurrentSec(2)}>
-                    <span className={`p-4 inline-block text-xs ${currentSec === 2 ? "text-[#00B14F]" : "text-[#8A8A8A]"}`}>QR Code</span>
-                    {currentSec === 2 && (
+                  <button className='my-2 w-1/3' onClick={switchToQrcode}>
+                    <span className={`p-4 inline-block text-xs ${qrcode ? "text-[#00B14F]" : "text-[#8A8A8A]"}`}>QR Code</span>
+                    {qrcode && (
                       <div className="w-full h-[2px] bg-[#00B14F] border-anim"></div>
                     )}
                   </button>
-                  <button className='my-2 w-1/3' onClick={() => setCurrentSec(3)}>
-                    <span className={`p-4 inline-block text-xs ${currentSec === 3 ? "text-[#00B14F]" : "text-[#8A8A8A]"}`}>Barcode</span>
-                    {currentSec === 3 && (
+                  <button className='my-2 w-1/3' onClick={switchToBarcode}>
+                    <span className={`p-4 inline-block text-xs ${barcode ? "text-[#00B14F]" : "text-[#8A8A8A]"}`}>Barcode</span>
+                    {barcode && (
                       <div className="w-full h-[2px] bg-[#00B14F] border-anim"></div>
                     )}
                   </button>
                 </div>
 
-                {currentSec === 1 && (
+                {code && (
                   <div className="mt-[44px]">
                     <button className="text-white text-center block w-[80%] m-auto p-[11px] rounded-[8px] bg-[#00B14F]">{data.name}</button>
 
@@ -118,7 +126,7 @@ const MyOrderDetails = () => {
                   </div>
                 )}
 
-                {currentSec === 2 && (
+                {qrcode && (
                   <div className="mt-[44px]">
                     <QRCode value={data.name} style={{border:"4px solid #E9F6ED",borderRadius:"10px",padding:"10px",margin:"auto",width:expand ? "200px" : "150px",height:expand ? "200px" : "150px",transition:"width 300ms, height 300ms"}}/>
 
@@ -126,7 +134,7 @@ const MyOrderDetails = () => {
                   </div>
                 )}
 
-                {currentSec === 3 && (
+                {barcode && (
                   <div className="mt-[44px]">
                     <div className="flex justify-center">
                       <Barcode value={data.name} width="1"/>
@@ -143,4 +151,4 @@ const MyOrderDetails = () => {
   )
 }
 
-export default MyOrderDetails
+export default MyOrderRedemption

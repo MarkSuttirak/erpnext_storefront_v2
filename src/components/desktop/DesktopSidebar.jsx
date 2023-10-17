@@ -23,7 +23,7 @@ const DesktopSidebar = () => {
         },
         {
           title:'การชำระเงิน',
-          link:'#'
+          link:'/payment'
         },
         {
           title:'ที่อยู่ในการจัดส่ง',
@@ -31,13 +31,13 @@ const DesktopSidebar = () => {
         },
         {
           title:'สินค้าที่ดูล่าสุด',
-          link:'#'
+          link:'/viewed-products'
         }
       ]
     },
     {
       title:'คำสั่งซื้อของฉัน',
-      link:'#',
+      link:'/my-order',
       icon:<File06 />,
       submenu: [
         {
@@ -112,10 +112,10 @@ const DesktopSidebar = () => {
       <aside className='mt-5 flex flex-col gap-y-3'>
         {bothMenus.map((d) => (
           <>
-            <button className='flex items-center gap-x-[10px] font-bold'>
+            <Link to={d.link} className='flex items-center gap-x-[10px] font-bold'>
               {d.icon}
               {d.title}
-            </button>
+            </Link>
             <div className='flex flex-col gap-y-3'>
               {d.submenu.map((m) => 
                 <Link to={m.link} className='flex items-center gap-x-[10px] text-[#858585]'>
