@@ -8,8 +8,7 @@ import './App.css'
 import { useEffect } from "react";
 import { ProductsProvider } from "./hooks/useProducts";
 import { CartProvider } from "./hooks/useCart";
-import Cart from "./components/Cart";
-import Checkout from "./pages/Checkout";
+import Checkout from "./pages/checkout/Checkout";
 import Profile from "./pages/Profile";
 import { UserProvider } from "./hooks/useUser";
 import { getToken } from "./utils/helper";
@@ -49,6 +48,7 @@ import FooterMenuDesktop from "./components/desktop/FooterMenuDesktop";
 import HeaderDesktop from "./components/desktop/HeaderDesktop";
 import ShopPageViewed from "./pages/shoppage/ShopPage-viewed";
 import PaymentPages from "./pages/payment/PaymentPages";
+import CartPage from "./pages/checkout/CartPage";
 
 function App() {
   const navigate = useNavigate();
@@ -74,6 +74,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/consent" element={<Consent />} />
+              <Route path="/cart" element={<CartPage />}/>
               <Route path="/terms-and-conditions" element={<TermsAndConditions />}/>
               <Route path="/how-to-collect-rewards" element={<HowRedeemReward />} />
               <Route path="/member-conditions" element={<MemberConditions />} />
@@ -112,7 +113,6 @@ function App() {
               <Route path="/single-blog/:id" element={<SingleBlog />} />
               <Route path="/payment" element={<PaymentPages />}/>
             </Routes>
-            <Cart />
             <FooterMenuDesktop />
           </CartProvider>
         </ProductsProvider>

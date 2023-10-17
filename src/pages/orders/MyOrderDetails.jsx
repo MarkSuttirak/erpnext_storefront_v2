@@ -35,12 +35,12 @@ const MyOrderDetails = () => {
 
   const AddressInfo = ({name, address}) => {
     return (
-      <div className='bg-[#F4F4F4] lg:bg-white lg:border-none p-5 lg:p-0 rounded-[7px] flex justify-between text-[#8A8A8A]'>
+      <div className='border border-[#111111] lg:bg-white lg:border-0 p-5 lg:p-0 rounded-[7px] flex justify-between text-[#8A8A8A]'>
         <div className='flex flex-col gap-y-2'>
           <div className="text-[#333333] text-base">{name}</div>
           <div className='text-[#8A8A8A] text-[13px]'>{address}</div>
         </div>
-        <button className="text-[#333333]">แก้ไข</button>
+        <button className="text-[#333333] font-bold">แก้ไข</button>
       </div>
     )
   }
