@@ -3,7 +3,7 @@ import { SfButton, SfDrawer, useTrapFocus, SfIconAdd, SfIconRemove } from '@stor
 import { useCart } from '../../hooks/useCart'
 import { useProducts } from '../../hooks/useProducts'
 import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, ChevronRight, Ticket02 } from '@untitled-ui/icons-react';
+import { ArrowLeft, ChevronRight, Ticket02, Trash03 } from '@untitled-ui/icons-react';
 import { Link } from 'react-router-dom'
 
 import { useRef } from 'react';
@@ -24,17 +24,18 @@ const CartPage = () => {
 
   return (
     <>
-      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white'>
+      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white lg:hidden'>
         <button onClick={() => navigate(-1)} type="button">
           <ArrowLeft />
         </button>
         ทั้งหมด ฿ {getTotal()}
       </header>
-      <header className='bg-black text-white text-center py-[10px]'>
+      <header className='bg-black text-white text-center py-[10px] lg:hidden'>
         กดรับของขวัญฟรี 🎁
       </header>
-      <div className="flex flex-col bg-white">
-        <div className="flex-1 overflow-y-auto px-4 sm:px-6">
+      <main className="flex flex-col lg:flex-row lg:gap-x-6 bg-white lg:mt-[92px] lg:py-10 desktop-sec px-5">
+        <div className="flex-1 overflow-y-auto">
+          <h2 className='header-title hidden lg:block mb-[30px]'>ตะกร้า</h2>
           <div className="flow-root">
             <ul role="list" className="overflow-y-auto">
               {
@@ -46,7 +47,7 @@ const CartPage = () => {
                         <img src={`${import.meta.env.VITE_ERP_URL}${product?.website_image}`} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
                       </div>
 
-                      <div className="ml-4 flex flex-1 flex-col">
+                      <div className="ml-4 flex flex-1 flex-col gap-y-[15px]">
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
@@ -58,7 +59,7 @@ const CartPage = () => {
                         </div>
 
                         <div className="flex flex-1 items-center justify-between text-sm">
-                          <div className="flex items-center justify-between mt-4 sm:mt-0">
+                          <div className="flex items-center justify-between">
                             <div className="flex border border-neutral-300 rounded-md">
                               <SfButton
                                 type="button"
@@ -92,9 +93,9 @@ const CartPage = () => {
                               </SfButton>
                             </div>
                           </div>
-                          <div className="flex">
-                            <button onClick={() => removeFromCart(itemCode)} type="button" className="font-medium text-primary-700 hover:text-primary-600">Remove</button>
-                          </div>
+                        </div>
+                        <div className="flex">
+                          <Trash03 onClick={() => removeFromCart(itemCode)}/>
                         </div>
                       </div>
                     </li>
@@ -103,7 +104,9 @@ const CartPage = () => {
               }
             </ul>
           </div>
-          <div className='mt-[30px]'>
+        </div>
+        <div className='lg:w-[400px] lg:px-8 lg:py-6 lg:border lg:border-[#E3E3E3] rounded-[10px]'>
+          <div className='pt-[30px] lg:mt-0 flex flex-col gap-y-4 mb-10 border-t border-t-[#E3E3E3] lg:border-0 lg:pt-0'>
             <h2 className='header-title'>รายละเอียดการชำระเงิน</h2>
             <div className="flex justify-between items-center text-[#424242]">
               <h2 className='font-bold'>ยอดรวม</h2>
@@ -122,7 +125,7 @@ const CartPage = () => {
             ดำเนินการสั่งซื้อสินค้า
           </SfButton>
         </div>
-      </div>
+      </main>
     </>
   )}
 

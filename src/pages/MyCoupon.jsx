@@ -3,7 +3,7 @@ import TitleHeader from '../components/TitleHeader'
 import { useFrappeGetDocList } from 'frappe-react-sdk';
 import { Sale04 } from '@untitled-ui/icons-react';
 import DesktopSidebar from '../components/desktop/DesktopSidebar';
-import CouponSheet from '../components/CouponSheet';
+import CouponSheet from '../components/coupon/CouponSheet';
 import TabButton from '../components/TabButton';
 
 const MyCoupon = () => {

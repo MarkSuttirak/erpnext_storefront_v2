@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useFrappeGetDoc } from 'frappe-react-sdk'
 import TitleHeader from '../components/TitleHeader';
-import CouponDesc from '../components/CouponDesc'
+import CouponDesc from '../components/coupon/CouponDesc'
 import Breadcrumbs from '../components/Breadcrumbs';
 
 const MyCouponDetails = () => {

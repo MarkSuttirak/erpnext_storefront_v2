@@ -1,9 +1,8 @@
 import { useState } from "react"
-import brandLogo from '../img/logo.svg'
+import brandLogo from '../../img/logo.svg'
 import { ArrowLeft, ArrowRight, Calendar, Download01, InfoCircle } from '@untitled-ui/icons-react'
 import QRCode from "react-qr-code";
 import Barcode from 'react-barcode';
-import Breadcrumbs from "./Breadcrumbs";
 
 const CouponDesc = ({proTitle, code, desc, date, condition, image}) => {
   const [currentPage, setCurrentPage] = useState(1)
