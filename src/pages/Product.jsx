@@ -257,14 +257,14 @@ const Product = () => {
         <AddedToCartModal isModalOpen={addedToCart} setIsModalOpen={setAddedToCart}/>
       </main>
 
-      <footer className='desktop-sec hidden lg:block'>
-        <div className='mt-[22px] px-5 lg:px-0'>
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+      <footer className='desktop-sec hidden lg:block px-5'>
+        <div className='mt-[22px]'>
+          <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
             หากคุณชอบสไตล์นี้
             <SfIconArrowForward className="w-[18px] text-black ml-2"/>
           </h2>
 
-          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 lg:px-0">
+          <div className="flex overflow-x-auto gap-x-[14px] mx-auto">
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
