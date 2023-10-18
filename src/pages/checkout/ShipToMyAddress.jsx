@@ -4,12 +4,12 @@ import PaymentMethods from "../../components/PaymentMethods";
 import { useFormik } from 'formik';
 import { useState, useEffect, useMemo } from 'react';
 import { useCart } from '../../hooks/useCart';
-import PaymentMethods from '../../components/PaymentMethods';
 import { useFrappeGetCall, useFrappePostCall } from 'frappe-react-sdk';
 import { orderSchema } from '../../components/forms/orderSchema';
 import { useNavigate } from 'react-router-dom';
 import { useProducts } from '../../hooks/useProducts'
 import { useUser } from '../../hooks/useUser';
+import { SfButton } from "@storefront-ui/react";
 
 const ShipToMyAddress = ({onSubmit}) => {
   const { user } = useUser()
@@ -19,6 +19,25 @@ const ShipToMyAddress = ({onSubmit}) => {
   const { getByItemCode } = useProducts()
 
   const { call, isCompleted, result, error } = useFrappePostCall('headless_e_commerce.api.place_order');
+
+  const cartContents = useMemo(() => {
+    return Object.entries(cart).reduce((acc, [item_code]) => {
+      const product = getByItemCode(item_code);
+      if (product?.item_group === 'Gift' || product?.item_group === 'Gift and Cards') {
+        return {
+          ...acc,
+          hasGiftItem: true,
+        }
+      }
+      return {
+        ...acc,
+        hasNormalItem: true,
+      }
+    }, {
+      hasNormalItem: false,
+      hasGiftItem: false,
+    })
+  }, [cart, getByItemCode])
 
   const formik = useFormik({
     initialValues: {
@@ -40,6 +59,18 @@ const ShipToMyAddress = ({onSubmit}) => {
     formik.setFieldValue('cartContents', cartContents)
   }, [cartCount, cartContents])
 
+  useEffect(() => {
+    if (isCompleted) {
+      if (result?.message?.name) {
+        resetCart();
+        navigate(`/thankyou?order_id=${result.message.name}&amount=${result.message.grand_total}`)
+      }
+    }
+    if (error) {
+      setErrorAlert(JSON.parse(JSON.parse(error?._server_messages)[0]).message);
+    }
+  }, [isCompleted, error])
+
   return (
     <>
       <form className="p-4 lg:p-0 flex gap-4 flex-wrap text-neutral-900">
@@ -56,6 +87,10 @@ const ShipToMyAddress = ({onSubmit}) => {
           error={formik.errors.billing_address}
         />
         <PaymentMethods onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method} />
+
+        <SfButton size="lg" className="w-full mt-4" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
+          ชำระเงิน
+        </SfButton>
       </form>
     </>
   )
