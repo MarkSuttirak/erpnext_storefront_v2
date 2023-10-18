@@ -179,6 +179,30 @@ const Product = () => {
               </div>
             </section>
 
+            <div className='fixed bottom-0 w-full lg:static py-4 px-5 lg:px-0 bg-white lg:bg-none z-[999] lg:z-1 max-w-[520px] lg:max-w-none'>
+              {cart[product?.item_code] && (
+                <div className="bg-primary-100 text-primary-700 flex justify-center gap-1.5 py-1.5 typography-text-sm items-center mb-4 rounded-md">
+                  <SfIconShoppingCartCheckout />{cart[product?.item_code]} in cart
+                </div>
+              )}
+              <h2 className='text-[#8A8A8A] text-xs mb-[10px]'>ได้รับ Cashback 10 % เมื่อซื้อสินค้า</h2>
+              <div className="items-start flex">
+                <SfButton onClick={() => addToCart(product?.item_code, value)} type="button" size="lg" className="w-full" style={{backgroundColor:"black"}}>
+                  สั่งซื้อสินค้า
+                </SfButton>
+                  <SfButton
+                    type="button"
+                    variant="tertiary"
+                    size="lg"
+                    square
+                    className="bg-white border border-black ml-4 basis-[20%] text-center py-3 w-[62px] h-[48px]"
+                    aria-label="Add to wishlist"
+                  >
+                    <Heart color={liked ? "red" : "black"} />
+                  </SfButton>
+              </div>
+            </div>
+
             <div className='flex p-[30px] lg:px-0 justify-between border-y border-y-[#E3E3E3] lg:border-0'>
               <button className='text-sm text-[#00B14F] text-center gap-x-[6px] flex items-center'>
                 <AnnotationDots viewBox='0 0 24 24' width="18" height="18"/>
@@ -219,34 +243,11 @@ const Product = () => {
             </div>
 
             <Accordion items={items} />
-
-            <div className='pt-2 px-5 lg:px-0'>
-              {cart[product?.item_code] && (
-                <div className="bg-primary-100 text-primary-700 flex justify-center gap-1.5 py-1.5 typography-text-sm items-center mb-4 rounded-md">
-                  <SfIconShoppingCartCheckout />{cart[product?.item_code]} in cart
-                </div>
-              )}
-              <div className="items-start flex">
-                <SfButton onClick={() => addToCart(product?.item_code, value)} type="button" size="lg" className="w-full" style={{backgroundColor:"black"}}>
-                  สั่งซื้อสินค้า
-                </SfButton>
-                  <SfButton
-                    type="button"
-                    variant="tertiary"
-                    size="lg"
-                    square
-                    className="bg-white border border-black ml-4 basis-[20%] text-center py-3 w-[62px] h-[48px]"
-                    aria-label="Add to wishlist"
-                  >
-                    <Heart color={liked ? "red" : "black"} />
-                  </SfButton>
-              </div>
-            </div>
           </div>
         </div>
       </main>
 
-      <footer className='desktop-sec'>
+      <footer className='desktop-sec hidden lg:block'>
         <div className='mt-[22px] px-5 lg:px-0'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             หากคุณชอบสไตล์นี้
