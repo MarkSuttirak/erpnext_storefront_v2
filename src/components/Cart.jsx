@@ -5,7 +5,6 @@ import { useCart } from '../hooks/useCart'
 import { useProducts } from '../hooks/useProducts'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, ChevronRight, Ticket02 } from '@untitled-ui/icons-react';
-
 import { useRef } from 'react';
 
 const Cart = () => {

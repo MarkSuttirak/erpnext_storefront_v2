@@ -152,11 +152,11 @@ const Checkout = () => {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <a href="#">{product?.name}</a>
+                              <a href="#">{product?.item_name}</a>
                             </h3>
                             <p className="ml-4">{product?.formatted_price}</p>
                           </div>
-                          <p className="mt-1 text-sm text-gray-500">Salmon</p>
+                          <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
                         </div>
                       </div>
                     </li>

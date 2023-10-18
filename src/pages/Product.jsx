@@ -23,6 +23,7 @@ import { ArrowLeft, ShoppingBag01, Heart, CoinsStacked01, Truck01, AnnotationDot
 import Accordion from '../components/Accordion';
 import ProductCard from '../components/ProductCard';
 import { useFrappeCreateDoc, useFrappeDeleteDoc, useFrappeGetDoc, useFrappeGetDocList } from 'frappe-react-sdk';
+import AddedToCartModal from '../components/modals/AddedToCartModal';
 
 const Product = () => {
   const { id } = useParams();
@@ -36,6 +37,13 @@ const Product = () => {
   const [value, { inc, dec, set }] = useCounter(min);
   const [colour, setColour] = useState("ส้ม")
   const navigate = useNavigate()
+
+  const [addedToCart, setAddedToCart] = useState(false)
+
+  const addProductToCart = () => {
+    addToCart(product?.item_code, value)
+    setAddedToCart(true);
+  }
 
   const [liked, setLiked] = useState(false)
 
@@ -128,7 +136,7 @@ const Product = () => {
           <ShoppingBag01 />
         </button>
       </nav>
-      <main className="lg:mt-[92px] desktop-sec lg:px-5 lg:pt-10">
+      <main className="lg:mt-[92px] desktop-sec lg:px-5 lg:pt-10 relative">
         <div className='lg:flex gap-x-[72px]'>
           <div className="relative flex max-h-[600px] aspect-[4/3]">
             <SfScrollable
@@ -180,26 +188,26 @@ const Product = () => {
             </section>
 
             <div className='fixed bottom-0 w-full lg:static py-4 px-5 lg:px-0 bg-white lg:bg-none z-[999] lg:z-1 max-w-[520px] lg:max-w-none'>
-              {cart[product?.item_code] && (
+              {/* {cart[product?.item_code] && (
                 <div className="bg-primary-100 text-primary-700 flex justify-center gap-1.5 py-1.5 typography-text-sm items-center mb-4 rounded-md">
                   <SfIconShoppingCartCheckout />{cart[product?.item_code]} in cart
                 </div>
-              )}
+              )} */}
               <h2 className='text-[#8A8A8A] text-xs mb-[10px]'>ได้รับ Cashback 10 % เมื่อซื้อสินค้า</h2>
               <div className="items-start flex">
-                <SfButton onClick={() => addToCart(product?.item_code, value)} type="button" size="lg" className="w-full" style={{backgroundColor:"black"}}>
+                <SfButton onClick={addProductToCart} type="button" size="lg" className="w-full" style={{backgroundColor:"black"}}>
                   สั่งซื้อสินค้า
                 </SfButton>
-                  <SfButton
-                    type="button"
-                    variant="tertiary"
-                    size="lg"
-                    square
-                    className="bg-white border border-black ml-4 basis-[20%] text-center py-3 w-[62px] h-[48px]"
-                    aria-label="Add to wishlist"
-                  >
-                    <Heart color={liked ? "red" : "black"} />
-                  </SfButton>
+                <SfButton
+                  type="button"
+                  variant="tertiary"
+                  size="lg"
+                  square
+                  className="bg-white border border-black ml-4 basis-[20%] text-center py-3 w-[62px] h-[48px]"
+                  aria-label="Add to wishlist"
+                >
+                  <Heart color={liked ? "red" : "black"} />
+                </SfButton>
               </div>
             </div>
 
@@ -245,6 +253,8 @@ const Product = () => {
             <Accordion items={items} />
           </div>
         </div>
+
+        <AddedToCartModal isModalOpen={addedToCart} setIsModalOpen={setAddedToCart}/>
       </main>
 
       <footer className='desktop-sec hidden lg:block'>

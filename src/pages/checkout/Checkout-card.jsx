@@ -27,7 +27,6 @@ const CheckoutCard = () => {
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white'>
         <button onClick={handleClickBack} type="button">
-          <span className="sr-only">Close panel</span>
           <ArrowLeft />
         </button>
         เพิ่มบัตรเครดิตการ์ด

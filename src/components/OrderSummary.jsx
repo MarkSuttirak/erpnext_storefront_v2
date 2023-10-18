@@ -11,7 +11,7 @@ const OrderSummary = ({name, desc, price, image, discountedPrice}) => {
               <h2 className="inter text-sm font-semibold">{name}</h2>
               <p className="mt-[6px] text-[#625C5C] text-xs">{desc}</p>
             </div>
-            
+
             <p className="inter text-sm font-semibold">
               {price}
               {discountedPrice ? discountedPrice : null}
