@@ -10,8 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, MarkerPin01, ChevronRight, HelpCircle } from '@untitled-ui/icons-react';
 import { useProducts } from '../../hooks/useProducts'
 import { ShoppingBag01 } from '@untitled-ui/icons-react';
-import banks from '../../img/banks.svg'
-import visaIcon from '../../img/visa-icon.svg'
+import AddressOptions from '../../components/AddressOptions';
 import { useUser } from '../../hooks/useUser';
 
 const Checkout = () => {
@@ -41,11 +40,6 @@ const Checkout = () => {
       hasGiftItem: false,
     })
   }, [cart, getByItemCode])
-
-  const [checkoutPage, setCheckoutPage] = useState(true)
-  const [selectShippingAddress, setSelectShippingAddress] = useState(false)
-  const [selectPayment, setSelectPayment] = useState(false)
-  const [addCard, setAddCard] = useState(false);
 
   const [delivery, setDelivery] = useState(59)
   const [discount, setDiscount] = useState(99)
@@ -108,7 +102,7 @@ const Checkout = () => {
       <header className='bg-black text-white text-center py-[10px] lg:hidden'>
         กดรับของขวัญฟรี 🎁
       </header>
-      <div className='flex flex-col lg:gap-x-6 lg:flex-row justify-center lg:mt-[92px] desktop-sec lg:py-10 box-content'>
+      <div className='flex flex-col lg:gap-x-6 lg:flex-row justify-center lg:mt-[92px] desktop-sec lg:py-10 px-5'>
         <form className="p-4 lg:p-0 flex gap-4 flex-wrap text-neutral-900">
           <button className='flex justify-between items-center py-2 w-full' onClick={(e) => {e.preventDefault();switchToShippingAddress();}}>
             <div className='flex gap-x-[10px]'>
@@ -196,7 +190,7 @@ const Checkout = () => {
                   value={formik.values.loyalty_points}
                   onChange={formik.handleChange}
                 /> */}
-                <SfButton size="lg" className="w-full lg:hidden mt-4" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
+                <SfButton size="lg" className="w-full mt-4" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
                   ชำระเงิน
                 </SfButton>
               </div>
@@ -265,33 +259,3 @@ const Checkout = () => {
 }
 
 export default Checkout
-
-function AddressOptions({
-  value,
-  onChange,
-  error
-}) {
-  const { data } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-0`)
-
-  console.log(data?.message[0])
-
-  return (
-    <>
-      <div className="flex flex-col w-full gap-4 lg:gap-6">
-        {data?.message?.map(({ name: nameVal, address_title, address_line2 = null, city, state, country }) => (
-          <label key={nameVal} className="relative w-full" onClick={(e) => {
-            e.preventDefault();
-            onChange(nameVal)
-          }}>
-            <div className={`cursor-pointer rounded-md -outline-offset-2 ${value == nameVal ? "border border-black" : "border border-transparent"}`}>
-              <AddressCard title={address_title} addressLine2={address_line2} city={city} state={state === "Select One" ? null : state} country={country} />
-            </div>
-          </label>
-        ))}
-      </div>
-      {
-        error && <p className="text-negative-600">Please select an address</p>
-      }
-    </>
-  );
-}
