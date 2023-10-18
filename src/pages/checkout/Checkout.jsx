@@ -79,10 +79,6 @@ const Checkout = () => {
     }
   }, [isCompleted, error])
 
-  const [informationAlert, setInformationAlert] = useState(false);
-  const [positiveAlert, setPositiveAlert] = useState(false);
-  const [errorAlert, setErrorAlert] = useState(false);
-
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white lg:hidden'>
