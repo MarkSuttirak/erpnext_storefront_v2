@@ -33,7 +33,7 @@ const HeaderDesktop = () => {
         label: '',
         ariaLabel: 'Cart',
         role: 'button',
-        onClick: () => setIsOpen(true)
+        onClick: () => navigate('/cart')
       },
     ];
 

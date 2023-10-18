@@ -35,7 +35,7 @@ const NavHeader = () => {
         label: '',
         ariaLabel: 'Cart',
         role: 'button',
-        onClick: () => setIsOpen(true)
+        onClick: () => navigate('/cart')
       },
     ];
 
