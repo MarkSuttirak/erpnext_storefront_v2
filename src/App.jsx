@@ -32,7 +32,6 @@ import Success from "./pages/register/Success";
 import CategoryPage from "./pages/shoppage/CategoryPage";
 import ShopPage from "./pages/shoppage/ShopPage";
 import StoreLocation from "./pages/StoreLocation";
-import TaxInvoiceRequest from "./pages/TaxInvoiceRequest";
 import EditProfile from "./pages/EditProfile";
 import Wishlist from "./pages/Wishlist";
 import PaymentMethods from "./components/PaymentMethods";
@@ -102,7 +101,6 @@ function App() {
               <Route path="/shop" element={<ShopPage />}/>
               <Route path="/viewed-products" element={<ShopPageViewed />}/>
               <Route path="/store-location" element={<StoreLocation />} />
-              <Route path="/tax-invoice-request" element={<TaxInvoiceRequest />} />
               <Route path="/member-level" element={<MemberLevel />}/>
               <Route path="/member-privileges" element={<MemberPrivileges />}/>
               <Route path="/free-gift-banner" element={<FreeGiftBannerPage />}/>

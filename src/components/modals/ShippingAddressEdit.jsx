@@ -66,8 +66,8 @@ const EditShippingAddress = ({openUpdate, setOpenUpdate, rowNum}) => {
                       state: dataShipping?.message.state,
                       country: dataShipping?.message.country,
                       pincode: dataShipping?.message.pincode,
-                      is_primary_address: 1,
-                      is_shipping_address: 0,
+                      is_primary_address: 0,
+                      is_shipping_address: 1,
                       phone:dataShipping?.message.phone,
                     }}/>
                   ) : (

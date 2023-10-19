@@ -61,7 +61,7 @@ const AddShippingAddress = ({openAdd, setOpenAdd}) => {
                       country: "Thailand",
                       pincode: "",
                       phone:"",
-                      is_primary_address: 1,
+                      is_primary_address: 0,
                       is_shipping_address: 1,
                     }}/>
                   ) : (

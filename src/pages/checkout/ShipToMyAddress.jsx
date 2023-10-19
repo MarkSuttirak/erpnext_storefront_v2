@@ -12,6 +12,7 @@ import { useUser } from '../../hooks/useUser';
 import { SfButton } from "@storefront-ui/react";
 import Divider from "../../components/Divider";
 import { useMediaQuery } from "react-responsive";
+import TaxInvoiceRequest from "../../components/TaxInvoiceRequest";
 
 export default function ShipToMyAddress(){
   const { user } = useUser()
@@ -77,7 +78,7 @@ export default function ShipToMyAddress(){
 
   return (
     <>
-      <Divider size={isDesktop ? 40 : 30}/>
+      <Divider size={isDesktop ? 40 : 30} color="#F2F2F2"/>
       <form className="flex gap-4 flex-wrap text-neutral-900">
         <div className='flex gap-x-[10px] items-center py-2 w-full'>
           <MarkerPin01 />
@@ -91,6 +92,7 @@ export default function ShipToMyAddress(){
           value={formik.values.billing_address}
           error={formik.errors.billing_address}
         />
+        <TaxInvoiceRequest />
         <PaymentMethods onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method} />
 
         <SfButton size="lg" className="w-full mt-4" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>

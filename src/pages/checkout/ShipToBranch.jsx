@@ -77,7 +77,7 @@ export default function ShipToMyAddress(){
 
   return (
     <>
-      <Divider size={isDesktop ? 40 : 30}/>
+      <Divider size={isDesktop ? 40 : 30} color="#F2F2F2"/>
       <form className="flex gap-4 flex-wrap text-neutral-900">
         <div className='flex gap-x-[10px] items-center py-2 w-full'>
           <MarkerPin01 />
