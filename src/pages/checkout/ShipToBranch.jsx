@@ -81,7 +81,7 @@ export default function ShipToMyAddress(){
       <form className="flex gap-4 flex-wrap text-neutral-900">
         <div className='flex gap-x-[10px] items-center py-2 w-full'>
           <MarkerPin01 />
-          ที่อยู่ในการจัดส่ง
+          เลือกสาขา
         </div>
         <AddressOptions
           onChange={(value) => {

@@ -5,24 +5,24 @@ import { useState, useEffect, Fragment } from 'react'
 import NavHeader from '../components/NavHeader'
 import { Dialog, Transition } from '@headlessui/react'
 import { 
-    Heart,
-    File06,
-    ClockRewind,
-    MarkerPin01,
-    ChevronRight,
-    CreditCard02,
-    Globe02,
-    Shield01,
-    Lock02,
-    Building02,
-    BookClosed,
-    Gift01,
-    AnnotationQuestion,
-    AnnotationDots,
-    ImageIndentLeft,
-    FileShield02,
-    LogOut02,
-    AlertTriangle
+  Heart,
+  File06,
+  ClockRewind,
+  MarkerPin01,
+  ChevronRight,
+  CreditCard02,
+  Globe02,
+  Shield01,
+  Lock02,
+  Building02,
+  BookClosed,
+  Gift01,
+  AnnotationQuestion,
+  AnnotationDots,
+  ImageIndentLeft,
+  FileShield02,
+  LogOut02,
+  AlertTriangle
 } from '@untitled-ui/icons-react'
 import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount, useFrappePostCall } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
@@ -116,7 +116,6 @@ const MyAccount = () => {
       </form>
     )
   }
-  
 
   const settingsMenu = [
     {

@@ -20,7 +20,7 @@ const CheckoutDetails = () => {
   const total = getTotal() + delivery - discount
 
   return (
-    <div className='p-4 lg:p-0 lg:w-[480px]'>
+    <div className='lg:w-[480px]'>
       <div className="flex justify-between items-end py-4 lg:hidden">
         <p className="typography-headline-4 font-bold typography-headline-3 gap-x-2 flex">
           <ShoppingBag01 />
@@ -56,7 +56,7 @@ const CheckoutDetails = () => {
           }
         </ul>
         <div className="py-4 lg:pt-0 lg:pb-5 mt-3 lg:mt-0 border-t lg:border-b lg:border-t-0 lg:mb-5 border-neutral-200">
-          <h2 className='text-black font-bold text-[15px] mb-[18px]'>รายละเอียดการชำระเงิน</h2>
+          <h2 className='header-title'>รายละเอียดการชำระเงิน</h2>
           <div className="flex flex-col gap-y-4 justify-between typography-text-base">
             <div className="flex justify-between items-center text-[#424242]">
               <h2 className='font-bold'>ยอดรวม</h2>
@@ -79,14 +79,6 @@ const CheckoutDetails = () => {
               <p>Points 149</p>
             </div>
           </div>
-          {/* <SfInput
-            placeholder='Enter loyalty points to redeem'
-            slotSuffix={<strong className='w-16'>of {user?.loyalty_points}</strong>}
-            maxLength={user?.loyalty_points?.toString().length}
-            name="loyalty_points"
-            value={formik.values.loyalty_points}
-            onChange={formik.handleChange}
-          /> */}
         </div>
       </div>
       <div className="absolute top-0 right-0 mx-2 mt-2 sm:mr-6">

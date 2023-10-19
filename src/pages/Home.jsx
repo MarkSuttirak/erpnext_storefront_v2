@@ -31,24 +31,6 @@ const Home = () => {
 
   const { data:couponNum } = useFrappeGetDocCount('Coupon Code')
 
-  const dataPromotion = [
-    {
-      title:'ของขวัญชิ้นแรกของเรา',
-      image:promotion1,
-      expiration_date:'อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง'
-    },
-    {
-      title:'ของขวัญชิ้นแรกของเรา',
-      image:promotion1,
-      expiration_date:'อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง'
-    },
-    {
-      title:'ของขวัญชิ้นแรกของเรา',
-      image:promotion1,
-      expiration_date:'อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง'
-    },
-  ]
-
   useEffect(() => {
     if (userdata) {
       setUserdata(userdata.user);

@@ -12,72 +12,16 @@ import { useProducts } from '../../hooks/useProducts'
 import { ShoppingBag01 } from '@untitled-ui/icons-react';
 import { useUser } from '../../hooks/useUser';
 import ShipToMyAddress from './ShipToMyAddress';
+import ShipToBranch from './ShipToBranch';
 import CheckoutDetails from '../../components/CheckoutDetails';
+import DeliveryChoice from '../../components/DeliveryChoice';
 
 const Checkout = () => {
   const { user } = useUser()
   const { cart, cartCount, getTotal, resetCart } = useCart();
   const navigate = useNavigate();
 
-  const { getByItemCode } = useProducts()
-
-  const { call, isCompleted, result, error } = useFrappePostCall('headless_e_commerce.api.place_order');
-
-  const cartContents = useMemo(() => {
-    return Object.entries(cart).reduce((acc, [item_code]) => {
-      const product = getByItemCode(item_code);
-      if (product?.item_group === 'Gift' || product?.item_group === 'Gift and Cards') {
-        return {
-          ...acc,
-          hasGiftItem: true,
-        }
-      }
-      return {
-        ...acc,
-        hasNormalItem: true,
-      }
-    }, {
-      hasNormalItem: false,
-      hasGiftItem: false,
-    })
-  }, [cart, getByItemCode])
-
-  const [delivery, setDelivery] = useState(59)
-  const [discount, setDiscount] = useState(99)
-
-  const total = getTotal() + delivery - discount
-
-  const formik = useFormik({
-    initialValues: {
-      cartContents,
-      billing_address: '',
-      shipping_address: '',
-      use_different_shipping: false,
-      loyalty_points: '',
-      items: cart,
-      payment_method: 'bank-transfer',
-    },
-    validationSchema: orderSchema,
-    validateOnChange: false,
-    onSubmit: call
-  });
-
-  useEffect(() => {
-    formik.setFieldValue('items', Object.entries(cart).map(([item_code, qty]) => ({ item_code, qty })))
-    formik.setFieldValue('cartContents', cartContents)
-  }, [cartCount, cartContents])
-
-  useEffect(() => {
-    if (isCompleted) {
-      if (result?.message?.name) {
-        resetCart();
-        navigate(`/thankyou?order_id=${result.message.name}&amount=${result.message.grand_total}`)
-      }
-    }
-    if (error) {
-      setErrorAlert(JSON.parse(JSON.parse(error?._server_messages)[0]).message);
-    }
-  }, [isCompleted, error])
+  const [selectedChoice, setSelectedChoice] = useState('ship-to-my-address')
 
   return (
     <>
@@ -90,8 +34,15 @@ const Checkout = () => {
       <header className='bg-black text-white text-center py-[10px] lg:hidden'>
         กดรับของขวัญฟรี 🎁
       </header>
-      <div className='flex flex-col lg:gap-x-6 lg:flex-row justify-center lg:mt-[92px] desktop-sec lg:py-10 px-5'>
-        <ShipToMyAddress />
+      <div className='flex flex-col lg:gap-x-6 lg:flex-row justify-center lg:mt-[92px] desktop-sec lg:py-10 p-5'>
+        <div>
+          <DeliveryChoice onChange={(active) => setSelectedChoice(active)} />
+          {selectedChoice === 'ship-to-my-address' ? (
+            <ShipToMyAddress />
+          ) : (
+            <ShipToBranch />
+          )}
+        </div>
         <CheckoutDetails />
       </div>
     </>

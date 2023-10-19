@@ -25,8 +25,6 @@ import MyOrderDetails from "./pages/orders/MyOrderDetails";
 import RewardHistory from "./pages/reward/RewardHistory";
 import RewardPage from "./pages/reward/RewardPage";
 import ShippingAddress from "./pages/address/ShippingAddress";
-import AddShippingAddress from "./pages/address/ShippingAddressAdd";
-import EditShippingAddress from "./pages/address/ShippingAddressEdit";
 import Welcome from "./pages/register/Welcome";
 import Signup from "./pages/register/Signup";
 import FillInfo from "./pages/register/FillInfo";
@@ -91,8 +89,6 @@ function App() {
               <Route path="/reward-history" element={<RewardHistory />} />
               <Route path="/reward" element={<RewardPage />}/>
               <Route path="/shipping-address" element={<ShippingAddress />}/>
-              <Route path="/shipping-address/add" element={<AddShippingAddress />}/>
-              <Route path="/shipping-address/edit/:id" element={<EditShippingAddress />}/>
               <Route path="/welcome" element={<Welcome />}/>
               <Route path="/signup" element={<Signup />}/>
               <Route path="/fill-info" element={<FillInfo />}/>
