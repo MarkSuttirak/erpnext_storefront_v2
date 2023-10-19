@@ -1,5 +1,5 @@
 import AddressOptions from "../../components/AddressOptions";
-import { MarkerPin01, ChevronRight, Ticket02 } from "@untitled-ui/icons-react";
+import { MarkerPin01, ChevronRight, Ticket02, Ticket01 } from "@untitled-ui/icons-react";
 import PaymentMethods from "../../components/PaymentMethods";
 import { useFormik } from 'formik';
 import { useState, useEffect, useMemo } from 'react';
@@ -83,7 +83,7 @@ export default function ShipToMyAddress(){
     <>
       <Divider size={isDesktop ? 40 : 30} color="#F2F2F2"/>
       <form className="flex gap-4 flex-wrap text-neutral-900">
-        <h2 className='flex gap-x-[7px] items-center'>
+        <h2 className='flex gap-x-[7px] items-center header-title'>
           <MarkerPin01 />
           เลือกสาขา
         </h2>
@@ -117,7 +117,10 @@ export default function ShipToMyAddress(){
         <Divider size={isDesktop ? 24 : 14} color="#F2F2F2"/>
 
         <section className="w-full">
-          <label htmlFor='coupon-pro'>โปรโมชั่นและส่วนลด</label>
+          <label htmlFor='coupon-pro' className="header-title flex gap-x-[7px] items-center">
+            <Ticket01 />
+            โปรโมชั่นและส่วนลด
+          </label>
           <div className='flex gap-x-5 mt-4'>
             <input type="text" id="coupon-pro" name="coupon-pro" placeholder="โปรดใส่โค้ดส่วนลด" className="border-b border-b-[#141414] w-full outline-none" autoComplete="off" onClick={(e) => e.target.focus()}/>
             <button className='border-[2px] border-black p-2 rounded-md w-[68px] text-sm'>ใช้โค้ด</button>

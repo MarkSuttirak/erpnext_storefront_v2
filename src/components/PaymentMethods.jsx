@@ -49,7 +49,10 @@ export default function PaymentMethods({
 }) {
   return (
     <fieldset className="w-full">
-      <legend className="header-title">เลือกช่องทางชำระเงิน</legend>
+      <legend className="header-title flex gap-x-[7px] items-center">
+        <CreditCard02 />
+        เลือกช่องทางชำระเงิน
+      </legend>
       <div className="flex flex-col gap-y-5 items-stretch mt-5 lg:mt-[30px]">
         {paymentMethods.map(({ label, value: nameVal, logo }) => (
           <label key={nameVal} className="relative" onClick={() => onChange(nameVal)}>

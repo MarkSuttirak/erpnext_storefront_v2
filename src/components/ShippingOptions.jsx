@@ -1,3 +1,4 @@
+import { Truck01 } from '@untitled-ui/icons-react';
 import ninjavan from '../img/ninjavan.png'
 import thailandpost from '../img/thailandpost.png'
 
@@ -25,7 +26,10 @@ export default function ShippingOptions({
 }) {
   return (
     <fieldset className="w-full">
-      <legend className="header-title">เลือกการขนส่ง</legend>
+      <legend className="header-title flex gap-x-[7px] items-center">
+        <Truck01 />
+        เลือกการขนส่ง
+      </legend>
       <div className="flex flex-col gap-y-5 items-stretch mt-5 lg:mt-[30px]">
         {shippingOptions.map(({ label, value: nameVal, logo, desc, price }) => (
           <label key={nameVal} className="relative" onClick={() => onChange(nameVal)}>
