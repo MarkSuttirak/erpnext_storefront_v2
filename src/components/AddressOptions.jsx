@@ -14,25 +14,31 @@ export default function AddressOptions({
   return (
     <>
       <div className="flex flex-col w-full gap-4 lg:gap-6">
-        {data?.message?.map(({ name: nameVal, address_title, address_line2 = null, city, state, country }) => (
-          <div className="relative">
-            <label key={nameVal} className="relative w-full" onClick={(e) => {
-              e.preventDefault();
-              onChange(nameVal)
-            }}>
-              <div className={`cursor-pointer rounded-md -outline-offset-2 ${value == nameVal ? "border border-black" : "border border-transparent"}`}>
-                <AddressCard title={address_title} addressLine2={address_line2} city={city} state={state === "Select One" ? null : state} country={country} />
+        {data ? (
+          <>
+            {data.message?.map(({ name: nameVal, address_title, address_line2 = null, city, state, country }) => (
+              <div className="relative">
+                <label key={nameVal} className="relative w-full" onClick={(e) => {
+                  e.preventDefault();
+                  onChange(nameVal)
+                }}>
+                  <div className={`cursor-pointer rounded-md -outline-offset-2 ${value == nameVal ? "border border-black" : "border border-transparent"}`}>
+                    <AddressCard title={address_title} addressLine2={address_line2} city={city} state={state === "Select One" ? null : state} country={country} />
+                  </div>
+                </label>
+                <div className="absolute top-[22px] right-[18px] flex gap-x-5">
+                  <button className="font-bold text-sm text-[#333333]" onClick={(e) => {
+                    e.preventDefault();
+                    setOpenUpdate(true);
+                  }}>แก้ไข</button>
+                  <button className="font-bold text-sm text-[#333333]">ลบ</button>
+                </div>
               </div>
-            </label>
-            <div className="absolute top-[22px] right-[18px] flex gap-x-5">
-              <button className="font-bold text-sm text-[#333333]" onClick={(e) => {
-                e.preventDefault();
-                setOpenUpdate(true);
-              }}>แก้ไข</button>
-              <button className="font-bold text-sm text-[#333333]">ลบ</button>
-            </div>
-          </div>
-        ))}
+            ))}
+          </>
+        ) : (
+          <button className="bg-[#F4F4F4] lg:bg-white lg:border lg:border-[#333333] p-5 rounded-[7px] lg:py-3">เพิ่มที่อยู่ใหม่</button>
+        )}
       </div>
       {
         error && <p className="text-negative-600">Please select an address</p>
