@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Home02, Grid01, Award03, User02 } from "@untitled-ui/icons-react"
 
-const FooterMenu = ({active}) => {
+export default function FooterMenu({active}){
   const Menu = ({icon, title, link, current}) => {
     return (
       <Link to={link} className={`h-[82px] flex flex-col justify-center w-full text-center items-center ${current === active ? "text-[#1BB040]" : "text-[#BBBBBB]"} text-xs gap-y-[10px]`}>
@@ -46,5 +46,3 @@ const FooterMenu = ({active}) => {
     </footer>
   )
 }
-
-export default FooterMenu

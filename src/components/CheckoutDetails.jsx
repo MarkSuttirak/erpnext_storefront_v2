@@ -5,7 +5,7 @@ import { useCart } from "../hooks/useCart";
 import { useFrappePostCall } from "frappe-react-sdk";
 import { useProducts } from "../hooks/useProducts";
 
-const CheckoutDetails = () => {
+export default function CheckoutDetails(){
   const [informationAlert, setInformationAlert] = useState(false);
   const [positiveAlert, setPositiveAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
@@ -139,5 +139,3 @@ const CheckoutDetails = () => {
     </div>
   )
 }
-
-export default CheckoutDetails

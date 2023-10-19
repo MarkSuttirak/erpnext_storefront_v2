@@ -1,4 +1,4 @@
-const WishlistProducts = ({key, name, price, image, desc}) => {
+export default function WishlistProducts({key, name, price, image, desc}){
   return (
     <>
       {/* Mobile */}
@@ -43,5 +43,3 @@ const WishlistProducts = ({key, name, price, image, desc}) => {
     </>
   )
 }
-
-export default WishlistProducts;

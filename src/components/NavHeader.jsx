@@ -14,7 +14,7 @@ import { Fragment, useState, useRef, useEffect } from 'react'
 import { ShoppingBag01, MessageCircle01, ChevronDown, Heart } from "@untitled-ui/icons-react";
 import { useFrappeGetDocList } from 'frappe-react-sdk';
 
-const NavHeader = () => {
+export default function NavHeader(){
     const navigate = useNavigate();
     const { cartCount, setIsOpen } = useCart()
 
@@ -83,5 +83,3 @@ const NavHeader = () => {
       </header>
     )
 }
-
-export default NavHeader

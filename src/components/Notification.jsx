@@ -1,4 +1,4 @@
-const Notification = ({type, children, className}) => {
+export default function Notification({type, children, className}){
   const successStyle = {
     border:"1px solid #70DFA3",
     borderRadius:"7px",
@@ -20,5 +20,3 @@ const Notification = ({type, children, className}) => {
     </div>
   )
 }
-
-export default Notification

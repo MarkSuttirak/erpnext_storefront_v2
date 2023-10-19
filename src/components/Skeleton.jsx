@@ -1,4 +1,4 @@
-const Skeleton = ({
+export default function Skeleton({
   width="40px", 
   height="40px", 
   borderRadius="4px",
@@ -7,7 +7,7 @@ const Skeleton = ({
   marginBottom="0",
   marginLeft="0",
   marginRight="0"
-}) => {
+}){
   const skeletonStyle = {
     width:width,
     height:height,
@@ -26,5 +26,3 @@ const Skeleton = ({
     <div className="skeleton" style={skeletonStyle}/>
   )
 }
-
-export default Skeleton

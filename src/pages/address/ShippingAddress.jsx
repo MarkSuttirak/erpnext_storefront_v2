@@ -21,6 +21,8 @@ const ShippingAddress = () => {
   const [rowNum, setRowNum] = useState(0)
 
   const { data:dataShipping } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-0`)
+
+  console.log(dataShipping)
   const { call, isCompleted } = useFrappePostCall('headless_e_commerce.api.add_address')
   const { call:callDelete } = useFrappeDeleteCall('headless_e_commerce.api.get_addresses')
 
@@ -66,7 +68,7 @@ const ShippingAddress = () => {
             </button>
           </div>
           {(dataShipping?.message ?? []).map((d, index) => 
-            <AddressInfo index={index} name={`${d.address_title}`} address={`${d.address_line1} ${d.address_line2} ${d.city} ${d.country}`}/>
+            <AddressInfo key={index} name={`${d.address_title}`} address={`${d.address_line1} ${d.address_line2} ${d.city} ${d.country}`}/>
           )}
         </section>
       </main>
@@ -74,7 +76,7 @@ const ShippingAddress = () => {
       {/* main page for mobile version */}
       <main className='p-5 flex flex-col gap-y-[12px] mt-[53px] lg:hidden'>
         {(dataShipping?.message ?? []).map((d, index) => 
-          <AddressInfo index={index} name={`${d.address_title}`} address={`${d.address_line1} ${d.address_line2} ${d.city} ${d.country}`}/>
+          <AddressInfo key={index} name={`${d.address_title}`} address={`${d.address_line1} ${d.address_line2} ${d.city} ${d.country}`}/>
         )}
         <button onClick={() => setOpenAdd(true)} className='bg-[#F4F4F4] p-5 rounded-[7px]'>
           <div className='flex gap-x-[7px] justify-center'>

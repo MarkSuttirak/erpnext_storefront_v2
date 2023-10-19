@@ -4,17 +4,9 @@ import { Link } from 'react-router-dom';
 import { SfButton, SfRating, SfCounter, SfLink, SfIconShoppingCart, SfIconFavorite } from '@storefront-ui/react';
 import { useCart } from '../hooks/useCart';
 
-const ProductCard = ({
-    title,
-    thumbnail,
-    desc,
-    price,
-    productId,
-    itemCode,
-    isGift,
-}) => {
-    const { addToCart } = useCart()
-    return (
+export default function ProductCard({title, thumbnail, desc, price, productId, itemCode, isGift}){
+  const { addToCart } = useCart()
+  return (
         <Link to={`/products/${productId}`}>
             <div className="rounded-md">
                 <div className="relative">
@@ -39,14 +31,12 @@ const ProductCard = ({
                 </div>
             </div>
         </Link>
-    )
+  )
 }
 
-export default ProductCard
-
 ProductCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    thumbnail: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    productId: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  productId: PropTypes.string.isRequired
 };

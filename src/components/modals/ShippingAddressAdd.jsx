@@ -17,22 +17,6 @@ const AddShippingAddress = ({openAdd, setOpenAdd}) => {
 
   const [isSaving, setIsSaving] = useState(false)
 
-  const formik = useFormik({
-    initialValues: {
-      address_line1: "",
-      address_line2: "",
-      city: "",
-      state: "",
-      country: "",
-      pincode: "",
-      is_primary_address: 1,
-      is_shipping_address: 0,
-    },
-    validationSchema: addressSchema,
-    validateOnChange: false,
-    onSubmit: call
-  });
-
   const [openSuccess, setOpenSuccess] = useState(false)
   
   return (
@@ -68,7 +52,18 @@ const AddShippingAddress = ({openAdd, setOpenAdd}) => {
                     <XClose onClick={() => setOpenAdd(false)}/>
                   </div>
                   {!isSaving ? (
-                    <AddressForm onSuccess={() => setOpenAdd(false)}/>
+                    <AddressForm onSuccess={() => setOpenAdd(false)} data={{
+                      address_title: "",
+                      address_line1: "",
+                      address_line2: "",
+                      city: provinces[0],
+                      state: districts[0],
+                      country: "Thailand",
+                      pincode: "",
+                      phone:"",
+                      is_primary_address: 1,
+                      is_shipping_address: 1,
+                    }}/>
                   ) : (
                     <>
                       <div>

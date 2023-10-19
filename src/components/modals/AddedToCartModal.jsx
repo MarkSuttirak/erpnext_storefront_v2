@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Dialog, Transition } from '@headlessui/react'
 import { XClose } from '@untitled-ui/icons-react'
 
-const AddedToCartModal = ({isModalOpen, setIsModalOpen}) => {
+export default function AddedToCartModal({isModalOpen, setIsModalOpen}){
   const { cart, cartCount, addToCart, removeFromCart, getTotal, isOpen, setIsOpen } = useCart()
   const { getByItemCode } = useProducts()
   const navigate = useNavigate()
@@ -104,5 +104,3 @@ const AddedToCartModal = ({isModalOpen, setIsModalOpen}) => {
     </div>
   )
 }
-
-export default AddedToCartModal;

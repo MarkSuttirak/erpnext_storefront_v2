@@ -1,4 +1,4 @@
-export const AddressCard = (props) => {
+export default function AddressCard(props){
   return (
     <div className="flex flex-wrap gap-4 lg:gap-6 w-full">
       <div
@@ -19,5 +19,3 @@ export const AddressCard = (props) => {
     </div>
   )
 }
-
-export default AddressCard

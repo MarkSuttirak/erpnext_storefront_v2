@@ -7,6 +7,7 @@ import TitleHeader from '../../components/TitleHeader'
 import { useFrappeGetDoc, useFrappeUpdateDoc, useFrappeGetCall } from 'frappe-react-sdk'
 import { useFormik } from 'formik'
 import { addressSchema } from '../../components/forms/addressFormSchema';
+import AddressForm from '../forms/AddressForm'
 
 const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
@@ -20,22 +21,6 @@ const EditShippingAddress = ({openUpdate, setOpenUpdate, rowNum}) => {
   const { data:dataShipping } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-0`)
 
   const [isSaving, setIsSaving] = useState(false)
-
-  const formikUpdate = useFormik({
-    initialValues: {
-      address_line1: dataShipping?.message.address_line1,
-      address_line2: dataShipping?.message.address_line2,
-      city: dataShipping?.message.city,
-      state: dataShipping?.message.state,
-      country: dataShipping?.message.country,
-      pincode: dataShipping?.message.pincode,
-      is_primary_address: 1,
-      is_shipping_address: 0,
-    },
-    // onSubmit: (data) => {
-    //   updateDoc('Shipping Address', id, data)
-    // }
-  })
 
   const navigate = useNavigate()
 
@@ -73,72 +58,18 @@ const EditShippingAddress = ({openUpdate, setOpenUpdate, rowNum}) => {
                     <XClose onClick={() => setOpenUpdate(false)}/>
                   </div>
                   {!isSaving ? (
-                    <form className='flex flex-col gap-y-3' onSubmit={formikUpdate.handleSubmit}>
-                      <div className='flex flex-col w-full'>
-                        <label htmlFor='address_title'>ชื่อ-นามสกุล</label>
-                        <input
-                          name="address_title"
-                          id="address_title"
-                          className="form-input mt-[11px]"
-                          onChange={formikUpdate.handleChange}
-                          value={formikUpdate.values.address_title}
-                          invalid={formikUpdate.errors.address_title}
-                        />
-                        {formikUpdate.errors.address_title && (
-                          <strong className="typography-error-sm text-negative-700 font-medium">กรุณากรอกชื่อผู้รับ</strong>
-                        )}
-                      </div>
-                      <div className='flex flex-col w-full'>
-                        <label htmlFor='address_line1'>ที่อยู่ (ห้องเลขที่, ตึก, ถนน)</label>
-                        <input
-                          name="address_line1"
-                          id="address_line1"
-                          className="form-input mt-[11px]"
-                          onChange={formikUpdate.handleChange}
-                          value={formikUpdate.values.address_line1}
-                          invalid={formikUpdate.errors.address_line1}
-                        />
-                        {formikUpdate.errors.address_line1 && (
-                          <strong className="typography-error-sm text-negative-700 font-medium">Please provide a street name</strong>
-                        )}
-                      </div>
-                      
-                      <div className='lg:flex lg:gap-x-3'>
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='state'>จังหวัด</label>
-                          <select name="state" id='state' placeholder="-- Select --" className='form-input mt-[11px] appearance-none' style={{backgroundImage:"url(" + chevronDropdown + ")",backgroundPosition:"right 0.5rem center",backgroundRepeat:"no-repeat"}} onChange={formikUpdate.handleChange} value={formikUpdate.values.state} invalid={formikUpdate.errors.state}>
-                            {provinces.map((province) => (
-                              <option key={province} value={province}>{province}</option>
-                            ))}
-                          </select>
-                          {formikUpdate.errors.state && (
-                            <strong className="typography-error-sm text-negative-700 font-medium">{formikUpdate.errors.state}</strong>
-                          )}
-                        </div>
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='city'>เมือง / เขต</label>
-                          <select name="city" id='city' className='form-input mt-[11px] appearance-none' placeholder="-- Select --" style={{backgroundImage:"url(" + chevronDropdown + ")",backgroundPosition:"right 0.5rem center",backgroundRepeat:"no-repeat"}} onChange={formikUpdate.handleChange} value={formikUpdate.values.city}>
-                            {districts.map((district) => (
-                              <option key={district} value={district}>{district}</option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                
-                      <div className='lg:flex lg:gap-x-3'>
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='pincode'>รหัสไปรษณีย์</label>
-                          <input name="pincode" id='pincode' className='form-input mt-[11px]' placeholder="eg. 12345" onChange={formikUpdate.handleChange} value={formikUpdate.values.pincode} />
-                        </div>
-                        <div className='flex flex-col w-full'>
-                          <label htmlFor='phone'>เบอร์โทรศัพท์</label>
-                          <input className='form-input mt-[11px]' id='phone' name='phone' value={formikUpdate.values.phone} onChange={formikUpdate.handleChange} type='tel'/>
-                        </div>
-                      </div>
-                      <div className="w-full flex gap-4 mt-4 justify-center">
-                        <button type='submit' className={`block mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full bg-[#111111] border border-[#111111] lg:max-w-[200px]`}>บันทึกที่อยู่</button>
-                      </div>
-                    </form>
+                    <AddressForm onSuccess={() => setOpenAdd(false)} data={{
+                      address_title: dataShipping?.message.address_title,
+                      address_line1: dataShipping?.message.address_line1,
+                      address_line2: dataShipping?.message.address_line2,
+                      city: dataShipping?.message.city,
+                      state: dataShipping?.message.state,
+                      country: dataShipping?.message.country,
+                      pincode: dataShipping?.message.pincode,
+                      is_primary_address: 1,
+                      is_shipping_address: 0,
+                      phone:dataShipping?.message.phone,
+                    }}/>
                   ) : (
                     <>
                       <div>

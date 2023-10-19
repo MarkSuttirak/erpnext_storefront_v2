@@ -1,7 +1,7 @@
 import { Ticket02 } from "@untitled-ui/icons-react"
 import { Link } from "react-router-dom"
 
-const CouponSheet = ({proTitle, date, used, image, type, link}) => {
+export default function CouponSheet({proTitle, date, used, image, type, link}){
   return (
     <Link to={link}>
       <div className='border-b border-b-[#E3E3E3] flex relative lg:border lg:border-[#E3E3E3] lg:rounded-lg w-full h-full'>
@@ -22,5 +22,3 @@ const CouponSheet = ({proTitle, date, used, image, type, link}) => {
     </Link>
   )
 }
-
-export default CouponSheet

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const TabButton = ({isActive, title, totalTabs, onClick}) => {
+export default function TabButton({isActive, title, totalTabs, onClick}){
   const tabsWidth = `${100 / totalTabs}%`
   return (
     <>
@@ -13,5 +13,3 @@ const TabButton = ({isActive, title, totalTabs, onClick}) => {
     </>
   )
 }
-
-export default TabButton

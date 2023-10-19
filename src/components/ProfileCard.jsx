@@ -4,11 +4,7 @@ import { useUser } from '../hooks/useUser';
 import { useFrappeAuth } from 'frappe-react-sdk';
 import { Link } from 'react-router-dom';
 
-const ProfileCard = ({
-    title = "Selena Gomez",
-    loyaltyPoints = "0",
-    image = "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/men_category.png",
-}) => {
+export default function ProfileCard({title = "Selena Gomez", loyaltyPoints = "0", image = "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/men_category.png"}){
     const { user, logout } = useUser()
     const { currentUser } = useFrappeAuth()
     return (
@@ -33,5 +29,3 @@ const ProfileCard = ({
         </div>
     )
 }
-
-export default ProfileCard

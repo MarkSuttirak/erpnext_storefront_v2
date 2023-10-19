@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { SfIconSearch, SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
 
-const BlogCard = ({title, image, date, link}) => {
+export default function BlogCard({title, image, date, link}){
   return (
     <Link to={link} className="min-w-[180px] max-w-[180px]">
       <img src={`${import.meta.env.VITE_ERP_URL}${image}`} className='rounded-md'/>
@@ -14,5 +14,3 @@ const BlogCard = ({title, image, date, link}) => {
     </Link>
   )
 }
-
-export default BlogCard

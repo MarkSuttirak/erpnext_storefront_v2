@@ -1,7 +1,7 @@
 import { ChevronRight } from "@untitled-ui/icons-react"
 import { useState, useRef } from "react"
 
-const Accordion = ({items}) => {
+export default function Accordion({items}){
   const content = useRef(null);
 
   const handleClick = (event) => {
@@ -30,5 +30,3 @@ const Accordion = ({items}) => {
     </div>
   )
 }
-
-export default Accordion

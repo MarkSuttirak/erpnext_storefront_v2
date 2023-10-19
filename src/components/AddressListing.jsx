@@ -3,7 +3,7 @@ import { SfBadge } from '@storefront-ui/react';
 import { useFrappeGetCall } from 'frappe-react-sdk';
 import AddressCard from './AddressCard';
 
-const AddressListing = ({ randomKey = 0 }) => {
+export default function AddressListing({ randomKey = 0 }){
     const { data } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-${randomKey}`)
 
     return (
@@ -49,6 +49,3 @@ const AddressListing = ({ randomKey = 0 }) => {
         </div >
     )
 }
-
-export default AddressListing
-

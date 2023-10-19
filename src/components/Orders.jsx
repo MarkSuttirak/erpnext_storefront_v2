@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const Orders = ({name, posting_date, delivery_within, payment_method, status, total, image}) => {
+export default function Orders({name, posting_date, delivery_within, payment_method, status, total, image}){
   const StatusColor = ({color}) => {
     return (
       <div className='h-3 w-3 rounded-full' style={{backgroundColor:color}} />
@@ -50,5 +50,3 @@ const Orders = ({name, posting_date, delivery_within, payment_method, status, to
     </Link>
   )
 }
-
-export default Orders;

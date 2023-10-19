@@ -3,37 +3,28 @@ import { useFormik } from 'formik';
 import { useFrappePostCall } from 'frappe-react-sdk';
 import { addressSchema } from './addressFormSchema';
 import chevronDropdown from '../../img/chevron-right.svg'
+import { Switch } from '@headlessui/react'
+import { useState } from 'react';
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 // Here you should provide a list of countries you want to support
 // or use an up-to-date country list like: https://www.npmjs.com/package/country-list
 const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
 
-const AddressForm = ({
-  onSuccess = () => { },
-}) => {
+const AddressForm = ({onSuccess = () => { }, data}) => {
 
   const { call, isCompleted } = useFrappePostCall('headless_e_commerce.api.add_address')
 
   const formik = useFormik({
-    initialValues: {
-      address_title: "",
-      address_line1: "",
-      address_line2: "",
-      city: provinces[0],
-      state: districts[0],
-      country: "Thailand",
-      pincode: "",
-      phone:"",
-      is_primary_address: 1,
-      is_shipping_address: 1,
-    },
+    initialValues: data,
     validationSchema: addressSchema,
     validateOnChange: false,
     onSubmit: call
   });
-
-  console.log(formik)
 
   useEffect(() => {
     if (isCompleted) {
@@ -41,6 +32,8 @@ const AddressForm = ({
       formik.resetForm();
     }
   }, [isCompleted])
+
+  const [enabled, setEnabled] = useState(false)
 
   return (
     <form className='flex flex-col gap-y-3' onSubmit={formik.handleSubmit}>
@@ -103,6 +96,28 @@ const AddressForm = ({
         <div className='flex flex-col w-full'>
           <label htmlFor='phone'>เบอร์โทรศัพท์</label>
           <input className='form-input mt-[11px]' id='phone' name='phone' value={formik.values.phone} onChange={formik.handleChange} type='tel'/>
+        </div>
+      </div>
+
+      <div className='lg:flex lg:gap-x-3'>
+        <div className='flex w-full justify-between items-center'>
+          <label htmlFor='phone'>ตั้งเป็นค่าเริ่มต้น</label>
+          <Switch
+            checked={enabled}
+            onChange={setEnabled}
+            className={classNames(
+              enabled ? 'bg-[#00B14F]' : 'bg-gray-200',
+              'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out2'
+            )}
+          >
+            <span
+              aria-hidden="true"
+              className={classNames(
+                enabled ? 'translate-x-5' : 'translate-x-0',
+                'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
+              )}
+            />
+          </Switch>
         </div>
       </div>
       <div className="w-full flex gap-4 mt-4 justify-center">

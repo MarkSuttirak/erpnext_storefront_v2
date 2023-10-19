@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { SfIconSearch, SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
 
-const PromotionCard = ({title, image, date, link}) => {
+export default function PromotionCard({title, image, date, link}){
   return (
     <Link to={link} className="w-[300px]">
       <h2 className='mb-[5px] text-[#3D3D3D] font-bold flex items-center'>
@@ -18,5 +18,3 @@ const PromotionCard = ({title, image, date, link}) => {
     </Link>
   )
 }
-
-export default PromotionCard

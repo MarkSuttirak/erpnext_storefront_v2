@@ -1,4 +1,4 @@
-const OrderSummary = ({name, desc, price, image, discountedPrice}) => {
+export default function OrderSummary({name, desc, price, image, discountedPrice}){
   return (
     <section className="py-5 border-b border-b-[#E3E3E3]">
       <div className="flex gap-x-[14px]">
@@ -22,5 +22,3 @@ const OrderSummary = ({name, desc, price, image, discountedPrice}) => {
     </section>
   )
 }
-
-export default OrderSummary;
