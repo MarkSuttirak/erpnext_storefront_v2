@@ -28,26 +28,34 @@ export default function CheckoutDetails(){
         </p>
         <p className="typography-text-base font-medium">(Items: {cartCount})</p>
       </div>
-      <div className="rounded-md lg:border lg:border-[#E3E3E3] lg:px-8 lg:py-6 lg:flex lg:flex-col-reverse">
+      <div className="rounded-md lg:border lg:border-[#E3E3E3] lg:px-8 lg:pt-6 lg:flex lg:flex-col-reverse">
         <ul role="list" className="divide-y divide-gray-200">
           {
             Object.entries(cart).map(([itemCode, qty]) => {
               const product = getByItemCode(itemCode)
               return (
-                <li key={itemCode} className="flex gap-y-6">
+                <li key={itemCode} className="flex gap-y-6 py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img src={`${import.meta.env.VITE_ERP_URL}${product?.website_image}`} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
                   </div>
 
                   <div className="ml-4 flex flex-1 flex-col">
-                    <div>
-                      <div className="flex justify-between text-base font-medium text-gray-900">
-                        <h3>
-                          <a href="#">{product?.item_name}</a>
-                        </h3>
-                        <p className="ml-4">{product?.formatted_price}</p>
+                    <div className="flex justify-between">
+                      <div className="flex flex-col text-base font-medium text-gray-900">
+                        <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
+                        <h3 className="text-[#111111] text-[13px] font-bold">{product?.item_name}</h3>
                       </div>
-                      <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
+                      <p className="ml-4">{product?.formatted_price}</p>
+                    </div>
+                    <div className='flex gap-x-10 mt-[15px]'>
+                      <div className='flex flex-col gap-y-[10px]'>
+                        <h2 className='text-[#A2A2A2] text-xs'>ไซส์</h2>
+                        <p className="text-xs text-[#111111]">38</p>
+                      </div>
+                      <div className='flex flex-col gap-y-[10px]'>
+                        <h2 className='text-[#A2A2A2] text-xs'>ปริมาณ</h2>
+                        <p className="text-xs text-[#111111]">{cart[itemCode]}</p>
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -55,7 +63,7 @@ export default function CheckoutDetails(){
             })
           }
         </ul>
-        <div className="py-4 lg:pt-0 lg:pb-5 mt-3 lg:mt-0 border-t lg:border-b lg:border-t-0 lg:mb-5 border-neutral-200">
+        <div className="pt-6 lg:pt-0 border-t lg:border-b lg:pb-6 lg:border-t-0 border-neutral-200">
           <h2 className='header-title'>รายละเอียดการชำระเงิน</h2>
           <div className="flex flex-col gap-y-4 justify-between typography-text-base">
             <div className="flex justify-between items-center text-[#424242]">

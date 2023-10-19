@@ -19,6 +19,7 @@ export default function ShipToMyAddress(){
   const { user } = useUser()
   const { cart, cartCount, getTotal, resetCart } = useCart();
   const navigate = useNavigate();
+  const [acknowledged, setAcknowledged] = useState(false)
 
   const { isDesktop } = useMediaQuery({ minWidth: 1024 })
 
@@ -96,10 +97,10 @@ export default function ShipToMyAddress(){
         <TaxInvoiceRequest />
         <ShippingOptions onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method}/>
         
-        <Divider size={isDesktop ? 40 : 30} color="#F2F2F2"/>
+        <Divider size={isDesktop ? 24 : 14} color="#F2F2F2"/>
 
         <div className="w-full">
-          <label htmlFor='coupon-pro'>โปรโมชั่นและส่วนลด</label>
+          <label htmlFor='coupon-pro' className="header-title">โปรโมชั่นและส่วนลด</label>
           <div className='flex gap-x-5 mt-4'>
             <input type="text" id="coupon-pro" name="coupon-pro" placeholder="โปรดใส่โค้ดส่วนลด" className="border-b border-b-[#141414] w-full outline-none" autoComplete="off" onClick={(e) => e.target.focus()}/>
             <button className='border-[2px] border-black p-2 rounded-md w-[68px] text-sm'>ใช้โค้ด</button>
@@ -110,12 +111,18 @@ export default function ShipToMyAddress(){
           </button>
         </div>
 
-        <Divider size={isDesktop ? 40 : 30} color="#F2F2F2"/>
+        <Divider size={isDesktop ? 24 : 14} color="#F2F2F2"/>
 
         <PaymentMethods onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method} />
 
+        <label htmlFor='acknowledged' className='flex items-start gap-x-[14px] my-6 text-[#8A8A8A] text-sm'>
+          <input type='checkbox' name='acknowledged' id='acknowledged' className='product-type-input' onClick={(e) => {e.target.checked ? setAcknowledged(true) : setAcknowledged(false)}}/>
+          <span className='product-type-checkbox'/>
+          หน้าเพจนี้อันรวมไปถึงเอกสารหรือข้อความต่างๆที่มีความเกี่ยวข้องกับ หน้าเพจนี้ถูกเขียนขึ้นมาเพื่อแจ้งท่านให้ทราบถึงข้อกำหนด
+        </label>
+
         <div className="fixed bottom-0 pb-5 w-full bg-white lg:static lg:p-0 max-w-[520px] lg:max-w-none">
-          <SfButton size="lg" className="mt-4 payment-btn" onClick={formik.handleSubmit}>
+          <SfButton size="lg" className="mt-4 payment-btn" onClick={formik.handleSubmit} style={{backgroundColor:!acknowledged ? "#C5C5C5" : "black",color:"white"}} disabled={!acknowledged}>
             ชำระเงิน
           </SfButton>
         </div>

@@ -136,6 +136,8 @@
 .product-type-checkbox {
   width:20px;
   height:20px;
+  min-width:20px;
+  min-height:20px;
   border:1px solid #333333;
   box-sizing:border-box;
   display:inline-block;

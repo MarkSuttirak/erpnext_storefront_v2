@@ -1,3 +1,5 @@
+import { Archive } from "@untitled-ui/icons-react";
+
 const deliveryChoice = [
   {
     label: 'จัดส่งไปยังที่อยู่ของฉัน',
@@ -18,7 +20,10 @@ export default function DeliveryChoice({
 }) {
   return (
     <fieldset className="w-full">
-      <legend className="header-title">เลือกวิธีการรับสินค้า</legend>
+      <legend className="header-title flex items-center gap-x-[7px]">
+        <Archive />
+        เลือกวิธีการรับสินค้า
+      </legend>
       <div className="flex flex-col gap-y-5 items-stretch mt-5 lg:mt-[30px]">
         {deliveryChoice.map(({ label, value: nameVal, desc }) => (
           <label key={nameVal} className="relative" onClick={() => onChange(nameVal)}>
