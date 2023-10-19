@@ -20,11 +20,11 @@ export default function DeliveryChoice({
     <fieldset className="w-full">
       <legend className="header-title">เลือกวิธีการรับสินค้า</legend>
       <div className="flex flex-col gap-y-5 items-stretch mt-5 lg:mt-[30px]">
-        {deliveryChoice.map(({ label, value: nameVal, logo, desc }) => (
+        {deliveryChoice.map(({ label, value: nameVal, desc }) => (
           <label key={nameVal} className="relative" onClick={() => onChange(nameVal)}>
             <div className={`h-full flex flex-col items-center p-4 gap-x-3 cursor-pointer rounded-md border ${value == nameVal ? "border-[#111111]" : "border-[#E3E3E3]"}`}>
-              <h2 className="text-[#333333] font-bold">{label}</h2>
-              <p className="text-[#8A8A8A] text-sm mt-[6px]">{desc}</p>
+              <h2 className="text-[#333333] font-bold w-full">{label}</h2>
+              <p className="text-[#8A8A8A] text-sm mt-[6px] w-full">{desc}</p>
             </div>
           </label>
         ))}

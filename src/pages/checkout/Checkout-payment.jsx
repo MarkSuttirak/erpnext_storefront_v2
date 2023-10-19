@@ -1,4 +1,4 @@
-const CheckoutPayment = () => {
+export default function CheckoutPayment(){
   const handleClickBack = () => {
     setCurrentPage('checkout')
   }
@@ -53,5 +53,3 @@ const CheckoutPayment = () => {
     </>
   )
 }
-
-export default CheckoutPayment

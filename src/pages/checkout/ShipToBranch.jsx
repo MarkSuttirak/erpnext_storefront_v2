@@ -83,15 +83,6 @@ export default function ShipToMyAddress(){
           <MarkerPin01 />
           เลือกสาขา
         </div>
-        <AddressOptions
-          onChange={(value) => {
-            formik.setFieldValue('billing_address', value);
-          }}
-          onClick={(e) => e.preventDefault()}
-          value={formik.values.billing_address}
-          error={formik.errors.billing_address}
-        />
-        <PaymentMethods onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method} />
 
         <SfButton size="lg" className="w-full mt-4" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
           ชำระเงิน

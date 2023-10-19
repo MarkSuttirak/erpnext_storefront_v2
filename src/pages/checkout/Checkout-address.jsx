@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddressForm from "../../components/forms/AddressForm";
 
-const CheckoutAddress = ({setCurrentPage}) => {
+export default function CheckoutAddress({setCurrentPage}){
   const [modified, setModified] = useState(false)
 
   const handleClickBack = () => {
@@ -25,5 +25,3 @@ const CheckoutAddress = ({setCurrentPage}) => {
     </>
   )
 }
-
-export default CheckoutAddress

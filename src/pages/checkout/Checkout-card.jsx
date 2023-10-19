@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CheckoutCard = () => {
+export default function CheckoutCard(){
   const tooltipHide = {
     visibility:"hidden",
     opacity:"0",
@@ -70,5 +70,3 @@ const CheckoutCard = () => {
     </>
   )
 }
-
-export default CheckoutCard

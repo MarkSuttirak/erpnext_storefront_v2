@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 import { useRef } from 'react';
 
-const CartPage = () => {
+export default function CartPage(){
   const { cart, cartCount, addToCart, removeFromCart, getTotal, isOpen, setIsOpen } = useCart()
   const nodeRef = useRef(null);
   const drawerRef = useRef(null);
@@ -131,6 +131,5 @@ const CartPage = () => {
         </div>
       </main>
     </>
-  )}
-
-export default CartPage
+  )
+}

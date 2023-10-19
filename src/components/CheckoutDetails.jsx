@@ -20,7 +20,7 @@ export default function CheckoutDetails(){
   const total = getTotal() + delivery - discount
 
   return (
-    <div className='lg:w-[480px]'>
+    <div className='lg:w-[480px] lg:min-w-[480px]'>
       <div className="flex justify-between items-end py-4 lg:hidden">
         <p className="typography-headline-4 font-bold typography-headline-3 gap-x-2 flex">
           <ShoppingBag01 />

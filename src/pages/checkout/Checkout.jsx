@@ -16,7 +16,7 @@ import ShipToBranch from './ShipToBranch';
 import CheckoutDetails from '../../components/CheckoutDetails';
 import DeliveryChoice from '../../components/DeliveryChoice';
 
-const Checkout = () => {
+export default function Checkout(){
   const { user } = useUser()
   const { cart, cartCount, getTotal, resetCart } = useCart();
   const navigate = useNavigate();
@@ -36,17 +36,12 @@ const Checkout = () => {
       </header>
       <div className='flex flex-col lg:gap-x-6 lg:flex-row justify-center lg:mt-[92px] desktop-sec lg:py-10 p-5'>
         <div>
-          <DeliveryChoice onChange={(active) => setSelectedChoice(active)} />
-          {selectedChoice === 'ship-to-my-address' ? (
-            <ShipToMyAddress />
-          ) : (
-            <ShipToBranch />
-          )}
+          <DeliveryChoice onChange={(active) => setSelectedChoice(active)} value={selectedChoice} error={null}/>
+          {selectedChoice === 'ship-to-my-address' && (<ShipToMyAddress />)}
+          {selectedChoice === 'ship-to-branch' && (<ShipToBranch />)}
         </div>
         <CheckoutDetails />
       </div>
     </>
   );
 }
-
-export default Checkout
