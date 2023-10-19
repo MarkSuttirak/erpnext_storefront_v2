@@ -13,7 +13,7 @@ import { useFrappeGetDocCount } from 'frappe-react-sdk';
 import NavHeader from '../components/NavHeader'
 import DesktopSidebar from '../components/desktop/DesktopSidebar'
 
-const MyID = () => {
+export default function MyID(){
   const [bronzeLevel, setBronzeLevel] = useState(false);
   const [silverLevel, setSilverLevel] = useState(true);
 
@@ -132,5 +132,3 @@ const MyID = () => {
     </>
   )
 }
-  
-export default MyID

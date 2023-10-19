@@ -6,7 +6,7 @@ import DesktopSidebar from '../components/desktop/DesktopSidebar';
 import CouponSheet from '../components/coupon/CouponSheet';
 import TabButton from '../components/TabButton';
 
-const MyCoupon = () => {
+export default function MyCoupon(){
   const [currentSec, setCurrentSec] = useState(1)
 
   const { data:canUseCoupon } = useFrappeGetDocList('Coupon Code', {
@@ -64,5 +64,3 @@ const MyCoupon = () => {
     </>
   )
 }
-
-export default MyCoupon

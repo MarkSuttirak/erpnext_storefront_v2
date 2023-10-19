@@ -6,7 +6,7 @@ import goldMember from '../img/gold-member.png'
 import diamondMember from '../img/diamond-member.png'
 import { ShoppingBag02, Star01, Mail01, ChevronRight, HeartHand, MarkerPin01, Building02, Tag03, Gift01, User02 } from "@untitled-ui/icons-react"
 
-const MemberPrivileges = (current) => {
+export default function MemberPrivileges(current){
   const tabs = [
     {
       title: 'สมาชิก',
@@ -219,5 +219,3 @@ const MemberPrivileges = (current) => {
     </>
   )
 }
-
-export default MemberPrivileges

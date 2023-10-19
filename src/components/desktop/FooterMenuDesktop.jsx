@@ -79,7 +79,7 @@ const navigation = {
 }
 
 
-const FooterMenuDesktop = ({active}) => {
+export default function FooterMenuDesktop({active}){
   const Menu = ({icon, title, link, current}) => {
     return (
       <Link to={link} className={`h-[82px] flex flex-col justify-center w-full text-center items-center ${current === active ? "text-[#1BB040]" : "text-[#BBBBBB]"} text-xs gap-y-[10px]`}>
@@ -150,5 +150,3 @@ const FooterMenuDesktop = ({active}) => {
     </footer>
   )
 }
-
-export default FooterMenuDesktop

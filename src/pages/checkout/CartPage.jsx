@@ -3,10 +3,11 @@ import { SfButton, SfDrawer, useTrapFocus, SfIconAdd, SfIconRemove } from '@stor
 import { useCart } from '../../hooks/useCart'
 import { useProducts } from '../../hooks/useProducts'
 import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, ChevronRight, Ticket02, Trash03 } from '@untitled-ui/icons-react';
+import { ArrowLeft, ChevronRight, Heart, Ticket02, Trash03 } from '@untitled-ui/icons-react';
 import { Link } from 'react-router-dom'
 
 import { useRef } from 'react';
+import Dropdown from '../../components/Dropdown'
 
 export default function CartPage(){
   const { cart, cartCount, addToCart, removeFromCart, getTotal, isOpen, setIsOpen } = useCart()
@@ -21,6 +22,15 @@ export default function CartPage(){
   const total = getTotal() + delivery - discount
 
   useTrapFocus(drawerRef, { activeState: isOpen });
+
+  function generateOptions(amount = 1) {
+    const options = []
+    for (let i = 1; i <= amount; i++) {
+      options.push(<option key={i} value={i}>{i}</option>)
+    }
+
+    return options
+  }
 
   return (
     <>
@@ -61,7 +71,7 @@ export default function CartPage(){
                             <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
                           </div>
 
-                          <div className="flex flex-1 items-center justify-between text-sm">
+                          {/* <div className="flex flex-1 items-center justify-between text-sm">
                             <div className="flex items-center justify-between">
                               <div className="flex border border-neutral-300 rounded-md">
                                 <SfButton
@@ -96,8 +106,25 @@ export default function CartPage(){
                                 </SfButton>
                               </div>
                             </div>
+                          </div> */}
+                          <div className='flex gap-x-10'>
+                            <div className='flex flex-col gap-y-[10px]'>
+                              <h2 className='text-[#A2A2A2] text-xs'>ไซส์</h2>
+                              <select className='outline-none text-xs text-[#111111] w-10'>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                              </select>
+                            </div>
+                            <div className='flex flex-col gap-y-[10px]'>
+                              <h2 className='text-[#A2A2A2] text-xs'>ปริมาณ</h2>
+                              <select className='outline-none text-xs text-[#111111] w-10'>
+                                {generateOptions(15)}
+                              </select>
+                            </div>
                           </div>
-                          <div className="flex">
+                          <div className="flex gap-x-[30px] items-center">
+                            <Heart />
                             <Trash03 onClick={() => removeFromCart(itemCode)}/>
                           </div>
                         </div>

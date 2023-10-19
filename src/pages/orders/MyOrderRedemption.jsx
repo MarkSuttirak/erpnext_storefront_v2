@@ -8,7 +8,7 @@ import {
   SfScrollable
 } from '@storefront-ui/react';
 
-const MyOrderRedemption = () => {
+export default function MyOrderRedemption(){
   const { id } = useParams()
 
   const [code, setCode] = useState(true);
@@ -150,5 +150,3 @@ const MyOrderRedemption = () => {
     </>
   )
 }
-
-export default MyOrderRedemption

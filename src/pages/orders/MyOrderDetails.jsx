@@ -10,7 +10,7 @@ import newItem from "../../img/new-item.png"
 import Divider from "../../components/Divider";
 import { useMediaQuery } from "react-responsive";
 
-const MyOrderDetails = () => {
+export default function MyOrderDetails(){
   const { id } = useParams()
 
   const isDesktop = useMediaQuery({ minWidth: 1024 })
@@ -180,5 +180,3 @@ const MyOrderDetails = () => {
     </>
   )
 }
-
-export default MyOrderDetails

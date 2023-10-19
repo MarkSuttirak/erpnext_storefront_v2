@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from 'react'
 import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount } from 'frappe-react-sdk';
 import { File06, ImageIndentLeft, User02 } from '@untitled-ui/icons-react';
 
-const DesktopSidebar = () => {
+export default function DesktopSidebar(){
   const location = useLocation();
   const { currentUser, updateCurrentUser } = useFrappeAuth();
 
@@ -130,5 +130,3 @@ const DesktopSidebar = () => {
     </div>
   )
 }
-
-export default DesktopSidebar

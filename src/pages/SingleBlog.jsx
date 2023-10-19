@@ -3,7 +3,7 @@ import TitleHeader from '../components/TitleHeader'
 import { useFrappeGetDoc } from 'frappe-react-sdk';
 import { useParams } from 'react-router-dom';
 
-function SingleBlog() {
+export default function SingleBlog() {
     const { id } = useParams();
 
     const [rewardReddem, setRewardRedeem] = useState(false);
@@ -46,5 +46,3 @@ function SingleBlog() {
         </>
     )
 }
-
-export default SingleBlog

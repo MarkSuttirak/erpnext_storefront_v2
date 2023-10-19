@@ -4,7 +4,7 @@ import TitleHeader from '../components/TitleHeader';
 import CouponDesc from '../components/coupon/CouponDesc'
 import Breadcrumbs from '../components/Breadcrumbs';
 
-const MyCouponDetails = () => {
+export default function MyCouponDetails(){
   const { id } = useParams()
   const { data } = useFrappeGetDoc('Coupon Code', id, {
     fields: ['name', 'coupon_name', 'used', 'valid_upto', 'coupon_code', 'description', 'coupon_type', 'coupon_image', 'condition'],
@@ -31,5 +31,3 @@ const MyCouponDetails = () => {
     </>
   )
 }
-
-export default MyCouponDetails

@@ -6,7 +6,7 @@ import { useFrappeGetCall, useFrappePostCall } from 'frappe-react-sdk';
 import { useProducts } from '../hooks/useProducts'
 import WishlistProducts from '../components/WishlistProducts';
 
-const Wishlist = () => {
+export default function Wishlist(){
   const { getByItemCode, products } = useProducts()
 
   const { call, isCompleted, result } = useFrappePostCall('headless_e_commerce.api.place_order');
@@ -80,5 +80,3 @@ const Wishlist = () => {
     </>
   )
 }
-
-export default Wishlist;

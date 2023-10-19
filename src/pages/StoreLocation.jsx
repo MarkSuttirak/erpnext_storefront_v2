@@ -5,7 +5,7 @@ import centralrama9map from '../img/central-rama9-map.png'
 import { useRef } from "react";
 import { useFrappeGetDocList } from 'frappe-react-sdk'
 
-const StoreLocation = () => {
+export default function StoreLocation(){
   const { data } = useFrappeGetDocList('Store Location', {
     fields: ['name', 'store_name', 'location', 'store_image', 'opening_time_monday', 'closing_time_monday', 'opening_time_tuesday', 'closing_time_tuesday', 'opening_time_wednesday', 'closing_time_wednesday', 'opening_time_thursday', 'closing_time_thursday', 'opening_time_friday', 'closing_time_friday', 'opening_time_saturday', 'closing_time_saturday', 'opening_time_sunday', 'closing_time_sunday', 'contact_phone', 'map', 'store_location']
   })
@@ -133,5 +133,3 @@ const StoreLocation = () => {
     </>
   )
 }
-
-export default StoreLocation;

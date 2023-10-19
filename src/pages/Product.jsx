@@ -4,15 +4,6 @@ import { React, useState, useContext, useEffect, useRef } from 'react';
 import {
     SfButton,
     SfLink,
-    SfIconShoppingCart,
-    SfIconSell,
-    SfIconPackage,
-    SfIconRemove,
-    SfIconAdd,
-    SfIconWarehouse,
-    SfIconSafetyCheck,
-    SfIconShoppingCartCheckout,
-    SfIconFavorite,
     SfIconArrowForward,
     SfScrollable
 } from '@storefront-ui/react';
@@ -25,7 +16,7 @@ import ProductCard from '../components/ProductCard';
 import { useFrappeCreateDoc, useFrappeDeleteDoc, useFrappeGetDoc, useFrappeGetDocList } from 'frappe-react-sdk';
 import AddedToCartModal from '../components/modals/AddedToCartModal';
 
-const Product = () => {
+export default function Product(){
   const { id } = useParams();
   const { get, products } = useProducts();
   const { cart, addToCart, cartCount, setIsOpen } = useCart();
@@ -280,5 +271,3 @@ const Product = () => {
     </>
   )
 }
-
-export default Product

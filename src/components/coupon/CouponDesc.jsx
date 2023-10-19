@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Calendar, Download01, InfoCircle } from '@untitl
 import QRCode from "react-qr-code";
 import Barcode from 'react-barcode';
 
-const CouponDesc = ({proTitle, code, desc, date, condition, image}) => {
+export default function CouponDesc({proTitle, code, desc, date, condition, image}){
   const [currentPage, setCurrentPage] = useState(1)
   const [showDesc, setShowDesc] = useState(false)
 
@@ -117,5 +117,3 @@ const CouponDesc = ({proTitle, code, desc, date, condition, image}) => {
     </>
   )
 }
-
-export default CouponDesc

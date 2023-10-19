@@ -8,7 +8,7 @@ import Orders from "../../components/Orders";
 import DesktopSidebar from "../../components/desktop/DesktopSidebar";
 import TabButton from "../../components/TabButton";
 
-const MyOrder = () => {
+export default function MyOrder(){
   const { id } = useParams();
   const [myorderlist, setmyorderlist] = useState()
   const [currentSec, setCurrentSec] = useState(1)
@@ -157,5 +157,3 @@ const MyOrder = () => {
     </>
   )
 }
-
-export default MyOrder

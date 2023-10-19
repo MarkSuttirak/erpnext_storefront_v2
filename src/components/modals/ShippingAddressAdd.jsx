@@ -2,7 +2,6 @@ import { ArrowLeft, MarkerPin01, AlertTriangle, FileCheck02, XClose } from '@unt
 import { Link } from 'react-router-dom'
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import chevronDropdown from '../../img/chevron-right.svg'
 import TitleHeader from '../TitleHeader'
 import { useFrappePostCall } from 'frappe-react-sdk'
 import { useFormik } from 'formik'

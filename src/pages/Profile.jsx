@@ -3,7 +3,7 @@ import AddressForm from '../components/forms/AddressForm'
 import ProfileCard from '../components/ProfileCard'
 import AddressListing from '../components/AddressListing'
 
-const Profile = () => {
+export default function Profile(){
     const [randomKey, setrandomKey] = useState(0)
     return (
         <div className='p-4'>
@@ -13,5 +13,3 @@ const Profile = () => {
         </div>
     )
 }
-
-export default Profile

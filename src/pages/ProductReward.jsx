@@ -4,16 +4,6 @@ import { React, useState, useContext, useEffect } from 'react';
 import {
   SfButton,
   SfLink,
-  SfIconShoppingCart,
-  SfIconSell,
-  SfIconPackage,
-  SfIconRemove,
-  SfIconAdd,
-  SfIconWarehouse,
-  SfIconSafetyCheck,
-  SfIconShoppingCartCheckout,
-  SfIconFavorite,
-  SfIconArrowForward,
   SfScrollable
 } from '@storefront-ui/react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -24,7 +14,7 @@ import Accordion from '../components/Accordion';
 import ProductCard from '../components/ProductCard';
 import { useUser } from '../hooks/useUser';
 
-const ProductReward = () => {
+export default function ProductReward(){
   const [rewardReddem, setRewardRedeem] = useState(false);
   const { id } = useParams();
   const { user } = useUser();
@@ -205,5 +195,3 @@ const ProductReward = () => {
     </>
   )
 }
-
-export default ProductReward

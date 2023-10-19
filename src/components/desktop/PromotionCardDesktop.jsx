@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { SfIconCalendarToday } from "@storefront-ui/react";
 
-const PromotionCardDesktop = ({title, image, date, link, ratio}) => {
+export default function PromotionCardDesktop({title, image, date, link, ratio}){
   return (
     <Link to={link} className="w-full">
       <div className='pro-card-desktop' style={{aspectRatio:ratio}}>
@@ -14,5 +14,3 @@ const PromotionCardDesktop = ({title, image, date, link, ratio}) => {
     </Link>
   )
 }
-
-export default PromotionCardDesktop;

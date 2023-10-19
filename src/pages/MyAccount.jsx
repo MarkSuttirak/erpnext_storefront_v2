@@ -30,7 +30,7 @@ import { useUser } from '../hooks/useUser';
 import DesktopSidebar from '../components/desktop/DesktopSidebar'
 import { useFormik } from 'formik'
 
-const MyAccount = () => {
+export default function MyAccount(){
   const [bronzeLevel, setBronzeLevel] = useState(false);
   const [silverLevel, setSilverLevel] = useState(true);
 
@@ -117,87 +117,6 @@ const MyAccount = () => {
     )
   }
 
-  const settingsMenu = [
-    {
-      icon: <MarkerPin01 />,
-      title: 'ที่อยู่ในการจัดส่ง',
-      link: '/shipping-address'
-    },
-    {
-      icon: <CreditCard02 />,
-      title: 'การชำระเงิน',
-      link: '#'
-    },
-    {
-      icon: <Globe02 />,
-      title: 'ประเทศและภาษา',
-      link: '#'
-    },
-    {
-      icon: <Shield01 />,
-      title: 'ข้อกำหนดและเงื่อนไข',
-      link: '/terms-and-conditions'
-    },
-    {
-      icon: <Lock02 />,
-      title: 'ความยินยอมในการเปิดเผยข้อมูล',
-      link: '/consent'
-    }
-  ]
-
-  const helpMenu = [
-    {
-      icon: <Building02 />,
-      title: 'หน้าร้านของเรา',
-      link: '/store-location'
-    },
-    {
-      icon: <BookClosed />,
-      title: 'วิธีเก็บคะแนน',
-      link: '/collect-points'
-    },
-    {
-      icon: <Gift01 />,
-      title: 'วิธีแลกของรางวัล',
-      link: '/how-to-collect-rewards'
-    },
-    {
-      icon: <CreditCard02 />,
-      title: 'เงื่อนไขระดับของสมาชิก',
-      link: '/member-conditions'
-    },
-    {
-      icon: <AnnotationQuestion />,
-      title: 'คำถามที่พบบ่อย',
-      link: '#'
-    },
-    {
-      icon: <AnnotationDots />,
-      title: 'ติดต่อเรา',
-      link: '#'
-    }
-  ]
-
-  const additionMenu = [
-    {
-      icon: <ImageIndentLeft />,
-      title: 'เกี่ยวกับแอปฟิเคชั่น',
-      link: '#'
-    },
-    {
-      icon: <FileShield02 />,
-      title: 'นโยบายความเป็นส่วนตัว',
-      link: '#'
-    }
-  ]
-
-  const accountMenu = [
-    {
-      icon: <LogOut02 />,
-      title: 'ออกจากระบบ',
-      link: '/welcome'
-    },
-  ]
   return (
     <div className='bg-[#F4F4F4] lg:bg-white h-full lg:mt-[92px]'>
       <NavHeader />
@@ -423,5 +342,3 @@ const MyAccount = () => {
     </div>
   )
 }
-
-export default MyAccount
