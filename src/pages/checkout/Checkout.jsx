@@ -34,7 +34,7 @@ export default function Checkout(){
       <header className='bg-black text-white text-center py-[10px] lg:hidden'>
         กดรับของขวัญฟรี 🎁
       </header>
-      <div className='flex flex-col lg:gap-x-6 lg:flex-row justify-center lg:mt-[92px] desktop-sec lg:py-10 p-5'>
+      <div className='flex flex-col lg:gap-x-6 lg:flex-row justify-center lg:mt-[92px] desktop-sec lg:py-10 p-5 lg:mb-0 mb-[84px]'>
         <div>
           <DeliveryChoice onChange={(active) => setSelectedChoice(active)} value={selectedChoice} error={null}/>
           {selectedChoice === 'ship-to-my-address' && (<ShipToMyAddress />)}

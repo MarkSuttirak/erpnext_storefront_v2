@@ -84,9 +84,11 @@ export default function ShipToMyAddress(){
           เลือกสาขา
         </div>
 
-        <SfButton size="lg" className="w-full mt-4" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
-          ชำระเงิน
-        </SfButton>
+        <div className="fixed bottom-0 pb-5 w-full bg-white lg:static lg:p-0 max-w-[520px] lg:max-w-none">
+          <SfButton size="lg" className="mt-4 payment-btn" onClick={formik.handleSubmit}>
+            ชำระเงิน
+          </SfButton>
+        </div>
       </form>
     </>
   )

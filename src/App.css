@@ -54,12 +54,6 @@
   color:#010101
 }
 
-@media (min-width:1024px){
-  .text-order-name,.text-order-desc {
-    text-align:right;
-  }
-}
-
 @font-face {
   font-family: Eventpop;
   src: url('../src/fonts/eventpop/eventpop-medium.ttf');
@@ -358,6 +352,9 @@
     font-size:20px;
     font-weight:700;
   }
+  .text-order-name,.text-order-desc {
+    text-align:right;
+  }
 }
 
 @media (min-width:520px) and (max-width:1023px){
@@ -367,8 +364,16 @@
   }
 }
 
+.payment-btn {
+  width:100%;
+  background-color:black !important;
+}
+
 @media (max-width:1024px){
   .profile-head {
     filter:drop-shadow("0 4px 20px #6363630D")
+  }
+  .payment-btn {
+    width:calc(100% - 40px)
   }
 }

@@ -94,9 +94,6 @@ export default function ShipToMyAddress(){
           error={formik.errors.billing_address}
         />
         <TaxInvoiceRequest />
-
-        <Divider size={isDesktop ? 40 : 30} color="#F2F2F2"/>
-
         <ShippingOptions onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method}/>
         
         <Divider size={isDesktop ? 40 : 30} color="#F2F2F2"/>
@@ -107,7 +104,7 @@ export default function ShipToMyAddress(){
             <input type="text" id="coupon-pro" name="coupon-pro" placeholder="โปรดใส่โค้ดส่วนลด" className="border-b border-b-[#141414] w-full outline-none" autoComplete="off" onClick={(e) => e.target.focus()}/>
             <button className='border-[2px] border-black p-2 rounded-md w-[68px] text-sm'>ใช้โค้ด</button>
           </div>
-          <button className='flex gap-x-2 text-[#5B6CFF] mt-5 text-sm'>
+          <button className='flex gap-x-2 text-[#00B14F] mt-5 text-sm'>
             <Ticket02 />
             ใช้คูปองที่คุณเก็บไว้
           </button>
@@ -117,9 +114,11 @@ export default function ShipToMyAddress(){
 
         <PaymentMethods onChange={value => formik.setFieldValue('payment_method', value)} value={formik.values.payment_method} error={formik.errors.payment_method} />
 
-        <SfButton size="lg" className="w-full mt-4" style={{backgroundColor:"black"}} onClick={formik.handleSubmit}>
-          ชำระเงิน
-        </SfButton>
+        <div className="fixed bottom-0 pb-5 w-full bg-white lg:static lg:p-0 max-w-[520px] lg:max-w-none">
+          <SfButton size="lg" className="mt-4 payment-btn" onClick={formik.handleSubmit}>
+            ชำระเงิน
+          </SfButton>
+        </div>
       </form>
     </>
   )
