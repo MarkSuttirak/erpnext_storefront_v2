@@ -7,7 +7,7 @@ import { useUser } from '../hooks/useUser';
 import { useFrappePostCall } from "frappe-react-sdk"
 import { useFormik } from "formik"
 
-const EditProfile = () => {
+export default function EditProfile(){
   const { user } = useUser()
   const { call } = useFrappePostCall("honda_api.api.update_profile")
 
@@ -183,9 +183,6 @@ const EditProfile = () => {
     </>
   )
 }
-
-export default EditProfile
-
 
 export const ProfileForm = ({
   initialValues,

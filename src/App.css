@@ -344,6 +344,15 @@
   margin-top:53px
 }
 
+.loading-icon {
+  animation:loadingAnim 1s linear infinite;
+}
+
+@keyframes loadingAnim{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
 @media (min-width:1024px){
   .main-margintop {
     margin-top:92px;

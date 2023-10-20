@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import { ChevronRight } from "@untitled-ui/icons-react";
 import silverCard from '../../img/silvercard-reward.svg'
 import coin from '../../img/coin2.svg'
-import iconRightHead from '../../img/iconRightHead.svg'
-import bookClosed from "../../img/book-closed.svg"
 import transferPoints from '../../img/transfer-point.svg'
 import redeemPoints from '../../img/redeem-points.svg'
 import myTickets from '../../img/my-tickets.svg'
@@ -16,7 +14,7 @@ import ProductCard from "../../components/ProductCard";
 import NavHeader from "../../components/NavHeader";
 import { useUser } from '../../hooks/useUser';
 
-const RewardPage = () => {
+export default function RewardPage(){
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser()
 
@@ -27,7 +25,7 @@ const RewardPage = () => {
   const { products } = useProducts()
 
   useEffect(() => {
-      updateCurrentUser()
+    updateCurrentUser()
   }, [updateCurrentUser])
 
   return (
@@ -36,7 +34,7 @@ const RewardPage = () => {
       <header className="px-5 pb-[60px] bg-[#BBE5BB] w-full pt-20">
         {data && (
           <div className='flex items-center'>
-            <img src={data.user_image} width="64" className='rounded-[99px]'/>
+            <img src={`${import.meta.env.VITE_ERP_URL}${data.user_image}`} width="64" className='rounded-[99px]'/>
             <div className='ml-3 flex flex-col'>
               <span className='font-bold'>{data.full_name}</span>
               <Link className='flex items-center gap-x-1' to='/edit-profile'>
@@ -150,5 +148,3 @@ const RewardPage = () => {
     </>
   )
 }
-
-export default RewardPage

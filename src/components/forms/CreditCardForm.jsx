@@ -15,7 +15,7 @@ function classNames(...classes) {
 const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
 
-export default function AddressForm({onSuccess = () => {}, onSave = () => {}, data}){
+export default function CreditCardForm({onSuccess = () => {}, onSave = () => {}, data}){
   const { call, isCompleted, loading } = useFrappePostCall('headless_e_commerce.api.add_address')
 
   const formik = useFormik({
@@ -41,53 +41,57 @@ export default function AddressForm({onSuccess = () => {}, onSave = () => {}, da
   return (
     <form className='flex flex-col gap-y-3' onSubmit={submitData}>
       <div className='flex flex-col w-full'>
-        <label htmlFor='address_title'>ชื่อ-นามสกุล</label>
+        <label htmlFor='card_number'>หมายเลขบัตร</label>
         <input
-          name="address_title"
-          id="address_title"
+          name="card_number"
+          id="card_number"
           className="form-input mt-[11px]"
-          onChange={formik.handleChange}
-          value={formik.values.address_title}
-          invalid={formik.errors.address_title}
+          // onChange={formik.handleChange}
+          // value={formik.values.address_title}
+          // invalid={formik.errors.address_title}
         />
-        {formik.errors.address_title && (
-          <strong className="typography-error-sm text-negative-700 font-medium">กรุณากรอกชื่อผู้รับ</strong>
-        )}
+        {/* {formik.errors.address_title && (
+          <strong className="typography-error-sm text-negative-700 font-medium">กรุณากรอกหมายเลขบัตร</strong>
+        )} */}
       </div>
       <div className='flex flex-col w-full'>
-        <label htmlFor='address_line1'>ที่อยู่ (ห้องเลขที่, ตึก, ถนน)</label>
+        <label htmlFor='name'>ชื่อที่แสดงบนบัตร</label>
         <input
-          name="address_line1"
-          id="address_line1"
+          name="name"
+          id="name"
           className="form-input mt-[11px]"
-          onChange={formik.handleChange}
-          value={formik.values.address_line1}
-          invalid={formik.errors.address_line1}
+          // onChange={formik.handleChange}
+          // value={formik.values.address_line1}
+          // invalid={formik.errors.address_line1}
         />
-        {formik.errors.address_line1 && (
-          <strong className="typography-error-sm text-negative-700 font-medium">Please provide a street name</strong>
-        )}
+        {/* {formik.errors.address_line1 && (
+          <strong className="typography-error-sm text-negative-700 font-medium">กรุณากรอกชื่อที่แสดงบนบัตร</strong>
+        )} */}
       </div>
       
       <div className='lg:flex lg:gap-x-3'>
         <div className='flex flex-col w-full'>
-          <label htmlFor='state'>จังหวัด</label>
-          <select name="state" id='state' placeholder="-- Select --" className='form-input mt-[11px] appearance-none' style={{backgroundImage:"url(" + chevronDropdown + ")",backgroundPosition:"right 0.5rem center",backgroundRepeat:"no-repeat"}} onChange={formik.handleChange} value={formik.values.state} invalid={formik.errors.state}>
-            {provinces.map((province) => (
-              <option key={province} value={province}>{province}</option>
-            ))}
-          </select>
-          {formik.errors.state && (
-            <strong className="typography-error-sm text-negative-700 font-medium">{formik.errors.state}</strong>
-          )}
+          <label htmlFor='expiration_date'>วันหมดอายุ</label>
+          <input
+            name="expiration_date"
+            id="expiration_date"
+            className="form-input mt-[11px]"
+              // onChange={formik.handleChange}
+              // value={formik.values.address_line1}
+              // invalid={formik.errors.address_line1}
+          />
         </div>
         <div className='flex flex-col w-full'>
-          <label htmlFor='city'>เมือง / เขต</label>
-          <select name="city" id='city' className='form-input mt-[11px] appearance-none' placeholder="-- Select --" style={{backgroundImage:"url(" + chevronDropdown + ")",backgroundPosition:"right 0.5rem center",backgroundRepeat:"no-repeat"}} onChange={formik.handleChange} value={formik.values.city}>
-            {districts.map((district) => (
-              <option key={district} value={district}>{district}</option>
-            ))}
-          </select>
+          <label htmlFor='phone'>เบอร์โทรศัพท์</label>
+          <input
+            type='tel'
+            name="phone"
+            id="phone"
+            className="form-input mt-[11px]"
+              // onChange={formik.handleChange}
+              // value={formik.values.address_line1}
+              // invalid={formik.errors.address_line1}
+          />
         </div>
       </div>
 

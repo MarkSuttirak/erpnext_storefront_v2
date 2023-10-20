@@ -22,7 +22,7 @@ export default function ShipToMyAddress(){
 
   const branches = ['สาขา Siam Paragon ชั้น 3','สาขา Terminal 21 ชั้น 2','สาขา Emquatier']
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   const { isDesktop } = useMediaQuery({ minWidth: 1024 })
 

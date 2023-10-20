@@ -4,7 +4,7 @@ import TitleHeader from '../../components/TitleHeader';
 import { useLocation } from 'react-router-dom';
 import { useFrappeGetCall, useFrappeGetDoc, useFrappeGetDocList, useFrappeAuth } from 'frappe-react-sdk';
 
-function CollectPoints() {
+export default function CollectPoints() {
   const { currentUser } = useFrappeAuth()
 
   const { data } = useFrappeGetDoc('How To Collect Points', currentUser, {
@@ -26,5 +26,3 @@ function CollectPoints() {
     </>
   )
 }
-
-export default CollectPoints

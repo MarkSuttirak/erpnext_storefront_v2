@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { AlertTriangle } from '@untitled-ui/icons-react'
 
-export default function DeleteShippingAddress({openDelete, setOpenDelete}){
+export default function DeleteCreditCard({openDelete, setOpenDelete}){
   return (
     <Transition.Root show={openDelete} as={Fragment}>
       <Dialog as="div" className="relative z-[999]" onClose={setOpenDelete}>

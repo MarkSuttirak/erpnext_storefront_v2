@@ -4,15 +4,10 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import TitleHeader from '../TitleHeader'
 import { useFrappePostCall } from 'frappe-react-sdk'
-import { useFormik } from 'formik'
-import { addressSchema } from '../forms/addressFormSchema';
-import AddressForm from '../forms/AddressForm'
 import SavingModal from './SavingModal'
+import CreditCardForm from '../forms/CreditCardForm'
 
-const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
-const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
-
-export default function AddShippingAddress({openAdd, setOpenAdd}){
+export default function AddCreditCard({openAdd, setOpenAdd}){
   const [isSaving, setIsSaving] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -61,21 +56,10 @@ export default function AddShippingAddress({openAdd, setOpenAdd}){
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 py-4 lg:px-8 lg:py-6 text-left shadow-xl transition-all w-full max-w-[600px]">
                   <div className='flex items-center justify-between mb-8'>
-                    <h2 className='text-[#333333] text-[20px] font-bold'>เพิ่มที่อยู่ใหม่</h2>
+                    <h2 className='text-[#333333] text-[20px] font-bold'>เพิ่มบัตร</h2>
                     <XClose onClick={() => setOpenAdd(false)}/>
                   </div>
-                  <AddressForm onSuccess={completeSave} onSave={saveData} data={{
-                    address_title: "",
-                    address_line1: "",
-                    address_line2: "",
-                    city: provinces[0],
-                    state: districts[0],
-                    country: "Thailand",
-                    pincode: "",
-                    phone:"",
-                    is_primary_address: 0,
-                    is_shipping_address: 1,
-                  }}/>
+                  <CreditCardForm onSuccess={completeSave} onSave={saveData} data={null}/>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

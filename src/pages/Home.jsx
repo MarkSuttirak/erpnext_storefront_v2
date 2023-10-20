@@ -4,7 +4,7 @@ import PromotionCard from '../components/PromotionCard';
 import BlogCard from '../components/BlogCard';
 import { useProducts } from '../hooks/useProducts'
 import { useFrappeAuth, useFrappeGetDocCount, useFrappeGetDocList, useFrappeGetCall } from 'frappe-react-sdk';
-import { SfIconSearch, SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
+import { SfIconArrowForward } from '@storefront-ui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import banner from '../img/banner.png'
 import coin from '../img/coin.svg'
@@ -17,7 +17,7 @@ import { useUser } from '../hooks/useUser';
 import PromotionCardDesktop from '../components/desktop/PromotionCardDesktop';
 import { useMediaQuery } from 'react-responsive'
 
-const Home = () => {
+export default function Home(){
   const { updateCurrentUser } = useFrappeAuth();
   const { products, userdata } = useProducts();
   const [loading, setLoading] = useState(true);
@@ -116,10 +116,10 @@ const Home = () => {
           <div className="mt-[30px] lg:mt-[70px]">
             <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10'>
               <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>Celebrate Mid Year Festival</h2>
-              <button className='lg:flex hidden gap-x-2 px-5 mb-[14px] text-[#66BC89]'>
+              <Link to='/blog' className='lg:flex hidden gap-x-2 px-5 mb-[14px] text-[#66BC89]'>
                 ดูทั้งหมด
                 <SfIconArrowForward className="w-[18px] text-[#66BC89]"/>
-              </button>
+              </Link>
             </div>
 
             {isDesktop ? (
@@ -238,5 +238,3 @@ const Home = () => {
     </>
   )
 }
-
-export default Home

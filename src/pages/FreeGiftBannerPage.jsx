@@ -4,8 +4,7 @@ import promotion1 from '../img/promotion1.png'
 import promotion2 from '../img/promotion2.png'
 import PromotionCardDesktop from "../components/desktop/PromotionCardDesktop"
 
-const FreeGiftBannerPage = () => {
-  
+export default function FreeGiftBannerPage(){
   return (
     <>
       <TitleHeader title="ของขวัญและดีลต่างๆ" link="/" icon={<Gift01 />}/>
@@ -16,5 +15,3 @@ const FreeGiftBannerPage = () => {
     </>
   )
 }
-
-export default FreeGiftBannerPage

@@ -2,16 +2,11 @@ import { ArrowLeft, MarkerPin01, AlertTriangle, FileCheck02, XClose } from '@unt
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import chevronDropdown from '../../img/chevron-right.svg'
-import TitleHeader from '../../components/TitleHeader'
 import { useFrappeGetDoc, useFrappeUpdateDoc, useFrappeGetCall } from 'frappe-react-sdk'
-import AddressForm from '../forms/AddressForm'
 import SavingModal from './SavingModal'
+import CreditCardForm from '../forms/CreditCardForm'
 
-const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
-const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
-
-export default function EditShippingAddress({openUpdate, setOpenUpdate, rowNum}){
+export default function EditCreditCard({openUpdate, setOpenUpdate, rowNum}){
   const [province, setProvince] = useState('');
   const [modified, setModified] = useState(true);
 
@@ -68,22 +63,11 @@ export default function EditShippingAddress({openUpdate, setOpenUpdate, rowNum})
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 py-4 lg:px-8 lg:py-6 text-left shadow-xl transition-all w-full lg:w-fit max-w-[600px]">
                   <div className='flex items-center justify-between mb-8'>
-                    <h2 className='text-[#333333] text-[20px] font-bold'>แก้ไขที่อยู่การจัดส่ง</h2>
+                    <h2 className='text-[#333333] text-[20px] font-bold'>แก้ไขบัตร</h2>
                     <XClose onClick={() => setOpenUpdate(false)}/>
                   </div>
                   {!isSaving ? (
-                    <AddressForm onSuccess={completeSave} onSave={saveData} data={{
-                      address_title: dataShipping?.message.address_title,
-                      address_line1: dataShipping?.message.address_line1,
-                      address_line2: dataShipping?.message.address_line2,
-                      city: dataShipping?.message.city,
-                      state: dataShipping?.message.state,
-                      country: dataShipping?.message.country,
-                      pincode: dataShipping?.message.pincode,
-                      is_primary_address: 0,
-                      is_shipping_address: 1,
-                      phone:dataShipping?.message.phone,
-                    }}/>
+                    <CreditCardForm onSuccess={completeSave} onSave={saveData} data={null}/>
                   ) : (
                     <>
                       <div>

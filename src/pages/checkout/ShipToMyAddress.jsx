@@ -22,7 +22,7 @@ export default function ShipToMyAddress(){
   const navigate = useNavigate();
   const [acknowledged, setAcknowledged] = useState(false)
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   const { isDesktop } = useMediaQuery({ minWidth: 1024 })
 

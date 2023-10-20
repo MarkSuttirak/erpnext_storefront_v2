@@ -4,7 +4,7 @@ import bannerBagProduct from "../../img/banner-product.png"
 import giftIcon from "../../img/giftIcon.svg"
 import { useState } from 'react'
 
-function RewardDetails() {
+export default function RewardDetails() {
   const [rewardReddem, setRewardRedeem] = useState(false);
 
   const hanndleCouponClick = () => {
@@ -54,5 +54,3 @@ function RewardDetails() {
     </>
   )
 }
-
-export default RewardDetails

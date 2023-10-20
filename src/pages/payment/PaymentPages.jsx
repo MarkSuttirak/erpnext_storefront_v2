@@ -9,6 +9,8 @@ import DesktopSidebar from '../../components/desktop/DesktopSidebar'
 import { useFormik } from 'formik'
 import AddressForm from '../../components/forms/AddressForm'
 import visaIcon from '../../img/visa-icon.svg'
+import AddShippingAddress from '../../components/modals/ShippingAddressAdd'
+import EditShippingAddress from '../../components/modals/ShippingAddressEdit'
 
 const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
@@ -241,112 +243,8 @@ const PaymentPages = () => {
         </Dialog>
       </Transition.Root>
 
-      <Transition.Root show={openAdd} as={Fragment}>
-        <Dialog as="div" className="relative z-[999]" onClose={setOpenAdd}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 py-4 lg:px-8 lg:py-6 text-left shadow-xl transition-all w-full max-w-[600px]">
-                  <div className='flex items-center justify-between mb-8'>
-                    <h2 className='text-[#333333] text-[20px] font-bold'>เพิ่มที่อยู่ใหม่</h2>
-                    <XClose onClick={() => setOpenAdd(false)}/>
-                  </div>
-                  {!isSaving ? (
-                    <AddressForm onSuccess={() => setOpenAdd(false)}/>
-                  ) : (
-                    <>
-                      <div>
-                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#00B14F]">
-                          <FileCheck02 color="white"/>
-                        </div>
-                        <div className="mt-3 text-center sm:mt-5">
-                          <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
-                            บันทึกที่อยู่ เรียบร้อยแล้ว
-                          </Dialog.Title>
-                          <div className="mt-2">
-                            <p className="text-xs text-[#8A8A8A]">
-                            คุณได้ทำการบันทึกที่อยู่เรียบร้อยแล้ว<br/> หากต้องการเปลี่ยนแปลงข้อมูลสามารถแก้ไขได้
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mt-6">
-                        <Link
-                          to="/shipping-address"
-                          type="button"
-                          className='w-full bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'
-                        >
-                          ตกลง
-                        </Link>
-                      </div>
-                    </>
-                  )}
-                  
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition.Root>
-
-      <Transition.Root show={openUpdate} as={Fragment}>
-        <Dialog as="div" className="relative z-[999]" onClose={setOpenUpdate}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 py-4 lg:px-8 lg:py-6 text-left shadow-xl transition-all w-full lg:w-fit max-w-[600px]">
-                  <div className='flex items-center justify-between mb-8'>
-                    <h2 className='text-[#333333] text-[20px] font-bold'>แก้ไขที่อยู่การจัดส่ง</h2>
-                    <XClose onClick={() => setOpenUpdate(false)}/>
-                  </div>
-                  
-                  
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition.Root>
+      <AddShippingAddress openAdd={openAdd} setOpenAdd={setOpenAdd}/>
+      <EditShippingAddress openUpdate={openUpdate} setOpenUpdate={setOpenUpdate}/>
     </>
   )
 }

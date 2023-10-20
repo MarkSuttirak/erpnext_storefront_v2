@@ -5,7 +5,7 @@ import couponImaage2 from '../../img/couponImage2.png'
 import couponImaage3 from '../../img/couponImage3.png'
 import couponImaage4 from '../../img/couponImage4.png'
 
-function RewardCouponPage() {
+export default function RewardCouponPage() {
   const [currentTab, setCurrentTab] = useState('รางวัลของฉัน');
   const tabData = [
     {
@@ -179,5 +179,3 @@ function RewardCouponPage() {
     </>
   );
 }
-
-export default RewardCouponPage;
