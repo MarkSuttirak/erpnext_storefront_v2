@@ -39,43 +39,25 @@ export default function StoreLocationDetails(){
           <img src={`${import.meta.env.VITE_ERP_URL}${data?.store_image}`} className="rounded-[8px] w-full aspect-[3/2] object-cover"/>
         </div>
 
-        <p className="text-[#333333] text-xs my-5">{data?.location}</p>
-        <a href={`tel:${data?.contact_phone}`} className='w-full bg-white border border-[#111111] text-[#111111] rounded-[9px] p-3 flex justify-center items-center gap-x-[10px] text-xs font-bold'>
-          <PhoneCall01 viewBox='0 0 24 24' width='18' height='18' />
-          ติดต่อสาขา
-        </a>
+        <div className="mt-6 lg:mt-[50px]">
+          <h1 className="text-base text-[#111111] lg:text-[26px] mb-6 font-bold">{id}</h1>
+          <h2 className="text-[#111111] text-[15px] font-bold mb-[10px]">รายละเอียดสถานที่</h2>
+          <div className="flex flex-col gap-y-[10px] ml-5">
+            <p className="text-[#8A8A8A] text-xs">{data?.location}</p>
+            <p className="text-[#8A8A8A] text-xs">เบอร์ติดต่อ : {data?.contact_phone}</p>
+          </div>
+        </div>
 
         <div className="mt-5">
           <h2 className="text-[#111111] text-[15px] font-bold mb-[10px]">เวลาเปิด-ปิด</h2>
-          <div className="flex flex-col gap-y-[10px]">
-            <div className="flex text-[#333333] text-xs">
-              <p className="w-[40%]">วันจันทร์:</p>
-              <p className="w-[60%]">{data?.opening_time_monday} - {data?.closing_time_monday}</p>
-            </div>
-            <div className="flex text-[#333333] text-xs">
-              <p className="w-[40%]">วันอังคาร:</p>
-              <p className="w-[60%]">{data?.opening_time_tuesday} - {data?.closing_time_tuesday}</p>
-            </div>
-            <div className="flex text-[#333333] text-xs">
-              <p className="w-[40%]">วันพุธ:</p>
-              <p className="w-[60%]">{data?.opening_time_wednesday} - {data?.closing_time_wednesday}</p>
-            </div>
-            <div className="flex text-[#333333] text-xs">
-              <p className="w-[40%]">วันพฤหัสบดี:</p>
-              <p className="w-[60%]">{data?.opening_time_thursday} - {data?.closing_time_thursday}</p>
-            </div>
-            <div className="flex text-[#333333] text-xs">
-              <p className="w-[40%]">วันศุกร์:</p>
-              <p className="w-[60%]">{data?.opening_time_friday} - {data?.closing_time_friday}</p>
-            </div>
-            <div className="flex text-[#333333] text-xs">
-              <p className="w-[40%]">วันเสาร์:</p>
-              <p className="w-[60%]">{data?.opening_time_saturday} - {data?.closing_time_saturday}</p>
-            </div>
-            <div className="flex text-[#333333] text-xs">
-              <p className="w-[40%]">วันอาทิตย์:</p>
-              <p className="w-[60%]">{data?.opening_time_sunday} - {data?.closing_time_sunday}</p>
-            </div>
+          <div className="flex flex-col gap-y-[10px] ml-5">
+            <p className="text-[#8A8A8A] text-xs">วันจันทร์: {data?.opening_time_monday} - {data?.closing_time_monday}</p>
+            <p className="text-[#8A8A8A] text-xs">วันอังคาร: {data?.opening_time_tuesday} - {data?.closing_time_tuesday}</p>
+            <p className="text-[#8A8A8A] text-xs">วันพุธ: {data?.opening_time_wednesday} - {data?.closing_time_wednesday}</p>
+            <p className="text-[#8A8A8A] text-xs">วันพฤหัสบดี: {data?.opening_time_thursday} - {data?.closing_time_thursday}</p>
+            <p className="text-[#8A8A8A] text-xs">วันศุกร์: {data?.opening_time_friday} - {data?.closing_time_friday}</p>
+            <p className="text-[#8A8A8A] text-xs">วันเสาร์: {data?.opening_time_saturday} - {data?.closing_time_saturday}</p>
+            <p className="text-[#8A8A8A] text-xs">วันอาทิตย์: {data?.opening_time_sunday} - {data?.closing_time_sunday}</p>
           </div>
         </div>
 
@@ -83,7 +65,7 @@ export default function StoreLocationDetails(){
           <h2 className="text-[#111111] text-[15px] font-bold mb-[10px]">สถานที่ตั้ง</h2>
           {data?.map}
 
-          <p className="mt-[10px] text-xs text-[#333333]">{data?.store_location}</p>
+          <p className="text-[#8A8A8A] text-xs ml-5">{data?.store_location}</p>
         </div>
       </main>
     </>
