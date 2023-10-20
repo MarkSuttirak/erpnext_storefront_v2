@@ -38,12 +38,8 @@ const ShopPage = () => {
   const pages = [
     {
       name: 'ร้านค้า',
-      href: '/categories'
-    },
-    {
-      name: 'โอ้โห นี่มัน',
       href: ''
-    }
+    },
   ]
 
   return (
@@ -64,52 +60,50 @@ const ShopPage = () => {
       </div>
 
       {/* Desktop version */}
-      <div className="desktop-sec hidden lg:block">
-        <main className='main-margintop p-5'>
-          <Breadcrumbs pages={pages}/>
-          <div className="flex justify-between mb-[48px]">
-            <h2 className='header-title'>ร้านค้า</h2>
-            <div className="flex gap-x-10">
-              <button className="flex items-center gap-x-[6px]" onClick={() => {
-                if (showFilter){
-                  hideFilterProduct()
-                } else {
-                  showFilterProduct()
-                }
-              }}>
-                {showFilterBtn}
-                <FilterLines />
-              </button>
-              <button className='flex flex-1 items-center gap-x-[6px]'>
-                เรียงตาม
-                <ChevronDown />
-              </button>
-            </div>
+      <main className='main-margintop p-5 desktop-sec lg:py-10 hidden lg:block'>
+        <Breadcrumbs pages={pages}/>
+        <div className="flex justify-between mb-[48px]">
+          <h2 className='header-title'>ร้านค้า</h2>
+          <div className="flex gap-x-10">
+            <button className="flex items-center gap-x-[6px]" onClick={() => {
+              if (showFilter){
+                hideFilterProduct()
+              } else {
+                showFilterProduct()
+              }
+            }}>
+              {showFilterBtn}
+              <FilterLines />
+            </button>
+            <button className='flex flex-1 items-center gap-x-[6px]'>
+              เรียงตาม
+              <ChevronDown />
+            </button>
           </div>
+        </div>
 
-          <section className="flex gap-x-20">
-            {showFilter ? (
-              <div className="flex flex-col">
-                <ShopPageFilter />
-                <ShopPageType />
-              </div>
-            ) : null}
-            <div className="flex gap-x-5 mx-auto grid grid-cols-3">
-              {(products ?? []).map((product) => (
-                <ProductCard
-                  key={product.item_code}
-                  desc={product.item_group}
-                  title={product.item_name}
-                  productId={product.name}
-                  itemCode={product.item_code}
-                  price={product.formatted_price}
-                  thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
-                />
-              ))}
+        <section className="flex gap-x-20">
+          {showFilter ? (
+            <div className="flex flex-col">
+              <ShopPageFilter />
+              <ShopPageType />
             </div>
-          </section>
-        </main>
-      </div>
+          ) : null}
+          <div className="flex gap-x-5 mx-auto grid grid-cols-3">
+            {(products ?? []).map((product) => (
+              <ProductCard
+                key={product.item_code}
+                desc={product.item_group}
+                title={product.item_name}
+                productId={product.name}
+                itemCode={product.item_code}
+                price={product.formatted_price}
+                thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
+              />
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   )
 }

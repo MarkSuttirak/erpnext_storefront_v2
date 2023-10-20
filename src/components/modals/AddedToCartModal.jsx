@@ -57,7 +57,7 @@ export default function AddedToCartModal({isModalOpen, setIsModalOpen}){
                           <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
                         </div>
 
-                        <div className='flex gap-x-10'>
+                        <div className='flex gap-x-10 mt-4'>
                           <div className='flex flex-col gap-y-[10px]'>
                             <h2 className='text-[#A2A2A2] text-xs'>ไซส์</h2>
                             <select className='outline-none text-xs text-[#111111] w-10'>

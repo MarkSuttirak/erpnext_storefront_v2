@@ -41,7 +41,7 @@ const CategoryPage = () => {
           <ul className="flex">
             <li className="px-10 py-5" onClick={() => setSelectedCate('')}>ALL</li>
             {(dataItemCate ?? []).map((d) => 
-              <li className="px-10 py-5" key={d.name} onClick={() => setSelectedCate(d.name)}>{d.item_category}</li>
+              <li className="px-10 py-5 cursor-pointer" key={d.name} onClick={() => setSelectedCate(d.name)}>{d.item_category}</li>
             )}
           </ul>
         </nav>

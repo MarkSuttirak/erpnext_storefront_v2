@@ -50,15 +50,16 @@ const ShopPageMobile = ({setCurrentPage}) => {
           <button onClick={handleClickToType} className='block p-4 w-1/2 text-center'>ลักษณะสินค้า</button>
         </div>
 
-        <section className="p-5 flex flex-wrap justify-between gap-y-[14px]">
+        <section className="p-5 grid gap-y-[14px]">
           {(products ?? []).map((product) => (
             <ProductCard
               key={product.item_code}
-              title={product.name}
+              desc={product.item_group}
+              title={product.item_name}
               productId={product.name}
               itemCode={product.item_code}
               price={product.formatted_price}
-              thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} 
+              thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
             />
           ))}
         </section>

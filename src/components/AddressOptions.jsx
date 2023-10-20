@@ -2,6 +2,7 @@ import AddressCard from "./AddressCard";
 import { useFrappeGetCall } from "frappe-react-sdk";
 import EditShippingAddress from "./modals/ShippingAddressEdit";
 import { useState } from "react";
+import DeleteShippingAddress from "./modals/ShippingAddressDelete";
 
 export default function AddressOptions({
   value,
@@ -10,6 +11,7 @@ export default function AddressOptions({
 }) {
   const { data } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-0`)
   const [openUpdate, setOpenUpdate] = useState(false)
+  const [openDelete, setOpenDelete] = useState(false)
 
   return (
     <>
@@ -31,7 +33,10 @@ export default function AddressOptions({
                     e.preventDefault();
                     setOpenUpdate(true);
                   }}>แก้ไข</button>
-                  <button className="font-bold text-sm text-[#333333]">ลบ</button>
+                  <button className="font-bold text-sm text-[#333333]" onClick={(e) => {
+                    e.preventDefault();
+                    setOpenDelete(true);
+                  }}>ลบ</button>
                 </div>
               </div>
             ))}
@@ -45,6 +50,7 @@ export default function AddressOptions({
       }
 
       <EditShippingAddress setOpenUpdate={setOpenUpdate} openUpdate={openUpdate}/>
+      <DeleteShippingAddress setOpenDelete={setOpenDelete} openDelete={openDelete}/>
     </>
   );
 }

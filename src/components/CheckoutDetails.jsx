@@ -64,7 +64,7 @@ export default function CheckoutDetails(){
           }
         </ul>
         <div className="pt-6 lg:pt-0 border-t lg:border-b lg:pb-6 lg:border-t-0 border-neutral-200">
-          <h2 className='header-title'>รายละเอียดการชำระเงิน</h2>
+          <h2 className='header-title mb-[10px]'>รายละเอียดการชำระเงิน</h2>
           <div className="flex flex-col gap-y-4 justify-between typography-text-base">
             <div className="flex justify-between items-center text-[#424242]">
               <h2 className='font-bold'>ยอดรวม</h2>
