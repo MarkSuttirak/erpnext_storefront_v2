@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Breadcrumbs({pages}) {
   return (
     <nav className="hidden lg:flex mb-10" aria-label="Breadcrumb">
-      <ol role="list" className="flex items-center space-x-3">
+      <ol role="list" className="flex items-center space-x-[10px]">
         <li key='home'>
           <Link
             to='/'
@@ -17,7 +17,7 @@ export default function Breadcrumbs({pages}) {
           <li key={page.name}>
             <div className="flex items-center">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-gray-300"
+                className="mr-[10px] h-5 w-5 flex-shrink-0 text-gray-300"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 20 20"
