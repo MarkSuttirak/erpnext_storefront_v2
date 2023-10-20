@@ -26,7 +26,7 @@ export default function HeaderDesktop(){
       label: '',
       ariaLabel: 'Wishlist',
       role: 'button',
-      onClick: () => null
+      onClick: () => navigate('/wishlist')
     },
     {
       icon: (<ShoppingBag01 viewBox='0 0 24 24' width="22" height="22"/>),
@@ -43,9 +43,9 @@ export default function HeaderDesktop(){
         <div className='max-w-[1200px] mx-auto w-full flex justify-between'>
           <p className='text-[#424242] text-sm'>12.12 โปรโมชั่นทั้งเว็บไซต์</p>
           <div className='flex gap-x-2'>
-            <button className='text-[#424242] text-sm'>หน้าร้านของเรา</button>
+            <Link to='/store-location' className='text-[#424242] text-sm'>หน้าร้านของเรา</Link>
             <div className='border-l border-l-[#424242] w-[1px] h-full' />
-            <button className='text-[#424242] text-sm'>ติดต่อร้านค้า</button>
+            <Link className='text-[#424242] text-sm'>ติดต่อร้านค้า</Link>
             <div className='border-l border-l-[#424242] w-[1px] h-full' />
             {currentUser ? (
               <Link to="/my-account" className='text-[#424242] text-sm'>{currentUser}</Link>
@@ -91,22 +91,22 @@ export default function HeaderDesktop(){
             </div>
             <div className="flex flex-row flex-nowrap">
                 {actionItems.map((actionItem) => (
-                    <SfButton
-                      key={actionItem.ariaLabel}
-                      className="relative ml-1 rounded-[99px] hover:bg-white"
-                      aria-label={actionItem.ariaLabel}
-                      variant="tertiary"
-                      square
-                      slotPrefix={actionItem.icon}
-                      onClick={actionItem.onClick}
-                    >
-                      {actionItem.ariaLabel === 'Cart' && (
-                        <SfBadge content={cartCount} />
-                      )}
-                      {actionItem.role === 'login' && (
-                        <p className="hidden xl:inline-flex whitespace-nowrap">{actionItem.label}</p>
-                      )}
-                    </SfButton>
+                  <SfButton
+                    key={actionItem.ariaLabel}
+                    className="relative ml-1 rounded-[99px] hover:bg-white"
+                    aria-label={actionItem.ariaLabel}
+                    variant="tertiary"
+                    square
+                    slotPrefix={actionItem.icon}
+                    onClick={actionItem.onClick}
+                  >
+                    {actionItem.ariaLabel === 'Cart' && (
+                      <SfBadge content={cartCount} />
+                    )}
+                    {actionItem.role === 'login' && (
+                      <p className="hidden xl:inline-flex whitespace-nowrap">{actionItem.label}</p>
+                    )}
+                  </SfButton>
                 ))}
               </div>
           </nav>

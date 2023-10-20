@@ -30,7 +30,7 @@ export default function Wishlist(){
           </button>
         </div>
       </header>
-      <main className='main-margintop px-5 pt-10'>
+      <main className='main-margintop px-5 pt-10 desktop-sec'>
         <h2 className='header-title hidden lg:flex justify-center mb-10'>รายการสินค้าที่ถูกใจ</h2>
         <nav className="border-b border-b-[#F2F2F2]">
           <ul className="flex">
@@ -64,7 +64,7 @@ export default function Wishlist(){
                 image={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} 
                 name={product.item_name} 
                 price={product.formatted_price} 
-                desc='Salmon'/>
+                desc={product.item_group}/>
             ))}
             {/* {
               Object.entries(cart).map(([itemCode, qty]) => {

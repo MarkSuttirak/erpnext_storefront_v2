@@ -10,9 +10,7 @@ export default function WishlistProducts({key, name, price, image, desc}){
         <div className="ml-4 flex flex-1 flex-col">
           <div>
             <div className="flex justify-between text-base font-medium text-gray-900">
-              <h3>
-                <a href="#">{name}</a>
-              </h3>
+              <h3>{name}</h3>
               <p className="ml-4">{price}</p>
             </div>
             <p className="mt-1 text-sm text-gray-500 mb-5">{desc}</p>
@@ -31,12 +29,10 @@ export default function WishlistProducts({key, name, price, image, desc}){
         </div>
 
         <div className="flex flex-1 flex-col">
-          <div>
-            <div className="flex flex-col">
-              <h3>{name}</h3>
-              <p className="mt-[13px] text-base text-[#625C5C] mb-5">{desc}</p>
-              <p className="text-[#111111] text-[20px] mt-[10px]">{price}</p>
-            </div>
+          <div className="flex flex-col mt-6">
+            <p className="text-base text-[#8A8A8A] mb-1">{desc}</p>
+            <h3 className="text-[15px] text-[#111111] font-bold">{name}</h3>
+            <p className="text-[#111111] text-[20px] mt-[10px]">{price}</p>
           </div>
         </div>
       </li>

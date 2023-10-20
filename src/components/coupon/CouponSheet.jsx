@@ -15,7 +15,7 @@ export default function CouponSheet({proTitle, date, used, image, type, link}){
           </div>
           <div className='flex justify-between mt-[9px]'>
             <p className='text-[#989898] text-xs'>ใช้ได้ถึง {date}</p>
-            <p className={`text-xs font-bold ${used === 1 ? "text-[#8A8A8A]" : "text-[#00B14F]"}`}>ใช้เลย</p>
+            <p className={`text-xs font-bold ${used === 1 ? "text-[#8A8A8A]" : "text-[#00B14F]"}`}>ดูรายละเอียด</p>
           </div>
         </div>
       </div>
