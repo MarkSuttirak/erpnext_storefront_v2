@@ -14,12 +14,15 @@ import Divider from "../../components/Divider";
 import { useMediaQuery } from "react-responsive";
 import TaxInvoiceRequest from "../../components/TaxInvoiceRequest";
 import ShippingOptions from "../../components/ShippingOptions";
+import CouponModal from "../../components/modals/CouponModal";
 
 export default function ShipToMyAddress(){
   const { user } = useUser()
   const { cart, cartCount, getTotal, resetCart } = useCart();
   const navigate = useNavigate();
   const [acknowledged, setAcknowledged] = useState(false)
+
+  const [isOpen, setIsOpen] = useState(true)
 
   const { isDesktop } = useMediaQuery({ minWidth: 1024 })
 
@@ -108,7 +111,7 @@ export default function ShipToMyAddress(){
             <input type="text" id="coupon-pro" name="coupon-pro" placeholder="โปรดใส่โค้ดส่วนลด" className="border-b border-b-[#141414] w-full outline-none" autoComplete="off" onClick={(e) => e.target.focus()}/>
             <button className='border-[2px] border-black p-2 rounded-md w-[68px] text-sm'>ใช้โค้ด</button>
           </div>
-          <button className='flex gap-x-2 text-[#00B14F] mt-5 text-sm'>
+          <button className='flex gap-x-2 text-[#00B14F] mt-5 text-sm' onClick={(e) => {e.preventDefault();setIsOpen(true)}}>
             <Ticket02 />
             ใช้คูปองที่คุณเก็บไว้
           </button>
@@ -130,6 +133,8 @@ export default function ShipToMyAddress(){
           </SfButton>
         </div>
       </form>
+
+      <CouponModal isOpen={isOpen} setIsOpen={setIsOpen}/>
     </>
   )
 }

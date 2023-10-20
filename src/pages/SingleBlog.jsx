@@ -2,47 +2,48 @@ import React, { useState } from 'react'
 import TitleHeader from '../components/TitleHeader'
 import { useFrappeGetDoc } from 'frappe-react-sdk';
 import { useParams } from 'react-router-dom';
+import { Calendar } from '@untitled-ui/icons-react';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function SingleBlog() {
-    const { id } = useParams();
+  const { id } = useParams();
 
-    const [rewardReddem, setRewardRedeem] = useState(false);
+  const { data, isLoading, error } = useFrappeGetDoc('Blog Post', id, {
+    fields: ['name','title','content','meta_image','published_on','blog_category','blogger']
+  })
 
-    const hanndleCouponClick = () => {
-        setRewardRedeem(true)
-    }
+  return (
+    <>
+      <TitleHeader link={'/'} title={'รายละเอียด'} />
+      <main className='main-margintop desktop-sec lg:py-10'>
+        <Breadcrumbs pages={[{
+          href:'/blog',
+          name:'บทความ'
+        }, {
+          href:'',
+          name:id
+        }]}/>
+        <img className={`w-full aspect-[3/2] object-cover lg:rounded-lg`} src={`${import.meta.env.VITE_ERP_URL}${data?.meta_image}`} alt="" />
 
-    const { data, isLoading, error } = useFrappeGetDoc('Blog Post', id, {
-        fields: ['name','title','content','meta_image','published_on','blog_category']
-    })
+        <section className='px-5 py-6 lg:px-0'>
+          <h2 className='text-base lg:text-[26px] text-[#111111] font-bold'>{data?.title}</h2>
+          <div className='flex items-center gap-x-3 mt-[18px] mb-3 text-xs lg:text-lg'>
+            <div className='h-5 w-5 bg-[#646464] rounded-full'/>
+            {data?.blogger}
+          </div>
+          <div className='flex items-center gap-x-3'>
+            <Calendar color='#8A8A8A'/>
+            <p className='text-xs text-[#8A8A8A] lg:text-lg'>เขียนเมื่อ {data?.published_on}</p>
+          </div>
 
-    return (
-        <>
-            {data && (
-                <>
-                <TitleHeader link={'/'} title={'รายละเอียด'} />
-                <img className={`mt-[53px] ${rewardReddem == true ? 'opacity-[50%]' : 'opacity-[100%]'} `} src={`${import.meta.env.VITE_ERP_URL}${data.meta_image}`} alt="" />
-                <div className="w-[354px] relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #2323231A", }}>
-                    <div className='text-center'>
-                        <button className='bg-[#FDF0E4] w-[82px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >{data.blog_category}</button>
-                        <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{data.title}</p>
-                    </div>
-                    {data?.published_on !== ' ' ? (
-                        <p className='mt-5 text-[#8A8A8A] font-normal text-xs leading-[17.4px] text-center'>ระยะเวลา</p>
-                    ) : null}
-                    <p className='text-[#F0592A] font-bold text-sm leading-[24px] mt-1 text-center'>{data.published_on}</p>
-                </div>
-    
-                <div className='px-[18px] pt-[30px]'>
-                    <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียด</h4>
-                    {data && (
-                    <div className="pt-2">
-                      <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.content}}/>
-                    </div>
-                  )}
-                </div>
-            </>
-            )}
-        </>
-    )
+          <div className='mt-[30px]'>
+            <h4 className='header-title'>รายละเอียด</h4>
+            <div className="pt-2">
+              <div className='info-desc ml-5' dangerouslySetInnerHTML={{__html:data?.content}}/>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
+  )
 }

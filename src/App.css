@@ -65,6 +65,11 @@
   font-weight: bold
 }
 
+.info-desc {
+  font-size:12px;
+  color:#424242
+}
+
 .info-desc ol,.info-desc ul,.info-desc menu {
   list-style: revert !important;
   margin: revert !important;
@@ -356,6 +361,9 @@
   }
   .text-order-name,.text-order-desc {
     text-align:right;
+  }
+  .info-desc {
+    font-size:20px;
   }
 }
 

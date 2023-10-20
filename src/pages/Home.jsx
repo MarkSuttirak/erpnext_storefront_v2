@@ -50,12 +50,12 @@ const Home = () => {
   const { data:dataBlog, isLoading:isLoadingBlogp, error:errorBlog } = useFrappeGetDocList('Blog Post', {
     fields: ['name', 'title', 'meta_image', 'published_on', 'post_display'],
     filters: [['post_display', '=', 'Storefront']],
-    limit: isDesktop ? 2 : undefined
+    limit: isDesktop ? 3 : undefined
   })
 
   const { data:dataBanner, isLoading:isLoadingBanner, error:errorBanner } = useFrappeGetDocList('Promotion Banner', {
     fields: ['name', 'title', 'image', 'expiration_date'],
-    limit: isDesktop ? 3 : undefined
+    limit: isDesktop ? 2 : undefined
   })
 
   return (

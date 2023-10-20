@@ -12,7 +12,7 @@ export default function CouponModal({isOpen, setIsOpen}) {
 
   const CouponSheet = ({proTitle, date, used, type, link}) => {
     return (
-      <div className='border-b border-b-[#E3E3E3] flex relative lg:border lg:border-[#E3E3E3] lg:rounded-lg w-full h-full'>
+      <div className='flex relative border border-[#E3E3E3] rounded-lg w-full h-full'>
         <div className='flex flex-col align-between p-5 w-full'>
           <div>
             <p className={`px-[10px] py-1 text-[10px] mb-[6px] inline-block rounded-[99px] font-bold ${used === 1 ? 'bg-[#F0F0F0] text-[#8A8A8A]' : 'bg-[#E9F6ED] text-[#00B14F]'}`}>{type}</p>
@@ -43,7 +43,7 @@ export default function CouponModal({isOpen, setIsOpen}) {
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex min-h-full items-end justify-center p-4 text-center items-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -58,7 +58,7 @@ export default function CouponModal({isOpen, setIsOpen}) {
                 <div className='flex flex-col gap-y-[30px]'>
                   <div className='flex justify-between items-center'>
                     <h2 className='header-title'>โค้ดส่วนลด</h2>
-                    <XClose />
+                    <XClose onClick={() => setIsOpen(false)}/>
                   </div>
                   {(couponLists ?? []).map((c) => 
                     <CouponSheet key={c.name} proTitle={c.coupon_name} date={c.valid_upto} used={c.used} type={c.coupon_type} link={`/my-coupon-details/${c.name}`}/>

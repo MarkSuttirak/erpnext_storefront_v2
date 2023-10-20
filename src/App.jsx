@@ -47,6 +47,7 @@ import HeaderDesktop from "./components/desktop/HeaderDesktop";
 import ShopPageViewed from "./pages/shoppage/ShopPage-viewed";
 import PaymentPages from "./pages/payment/PaymentPages";
 import CartPage from "./pages/checkout/CartPage";
+import BlogPage from "./pages/BlogPage";
 
 function App() {
   const navigate = useNavigate();
@@ -106,6 +107,7 @@ function App() {
               <Route path="/member-level" element={<MemberLevel />}/>
               <Route path="/member-privileges" element={<MemberPrivileges />}/>
               <Route path="/free-gift-banner" element={<FreeGiftBannerPage />}/>
+              <Route path="/blog" element={<BlogPage />}/>
               <Route path="/single-blog/:id" element={<SingleBlog />} />
               <Route path="/payment" element={<PaymentPages />}/>
             </Routes>
