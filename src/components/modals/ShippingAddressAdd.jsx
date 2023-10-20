@@ -59,7 +59,7 @@ export default function AddShippingAddress({openAdd, setOpenAdd}){
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 py-4 lg:px-8 lg:py-6 text-left shadow-xl transition-all w-full max-w-[600px]">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-8 py-6 text-left shadow-xl transition-all w-full max-w-[600px]">
                   <div className='flex items-center justify-between mb-8'>
                     <h2 className='text-[#333333] text-[20px] font-bold'>เพิ่มที่อยู่ใหม่</h2>
                     <XClose onClick={() => setOpenAdd(false)}/>

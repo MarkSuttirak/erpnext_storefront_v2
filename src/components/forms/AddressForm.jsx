@@ -16,6 +16,7 @@ const districts = ['สวนหลวง','บางกะปิ','สาทร
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
 
 export default function AddressForm({onSuccess = () => {}, onSave = () => {}, data}){
+  const [enabled, setEnabled] = useState(false)
   const { call, isCompleted, loading } = useFrappePostCall('headless_e_commerce.api.add_address')
 
   const formik = useFormik({
@@ -69,7 +70,7 @@ export default function AddressForm({onSuccess = () => {}, onSave = () => {}, da
         )}
       </div>
       
-      <div className='lg:flex lg:gap-x-3'>
+      <div className='md:flex md:gap-x-3'>
         <div className='flex flex-col w-full'>
           <label htmlFor='state'>จังหวัด</label>
           <select name="state" id='state' placeholder="-- Select --" className='form-input mt-[11px] appearance-none' style={{backgroundImage:"url(" + chevronDropdown + ")",backgroundPosition:"right 0.5rem center",backgroundRepeat:"no-repeat"}} onChange={formik.handleChange} value={formik.values.state} invalid={formik.errors.state}>
@@ -91,7 +92,7 @@ export default function AddressForm({onSuccess = () => {}, onSave = () => {}, da
         </div>
       </div>
 
-      <div className='lg:flex lg:gap-x-3'>
+      <div className='md:flex md:gap-x-3'>
         <div className='flex flex-col w-full'>
           <label htmlFor='pincode'>รหัสไปรษณีย์</label>
           <input name="pincode" id='pincode' className='form-input mt-[11px]' placeholder="eg. 12345" onChange={formik.handleChange} value={formik.values.pincode} />
@@ -102,7 +103,7 @@ export default function AddressForm({onSuccess = () => {}, onSave = () => {}, da
         </div>
       </div>
 
-      <div className='lg:flex lg:gap-x-3'>
+      <div className='md:flex md:gap-x-3'>
         <div className='flex w-full justify-between items-center'>
           <label htmlFor='phone'>ตั้งเป็นค่าเริ่มต้น</label>
           <Switch

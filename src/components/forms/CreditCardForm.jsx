@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useFrappePostCall } from 'frappe-react-sdk';
 import { addressSchema } from './addressFormSchema';
-import chevronDropdown from '../../img/chevron-right.svg'
 import { Switch } from '@headlessui/react'
 import { useState } from 'react';
 
@@ -10,12 +9,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-// Here you should provide a list of countries you want to support
-// or use an up-to-date country list like: https://www.npmjs.com/package/country-list
-const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
-const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
-
 export default function CreditCardForm({onSuccess = () => {}, onSave = () => {}, data}){
+  const [enabled, setEnabled] = useState(false)
   const { call, isCompleted, loading } = useFrappePostCall('headless_e_commerce.api.add_address')
 
   const formik = useFormik({
@@ -69,7 +64,7 @@ export default function CreditCardForm({onSuccess = () => {}, onSave = () => {},
         )} */}
       </div>
       
-      <div className='lg:flex lg:gap-x-3'>
+      <div className='md:flex md:gap-x-3'>
         <div className='flex flex-col w-full'>
           <label htmlFor='expiration_date'>วันหมดอายุ</label>
           <input
@@ -96,17 +91,6 @@ export default function CreditCardForm({onSuccess = () => {}, onSave = () => {},
       </div>
 
       <div className='lg:flex lg:gap-x-3'>
-        <div className='flex flex-col w-full'>
-          <label htmlFor='pincode'>รหัสไปรษณีย์</label>
-          <input name="pincode" id='pincode' className='form-input mt-[11px]' placeholder="eg. 12345" onChange={formik.handleChange} value={formik.values.pincode} />
-        </div>
-        <div className='flex flex-col w-full'>
-          <label htmlFor='phone'>เบอร์โทรศัพท์</label>
-          <input className='form-input mt-[11px]' id='phone' name='phone' value={formik.values.phone} onChange={formik.handleChange} type='tel'/>
-        </div>
-      </div>
-
-      <div className='lg:flex lg:gap-x-3'>
         <div className='flex w-full justify-between items-center'>
           <label htmlFor='phone'>ตั้งเป็นค่าเริ่มต้น</label>
           <Switch
@@ -128,7 +112,7 @@ export default function CreditCardForm({onSuccess = () => {}, onSave = () => {},
         </div>
       </div>
       <div className="w-full flex gap-4 mt-4 justify-center">
-        <button type='submit' className={`block mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full bg-[#111111] border border-[#111111] lg:max-w-[200px]`}>บันทึกที่อยู่</button>
+        <button type='submit' className={`block mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full bg-[#111111] border border-[#111111] lg:max-w-[200px]`}>ยืนยันข้อมูล</button>
       </div>
     </form>
   )

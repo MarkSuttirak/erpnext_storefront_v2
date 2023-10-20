@@ -7,10 +7,9 @@ import { useFrappeDeleteDoc, useFrappeDocumentEventListener, useFrappeGetDocList
 import NavHeader from '../../components/NavHeader'
 import DesktopSidebar from '../../components/desktop/DesktopSidebar'
 import { useFormik } from 'formik'
-import AddressForm from '../../components/forms/AddressForm'
 import visaIcon from '../../img/visa-icon.svg'
-import AddShippingAddress from '../../components/modals/ShippingAddressAdd'
-import EditShippingAddress from '../../components/modals/ShippingAddressEdit'
+import AddCreditCard from '../../components/modals/CreditCardAdd'
+import EditCreditCard from '../../components/modals/CreditCardEdit'
 
 const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
@@ -117,7 +116,7 @@ const PaymentPages = () => {
         <button onClick={() => setOpenAdd(true)} className='bg-[#F4F4F4] p-5 rounded-[7px]'>
           <div className='flex gap-x-[7px] justify-center'>
             <MarkerPin01 />
-            เพิ่มที่อยู่ใหม่
+            เพิ่มบัตรเครดิตการ์ด
           </div>
         </button>
       </main>
@@ -243,8 +242,8 @@ const PaymentPages = () => {
         </Dialog>
       </Transition.Root>
 
-      <AddShippingAddress openAdd={openAdd} setOpenAdd={setOpenAdd}/>
-      <EditShippingAddress openUpdate={openUpdate} setOpenUpdate={setOpenUpdate}/>
+      <AddCreditCard openAdd={openAdd} setOpenAdd={setOpenAdd}/>
+      <EditCreditCard openUpdate={openUpdate} setOpenUpdate={setOpenUpdate}/>
     </>
   )
 }
