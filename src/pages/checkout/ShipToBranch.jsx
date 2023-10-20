@@ -102,6 +102,10 @@ export default function ShipToMyAddress(){
         <Divider size={isDesktop ? 24 : 14} color="#F2F2F2"/>
 
         <section className='flex flex-col gap-y-5 w-full'>
+          <h2 className='flex gap-x-[7px] items-center header-title'>
+            <MarkerPin01 />
+            ข้อมูลในการติดต่อ
+          </h2>
           <div className='lg:flex lg:gap-x-3'>
             <div className='flex flex-col w-full'>
               <label htmlFor='name'>ชื่อ - นามสกุล</label>

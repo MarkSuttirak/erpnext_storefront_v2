@@ -31,7 +31,8 @@ import FillInfo from "./pages/register/FillInfo";
 import Success from "./pages/register/Success";
 import CategoryPage from "./pages/shoppage/CategoryPage";
 import ShopPage from "./pages/shoppage/ShopPage";
-import StoreLocation from "./pages/StoreLocation";
+import StoreLocation from "./pages/store-location/StoreLocation";
+import StoreLocationDetails from "./pages/store-location/StoreLocationDetails";
 import EditProfile from "./pages/EditProfile";
 import Wishlist from "./pages/Wishlist";
 import PaymentMethods from "./components/PaymentMethods";
@@ -101,6 +102,7 @@ function App() {
               <Route path="/shop" element={<ShopPage />}/>
               <Route path="/viewed-products" element={<ShopPageViewed />}/>
               <Route path="/store-location" element={<StoreLocation />} />
+              <Route path="/store-location-details/:id" element={<StoreLocationDetails />} />
               <Route path="/member-level" element={<MemberLevel />}/>
               <Route path="/member-privileges" element={<MemberPrivileges />}/>
               <Route path="/free-gift-banner" element={<FreeGiftBannerPage />}/>

@@ -5,9 +5,7 @@ import { useProducts } from '../../hooks/useProducts'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, ChevronRight, Heart, Ticket02, Trash03 } from '@untitled-ui/icons-react';
 import { Link } from 'react-router-dom'
-
 import { useRef } from 'react';
-import Dropdown from '../../components/Dropdown'
 
 export default function CartPage(){
   const { cart, cartCount, addToCart, removeFromCart, getTotal, isOpen, setIsOpen } = useCart()
@@ -118,7 +116,7 @@ export default function CartPage(){
                             </div>
                             <div className='flex flex-col gap-y-[10px]'>
                               <h2 className='text-[#A2A2A2] text-xs'>ปริมาณ</h2>
-                              <select className='outline-none text-xs text-[#111111] w-10'>
+                              <select className='outline-none text-xs text-[#111111] w-10' onChange={(e) => addToCart(itemCode, e.target.value)}>
                                 {generateOptions(15)}
                               </select>
                             </div>

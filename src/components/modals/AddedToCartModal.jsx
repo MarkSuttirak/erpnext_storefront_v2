@@ -11,6 +11,15 @@ export default function AddedToCartModal({isModalOpen, setIsModalOpen}){
   const { getByItemCode } = useProducts()
   const navigate = useNavigate()
 
+  function generateOptions(amount = 1) {
+    const options = []
+    for (let i = 1; i <= amount; i++) {
+      options.push(<option key={i} value={i}>{i}</option>)
+    }
+
+    return options
+  }
+
   return (
     <div className='w-full max-w-[1200px] relative flex justify-end'>
       <Transition
@@ -48,40 +57,20 @@ export default function AddedToCartModal({isModalOpen, setIsModalOpen}){
                           <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
                         </div>
 
-                        <div className="flex flex-1 items-center justify-between text-sm">
-                          <div className="flex items-center justify-between mt-4 sm:mt-0">
-                            <div className="flex border border-neutral-300 rounded-md">
-                              <SfButton
-                                type="button"
-                                variant="tertiary"
-                                disabled={cart[itemCode] === 1}
-                                square
-                                className="rounded-r-none"
-                                aria-controls={null}
-                                aria-label="Decrease value"
-                                onClick={() => addToCart(itemCode, cart[itemCode] - 1)}
-                              >
-                                <SfIconRemove />
-                              </SfButton>
-                              <input
-                                type="number"
-                                role="spinbutton"
-                                className="appearance-none mx-2 w-8 outline-none text-center bg-transparent font-medium [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-inner-spin-button]:display-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-outer-spin-button]:display-none [&::-webkit-outer-spin-button]:m-0 [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none disabled:placeholder-disabled-900"
-                                value={cart[itemCode]}
-                                onChange={null}
-                              />
-                              <SfButton
-                                type="button"
-                                variant="tertiary"
-                                square
-                                className="rounded-l-none"
-                                aria-controls={null}
-                                aria-label="Increase value"
-                                onClick={() => addToCart(itemCode)}
-                              >
-                                <SfIconAdd />
-                              </SfButton>
-                            </div>
+                        <div className='flex gap-x-10'>
+                          <div className='flex flex-col gap-y-[10px]'>
+                            <h2 className='text-[#A2A2A2] text-xs'>ไซส์</h2>
+                            <select className='outline-none text-xs text-[#111111] w-10'>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                            </select>
+                          </div>
+                          <div className='flex flex-col gap-y-[10px]'>
+                            <h2 className='text-[#A2A2A2] text-xs'>ปริมาณ</h2>
+                            <select className='outline-none text-xs text-[#111111] w-10' onChange={(e) => addToCart(itemCode, e.target.value)}>
+                              {generateOptions(15)}
+                            </select>
                           </div>
                         </div>
                       </div>
