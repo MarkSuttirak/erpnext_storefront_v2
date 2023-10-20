@@ -4,13 +4,15 @@ export default function Breadcrumbs({pages}) {
   return (
     <nav className="hidden lg:flex mb-10" aria-label="Breadcrumb">
       <ol role="list" className="flex items-center space-x-3">
-        <Link
-          to='/'
-          className="text-sm font-medium text-gray-500 hover:text-gray-700"
-          aria-current='home'
-        >
-          Home
-        </Link>
+        <li key='home'>
+          <Link
+            to='/'
+            className="text-sm font-medium text-gray-500 hover:text-gray-700"
+            aria-current='home'
+          >
+            Home
+          </Link>
+        </li>
         {pages.map((page) => (
           <li key={page.name}>
             <div className="flex items-center">

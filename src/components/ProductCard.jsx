@@ -8,7 +8,7 @@ export default function ProductCard({title, thumbnail, desc, price, productId, i
   const { addToCart } = useCart()
   return (
         <Link to={`/products/${productId}`}>
-            <div className="rounded-md">
+            <div className="rounded-md min-w-[200px]">
                 <div className="relative">
                     <SfLink href="#" className="block">
                         <img
