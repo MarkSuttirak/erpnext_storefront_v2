@@ -13,6 +13,7 @@ import { SfIconArrowForward } from "@storefront-ui/react";
 import ProductCard from "../../components/ProductCard";
 import NavHeader from "../../components/NavHeader";
 import { useUser } from '../../hooks/useUser';
+import DesktopSidebar from "../../components/desktop/DesktopSidebar";
 
 export default function RewardPage(){
   const { currentUser, updateCurrentUser } = useFrappeAuth();
@@ -31,7 +32,7 @@ export default function RewardPage(){
   return (
     <>
       <NavHeader />
-      <header className="px-5 pb-[60px] bg-[#BBE5BB] w-full pt-20">
+      <header className="px-5 pb-[60px] bg-[#BBE5BB] w-full pt-20 lg:hidden">
         {data && (
           <div className='flex items-center'>
             <img src={`${import.meta.env.VITE_ERP_URL}${data.user_image}`} width="64" className='rounded-[99px]'/>
@@ -73,8 +74,9 @@ export default function RewardPage(){
           </div>
         </div>
       </header>
-      <main className='px-5 relative top-[-40px]'>
-        <div className='bg-white rounded-[6px] items-center' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec main-margintop'>
+        <DesktopSidebar />
+        <div className='bg-white rounded-[6px] items-center lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
           <div className='py-5 px-2 w-full flex'>
             <Link to="/wishlist" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] justify-end'>
               <img src={redeemPoints} className="mb-1"/>
@@ -100,50 +102,50 @@ export default function RewardPage(){
             </Link>
           </div>
         </div>
+
+        <section className="mb-[100px]">
+          <div>
+            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+              คูปองส่วนลดออนไลน์
+              <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+            </h2>
+
+              <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+                {(products ?? []).map((product) => (
+                  <ProductCard
+                    key={product.item_code}
+                    title={product.item_name}
+                    productId={product.name}
+                    desc={product.item_group}
+                    itemCode={product.item_code}
+                    price={product.formatted_price}
+                    thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
+                  />
+                ))}
+              </div>
+          </div>
+          <div>
+            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+              แลกคะแนน
+              <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+            </h2>
+
+              <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+                {(products ?? []).map((product) => (
+                  <ProductCard
+                    key={product.item_code}
+                    title={product.item_name}
+                    productId={product.name}
+                    desc={product.item_group}
+                    itemCode={product.item_code}
+                    price={product.formatted_price}
+                    thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
+                  />
+                ))}
+              </div>
+          </div>
+        </section>
       </main>
-
-      <section className="mb-[100px]">
-        <div>
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            คูปองส่วนลดออนไลน์
-            <SfIconArrowForward className="w-[18px] text-black ml-2"/>
-          </h2>
-
-            <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-              {(products ?? []).map((product) => (
-                <ProductCard
-                  key={product.item_code}
-                  title={product.item_name}
-                  productId={product.name}
-                  desc={product.item_group}
-                  itemCode={product.item_code}
-                  price={product.formatted_price}
-                  thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
-                />
-              ))}
-            </div>
-        </div>
-        <div>
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            แลกคะแนน
-            <SfIconArrowForward className="w-[18px] text-black ml-2"/>
-          </h2>
-
-            <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-              {(products ?? []).map((product) => (
-                <ProductCard
-                  key={product.item_code}
-                  title={product.item_name}
-                  productId={product.name}
-                  desc={product.item_group}
-                  itemCode={product.item_code}
-                  price={product.formatted_price}
-                  thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
-                />
-              ))}
-            </div>
-        </div>
-      </section>
       <FooterMenu active={2}/>
     </>
   )

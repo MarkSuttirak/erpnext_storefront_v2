@@ -48,15 +48,15 @@ export default function Home(){
     limit: 8
   })
 
-  const { data:dataBlog, isLoading:isLoadingBlogp, error:errorBlog } = useFrappeGetDocList('Blog Post', {
+  const { data:dataBlog, isLoading:isLoadingBlog, error:errorBlog } = useFrappeGetDocList('Blog Post', {
     fields: ['name', 'title', 'meta_image', 'published_on', 'post_display'],
     filters: [['post_display', '=', 'Storefront']],
-    limit: isDesktop ? 3 : undefined
+    limit: isDesktop ? 2 : undefined
   })
 
   const { data:dataBanner, isLoading:isLoadingBanner, error:errorBanner } = useFrappeGetDocList('Promotion Banner', {
     fields: ['name', 'title', 'image', 'expiration_date'],
-    limit: isDesktop ? 2 : undefined
+    limit: isDesktop ? 3 : undefined
   })
 
   return (
@@ -123,14 +123,14 @@ export default function Home(){
 
             {isDesktop ? (
               <div className={`px-5 hidden lg:grid grid-cols-3 gap-x-6`}>
-                {(dataBlog ?? []).map((d) => 
-                  <PromotionCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='1'/>
+                {(dataBanner ?? []).map((banner) => 
+                  <PromotionCardDesktop key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" ratio='1'/>
                 )}
               </div>
             ) : (
-              <div className="flex overflow-x-auto gap-x-5 mx-auto px-5 lg:hidden">
-                {(dataBlog ?? []).map((d) => 
-                  <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`}/>
+              <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5 lg:hidden'>
+                {(dataBanner ?? []).map((banner) => 
+                  <PromotionCard key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
                 )}
               </div>
             )}
@@ -214,15 +214,15 @@ export default function Home(){
           <h2 className='mt-[30px] px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop mb-[14px] lg:mb-10'>Celebrate Mid Year Festival</h2>
 
           {isDesktop ? (
-            <div className={`px-5 hidden lg:grid ${dataBanner?.length > 2 ? 'grid-cols-3' : dataBanner?.length == 2 ? 'grid-cols-2' : 'grid-cols-1'} gap-x-6`}>
-              {(dataBanner ?? []).map((banner) => 
-                <PromotionCardDesktop key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" ratio='3/2'/>
+            <div className={`px-5 hidden lg:grid ${dataBlog?.length > 2 ? 'grid-cols-3' : dataBlog?.length == 2 ? 'grid-cols-2' : 'grid-cols-1'} gap-x-6`}>
+              {(dataBlog ?? []).map((d) => 
+                <PromotionCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9'/>
               )}
             </div>
           ) : (
-            <div className='mt-3 flex overflow-x-scroll gap-x-6 px-5 lg:hidden'>
-              {(dataBanner ?? []).map((banner) => 
-                <PromotionCard key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" />
+            <div className="flex overflow-x-auto gap-x-5 mx-auto px-5 lg:hidden">
+              {(dataBlog ?? []).map((d) => 
+                <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`}/>
               )}
             </div>
           )}

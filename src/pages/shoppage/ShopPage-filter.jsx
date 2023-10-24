@@ -27,11 +27,9 @@ export default function ShopPageFilter({setCurrentPage}){
       <div className='lg:hidden'>
         <TitleHeaderShop onClick={handleClickToShop} title="ประเภทสินค้า" />
         <main className="p-5 mt-[53px]">
+          <FilterRadio key="" text="All" />
           {(dataItemCate ?? []).map((list) => 
             <FilterRadio key={list.name} text={list.item_category} />
-          )}
-          {isLoading && (
-            <h2>Loading...</h2>
           )}
         </main>
         <footer className='p-5'>

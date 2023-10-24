@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect, Fragment, createContext } from 'react'
 import { useFrappeAuth, useFrappeGetDoc, useFrappeGetDocCount } from 'frappe-react-sdk';
 import { User02 } from '@untitled-ui/icons-react';
-import { bothMenus } from '../Menus';
+import { bothMenus, pointsMenus } from '../Menus';
 
 export default function DesktopSidebar(){
-  const [storeType, setStoreType] = useState('')
+  const [storeType, setStoreType] = useState('point & reward')
   const location = useLocation();
   const { currentUser, updateCurrentUser } = useFrappeAuth();
 
@@ -37,22 +37,46 @@ export default function DesktopSidebar(){
         )}
       </header>
       <aside className='mt-5 flex flex-col gap-y-3'>
-        {bothMenus.map((d) => (
+        {storeType === 'both' && (
           <>
-            <Link to={d.link} className='flex items-center gap-x-[10px] font-bold'>
-              {d.icon}
-              {d.title}
-            </Link>
-            <div className='flex flex-col gap-y-3'>
-              {d.submenu.map((m) => 
-                <Link to={m.link} className='flex items-center gap-x-[10px] text-[#858585]'>
-                  <User02 className='invisible'/>
-                  <span className={`${location.pathname === m.link ? 'text-[#66BC89]' : ''}`}>{m.title}</span>
+            {bothMenus.map((d) => (
+              <>
+                <Link to={d.link} className='flex items-center gap-x-[10px] font-bold'>
+                  {d.icon}
+                  {d.title}
                 </Link>
-              )}
-            </div>
+                <div className='flex flex-col gap-y-3'>
+                  {d.submenu.map((m) => 
+                    <Link to={m.link} className='flex items-center gap-x-[10px] text-[#858585]'>
+                      <User02 className='invisible'/>
+                      <span className={`${location.pathname === m.link ? 'text-[#66BC89]' : ''}`}>{m.title}</span>
+                    </Link>
+                  )}
+                </div>
+              </>
+            ))}
           </>
-        ))}
+        )}
+        {storeType === 'point & reward' && (
+          <>
+            {pointsMenus.map((d) => (
+              <>
+                <Link to={d.link} className='flex items-center gap-x-[10px] font-bold'>
+                  {d.icon}
+                  {d.title}
+                </Link>
+                <div className='flex flex-col gap-y-3'>
+                  {d.submenu.map((m) => 
+                    <Link to={m.link} className='flex items-center gap-x-[10px] text-[#858585]'>
+                      <User02 className='invisible'/>
+                      <span className={`${location.pathname === m.link ? 'text-[#66BC89]' : ''}`}>{m.title}</span>
+                    </Link>
+                  )}
+                </div>
+              </>
+            ))}
+          </>
+        )}
       </aside>
     </div>
   )

@@ -3,12 +3,20 @@ import Accordion from '../../components/Accordion'
 import { Link } from 'react-router-dom'
 import TitleHeaderShop from '../../components/TitleHeaderShop'
 
-export default function ShopPageType({min, max, onChange, setCurrentPage}){
+export default function ShopPageType({min, max, onChange, setCurrentPage, selectedCate}){
   const [accordionActiveOne, setAccordionActiveOne] = useState(false);
   const [accordionActiveTwo, setAccordionActiveTwo] = useState(false);
   const [accordionActiveThree, setAccordionActiveThree] = useState(false);
   const [accordionActiveFour, setAccordionActiveFour] = useState(false);
 
+  const { data:dataItemSubcateAll } = useFrappeGetDocList('Item Subcategory', {
+    fields: ['name', 'subcategory'],
+  })
+
+  const { data:dataItemSubcate } = useFrappeGetDocList('Item Subcategory', {
+    fields: ['name', 'subcategory'],
+    filters: [['parent_category', '=', selectedCate]],
+  })
 
   const sizeRef = useRef(null);
 
@@ -93,7 +101,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage}){
       ),
       content:(
         <div className='flex flex-col gap-y-[30px] w-full'>
-          {productTypes.map((type) => 
+          {(selectedCate === "" ? dataItemSubcateAll : dataItemSubcate)?.map((type) => 
             <label htmlFor={type.key} className='flex items-center gap-x-[14px]'>
               <input type='checkbox' name='product-type' id={type.key} className='product-type-input' onClick={(e) => {e.target.checked ? setAccordionActiveOne(true) : setAccordionActiveOne(false)}}/>
               <span className='product-type-checkbox'/>

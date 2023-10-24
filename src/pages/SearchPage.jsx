@@ -1,4 +1,4 @@
-import { ArrowLeft, SearchMd } from "@untitled-ui/icons-react"
+import { ArrowLeft, SearchMd, XClose } from "@untitled-ui/icons-react"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import youmaylike1 from '../img/youmaylike1.svg';
@@ -52,19 +52,26 @@ export default function SearchPage(){
   return (
     <div className="relative z-[1001] bg-white">
       <header className='py-[9px] px-[14px] border-b border-b-[#F2F2F2] text-md font-bold bg-white fixed w-full top-0 z-[1001]'>
-        <div className="desktop-sec flex gap-x-2 items-center relative">
+        <div className="desktop-sec flex gap-x-2 items-center relative lg:hidden">
           <button onClick={() => navigate(-1)}>
             <ArrowLeft />
           </button>
           <SearchMd className="absolute right-[12px]" viewBox="0 0 24 24" width='22' height='22'/>
           <input type="search" className="p-[7px] pr-10 bg-[#E6E6E6] h-[34px] rounded-[9px] font-medium w-full text-[13px] outline-none" placeholder='พิมพ์ชื่อสินค้า แบรนด์ ลักษณะสินค้า' />
         </div>
+        <div className="desktop-sec gap-x-2 items-center relative hidden lg:flex">
+          <SearchMd className="absolute left-[12px]" viewBox="0 0 24 24" width='22' height='22'/>
+          <input type="search" className="p-[7px] pl-12 bg-[#E6E6E6] h-[34px] rounded-[9px] font-medium w-full text-[13px] outline-none" placeholder='ค้นหา' />
+          <button onClick={() => navigate(-1)}>
+            <XClose />
+          </button>
+        </div>
       </header>
       <main className="mt-[49px] desktop-sec">
-        <section className="py-5 px-5 lg:px-0">
+        <section className="py-5 px-5 box-content">
           <div className="flex justify-between items-center">
             <h2 className="header-title">การค้นหาล่าสุด</h2>
-            <div className={`text-[#5B6CFF] text-xs`} style={haveLatestSearches ? showClearSearch : hideClearSearch} onClick={() => {
+            <div className={`text-[#00B14F] text-xs`} style={haveLatestSearches ? showClearSearch : hideClearSearch} onClick={() => {
               setAccordionActiveOne(false)
             }}>เคลียร์การค้นหา</div>
           </div>
@@ -77,7 +84,7 @@ export default function SearchPage(){
 
         <hr className="border-[#E3E3E3]"/>
 
-        <section className="pt-5 pb-[30px] px-5 lg:px-0">
+        <section className="pt-5 pb-[30px] px-5 box-content">
           <h2 className="header-title">หรือคุณต้องการสิ่งนี้</h2>
 
           <div className="grid grid-cols-2 gap-x-3 gap-y-[14px] mt-4">
@@ -93,8 +100,8 @@ export default function SearchPage(){
         <hr className="border-[#E3E3E3]"/>
 
         <section>
-          <div className='mt-[22px] px-5 lg:px-0'>
-            <Link to='/shop/viewed'>
+          <div className='mt-[22px] px-5 box-content'>
+            <Link to='/viewed-products'>
               <h2 className='header-title flex items-center mb-[14px] leading-6'>
                 สินค้าที่ดูล่าสุด
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
