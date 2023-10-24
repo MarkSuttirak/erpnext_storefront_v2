@@ -23,6 +23,7 @@ import MyOrder from "./pages/orders/MyOrder";
 import MyOrderDetails from "./pages/orders/MyOrderDetails";
 import RewardHistory from "./pages/reward/RewardHistory";
 import RewardPage from "./pages/reward/RewardPage";
+import RewardDetails from "./pages/reward/RewardDetails";
 import ShippingAddress from "./pages/address/ShippingAddress";
 import Welcome from "./pages/register/Welcome";
 import Signup from "./pages/register/Signup";
@@ -88,7 +89,8 @@ export default function App() {
               <Route path="/my-order" element={<MyOrder />}/>
               <Route path="/my-order-details/:id" element={<MyOrderDetails />}/>
               <Route path="/reward-history" element={<RewardHistory />} />
-              <Route path="/reward" element={<RewardPage />}/>
+              <Route path="/rewards" element={<RewardPage />}/>
+              <Route path="/reward/:id" element={<RewardDetails />}/>
               <Route path="/shipping-address" element={<ShippingAddress />}/>
               <Route path="/welcome" element={<Welcome />}/>
               <Route path="/signup" element={<Signup />}/>

@@ -4,11 +4,7 @@ import EditShippingAddress from "./modals/ShippingAddressEdit";
 import { useState } from "react";
 import DeleteShippingAddress from "./modals/ShippingAddressDelete";
 
-export default function AddressOptions({
-  value,
-  onChange,
-  error
-}) {
+export default function AddressOptions({value, onChange, error}) {
   const { data } = useFrappeGetCall('headless_e_commerce.api.get_addresses', null, `addresses-0`)
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)

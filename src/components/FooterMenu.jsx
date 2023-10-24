@@ -27,7 +27,7 @@ export default function FooterMenu({active}){
     {
       icon:(<Award03 />),
       title:"สะสมแต้ม",
-      link:"/reward",
+      link:"/rewards",
       current:2
     },
     {

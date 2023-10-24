@@ -79,7 +79,7 @@ export default function RewardPage(){
           </div>
         </div>
       </header>
-      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec main-margintop'>
+      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec lg:mt-[92px]'>
         <DesktopSidebar />
         <div className='bg-white rounded-[6px] items-center lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
           <div className='py-5 px-2 w-full flex'>
@@ -107,30 +107,33 @@ export default function RewardPage(){
             </Link>
           </div>
         </div>
-        <section className="flex flex-col w-full">
-          <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between profile-head'>
-            <div className='flex justify-between p-5 lg:w-1/2 lg:py-8'>
+        <section className="flex flex-col w-full mt-5 lg:mt-0">
+          <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between profile-head hidden'>
+            <div className='flex justify-between p-5 lg:w-1/2 lg:py-8 lg:px-0'>
               <div className='flex items-center gap-x-[14px]'>
                 <img src={silverLevel ? silverCardDesktop : ""} />
                 <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
               </div>
-              <div className='lg:hidden'>
-                <Link to="/my-id" className='bg-[#00B14F] flex gap-x-2 text-white items-center text-sm p-1 rounded-[4px]'>
-                  <img src={qrcode} />
-                  ID ของฉัน
-                </Link>
-              </div>
+            </div>
+            <div className="text-right">
+              <h2 className="flex gap-x-[5px] items-center justify-end text-xs">
+                <img src={coin} />
+                คอยน์
+              </h2>
+              <h1 className="text-[22px] font-semibold">{user?.loyalty_points}</h1>
             </div>
           </div>
 
-          <div className="mb-[100px]">
+          <hr style={{borderColor:"#F2F2F2"}} className="hidden lg:block"/>
+
+          <div className="mb-[100px] lg:pt-8">
             <div>
-              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6 lg:px-0'>
                 คูปองส่วนลดออนไลน์
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>
 
-              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5">
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5 lg:px-0">
                 {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
@@ -145,12 +148,12 @@ export default function RewardPage(){
               </div>
             </div>
             <div>
-              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6 lg:px-0'>
                 แลกคะแนน
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>
 
-              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5">
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5 lg:px-0">
                 {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}

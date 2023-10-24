@@ -42,11 +42,7 @@ const paymentMethods = [
   },
 ];
 
-export default function PaymentMethods({
-  onChange,
-  value,
-  error
-}) {
+export default function PaymentMethods({onChange, value, error}) {
   return (
     <fieldset className="w-full">
       <legend className="header-title flex gap-x-[7px] items-center">

@@ -28,6 +28,7 @@ export default function Home(){
 
   const [selectedCate, setSelectedCate] = useState('');
 
+  console.log(products)
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
   const navigate = useNavigate();
