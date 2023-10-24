@@ -28,7 +28,7 @@ export default function NavHeader(){
         label: '',
         ariaLabel: 'Wishlist',
         role: 'button',
-        onClick: () => null
+        onClick: () => navigate('/wishlist')
       },
       {
         icon: (<ShoppingBag01 viewBox='0 0 24 24' width="22" height="22"/>),

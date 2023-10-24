@@ -63,7 +63,7 @@ export default function SearchPage(){
       <main className="mt-[49px] desktop-sec">
         <section className="py-5 px-5 lg:px-0">
           <div className="flex justify-between items-center">
-            <h2 className="text-sm text-[#333333] font-bold">การค้นหาล่าสุด</h2>
+            <h2 className="header-title">การค้นหาล่าสุด</h2>
             <div className={`text-[#5B6CFF] text-xs`} style={haveLatestSearches ? showClearSearch : hideClearSearch} onClick={() => {
               setAccordionActiveOne(false)
             }}>เคลียร์การค้นหา</div>
@@ -78,7 +78,7 @@ export default function SearchPage(){
         <hr className="border-[#E3E3E3]"/>
 
         <section className="pt-5 pb-[30px] px-5 lg:px-0">
-          <h2 className="text-sm text-[#333333] font-bold">หรือคุณต้องการสิ่งนี้</h2>
+          <h2 className="header-title">หรือคุณต้องการสิ่งนี้</h2>
 
           <div className="grid grid-cols-2 gap-x-3 gap-y-[14px] mt-4">
             {youmaylike.map((list) => 
@@ -95,7 +95,7 @@ export default function SearchPage(){
         <section>
           <div className='mt-[22px] px-5 lg:px-0'>
             <Link to='/shop/viewed'>
-              <h2 className='text-sm text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
+              <h2 className='header-title flex items-center mb-[14px] leading-6'>
                 สินค้าที่ดูล่าสุด
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>

@@ -2,12 +2,12 @@ export default function WishlistProducts({key, name, price, image, desc}){
   return (
     <>
       {/* Mobile */}
-      <li key={key} className="flex pb-6 lg:hidden">
+      <li key={key} className="flex p-5 lg:hidden flex-col border-b border-b-[#E3E3E3]">
         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
           <img src={image} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
         </div>
 
-        <div className="ml-4 flex flex-1 flex-col">
+        <div className="mt-4 flex flex-1 flex-col">
           <div>
             <div className="flex justify-between text-base font-medium text-gray-900">
               <h3>{name}</h3>
@@ -21,7 +21,7 @@ export default function WishlistProducts({key, name, price, image, desc}){
       </li>
 
       {/* Desktop */}
-      <li key={key} className="hidden lg:flex flex-col pb-6 cursor-pointer">
+      <li key={key} className="hidden lg:flex flex-col pt-6 cursor-pointer">
         <div className="relative flex-shrink-0 overflow-hidden rounded-md add-to-cart-img">
           <img src={image} alt={name} className="h-full w-full object-cover object-center" />
 

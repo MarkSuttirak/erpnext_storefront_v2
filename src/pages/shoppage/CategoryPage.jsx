@@ -1,14 +1,10 @@
 import FooterMenu from "../../components/FooterMenu"
-import searchIcon from '../../img/search-md-black.svg'
-import { useCart } from '../../hooks/useCart';
-import { ShoppingBag01, ChevronRight } from "@untitled-ui/icons-react";
+import { ShoppingBag01, ChevronRight, SearchMd } from "@untitled-ui/icons-react";
 import { Link } from 'react-router-dom'
 import { useFrappeGetDocList } from "frappe-react-sdk";
 import { useState } from "react";
 
 export default function CategoryPage(){
-  const { cartCount, setIsOpen } = useCart()
-
   const { data:dataItemCate } = useFrappeGetDocList('Item Category', {
     fields: ['name', 'item_category']
   })
@@ -26,12 +22,14 @@ export default function CategoryPage(){
 
   return (
     <>
-      <header className='py-[7px] px-[18px] border-b border-b-[#F2F2F2] text-md font-bold bg-white flex gap-x-2 items-center'>
-        <img src={searchIcon} className="absolute translate-x-[10px]"/>
-        <input type="search" className="p-[7px] pl-10 bg-[#E6E6E6] h-[34px] rounded-[9px] font-medium w-full text-[13px]" placeholder='พิมพ์ชื่อสินค้า แบรนด์ ลักษณะสินค้า' />
-        <button className="p-2" onClick={() => setIsOpen(true)}>
+      <header className='py-[9px] px-[14px] border-b border-b-[#F2F2F2] text-md font-bold bg-white flex gap-x-2 items-center'>
+        <Link to='/search' className="bg-[#E6E6E6] font-medium w-full text-[13px] px-2 py-[7px] rounded-[9px] flex items-center gap-x-2 text-[#8A8A8A]">
+          <SearchMd viewBox='0 0 24 24' width='22' height='22' color='#000000'/>
+          พิมพ์ชื่อสินค้า แบรนด์ ลักษณะสินค้า
+        </Link>
+        <Link to='/cart'>
           <ShoppingBag01 viewBox='0 0 24 24' width="22" height="22"/>
-        </button>
+        </Link>
       </header>
       <header className='bg-black text-white text-center py-[10px]'>
         สมาชิกใหม่รับ ของขวัญฟรี กดรับเลย !! 🎁

@@ -30,7 +30,7 @@ export default function Wishlist(){
           </button>
         </div>
       </header>
-      <main className='main-margintop px-5 pt-10 desktop-sec'>
+      <main className='lg:mt-[92px] lg:px-5 lg:pt-10 desktop-sec'>
         <h2 className='header-title hidden lg:flex justify-center mb-10'>รายการสินค้าที่ถูกใจ</h2>
         <nav className="border-b border-b-[#F2F2F2]">
           <ul className="flex">
@@ -56,8 +56,8 @@ export default function Wishlist(){
         </nav>
 
         {currentSec === 1 && (
-          <section className='p-5'>
-          <ul role="list" className="grid grid-cols-3 gap-6">
+        <section>
+          <ul role="list" className="grid lg:grid-cols-3 gap-6">
             {(products ?? []).map((product) => (
               <WishlistProducts 
                 key={product.item_name} 

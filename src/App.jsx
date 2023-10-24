@@ -1,7 +1,6 @@
 import { FrappeProvider } from "frappe-react-sdk";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
-import NavHeader from "./components/NavHeader";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import './App.css'
@@ -50,7 +49,7 @@ import CartPage from "./pages/checkout/CartPage";
 import BlogPage from "./pages/BlogPage";
 import SearchPage from "./pages/SearchPage";
 
-function App() {
+export default function App() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!getToken()) {
@@ -120,5 +119,3 @@ function App() {
     </FrappeProvider>
   )
 }
-
-export default App
