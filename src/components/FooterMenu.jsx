@@ -20,8 +20,8 @@ export default function FooterMenu({active}){
     },
     {
       icon:(<Grid01 />),
-      title:"หมวดหมู่",
-      link:"/categories",
+      title:"สินค้า",
+      link:"/shop",
       current:1
     },
     {

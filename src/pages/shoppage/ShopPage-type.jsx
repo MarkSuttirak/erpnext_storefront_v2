@@ -9,6 +9,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage}){
   const [accordionActiveThree, setAccordionActiveThree] = useState(false);
   const [accordionActiveFour, setAccordionActiveFour] = useState(false);
 
+
   const sizeRef = useRef(null);
 
   const handleClickToShop = () => {
@@ -84,7 +85,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage}){
     {
       title:(
         <div className='flex justify-between w-full pr-[14px] items-center'>
-          <div>ประเภทสินค้า</div>
+          <h2>ประเภทสินค้า</h2>
           <div className={`text-[#5B6CFF] text-xs`} style={accordionActiveOne ? showClearSearch : hideClearSearch} onClick={() => {
             setAccordionActiveOne(false)
           }}>เคลียร์การค้นหา</div>
@@ -105,7 +106,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage}){
     {
       title:(
         <div className='flex justify-between w-full pr-[14px] items-center'>
-          <div>ไซส์</div>
+          <h2>ไซส์</h2>
           <div className={`text-[#5B6CFF] text-xs`} style={accordionActiveTwo ? showClearSearch : hideClearSearch} onClick={() => {
             setAccordionActiveTwo(false);
           }}>เคลียร์การค้นหา</div>
@@ -125,7 +126,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage}){
     {
       title:(
         <div className='flex justify-between w-full pr-[14px] items-center'>
-          <div>สี</div>
+          <h2>สี</h2>
           <div className={`text-[#5B6CFF] text-xs`} style={accordionActiveThree ? showClearSearch : hideClearSearch} onClick={() => {
             setAccordionActiveThree(false);
           }}>เคลียร์การค้นหา</div>
@@ -146,7 +147,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage}){
     {
       title:(
         <div className='flex justify-between w-full pr-[14px] items-center'>
-          <div>ราคา</div>
+          <h2>ราคา</h2>
           <div className={`text-[#5B6CFF] text-xs`} style={accordionActiveFour ? showClearSearch : hideClearSearch} onClick={() => {
             setAccordionActiveFour(false);
           }}>เคลียร์การค้นหา</div>

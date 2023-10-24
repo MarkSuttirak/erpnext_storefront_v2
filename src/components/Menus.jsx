@@ -74,3 +74,67 @@ export const bothMenus = [
     ]
   }
 ]
+
+export const pointsMenus = [
+  {
+    title:'บัญชีของฉัน',
+    link:'#',
+    icon:<User02 />,
+    submenu: [
+      {
+        title:'แก้ไขโปรไฟล์ของฉัน',
+        link:'/my-account'
+      },
+      {
+        title:'ที่อยู่ในการจัดส่ง',
+        link:'/shipping-address'
+      },
+      {
+        title:'สินค้าที่ดูล่าสุด',
+        link:'/viewed-products'
+      },
+      {
+        title:'การชำระเงิน',
+        link:'/payment'
+      },
+    ]
+  },
+  {
+    title:'คูปองของฉัน',
+    link:'#',
+    icon:<User02 />,
+    submenu: [
+      {
+        title:'คูปองทั้งหมด',
+        link:'/my-coupon'
+      },
+      {
+        title:'ID ของฉัน',
+        link:'/my-id'
+      }
+    ]
+  },
+  {
+    title:'สะสมแต้ม',
+    link:'#',
+    icon:<User02 />,
+    submenu: [
+      {
+        title:'เงื่อนไขการรับคะแนน',
+        link:'#'
+      },
+      {
+        title:'เงื่อนไขระดับสมาชิก',
+        link:'#'
+      },
+      {
+        title:'วิธีการแลกของรางวัล',
+        link:'#'
+      },
+      {
+        title:'ประวัติการใช้คะแนน',
+        link:'#'
+      }
+    ]
+  }
+]

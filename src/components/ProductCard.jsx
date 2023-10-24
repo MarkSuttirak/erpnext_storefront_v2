@@ -7,7 +7,7 @@ import { useCart } from '../hooks/useCart';
 export default function ProductCard({title, thumbnail, desc, price, productId, itemCode, isGift}){
   return (
     <Link to={`/products/${productId}`}>
-      <div className="rounded-md min-w-[200px]">
+      <div className="rounded-md">
         <div className="relative">
           <SfLink href="#" className="block">
             <img

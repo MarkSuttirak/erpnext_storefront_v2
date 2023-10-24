@@ -45,37 +45,18 @@ export default function CategoryPage(){
         </nav>
         <div className="flex relative">
           <div className="flex flex-col grow">
-            {selectedCate === "" ? (
-              <>
-                {(dataItemSubcateAll ?? []).map((cate) => {
-                  return (
-                    <Link to='/shop' className='flex justify-between items-center px-5 py-[17px] w-full border-b border-b-[#E3E3E3]'>
-                      <div className='flex gap-x-[10px]'>
-                        {cate.subcategory}
-                      </div>
-                      <div>
-                        <ChevronRight />
-                      </div>
-                    </Link>
-                  )
-                })}
-              </>
-            ) : (
-              <>
-                {(dataItemSubcate ?? []).map((cate) => {
-                  return (
-                    <Link to='/shop' className='flex justify-between items-center px-5 py-[17px] w-full border-b border-b-[#E3E3E3]'>
-                      <div className='flex gap-x-[10px]'>
-                        {cate.subcategory}
-                      </div>
-                      <div>
-                        <ChevronRight />
-                      </div>
-                    </Link>
-                  )
-                })}
-              </>
-            )}
+            {(selectedCate === "" ? dataItemSubcateAll : dataItemSubcate)?.map((cate) => {
+              return (
+                <Link to='/shop' className='flex justify-between items-center px-5 py-[17px] w-full border-b border-b-[#E3E3E3]'>
+                  <div className='flex gap-x-[10px]'>
+                    {cate.subcategory}
+                  </div>
+                  <div>
+                    <ChevronRight />
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </main>

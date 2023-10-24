@@ -5,6 +5,7 @@ import { User02 } from '@untitled-ui/icons-react';
 import { bothMenus } from '../Menus';
 
 export default function DesktopSidebar(){
+  const [storeType, setStoreType] = useState('')
   const location = useLocation();
   const { currentUser, updateCurrentUser } = useFrappeAuth();
 

@@ -2,12 +2,12 @@ import { useCounter } from 'react-use';
 import { React, useState, useContext, useEffect } from 'react';
 import { SfButton, SfLink, SfScrollable } from '@storefront-ui/react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useProducts } from '../hooks/useProducts';
-import { useCart } from '../hooks/useCart';
+import { useProducts } from '../../hooks/useProducts';
+import { useCart } from '../../hooks/useCart';
 import { ArrowLeft, ShoppingBag01, Heart, CoinsStacked01, Truck01, AnnotationDots, Share04, SwitchHorizontal01 } from '@untitled-ui/icons-react';
-import Accordion from '../components/Accordion';
-import ProductCard from '../components/ProductCard';
-import { useUser } from '../hooks/useUser';
+import Accordion from '../../components/Accordion';
+import ProductCard from '../../components/ProductCard';
+import { useUser } from '../../hooks/useUser';
 
 export default function ProductReward(){
   const [rewardReddem, setRewardRedeem] = useState(false);

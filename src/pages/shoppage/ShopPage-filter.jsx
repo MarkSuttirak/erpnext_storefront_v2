@@ -1,8 +1,13 @@
 import React from 'react'
 import TitleHeader from "../../components/TitleHeader"
 import TitleHeaderShop from '../../components/TitleHeaderShop'
+import { useFrappeGetDocList } from 'frappe-react-sdk'
 
 export default function ShopPageFilter({setCurrentPage}){
+  const { data:dataItemCate, isLoading } = useFrappeGetDocList('Item Category', {
+    fields: ['name', 'item_category']
+  })
+
   const FilterRadio = ({key, text}) => {
     return (
       <label htmlFor={key} className='flex py-5 lg:py-[7px] w-full items-center gap-x-[14px] font-bold text-sm'>
@@ -17,35 +22,16 @@ export default function ShopPageFilter({setCurrentPage}){
     setCurrentPage('shop')
   }
 
-  const filterLists = [
-    {
-      key:'recommend',
-      text:'สินค้าแนะนำ',
-    },
-    {
-      key:'best-seller',
-      text:'สินค้าขายดี'
-    },
-    {
-      key:'popular',
-      text:'สินค้ามาแรง'
-    },
-    {
-      key:'high-to-low',
-      text:'เรียงลำดับราคาสูง - ต่ำ'
-    },
-    {
-      key:'low-to-high',
-      text:'เรียงลำดับราคาต่ำ - สูง'
-    }
-  ]
   return (
     <>
       <div className='lg:hidden'>
         <TitleHeaderShop onClick={handleClickToShop} title="ประเภทสินค้า" />
         <main className="p-5 mt-[53px]">
-          {filterLists.map((list) => 
-            <FilterRadio key={list.key} text={list.text} />
+          {(dataItemCate ?? []).map((list) => 
+            <FilterRadio key={list.name} text={list.item_category} />
+          )}
+          {isLoading && (
+            <h2>Loading...</h2>
           )}
         </main>
         <footer className='p-5'>
@@ -54,8 +40,11 @@ export default function ShopPageFilter({setCurrentPage}){
       </div>
 
       <div className="hidden lg:block w-[300px]">
-        {filterLists.map((list) => 
-          <FilterRadio key={list.key} text={list.text} />
+        {(dataItemCate ?? []).map((list) => 
+          <FilterRadio key={list.name} text={list.item_category} />
+        )}
+        {isLoading && (
+          <h2>Loading...</h2>
         )}
       </div>
     </>
