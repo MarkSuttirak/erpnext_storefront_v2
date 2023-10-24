@@ -55,7 +55,7 @@ export default function MemberLevel(){
 
   return (
     <>
-      <TitleHeader link="/reward" title="ระดับสมาชิก"/>
+      <TitleHeader link="/rewards" title="ระดับสมาชิก"/>
       <header className='relative mt-[53px]' style={{background:`url(${silverFront})`,height:"200px",backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
         <Link to='/member-privileges' className="flex justify-end px-[18px] py-3 gap-x-[9px] bg-[#57575780] w-full text-[13px] text-white items-center">
           สิทธิพิเศษจากระดับสมาชิก

@@ -128,12 +128,12 @@ export default function RewardPage(){
 
           <div className="mb-[100px] lg:pt-8">
             <div>
-              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6 lg:px-0'>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
                 คูปองส่วนลดออนไลน์
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>
 
-              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5 lg:px-0">
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto">
                 {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
@@ -148,12 +148,12 @@ export default function RewardPage(){
               </div>
             </div>
             <div>
-              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6 lg:px-0'>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
                 แลกคะแนน
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>
 
-              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5 lg:px-0">
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto">
                 {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
