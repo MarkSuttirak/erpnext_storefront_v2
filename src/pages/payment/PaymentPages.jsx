@@ -14,7 +14,7 @@ import EditCreditCard from '../../components/modals/CreditCardEdit'
 const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
 
-const PaymentPages = () => {
+export default function PaymentPages(){
   const [openAdd, setOpenAdd] = useState(false)
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
@@ -247,5 +247,3 @@ const PaymentPages = () => {
     </>
   )
 }
-
-export default PaymentPages

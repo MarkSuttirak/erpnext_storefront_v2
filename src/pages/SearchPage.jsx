@@ -1,21 +1,18 @@
-import { ShoppingBag01, ArrowLeft } from "@untitled-ui/icons-react"
-import searchIcon from '../../img/search-md-black.svg'
-import { Link } from "react-router-dom"
+import { ArrowLeft, SearchMd } from "@untitled-ui/icons-react"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
-import youmaylike1 from '../../img/youmaylike1.svg';
-import youmaylike2 from '../../img/youmaylike2.svg';
-import youmaylike3 from '../../img/youmaylike3.svg';
-import youmaylike4 from '../../img/youmaylike4.svg';
-import ProductCard from "../../components/ProductCard";
+import youmaylike1 from '../img/youmaylike1.svg';
+import youmaylike2 from '../img/youmaylike2.svg';
+import youmaylike3 from '../img/youmaylike3.svg';
+import youmaylike4 from '../img/youmaylike4.svg';
+import ProductCard from "../components/ProductCard";
 import { SfIconArrowForward } from "@storefront-ui/react";
-import { useProducts } from "../../hooks/useProducts";
+import { useProducts } from "../hooks/useProducts";
 
-const ShopPageSearch = ({setCurrentPage}) => {
+export default function SearchPage(){
   const latestSearches = ['เสื้อ', 'กางเกง', 'รองเท้า']
 
-  const handleClickToShop = () => {
-    setCurrentPage('shop')
-  }
+  const navigate = useNavigate()
 
   const { products } = useProducts()
 
@@ -53,16 +50,18 @@ const ShopPageSearch = ({setCurrentPage}) => {
   }
 
   return (
-    <>
-      <header className='py-[7px] px-[18px] border-b border-b-[#F2F2F2] text-md font-bold bg-white flex gap-x-2 items-center fixed w-full top-0 z-[999]'>
-        <button onClick={handleClickToShop}>
-          <ArrowLeft />
-        </button>
-        <img src={searchIcon} className="absolute right-[24px]"/>
-        <input type="search" className="p-[7px] pr-10 bg-[#E6E6E6] h-[34px] rounded-[9px] font-medium w-full text-[13px]" placeholder='พิมพ์ชื่อสินค้า แบรนด์ ลักษณะสินค้า' />
+    <div className="relative z-[1001] bg-white">
+      <header className='py-[9px] px-[14px] border-b border-b-[#F2F2F2] text-md font-bold bg-white fixed w-full top-0 z-[1001]'>
+        <div className="desktop-sec flex gap-x-2 items-center relative">
+          <button onClick={() => navigate(-1)}>
+            <ArrowLeft />
+          </button>
+          <SearchMd className="absolute right-[12px]" viewBox="0 0 24 24" width='22' height='22'/>
+          <input type="search" className="p-[7px] pr-10 bg-[#E6E6E6] h-[34px] rounded-[9px] font-medium w-full text-[13px] outline-none" placeholder='พิมพ์ชื่อสินค้า แบรนด์ ลักษณะสินค้า' />
+        </div>
       </header>
-      <main className="mt-[49px]">
-        <section className="py-5 px-5">
+      <main className="mt-[49px] desktop-sec">
+        <section className="py-5 px-5 lg:px-0">
           <div className="flex justify-between items-center">
             <h2 className="text-sm text-[#333333] font-bold">การค้นหาล่าสุด</h2>
             <div className={`text-[#5B6CFF] text-xs`} style={haveLatestSearches ? showClearSearch : hideClearSearch} onClick={() => {
@@ -78,7 +77,7 @@ const ShopPageSearch = ({setCurrentPage}) => {
 
         <hr className="border-[#E3E3E3]"/>
 
-        <section className="pt-5 pb-[30px] px-5">
+        <section className="pt-5 pb-[30px] px-5 lg:px-0">
           <h2 className="text-sm text-[#333333] font-bold">หรือคุณต้องการสิ่งนี้</h2>
 
           <div className="grid grid-cols-2 gap-x-3 gap-y-[14px] mt-4">
@@ -94,30 +93,28 @@ const ShopPageSearch = ({setCurrentPage}) => {
         <hr className="border-[#E3E3E3]"/>
 
         <section>
-          <div className='mt-[22px]'>
+          <div className='mt-[22px] px-5 lg:px-0'>
             <Link to='/shop/viewed'>
-              <h2 className='text-sm text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+              <h2 className='text-sm text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
                 สินค้าที่ดูล่าสุด
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>
             </Link>
-
-            <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+            <div className="flex overflow-x-auto gap-x-[14px] mx-auto">
               {(products ?? []).map((product) => (
                 <ProductCard
                   key={product.item_code}
-                  title={product.name}
+                  desc={product.item_group}
+                  title={product.item_name}
                   productId={product.name}
                   itemCode={product.item_code}
                   price={product.formatted_price}
-                  thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+                  thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}/>
               ))}
             </div>
           </div>
         </section>
       </main>
-    </>
+    </div>
   )
 }
-
-export default ShopPageSearch

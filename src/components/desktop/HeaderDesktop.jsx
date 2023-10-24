@@ -1,7 +1,4 @@
-import {
-    SfButton,
-    SfBadge,
-} from '@storefront-ui/react';
+import { SfButton, SfBadge } from '@storefront-ui/react';
 import brandLogo from '../../img/newicon.svg'
 import { useFrappeAuth } from 'frappe-react-sdk';
 import { useCart } from '../../hooks/useCart';
@@ -78,16 +75,10 @@ export default function HeaderDesktop(){
 
           <nav className="flex-1 flex justify-end order-last lg:ml-4">
             <div className="relative mt-1 rounded-md">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <Link to='/search' className='flex items-center gap-x-3 bg-[#F4F4F4] text-[#8A8A8A] rounded-md px-3 h-9 w-[163px] text-sm'>
                 <SearchMd color='#424242'/>
-              </div>
-              <input
-                type="text"
-                name="search"
-                id="search"
-                className="block w-full rounded-md pl-11 sm:text-sm h-full bg-[#F4F4F4] outline-none"
-                placeholder="ค้นหา"
-              />
+                ค้นหา
+              </Link>
             </div>
             <div className="flex flex-row flex-nowrap">
                 {actionItems.map((actionItem) => (

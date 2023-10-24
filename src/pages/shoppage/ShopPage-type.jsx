@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import TitleHeader from "../../components/TitleHeader"
 import Accordion from '../../components/Accordion'
 import { Link } from 'react-router-dom'
 import TitleHeaderShop from '../../components/TitleHeaderShop'
 
-const ShopPageType = ({min, max, onChange, setCurrentPage}) => {
+export default function ShopPageType({min, max, onChange, setCurrentPage}){
   const [accordionActiveOne, setAccordionActiveOne] = useState(false);
   const [accordionActiveTwo, setAccordionActiveTwo] = useState(false);
   const [accordionActiveThree, setAccordionActiveThree] = useState(false);
@@ -187,5 +186,3 @@ const ShopPageType = ({min, max, onChange, setCurrentPage}) => {
     </>
   )
 }
-
-export default ShopPageType

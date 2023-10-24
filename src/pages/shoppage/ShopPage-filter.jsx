@@ -2,7 +2,7 @@ import React from 'react'
 import TitleHeader from "../../components/TitleHeader"
 import TitleHeaderShop from '../../components/TitleHeaderShop'
 
-const ShopPageFilter = ({setCurrentPage}) => {
+export default function ShopPageFilter({setCurrentPage}){
   const FilterRadio = ({key, text}) => {
     return (
       <label htmlFor={key} className='flex py-5 lg:py-[7px] w-full items-center gap-x-[14px] font-bold text-sm'>
@@ -61,5 +61,3 @@ const ShopPageFilter = ({setCurrentPage}) => {
     </>
   )
 }
-
-export default ShopPageFilter

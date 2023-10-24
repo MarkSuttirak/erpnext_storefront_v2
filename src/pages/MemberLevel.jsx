@@ -11,7 +11,7 @@ import { useProducts } from '../hooks/useProducts'
 import { SfIconArrowForward } from "@storefront-ui/react";
 import { useUser } from '../hooks/useUser';
 
-const MemberLevel = () => {
+export default function MemberLevel(){
   const [level, setLevel] = useState('Silver')
   const { user } = useUser()
   const { products } = useProducts()
@@ -147,5 +147,3 @@ const MemberLevel = () => {
     </>
   )
 }
-
-export default MemberLevel;

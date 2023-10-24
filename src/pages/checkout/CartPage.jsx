@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SfButton, SfDrawer, useTrapFocus, SfIconAdd, SfIconRemove } from '@storefront-ui/react'
+import { SfButton, useTrapFocus } from '@storefront-ui/react'
 import { useCart } from '../../hooks/useCart'
 import { useProducts } from '../../hooks/useProducts'
 import { useNavigate } from 'react-router-dom'
@@ -9,7 +9,6 @@ import { useRef } from 'react';
 
 export default function CartPage(){
   const { cart, cartCount, addToCart, removeFromCart, getTotal, isOpen, setIsOpen } = useCart()
-  const nodeRef = useRef(null);
   const drawerRef = useRef(null);
   const { getByItemCode } = useProducts()
   const navigate = useNavigate()
@@ -26,7 +25,6 @@ export default function CartPage(){
     for (let i = 1; i <= amount; i++) {
       options.push(<option key={i} value={i}>{i}</option>)
     }
-
     return options
   }
 
@@ -45,7 +43,7 @@ export default function CartPage(){
         <div className="flex-1 overflow-y-auto">
           <h2 className='header-title hidden lg:block mb-[30px]'>ตะกร้า</h2>
           {cartCount == 0 ? (
-            <h2 className='text-[#8A8A8A]'>ไม่มีสินค้าในตะกร้า</h2>
+            <h2 className='text-[#8A8A8A] my-4 lg:my-0'>ไม่มีสินค้าในตะกร้า</h2>
           ) : (
             <div className="flow-root">
               <ul role="list" className="overflow-y-auto">
@@ -68,43 +66,6 @@ export default function CartPage(){
                             </div>
                             <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
                           </div>
-
-                          {/* <div className="flex flex-1 items-center justify-between text-sm">
-                            <div className="flex items-center justify-between">
-                              <div className="flex border border-neutral-300 rounded-md">
-                                <SfButton
-                                  type="button"
-                                  variant="tertiary"
-                                  disabled={cart[itemCode] === 1}
-                                  square
-                                  className="rounded-r-none"
-                                  aria-controls={null}
-                                  aria-label="Decrease value"
-                                  onClick={() => addToCart(itemCode, cart[itemCode] - 1)}
-                                >
-                                  <SfIconRemove />
-                                </SfButton>
-                                <input
-                                  type="number"
-                                  role="spinbutton"
-                                  className="appearance-none mx-2 w-8 text-center bg-transparent font-medium [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-inner-spin-button]:display-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-outer-spin-button]:display-none [&::-webkit-outer-spin-button]:m-0 [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none disabled:placeholder-disabled-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm"
-                                  value={cart[itemCode]}
-                                  onChange={null}
-                                />
-                                <SfButton
-                                  type="button"
-                                  variant="tertiary"
-                                  square
-                                  className="rounded-l-none"
-                                  aria-controls={null}
-                                  aria-label="Increase value"
-                                  onClick={() => addToCart(itemCode)}
-                                >
-                                  <SfIconAdd />
-                                </SfButton>
-                              </div>
-                            </div>
-                          </div> */}
                           <div className='flex gap-x-10'>
                             <div className='flex flex-col gap-y-[10px]'>
                               <h2 className='text-[#A2A2A2] text-xs'>ไซส์</h2>

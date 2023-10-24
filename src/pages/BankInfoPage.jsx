@@ -3,9 +3,9 @@ import { Link, useSearchParams } from 'react-router-dom';
 import TitleHeader from '../components/TitleHeader';
 import success from '../img/success.svg'
 import { Edit05, Copy01, Maximize01, ArrowUpRight, FileCheck02 } from '@untitled-ui/icons-react';
-const BankInfoPage = () => {
-  const [searchParams] = useSearchParams();
 
+export default function BankInfoPage(){
+  const [searchParams] = useSearchParams();
   return (
     <>
       <TitleHeader link='/' title='ใบเสร็จยืนยันคำสั่งซื้อ'/>
@@ -55,5 +55,3 @@ const BankInfoPage = () => {
     </>
   )
 }
-
-export default BankInfoPage

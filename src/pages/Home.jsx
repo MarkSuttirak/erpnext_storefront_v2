@@ -16,6 +16,7 @@ import FooterMenu from '../components/FooterMenu'
 import { useUser } from '../hooks/useUser';
 import PromotionCardDesktop from '../components/desktop/PromotionCardDesktop';
 import { useMediaQuery } from 'react-responsive'
+import { SearchMd } from '@untitled-ui/icons-react';
 
 export default function Home(){
   const { updateCurrentUser } = useFrappeAuth();
@@ -93,13 +94,11 @@ export default function Home(){
             </div>
           </div>
 
-          <div className='border-l border-l-[#E8E8E8] w-[20%]'>
+          <Link to='/search' className='border-l border-l-[#E8E8E8] w-[20%]'>
             <div className='h-full flex items-center justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <SearchMd color='#8A8A8A'/>
             </div>
-          </div>
+          </Link>
         </header>
         <main className='relative top-[-10px] lg:top-5 pb-[94px] desktop-sec'>
           <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-8 px-5 lg:px-10 lg:mt-[60px]'>

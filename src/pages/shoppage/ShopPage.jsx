@@ -1,22 +1,17 @@
-import FooterMenu from "../../components/FooterMenu"
-import searchIcon from '../../img/search-md-black.svg'
 import { useCart } from '../../hooks/useCart';
 import { ShoppingBag01, ChevronDown, ArrowLeft, FilterLines } from "@untitled-ui/icons-react";
 import { Link } from "react-router-dom";
-import newItem from '../../img/new-item.png'
 import ProductCard from "../../components/ProductCard";
 import { useProducts } from '../../hooks/useProducts'
 import { useState } from "react";
 import ShopPageMobile from "./ShopPage-mobile";
 import ShopPageFilter from "./ShopPage-filter";
-import ShopPageSearch from "./ShopPage-search";
 import ShopPageType from "./ShopPage-type";
 import ShopPageViewed from "./ShopPage-viewed";
 import Breadcrumbs from "../../components/Breadcrumbs";
 
-const ShopPage = () => {
+export default function ShopPage(){
   const { products } = useProducts()
-  const { cartCount, setIsOpen } = useCart()
   const [currentPage, setCurrentPage] = useState('shop');
   const [showFilter, setShowFilter] = useState(true);
   const [showFilterBtn, setShowFilterBtn] = useState('ซ่อนตัวกรองสินค้า')
@@ -50,8 +45,6 @@ const ShopPage = () => {
           <ShopPageMobile setCurrentPage={handleSetCurrentPage}/>
         ) : currentPage === 'filter' ? (
           <ShopPageFilter setCurrentPage={handleSetCurrentPage}/>
-        ) : currentPage === 'search' ? (
-          <ShopPageSearch setCurrentPage={handleSetCurrentPage}/>
         ) : currentPage === 'type' ? (
           <ShopPageType setCurrentPage={handleSetCurrentPage}/>
         ) : (
@@ -107,5 +100,3 @@ const ShopPage = () => {
     </>
   )
 }
-
-export default ShopPage

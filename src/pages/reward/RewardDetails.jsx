@@ -6,7 +6,6 @@ import { useState } from 'react'
 
 export default function RewardDetails() {
   const [rewardReddem, setRewardRedeem] = useState(false);
-
   const hanndleCouponClick = () => {
     setRewardRedeem(true)
   }

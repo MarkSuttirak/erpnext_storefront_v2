@@ -4,7 +4,7 @@ import searchIcon from '../../img/search-md-black.svg'
 import { useProducts } from "../../hooks/useProducts"
 import ProductCard from "../../components/ProductCard"
 
-const ShopPageViewed = ({setCurrentPage}) => {
+export default function ShopPageViewed({setCurrentPage}){
   const { products } = useProducts()
 
   const handleClickToSearch = () => {
@@ -72,5 +72,3 @@ const ShopPageViewed = ({setCurrentPage}) => {
     </>
   )
 }
-
-export default ShopPageViewed

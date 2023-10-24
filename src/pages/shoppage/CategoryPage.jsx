@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useFrappeGetDocList } from "frappe-react-sdk";
 import { useState } from "react";
 
-const CategoryPage = () => {
+export default function CategoryPage(){
   const { cartCount, setIsOpen } = useCart()
 
   const { data:dataItemCate } = useFrappeGetDocList('Item Category', {
@@ -85,5 +85,3 @@ const CategoryPage = () => {
     </>
   )
 }
-
-export default CategoryPage

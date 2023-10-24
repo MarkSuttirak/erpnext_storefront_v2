@@ -1,18 +1,11 @@
-import { useCart } from '../../hooks/useCart';
 import { useProducts } from '../../hooks/useProducts'
 import { useState } from "react";
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ShoppingBag01 } from '@untitled-ui/icons-react';
+import { ArrowLeft, SearchMd, ShoppingBag01 } from '@untitled-ui/icons-react';
 import ProductCard from '../../components/ProductCard';
-import searchIcon from '../../img/search-md-black.svg'
 
-const ShopPageMobile = ({setCurrentPage}) => {
+export default function ShopPageMobile({setCurrentPage}){
   const { products } = useProducts()
-  const { cartCount, setIsOpen } = useCart()
-
-  const handleClickToSearch = () => {
-    setCurrentPage('search')
-  }
 
   const handleClickToType = () => {
     setCurrentPage('type')
@@ -32,25 +25,25 @@ const ShopPageMobile = ({setCurrentPage}) => {
           ไอเท็มใหม่
         </div>
 
-        <div className="flex items-center">
-          <button onClick={handleClickToSearch} className="px-2">
-            <img src={searchIcon} />
-          </button>
-          <button className="px-2" onClick={() => setIsOpen(true)}>
+        <div className="flex items-center gap-x-4">
+          <Link to='/search'>
+            <SearchMd />
+          </Link>
+          <Link to='/cart'>
             <ShoppingBag01 viewBox='0 0 24 24' width="22" height="22"/>
-          </button>
+          </Link>
         </div>
       </header>
       <header className='bg-black text-white text-center py-[10px]'>
         12.12 โปรโมชั่นทั้งเว็บไซต์
       </header>
       <main>
-        <div className="border-b border-b-[#F2F2F2] flex">
+        <div className="border-b border-b-[#F2F2F2] flex mb-4">
           <button onClick={handleClickToFilter} className='block p-4 w-1/2 border-r border-r-[#F2F2F2] text-center'>ประเภทสินค้า</button>
           <button onClick={handleClickToType} className='block p-4 w-1/2 text-center'>ลักษณะสินค้า</button>
         </div>
 
-        <section className="p-5 grid gap-y-[14px]">
+        <section className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
           {(products ?? []).map((product) => (
             <ProductCard
               key={product.item_code}
@@ -67,5 +60,3 @@ const ShopPageMobile = ({setCurrentPage}) => {
     </div>
   )
 }
-
-export default ShopPageMobile
