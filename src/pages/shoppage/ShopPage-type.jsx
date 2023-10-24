@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Accordion from '../../components/Accordion'
 import { Link } from 'react-router-dom'
 import TitleHeaderShop from '../../components/TitleHeaderShop'
+import { useFrappeGetDocList } from 'frappe-react-sdk'
 
 export default function ShopPageType({min, max, onChange, setCurrentPage, selectedCate}){
   const [accordionActiveOne, setAccordionActiveOne] = useState(false);

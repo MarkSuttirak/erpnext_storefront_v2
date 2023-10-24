@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "@untitled-ui/icons-react";
 import silverCard from '../../img/silvercard-reward.svg'
+import silverCardDesktop from '../../img/silvercard.svg'
+import qrcode from '../../img/qrcode.svg'
 import coin from '../../img/coin2.svg'
 import transferPoints from '../../img/transfer-point.svg'
 import redeemPoints from '../../img/redeem-points.svg'
@@ -16,6 +18,9 @@ import { useUser } from '../../hooks/useUser';
 import DesktopSidebar from "../../components/desktop/DesktopSidebar";
 
 export default function RewardPage(){
+  const [bronzeLevel, setBronzeLevel] = useState(false);
+  const [silverLevel, setSilverLevel] = useState(true);
+
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser()
 
@@ -102,35 +107,30 @@ export default function RewardPage(){
             </Link>
           </div>
         </div>
-
-        <section className="mb-[100px]">
-          <div>
-            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-              คูปองส่วนลดออนไลน์
-              <SfIconArrowForward className="w-[18px] text-black ml-2"/>
-            </h2>
-
-              <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-                {(products ?? []).map((product) => (
-                  <ProductCard
-                    key={product.item_code}
-                    title={product.item_name}
-                    productId={product.name}
-                    desc={product.item_group}
-                    itemCode={product.item_code}
-                    price={product.formatted_price}
-                    thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
-                  />
-                ))}
+        <section className="flex flex-col w-full">
+          <div className='bg-white rounded-[6px] items-center lg:flex lg:justify-between profile-head'>
+            <div className='flex justify-between p-5 lg:w-1/2 lg:py-8'>
+              <div className='flex items-center gap-x-[14px]'>
+                <img src={silverLevel ? silverCardDesktop : ""} />
+                <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
               </div>
+              <div className='lg:hidden'>
+                <Link to="/my-id" className='bg-[#00B14F] flex gap-x-2 text-white items-center text-sm p-1 rounded-[4px]'>
+                  <img src={qrcode} />
+                  ID ของฉัน
+                </Link>
+              </div>
+            </div>
           </div>
-          <div>
-            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-              แลกคะแนน
-              <SfIconArrowForward className="w-[18px] text-black ml-2"/>
-            </h2>
 
-              <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+          <div className="mb-[100px]">
+            <div>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+                คูปองส่วนลดออนไลน์
+                <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+              </h2>
+
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5">
                 {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
@@ -143,6 +143,27 @@ export default function RewardPage(){
                   />
                 ))}
               </div>
+            </div>
+            <div>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+                แลกคะแนน
+                <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+              </h2>
+
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5">
+                {(products ?? []).map((product) => (
+                  <ProductCard
+                    key={product.item_code}
+                    title={product.item_name}
+                    productId={product.name}
+                    desc={product.item_group}
+                    itemCode={product.item_code}
+                    price={product.formatted_price}
+                    thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </main>

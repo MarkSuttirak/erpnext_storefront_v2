@@ -21,6 +21,13 @@ import { SearchMd } from '@untitled-ui/icons-react';
 export default function Home(){
   const { updateCurrentUser } = useFrappeAuth();
   const { products, userdata } = useProducts();
+
+  const { data:dataItemCate } = useFrappeGetDocList('Item Category', {
+    fields: ['name', 'item_category']
+  })
+
+  const [selectedCate, setSelectedCate] = useState('');
+
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
   const navigate = useNavigate();
@@ -143,9 +150,9 @@ export default function Home(){
                 <SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/>
               </h2>
               <div className='hidden lg:flex gap-x-6 justify-center mt-6'>
-                <button className='text-[#66BC89] underline'>สินค้าทั้งหมด</button>
-                <button className='text-[#777777]'>สินค้ามาใหม่</button>
-                <button className='text-[#777777]'>ลดสูงสุด</button>
+                {(dataItemCate ?? []).map((d) => (
+                  <button key={d.name} className={`${selectedCate === d.name ? "text-[#66BC89] underline" : "text-[#777777]"}`} onClick={() => setSelectedCate(d.name)}>{d.item_category}</button>
+                ))}
               </div>
             </div>
 
@@ -158,6 +165,7 @@ export default function Home(){
                   desc={product.item_group}
                   itemCode={product.item_code}
                   price={product.formatted_price}
+                  category={product.item_category}
                   thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
                   isGift={product?.item_group === "Gift" || product?.item_group === "Gift and Cards"}
                 />
@@ -181,6 +189,7 @@ export default function Home(){
                     desc={product.item_group}
                     itemCode={product.item_code}
                     price={product.formatted_price}
+                    category={product.item_category}
                     thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
                     isGift={product?.item_group === "Gift" || product?.item_group === "Gift and Cards"}
                   />
@@ -203,6 +212,7 @@ export default function Home(){
                     desc={product.item_group}
                     itemCode={product.item_code}
                     price={product.formatted_price}
+                    category={product.item_category}
                     thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"}
                     isGift={product?.item_group === "Gift" || product?.item_group === "Gift and Cards"}
                   />

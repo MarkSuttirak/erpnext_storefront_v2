@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { SfButton, SfRating, SfCounter, SfLink, SfIconShoppingCart, SfIconFavorite } from '@storefront-ui/react';
 import { useCart } from '../hooks/useCart';
 
-export default function ProductCard({title, thumbnail, desc, price, productId, itemCode, isGift}){
+export default function ProductCard({title, thumbnail, desc, price, productId, itemCode, isGift, category}){
   return (
     <Link to={`/products/${productId}`}>
-      <div className="rounded-md">
+      <div className="rounded-md min-w-[200px]">
         <div className="relative">
           <SfLink href="#" className="block">
             <img
