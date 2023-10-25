@@ -23,7 +23,7 @@ export default function Accordion({items}){
             <ChevronRight className={`accordion-arrow-anim`}/>
           </button>
           <div ref={content} className={`accordion-detail`}>
-            <div className="p-5 lg:px-0">{item.content}</div>
+            <div className="pb-5 px-5 lg:px-0">{item.content}</div>
           </div>
         </div>)
       })}

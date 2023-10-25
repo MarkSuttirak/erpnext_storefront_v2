@@ -59,7 +59,7 @@ export default function ShopPage(){
       {/* Desktop version */}
       <main className='main-margintop p-5 desktop-sec lg:py-10 hidden lg:block'>
         <Breadcrumbs pages={pages}/>
-        <div className="flex justify-between mb-[48px]">
+        <div className="flex justify-between mb-[50px]">
           <h2 className='header-title'>ร้านค้า</h2>
           <div className="flex gap-x-10">
             <button className="flex items-center gap-x-[6px]" onClick={() => {
@@ -94,7 +94,7 @@ export default function ShopPage(){
               <ShopPageType />
             </div>
           ) : null}
-          <div className="flex gap-x-5 mx-auto grid grid-cols-3">
+          <div className="flex gap-x-5 gap-y-8 mx-auto grid grid-cols-3">
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}

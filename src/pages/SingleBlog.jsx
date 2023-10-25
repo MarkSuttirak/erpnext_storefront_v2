@@ -23,7 +23,7 @@ export default function SingleBlog() {
           href:'',
           name:id
         }]}/>
-        <section className='max-w-[955px] mx-auto'>
+        <section className='max-w-[955px] mx-auto lg:mt-10'>
           <img className={`w-full aspect-video object-cover lg:rounded-lg`} src={`${import.meta.env.VITE_ERP_URL}${data?.meta_image}`} alt="" />
 
           <article className='px-5 py-6 lg:px-0'>

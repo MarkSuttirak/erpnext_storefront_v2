@@ -15,6 +15,7 @@ import Accordion from '../components/Accordion';
 import ProductCard from '../components/ProductCard';
 import { useFrappeCreateDoc, useFrappeDeleteDoc, useFrappeGetDoc, useFrappeGetDocList } from 'frappe-react-sdk';
 import AddedToCartModal from '../components/modals/AddedToCartModal';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Product(){
   const { id } = useParams();
@@ -128,7 +129,15 @@ export default function Product(){
         </button>
       </nav>
       <main className="lg:mt-[92px] desktop-sec lg:px-5 lg:pt-10 relative">
-        <div className='lg:flex gap-x-[72px]'>
+        <Breadcrumbs pages={[{
+          name:'สินค้า',
+          href:'/shop'
+        },
+        {
+          name:id,
+          href:''
+        }]}/>
+        <div className='lg:flex gap-x-[72px] lg:mt-[50px]'>
           <div className="relative flex max-h-[600px] aspect-[4/3]">
             <SfScrollable
               className="relative w-full h-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
@@ -148,7 +157,7 @@ export default function Product(){
             </SfScrollable>
           </div>
           <div className='w-full'>
-            <section className="mt-4 px-4 lg:px-0">
+            <section className="mt-4 px-4 lg:px-0 lg:mt-0">
               <div className='w-full'>
                 <p className='text-[#625C5C] text-sm'>{product?.item_group}</p>
                 <h1 className="mt-2 font-bold typography-headline-4 lg:text-[24px] text-[#111111]">
@@ -170,7 +179,7 @@ export default function Product(){
                 <div className='flex gap-x-4 gap-y-3 flex-wrap mt-[14px]'>
                   {productSizes.map((size) => 
                     <label htmlFor={size} className='size-btn'>
-                      <input type="checkbox" name="size" id={size} className='size-input' ref={sizeRef} onClick={(e) => {e.target.checked ? setAccordionActiveTwo(true) : setAccordionActiveTwo(false)}}/>
+                      <input type="radio" name="size" id={size} className='size-input' ref={sizeRef} onClick={(e) => {e.target.checked ? setAccordionActiveTwo(true) : setAccordionActiveTwo(false)}}/>
                       <span className='size-text'>{size}</span>
                     </label>
                   )}
@@ -194,7 +203,7 @@ export default function Product(){
                   variant="tertiary"
                   size="lg"
                   square
-                  className="bg-white border border-black ml-4 basis-[20%] text-center py-3 w-[62px] h-[48px]"
+                  className="bg-white border border-black ml-4 basis-[20%] text-center py-3 w-[62px] h-[48px] hover:bg-white"
                   aria-label="Add to wishlist"
                 >
                   <Heart color={liked ? "red" : "black"} />

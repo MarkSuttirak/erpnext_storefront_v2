@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Breadcrumbs({pages}) {
   return (
-    <nav className="hidden lg:flex mb-10" aria-label="Breadcrumb">
+    <nav className="hidden lg:flex mb-2" aria-label="Breadcrumb">
       <ol role="list" className="flex items-center space-x-[10px]">
         <li key='home'>
           <Link

@@ -26,7 +26,9 @@ export default function MyCouponDetails(){
       <TitleHeader title="ข้อมูลคูปอง" link="/my-coupon"/>
       <main className='main-margintop p-5 desktop-sec'>
         <Breadcrumbs pages={pages}/>
-        <CouponDesc proTitle={data?.coupon_name} code={data?.coupon_code} desc={data?.description} date={data?.valid_upto} condition={data?.condition}/>
+        <div className='lg:mt-[42px]'>
+          <CouponDesc proTitle={data?.coupon_name} code={data?.coupon_code} desc={data?.description} date={data?.valid_upto} condition={data?.condition}/>
+        </div>
       </main>
     </>
   )

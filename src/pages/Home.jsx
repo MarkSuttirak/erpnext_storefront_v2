@@ -89,8 +89,8 @@ export default function Home(){
     <>
       <NavHeader />
       <div className='lg:mt-[92px]'>
-        <img src={banner} className='w-full left-0 max-h-[240px] lg:max-h-[600px] object-cover'/>
-        <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex lg:hidden max-w-[1200px] mx-auto' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
+        <img src={banner} className='w-full max-h-[240px] lg:max-h-[600px] object-cover lg:p-5 lg:rounded-[30px]'/>
+        <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
           <div className='w-[80%] py-2'>
             <div className='flex'>
               <div className='basis-1/3 flex gap-x-1 text-[13px]'>

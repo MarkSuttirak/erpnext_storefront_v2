@@ -18,7 +18,7 @@ export default function Orders({name, posting_date, delivery_within, payment_met
         </div>
         <div className="flex gap-x-[14px]">
           <div className="lg:w-[90px]">
-            <img src={image} />
+            <img src={image} width='100%' height='100%'/>
           </div>
           <div className="flex w-full flex-col gap-y-3">
             <div className="flex">
