@@ -6,6 +6,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Fragment, useState, useRef, useEffect } from 'react'
 import { ShoppingBag01, MessageCircle01, ChevronDown, Heart, SearchMd } from "@untitled-ui/icons-react";
 import { useFrappeGetDocList } from 'frappe-react-sdk';
+import Dropdown from '../Dropdown';
 
 export default function HeaderDesktop(){
   const navigate = useNavigate();
@@ -13,6 +14,10 @@ export default function HeaderDesktop(){
 
   const { data:dataIcon } = useFrappeGetDocList('Brand Icon', {
     fields: ['name', 'brand_icon']
+  })
+
+  const { data:dataItemCate } = useFrappeGetDocList('Item Category', {
+    fields: ['name', 'item_category']
   })
 
   const { currentUser } = useFrappeAuth()
@@ -54,10 +59,9 @@ export default function HeaderDesktop(){
       </div>
       <div className="flex flex-wrap lg:flex-nowrap items-center flex-row h-full w-full py-2 px-4">
         <div className='max-w-[1200px] mx-auto flex items-center w-full'>
-          <button className='flex flex-1 items-center gap-x-[6px]'>
-            หมวดหมู่
-            <ChevronDown />
-          </button>
+          <div className='flex flex-1 items-center gap-x-[6px]'>
+            <Dropdown title='หมวดหมู่' menus={dataItemCate ?? []} />
+          </div>
           <picture>
             <a
               href="/"
