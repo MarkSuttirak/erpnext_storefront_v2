@@ -1,7 +1,7 @@
 import { Gift01 } from "@untitled-ui/icons-react"
 import TitleHeader from "../components/TitleHeader"
 import { useFrappeGetDocList } from "frappe-react-sdk"
-import PromotionCardDesktop from "../components/desktop/PromotionCardDesktop"
+import BlogCardDesktop from "../components/desktop/BlogCardDesktop"
 import { useMediaQuery } from "react-responsive"
 import { Link } from "react-router-dom"
 import { SfIconCalendarToday } from "@storefront-ui/react"
@@ -9,7 +9,7 @@ import Breadcrumbs from "../components/Breadcrumbs"
 
 export default function BlogPage(){
   const { data:dataBlog, isLoading:isLoadingBlogp, error:errorBlog } = useFrappeGetDocList('Blog Post', {
-    fields: ['name', 'title', 'meta_image', 'published_on', 'post_display'],
+    fields: ['name', 'title', 'meta_image', 'published_on', 'post_display', 'blog_category'],
     filters: [['post_display', '=', 'Storefront']],
   })
 
@@ -39,15 +39,15 @@ export default function BlogPage(){
         }]}/>
         <h2 className="header-title hidden lg:block mb-[48px]">บทความ</h2>
         {isDesktop ? (
-          <div className={`hidden lg:grid grid-cols-2 gap-x-6 gap-y-10`}>
+          <div className={`hidden lg:grid grid-cols-3 gap-x-6 gap-y-10`}>
             {(dataBlog ?? []).map((d) => 
-              <PromotionCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9'/>
+              <BlogCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9' category={d.blog_category}/>
             )}
           </div>
         ) : (
           <div className="flex flex-col lg:hidden p-5 gap-y-[30px]">
             {(dataBlog ?? []).map((d) => 
-              <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9'/>
+              <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9' category={d.blog_category}/>
             )}
           </div>
         )}

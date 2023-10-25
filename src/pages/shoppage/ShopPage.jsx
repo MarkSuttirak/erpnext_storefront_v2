@@ -1,6 +1,6 @@
 import { useCart } from '../../hooks/useCart';
 import { ShoppingBag01, ChevronDown, ArrowLeft, FilterLines } from "@untitled-ui/icons-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ProductCard from "../../components/ProductCard";
 import { useProducts } from '../../hooks/useProducts'
 import { useState } from "react";
@@ -9,12 +9,16 @@ import ShopPageFilter from "./ShopPage-filter";
 import ShopPageType from "./ShopPage-type";
 import ShopPageViewed from "./ShopPage-viewed";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import Dropdown from '../../components/Dropdown';
 
 export default function ShopPage(){
   const { products } = useProducts()
   const [currentPage, setCurrentPage] = useState('shop');
   const [showFilter, setShowFilter] = useState(true);
   const [showFilterBtn, setShowFilterBtn] = useState('ซ่อนตัวกรองสินค้า')
+
+  const location = useLocation();
+  const filter = new URLSearchParams(location)
 
   const showFilterProduct = () => {
     setShowFilter(true);
@@ -68,10 +72,18 @@ export default function ShopPage(){
               {showFilterBtn}
               <FilterLines />
             </button>
-            <button className='flex flex-1 items-center gap-x-[6px]'>
-              เรียงตาม
-              <ChevronDown />
-            </button>
+            <Dropdown title='เรียงตาม' menus={[{
+              link:'',
+              title:'ใหม่ล่าสุด'
+            },
+            {
+              link:'',
+              title:'ราคา : สูง - ต่ำ'
+            },
+            {
+              link:'',
+              title:'ราคา : ต่ำ - สูง'
+            }]} side='right'/>
           </div>
         </div>
 

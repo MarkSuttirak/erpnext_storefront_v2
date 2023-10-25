@@ -27,7 +27,7 @@ export default function ShopPageFilter({setCurrentPage}){
       <div className='lg:hidden'>
         <TitleHeaderShop onClick={handleClickToShop} title="ประเภทสินค้า" />
         <main className="p-5 mt-[53px]">
-          <FilterRadio key="" text="All" />
+          <FilterRadio key="" text="All" onChange={setSelectedCate}/>
           {(dataItemCate ?? []).map((list) => 
             <FilterRadio key={list.name} text={list.item_category} id={list.name} onChange={setSelectedCate}/>
           )}
@@ -38,6 +38,7 @@ export default function ShopPageFilter({setCurrentPage}){
       </div>
 
       <div className="hidden lg:block w-[300px]">
+        <FilterRadio key="" text="All" onChange={setSelectedCate}/>
         {(dataItemCate ?? []).map((list) => 
           <FilterRadio key={list.name} text={list.item_category} id={list.name} onChange={setSelectedCate}/>
         )}

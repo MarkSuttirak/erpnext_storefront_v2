@@ -99,7 +99,7 @@ export default function FooterMenuDesktop({active}){
               src={brandLogo}
               alt={brandLogo}
             />
-            <p className="text-sm leading-6 text-gray-600">
+            <p className="text-sm leading-6 text-gray-600 w-1/2">
               Making the world a better place through constructing elegant hierarchies.
             </p>
           </div>
@@ -130,11 +130,10 @@ export default function FooterMenuDesktop({active}){
             </div>
             <div>
               <h3 className="text-sm font-semibold leading-6 text-gray-900">Contact</h3>
-              <div className="flex space-x-3 mt-6">
+              <div className="grid grid-cols-4 mt-6 gap-4">
                 {navigation.social.map((item) => (
-                  <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">{item.name}</span>
-                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                  <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500 w-6 h-6">
+                    <item.icon aria-hidden="true" />
                   </a>
                 ))}
               </div>

@@ -17,11 +17,28 @@ import { useUser } from '../hooks/useUser';
 import PromotionCardDesktop from '../components/desktop/PromotionCardDesktop';
 import { useMediaQuery } from 'react-responsive'
 import { SearchMd } from '@untitled-ui/icons-react';
-import BlogCardDesktop from '../components/desktop/BlogCardDesktop';
 
 export default function Home(){
   const { updateCurrentUser } = useFrappeAuth();
   const { products, userdata } = useProducts();
+
+  const { data:blogCount } = useFrappeGetDocCount("Blog Post", 
+  [['post_display', '=', 'storefront']]
+)
+
+  const BlogCardDesktop = ({title, image, date, link, category, ratio}) => {
+    return (
+      <Link to={link} className={`${blogCount < 2 ? 'flex gap-x-6 items-end' : null}`}>
+        <img src={`${import.meta.env.VITE_ERP_URL}${image}`} className={`rounded-md object-cover ${blogCount < 2 ? 'w-[60%]' : 'w-full'}`} style={{aspectRatio:ratio}}/>
+  
+        <div className='mt-6'>
+          <h2 className="text-[#8A8A8A] text-sm mb-1">{category}</h2>
+          <h1 className={`text-[#333333] font-bold ${blogCount < 2 ? 'text-[24px]' : 'text-[20px]'}`}>{title}</h1>
+          <p className='text-[#8A8A8A] text-sm flex items-center gap-x-1 mt-4'><Calendar viewBox="0 0 24 24" width='13' height='13'/>{date}</p>
+        </div>
+      </Link>
+    )
+  }
 
   const { data:dataItemCate } = useFrappeGetDocList('Item Category', {
     fields: ['name', 'item_category']
@@ -63,7 +80,7 @@ export default function Home(){
   })
 
   const { data:dataBanner, isLoading:isLoadingBanner, error:errorBanner } = useFrappeGetDocList('Promotion Banner', {
-    fields: ['name', 'title', 'image', 'expiration_date'],
+    fields: ['name', 'title', 'image', 'description'],
     limit: isDesktop ? 3 : undefined
   })
 
@@ -135,7 +152,7 @@ export default function Home(){
             {isDesktop ? (
               <div className={`px-5 hidden lg:grid grid-cols-3 gap-x-6`}>
                 {(dataBanner ?? []).map((banner) => 
-                  <PromotionCardDesktop key={banner.name} link="/checkout" title={banner.title} image={banner.image} date="อายุการใช้งาน 1 เดือนหลังจากได้รับคูปอง" ratio='1'/>
+                  <PromotionCardDesktop key={banner.name} link="/checkout" title={banner.title} image={banner.image} desc={banner.description} ratio='1'/>
                 )}
               </div>
             ) : (

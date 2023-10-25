@@ -8,7 +8,6 @@ export default function ShopPageType({min, max, onChange, setCurrentPage, select
   const [accordionActiveOne, setAccordionActiveOne] = useState(false);
   const [accordionActiveTwo, setAccordionActiveTwo] = useState(false);
   const [accordionActiveThree, setAccordionActiveThree] = useState(false);
-  const [accordionActiveFour, setAccordionActiveFour] = useState(false);
 
   const { data:dataItemSubcateAll } = useFrappeGetDocList('Item Subcategory', {
     fields: ['name', 'subcategory'],
@@ -25,58 +24,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage, select
     setCurrentPage('shop')
   }
 
-  const productTypes = [
-    {
-      key:'shirt-one',
-      text:'เสื้อท่อนบน'
-    },
-    {
-      key:'shirt-two',
-      text:'เสื้อผ้าท่อนล่าง'
-    },
-    {
-      key:'skirt',
-      text:'กระโปรง'
-    },
-    {
-      key:'pants',
-      text:'กางเกง'
-    },
-    {
-      key:'shoes',
-      text:'รองเท้า'
-    }
-  ];
-
   const productSizes = [36, 37, 38, 39, 40, 41]
-
-  const productColours = [
-    {
-      key:'orange',
-      colour:'#F54E06',
-      text:'ส้ม'
-    },
-    {
-      key:'black',
-      colour:'#000000',
-      text:'ดำ'
-    },
-    {
-      key:'purple',
-      colour:'#AD00FF',
-      text:'ม่วง'
-    },
-    {
-      key:'green',
-      colour:'#009521',
-      text:'เขียว'
-    },
-    {
-      key:'brown',
-      colour:'#660000',
-      text:'น้ำตาล'
-    }
-  ]
 
   const hideClearSearch = {
     visibility: "hidden",
@@ -89,6 +37,8 @@ export default function ShopPageType({min, max, onChange, setCurrentPage, select
     opacity: "1",
     transition: "all 200ms"
   }
+
+  const priceFilters = ['฿ 0 - ฿ 200','฿ 200 - ฿ 800','฿ 800 - ฿ 1000','฿ 1000 - ฿ 5000']
 
   const itemLists = [
     {
@@ -103,7 +53,7 @@ export default function ShopPageType({min, max, onChange, setCurrentPage, select
       content:(
         <div className='flex flex-col gap-y-[30px] w-full'>
           {(dataItemSubcateAll ?? []).map((type) => 
-            <label htmlFor={type.name} className='flex items-center gap-x-[14px]'>
+            <label htmlFor={type.name} className='flex items-center gap-x-[14px] text-xs'>
               <input type='checkbox' name='product-type' id={type.name} className='product-type-input' onClick={(e) => {e.target.checked ? setAccordionActiveOne(true) : setAccordionActiveOne(false)}}/>
               <span className='product-type-checkbox'/>
               {type.name}
@@ -135,42 +85,21 @@ export default function ShopPageType({min, max, onChange, setCurrentPage, select
     {
       title:(
         <div className='flex justify-between w-full pr-[14px] items-center'>
-          <h2>สี</h2>
+          <h2>ราคา</h2>
           <div className={`text-[#5B6CFF] text-xs`} style={accordionActiveThree ? showClearSearch : hideClearSearch} onClick={() => {
             setAccordionActiveThree(false);
           }}>เคลียร์การค้นหา</div>
         </div>
       ),
       content:(
-        <div className='flex gap-x-8 flex-wrap w-full'>
-          {productColours.map((colour) => 
-            <label htmlFor={colour.key} className='flex flex-col justify-center gap-x-[14px] text-center'>
-              <input type='checkbox' name='product-type' id={colour.key} className='product-colour-input' onClick={(e) => {e.target.checked ? setAccordionActiveThree(true) : setAccordionActiveThree(false)}}/>
-              <span className='product-colour-checkbox' style={{backgroundColor:colour.colour}}/>
-              {colour.text}
+        <div className='flex flex-col gap-y-[30px] w-full'>
+          {priceFilters.map((price) => 
+            <label htmlFor={price} className='flex items-center gap-x-[14px] text-xs'>
+              <input type='checkbox' name='price-filter' id={price} className='product-type-input' onClick={(e) => {e.target.checked ? setAccordionActiveThree(true) : setAccordionActiveThree(false)}}/>
+              <span className='product-type-checkbox'/>
+              {price}
             </label>
           )}
-        </div>
-      )
-    },
-    {
-      title:(
-        <div className='flex justify-between w-full pr-[14px] items-center'>
-          <h2>ราคา</h2>
-          <div className={`text-[#5B6CFF] text-xs`} style={accordionActiveFour ? showClearSearch : hideClearSearch} onClick={() => {
-            setAccordionActiveFour(false);
-          }}>เคลียร์การค้นหา</div>
-        </div>
-      ),
-      content:(
-        <div>
-          <div className='flex justify-between'>
-            <input type="number" className='p-[6px] text-center border border-[#D8DADC] rounded-[6px] w-[83px]' id='price-min-num' onClick={(e) => e.target.focus()} onKeyDown={(e) => {if (e.key === "Enter"){document.getElementById('price-min').value = e.target.value}}} />
-            <input type="number" className='p-[6px] text-center border border-[#D8DADC] rounded-[6px] w-[83px]' id='price-max-num' onClick={(e) => e.target.focus()} onKeyDown={(e) => {if (e.key === "Enter"){document.getElementById('price-max').value = e.target.value}}}/>
-          </div>
-
-          <input type="range" name="price-min" id="price-min" min="0" max="1000"/>
-          <input type="range" name="price-max" id="price-max" min="0" max="1000"/>
         </div>
       )
     }

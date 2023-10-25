@@ -1,19 +1,19 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { ChevronDown } from '@untitled-ui/icons-react'
 import { Link } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Dropdown({title, menus}) {
+export default function Dropdown({title, menus, side = 'left'}) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center text-[#424242]">
+        <Menu.Button className="flex w-full justify-center text-[#424242] items-center gap-x-[6px]">
           {title}
-          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+          <ChevronDown />
         </Menu.Button>
       </div>
 
@@ -26,7 +26,7 @@ export default function Dropdown({title, menus}) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className={`absolute ${side === 'right' ? 'right-0' : 'left-0'} z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-[999]`}>
           <div className="py-1">
             {menus.map((m) => (
               <Menu.Item>

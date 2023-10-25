@@ -20,6 +20,13 @@ export default function HeaderDesktop(){
     fields: ['name', 'item_category']
   })
 
+  const titleTest = dataItemCate?.map((d) => {
+    return {
+      link:'/',
+      title: d.item_category
+    }
+  })
+
   const { currentUser } = useFrappeAuth()
 
   const actionItems = [
@@ -60,7 +67,7 @@ export default function HeaderDesktop(){
       <div className="flex flex-wrap lg:flex-nowrap items-center flex-row h-full w-full py-2 px-4">
         <div className='max-w-[1200px] mx-auto flex items-center w-full'>
           <div className='flex flex-1 items-center gap-x-[6px]'>
-            <Dropdown title='หมวดหมู่' menus={dataItemCate ?? []} />
+            <Dropdown title='หมวดหมู่' menus={titleTest ?? []}/>
           </div>
           <picture>
             <a
@@ -79,7 +86,7 @@ export default function HeaderDesktop(){
 
           <nav className="flex-1 flex justify-end order-last lg:ml-4">
             <div className="relative mt-1 rounded-md">
-              <Link to='/search' className='flex items-center gap-x-3 bg-[#F4F4F4] text-[#8A8A8A] rounded-md px-3 h-9 w-[163px] text-sm'>
+              <Link to='/search' className='flex items-center gap-x-3 bg-[#F4F4F4] text-[#8A8A8A] rounded-md px-3 h-9 w-[200px] text-sm'>
                 <SearchMd color='#424242'/>
                 ค้นหา
               </Link>
