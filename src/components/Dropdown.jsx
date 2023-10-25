@@ -11,7 +11,7 @@ export default function Dropdown({title, menus, side = 'left'}) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="flex w-full justify-center text-[#424242] items-center gap-x-[6px]">
+        <Menu.Button className="flex w-full justify-center text-[#424242] items-center gap-x-[6px] h-[30px]">
           {title}
           <ChevronDown />
         </Menu.Button>

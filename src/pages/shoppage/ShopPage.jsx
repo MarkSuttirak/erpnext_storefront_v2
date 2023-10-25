@@ -22,12 +22,12 @@ export default function ShopPage(){
 
   const showFilterProduct = () => {
     setShowFilter(true);
-    setShowFilterBtn('ซ่อนตัวกรองสินค้า')
+    setShowFilterBtn('ซ่อนตัวกรอง')
   }
 
   const hideFilterProduct = () => {
     setShowFilter(false);
-    setShowFilterBtn('แสดงตัวกรองสินค้า')
+    setShowFilterBtn('แสดงตัวกรอง')
   }
 
   const handleSetCurrentPage = (page) => {

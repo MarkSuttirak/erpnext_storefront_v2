@@ -110,22 +110,22 @@
 }
 
 .accordion-btn {
-  border-bottom:1px solid #E3E3E3;
   display:flex;
   justify-content:space-between;
   width:100%
 }
 
+.accordion-detail {
+  border-bottom:1px solid #E3E3E3;
+}
+
 .accordion-btn + .accordion-detail {
-  visibility:hidden;
-  opacity:0;
+  overflow:hidden;
   max-height:0;
   transition:visibility 200ms, opacity 200ms, max-height 300ms;
 }
 
 .accordion-btn.active + .accordion-detail {
-  visibility:visible;
-  opacity:1;
   transition:visibility 200ms, opacity 200ms, max-height 300ms;
 }
 
@@ -200,11 +200,13 @@
 
 .size-text {
   border:1px solid #D8DADC;
-  padding:5px;
+  padding:8px;
   display:inline-block;
   border-radius:6px;
-  width:55px;
+  width:41px;
   text-align:center;
+  font-family:Inter;
+  font-size:14px;
 }
 
 .product-colour-input:checked ~ .product-colour-checkbox {

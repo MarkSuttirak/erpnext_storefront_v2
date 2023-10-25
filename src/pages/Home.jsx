@@ -17,6 +17,7 @@ import { useUser } from '../hooks/useUser';
 import PromotionCardDesktop from '../components/desktop/PromotionCardDesktop';
 import { useMediaQuery } from 'react-responsive'
 import { SearchMd } from '@untitled-ui/icons-react';
+import { Calendar } from "@untitled-ui/icons-react";
 
 export default function Home(){
   const { updateCurrentUser } = useFrappeAuth();
