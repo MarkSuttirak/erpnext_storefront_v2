@@ -18,7 +18,7 @@ export default function MyOrder(){
       name:"Computer",
       posting_date:"12. Juli 2023",
       status:"รอการชำระเงิน",
-      delivery_within:(<>3 - 4 วันทำการ Standard Delivery</>),
+      delivery_within:"3 - 4 วันทำการ Standard Delivery",
       payment_method:"โอนเงินผ่านธนาคาร",
       total:"€60",
       image:testImg
@@ -27,7 +27,7 @@ export default function MyOrder(){
       name:"Salat",
       posting_date:"12. August 2023",
       status:"รอการชำระเงิน",
-      delivery_within:(<>3 - 4 วันทำการ Standard Delivery</>),
+      delivery_within:"3 - 4 วันทำการ Standard Delivery",
       payment_method:"โอนเงินผ่านธนาคาร",
       total:"€5",
       image:testImg
@@ -36,7 +36,7 @@ export default function MyOrder(){
       name:"Handy",
       posting_date:"25. August 2023",
       status:"ยกเลิก",
-      delivery_within:(<>3 - 4 วันทำการ Standard Delivery</>),
+      delivery_within:"3 - 4 วันทำการ Standard Delivery",
       payment_method:"โอนเงินผ่านธนาคาร",
       total:"€150",
       image:testImg
@@ -45,10 +45,10 @@ export default function MyOrder(){
       name:"Sandwich",
       posting_date:"10. August 2023",
       status:"รับที่สาขา",
-      delivery_within:(<>3 - 4 วันทำการ Standard Delivery</>),
+      delivery_within:"3 - 4 วันทำการ Standard Delivery",
       payment_method:"โอนเงินผ่านธนาคาร",
       total:"€3",
-      image:testImg
+      image:''
     },
   ]
 
