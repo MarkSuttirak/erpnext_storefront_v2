@@ -102,11 +102,11 @@ export default function ShopPageType({min, max, onChange, setCurrentPage, select
       ),
       content:(
         <div className='flex flex-col gap-y-[30px] w-full'>
-          {(selectedCate === "" ? dataItemSubcateAll : dataItemSubcate)?.map((type) => 
-            <label htmlFor={type.key} className='flex items-center gap-x-[14px]'>
-              <input type='checkbox' name='product-type' id={type.key} className='product-type-input' onClick={(e) => {e.target.checked ? setAccordionActiveOne(true) : setAccordionActiveOne(false)}}/>
+          {(dataItemSubcateAll ?? []).map((type) => 
+            <label htmlFor={type.name} className='flex items-center gap-x-[14px]'>
+              <input type='checkbox' name='product-type' id={type.name} className='product-type-input' onClick={(e) => {e.target.checked ? setAccordionActiveOne(true) : setAccordionActiveOne(false)}}/>
               <span className='product-type-checkbox'/>
-              {type.text}
+              {type.name}
             </label>
           )}
         </div>

@@ -1,17 +1,17 @@
-import React from 'react'
-import TitleHeader from "../../components/TitleHeader"
+import React, { useState } from 'react'
 import TitleHeaderShop from '../../components/TitleHeaderShop'
 import { useFrappeGetDocList } from 'frappe-react-sdk'
 
 export default function ShopPageFilter({setCurrentPage}){
+  const [selectedCate, setSelectedCate] = useState('')
   const { data:dataItemCate, isLoading } = useFrappeGetDocList('Item Category', {
-    fields: ['name', 'item_category']
+    fields: ['name', 'item_category'],
   })
 
-  const FilterRadio = ({key, text}) => {
+  const FilterRadio = ({id, text, onChange}) => {
     return (
-      <label htmlFor={key} className='flex py-5 lg:py-[7px] w-full items-center gap-x-[14px] font-bold text-sm'>
-        <input type="radio" id={key} name="shop-filter" className='shop-filter-check'/>
+      <label htmlFor={id} className={`flex py-5 lg:py-[7px] w-full items-center gap-x-[14px] font-bold text-sm ${id === selectedCate ? 'text-[#111111]' : 'text-[#8A8A8A]'}`}>
+        <input type="radio" id={id} name="shop-filter" className='shop-filter-check' onChange={() => onChange(id)}/>
         <span className='shop-filter-radios lg:hidden' />
         {text}
       </label>
@@ -29,7 +29,7 @@ export default function ShopPageFilter({setCurrentPage}){
         <main className="p-5 mt-[53px]">
           <FilterRadio key="" text="All" />
           {(dataItemCate ?? []).map((list) => 
-            <FilterRadio key={list.name} text={list.item_category} />
+            <FilterRadio key={list.name} text={list.item_category} id={list.name} onChange={setSelectedCate}/>
           )}
         </main>
         <footer className='p-5'>
@@ -39,7 +39,7 @@ export default function ShopPageFilter({setCurrentPage}){
 
       <div className="hidden lg:block w-[300px]">
         {(dataItemCate ?? []).map((list) => 
-          <FilterRadio key={list.name} text={list.item_category} />
+          <FilterRadio key={list.name} text={list.item_category} id={list.name} onChange={setSelectedCate}/>
         )}
         {isLoading && (
           <h2>Loading...</h2>

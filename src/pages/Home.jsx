@@ -17,6 +17,7 @@ import { useUser } from '../hooks/useUser';
 import PromotionCardDesktop from '../components/desktop/PromotionCardDesktop';
 import { useMediaQuery } from 'react-responsive'
 import { SearchMd } from '@untitled-ui/icons-react';
+import BlogCardDesktop from '../components/desktop/BlogCardDesktop';
 
 export default function Home(){
   const { updateCurrentUser } = useFrappeAuth();
@@ -28,7 +29,6 @@ export default function Home(){
 
   const [selectedCate, setSelectedCate] = useState('');
 
-  console.log(products)
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
   const navigate = useNavigate();
@@ -57,9 +57,9 @@ export default function Home(){
   })
 
   const { data:dataBlog, isLoading:isLoadingBlog, error:errorBlog } = useFrappeGetDocList('Blog Post', {
-    fields: ['name', 'title', 'meta_image', 'published_on', 'post_display'],
+    fields: ['name', 'title', 'meta_image', 'published_on', 'post_display', 'blog_category'],
     filters: [['post_display', '=', 'Storefront']],
-    limit: isDesktop ? 2 : undefined
+    limit: isDesktop ? 3 : undefined
   })
 
   const { data:dataBanner, isLoading:isLoadingBanner, error:errorBanner } = useFrappeGetDocList('Promotion Banner', {
@@ -122,8 +122,11 @@ export default function Home(){
 
           <div className="mt-[30px] lg:mt-[70px]">
             <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10'>
-              <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>Celebrate Mid Year Festival</h2>
-              <Link to='/blog' className='lg:flex hidden gap-x-2 px-5 mb-[14px] text-[#66BC89]'>
+              <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
+                Promotion
+                <Link to='/blog'><SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/></Link>
+              </h2>
+              <Link to='/blog' className='lg:flex hidden gap-x-2 px-5 text-[#66BC89]'>
                 ดูทั้งหมด
                 <SfIconArrowForward className="w-[18px] text-[#66BC89]"/>
               </Link>
@@ -157,7 +160,7 @@ export default function Home(){
               </div>
             </div>
 
-            <div className="flex overflow-x-auto gap-x-5 lg:grid lg:grid-cols-4 mx-auto px-5">
+            <div className="flex overflow-x-auto gap-x-5 gap-y-10 lg:grid lg:grid-cols-4 mx-auto px-5">
               {(products ?? []).map((product) => (
                 <ProductCard
                   key={product.item_code}
@@ -222,18 +225,27 @@ export default function Home(){
             </div>
           </div>
 
-          <h2 className='mt-[30px] px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop mb-[14px] lg:mb-10'>Celebrate Mid Year Festival</h2>
+          <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10'>
+            <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
+              Blogs
+              <Link to='/blog'><SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/></Link>
+            </h2>
+            <Link to='/blog' className='lg:flex hidden gap-x-2 px-5 text-[#66BC89]'>
+              ดูทั้งหมด
+              <SfIconArrowForward className="w-[18px] text-[#66BC89]"/>
+            </Link>
+          </div>
 
           {isDesktop ? (
             <div className={`px-5 hidden lg:grid ${dataBlog?.length > 2 ? 'grid-cols-3' : dataBlog?.length == 2 ? 'grid-cols-2' : 'grid-cols-1'} gap-x-6`}>
               {(dataBlog ?? []).map((d) => 
-                <PromotionCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9'/>
+                <BlogCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9' category={d.blog_category}/>
               )}
             </div>
           ) : (
             <div className="flex overflow-x-auto gap-x-5 mx-auto px-5 lg:hidden">
               {(dataBlog ?? []).map((d) => 
-                <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`}/>
+                <BlogCard key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} category={d.blog_category}/>
               )}
             </div>
           )}

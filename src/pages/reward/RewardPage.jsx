@@ -79,9 +79,9 @@ export default function RewardPage(){
           </div>
         </div>
       </header>
-      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec lg:mt-[92px]'>
+      <main className='lg:px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec lg:mt-[92px]'>
         <DesktopSidebar />
-        <div className='bg-white rounded-[6px] items-center lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+        <div className='bg-white rounded-[6px] items-center lg:hidden mx-5' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
           <div className='py-5 px-2 w-full flex'>
             <Link to="/wishlist" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] justify-end'>
               <img src={redeemPoints} className="mb-1"/>
@@ -128,12 +128,12 @@ export default function RewardPage(){
 
           <div className="mb-[100px] lg:pt-8">
             <div>
-              <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6 px-5 lg:px-0'>
                 คูปองส่วนลดออนไลน์
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>
 
-              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto">
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5 lg:px-0">
                 {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
@@ -148,12 +148,12 @@ export default function RewardPage(){
               </div>
             </div>
             <div>
-              <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
+              <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6 px-5 lg:px-0'>
                 แลกคะแนน
                 <SfIconArrowForward className="w-[18px] text-black ml-2"/>
               </h2>
 
-              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto">
+              <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto gap-x-[14px] mx-auto px-5 lg:px-0">
                 {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}

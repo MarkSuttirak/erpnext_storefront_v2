@@ -1,15 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
-import { SfButton, SfRating, SfCounter, SfLink, SfIconShoppingCart, SfIconFavorite } from '@storefront-ui/react';
-import { useCart } from '../hooks/useCart';
 
 export default function ProductCard({title, thumbnail, desc, price, productId, itemCode, isGift, category}){
   return (
     <Link to={`/products/${productId}`}>
-      <div className="rounded-md min-w-[200px]">
+      <div className="rounded-md min-w-[152px] lg:min-w-[200px]">
         <div className="relative">
-          <SfLink href="#" className="block">
+          <div className="block">
             <img
               src={thumbnail}
               alt={title}
@@ -17,16 +15,16 @@ export default function ProductCard({title, thumbnail, desc, price, productId, i
               width='400'
               height='400'
             />
-          </SfLink>
+          </div>
         </div>
         <div className="py-4 flex flex-col">
           <p className="block font-normal text-sm text-[#8A8A8A]">
             {desc}
           </p>
-          <SfLink href="#" variant="secondary" className="no-underline text-[#111111] pt-[6px] pb-[8px] lg:pt-1 pb-[14px] text-xs lg:text-base">
+          <h2 href="#" variant="secondary" className="no-underline text-[#111111] pt-[6px] pb-2 lg:pt-1 lg:pb-4 text-[13px] lg:text-base font-bold">
             {title} {isGift && <span className="text-primary-600">- Gift</span>}
-          </SfLink>
-          <span className="block pb-2 text-sm lg:text-xl inter font-medium">{price}</span>
+          </h2>
+          <span className="block text-sm lg:text-xl inter font-medium">{price}</span>
         </div>
       </div>
     </Link>
