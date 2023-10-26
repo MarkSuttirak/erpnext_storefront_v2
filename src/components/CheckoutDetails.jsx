@@ -42,10 +42,10 @@ export default function CheckoutDetails(){
                   <div className="ml-4 flex flex-1 flex-col">
                     <div className="flex justify-between">
                       <div className="flex flex-col text-base font-medium text-gray-900">
-                        <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
+                        <p className="text-sm text-gray-500">{product?.item_group}</p>
                         <h3 className="text-[#111111] text-[13px] font-bold">{product?.item_name}</h3>
                       </div>
-                      <p className="ml-4">{product?.formatted_price}</p>
+                      <p className="ml-4 price">{product?.formatted_price}</p>
                     </div>
                     <div className='flex gap-x-10 mt-[15px]'>
                       <div className='flex flex-col gap-y-[10px]'>
@@ -68,23 +68,25 @@ export default function CheckoutDetails(){
           <div className="flex flex-col gap-y-4 justify-between typography-text-base">
             <div className="flex justify-between items-center text-[#424242]">
               <h2 className='font-bold'>ยอดรวม</h2>
-              <p>฿ {getTotal()}</p>
+              <p className="price">฿ {getTotal()}</p>
             </div>
-            <div className="flex justify-between items-center">
-              <h2 className='font-bold'>โค้ดส่วนลด</h2>
-              <p>-฿ {discount}</p>
-            </div>
+            {discount && (
+              <div className="flex justify-between items-center">
+                <h2 className='font-bold'>โค้ดส่วนลด</h2>
+                <p className="price">-฿ {discount}</p>
+              </div>
+            )}
             <div className="flex justify-between items-center">
               <h2 className='font-bold'>ค่าจัดส่ง</h2>
-              <p>-฿ {delivery}</p>
+              <p className="price">-฿ {delivery}</p>
             </div>
             <div className="flex justify-between items-center">
               <h2 className='font-bold'>ทั้งหมด</h2>
-              <p>฿ {total}</p>
+              <p className="price">฿ {total}</p>
             </div>
             <div className="flex justify-between items-center">
               <h2>Points ที่คุณจะได้รับ</h2>
-              <p>Points 149</p>
+              <p className="price">149</p>
             </div>
           </div>
         </div>

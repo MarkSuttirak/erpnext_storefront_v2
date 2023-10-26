@@ -18,7 +18,7 @@ export default function CouponDesc({proTitle, code, desc, date, condition, image
 
         <div className='flex flex-col justify-center'>
           {currentPage === 1 && (
-            <QRCode size={200} value="my-name" style={{border:"4px solid #00000029",borderRadius:"24px",padding:"10px",margin:"auto"}}/>
+            <QRCode size={200} value="my-name" className="m-auto p-[10px]"/>
           )}
 
           {currentPage === 2 && (
@@ -57,7 +57,7 @@ export default function CouponDesc({proTitle, code, desc, date, condition, image
             <div className='flex flex-col align-between mb-6 px-6'>
               <div className='flex flex-col'>
                 <h2 className='text-[21px] font-bold'>{proTitle}</h2>
-                <div className='text-[#424242] text-xs font-medium' dangerouslySetInnerHTML={{__html:condition}}/>
+                <div className='text-[#424242] text-xs font-medium px-6' dangerouslySetInnerHTML={{__html:desc}}/>
               </div>
 
               <button className='flex items-center gap-x-[5px] text-sm text-[#424242] justify-center mt-20' onClick={() => setShowDesc(true)}>ข้อตกลงและเงื่อนไขอื่นๆ <ArrowRight viewBox='0 0 24 24' width='18'/></button>
@@ -69,17 +69,13 @@ export default function CouponDesc({proTitle, code, desc, date, condition, image
           </>
         ) : (
           <>
-            <div className='text-[#424242] text-xs font-medium px-6' dangerouslySetInnerHTML={{__html:desc}}/>
-            
+            <div className='text-[#424242] text-xs font-medium' dangerouslySetInnerHTML={{__html:condition}}/>
+
             <div className='flex items-center gap-x-[14px] px-8 py-[18px] justify-center'>
               <button className='flex items-center gap-x-[5px] text-sm text-[#424242] justify-center mt-20' onClick={() => setShowDesc(false)}><ArrowLeft viewBox='0 0 24 24' width='18'/> กลับไปยังโค้ด</button>
             </div>
           </>
         )}
-        
-
-        {/* <div className='absolute w-[20px] h-[40px] bg-white rounded-r-[99px] left-[-1px] border-l-0 top-[200px]'></div>
-        <div className='absolute w-[20px] h-[40px] bg-white rounded-l-[99px] right-[-1px] border-r-0 top-[200px]'></div> */}
       </div>
 
       {/* Desktop */}

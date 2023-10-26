@@ -34,7 +34,7 @@ export default function CartPage(){
         <button onClick={() => navigate(-1)} type="button">
           <ArrowLeft />
         </button>
-        ทั้งหมด ฿ {getTotal()}
+        ทั้งหมด <span className='price'>฿ {getTotal()}</span>
       </header>
       <header className='bg-black text-white text-center py-[10px] lg:hidden'>
         กดรับของขวัญฟรี 🎁
@@ -62,7 +62,7 @@ export default function CartPage(){
                               <h3>
                                 <a href="#">{product?.item_name}</a>
                               </h3>
-                              <p className="ml-4">{product?.formatted_price}</p>
+                              <p className="ml-4 price">{product?.formatted_price}</p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">{product?.item_group}</p>
                           </div>
@@ -100,15 +100,21 @@ export default function CartPage(){
             <h2 className='header-title'>รายละเอียดการชำระเงิน</h2>
             <div className="flex justify-between items-center text-[#424242]">
               <h2 className='font-bold'>ยอดรวม</h2>
-              <p>฿ {getTotal()}</p>
+              <p className='price'>฿ {getTotal()}</p>
             </div>
+            {discount && (
+              <div className="flex justify-between items-center">
+                <h2 className='font-bold'>ส่วนลด</h2>
+                <p className='price'>-฿ {discount}</p>
+              </div>
+            )}
             <div className="flex justify-between items-center">
               <h2 className='font-bold'>ทั้งหมด</h2>
-              <p>฿ {total}</p>
+              <p className='price'>฿ {total}</p>
             </div>
             <div className="flex justify-between items-center">
               <h2>Points ที่คุณจะได้รับ</h2>
-              <p>Points 149</p>
+              <p className='price'>149</p>
             </div>
           </div>
           <SfButton size="lg" onClick={() => navigate('/checkout')} className="w-full" style={{backgroundColor:cartCount == 0 ? "#C5C5C5" : "black",color:"white"}} disabled={cartCount == 0}>

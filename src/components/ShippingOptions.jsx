@@ -41,7 +41,7 @@ export default function ShippingOptions({
                   <p className="text-[#8A8A8A] text-sm mt-[6px]">{desc}</p>
                 </div>
               </div>
-              <p className='text-sm font-bold text-[#333333]'>{price}</p>
+              <p className='text-sm price'>{price}</p>
             </div>
           </label>
         ))}

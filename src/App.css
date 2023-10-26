@@ -116,7 +116,7 @@
 }
 
 .accordion-detail {
-  border-bottom:1px solid #E3E3E3;
+  border-bottom:1px solid #F2F2F2;
 }
 
 .accordion-btn + .accordion-detail {
@@ -136,6 +136,11 @@
 .payment-check,.shop-filter-check,.product-type-input,.size-input,.product-colour-input,.payment-details-check {
   position:absolute;
   opacity:0;
+}
+
+.price {
+  font-weight:500;
+  font-family:Inter
 }
 
 .product-type-checkbox {

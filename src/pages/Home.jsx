@@ -89,7 +89,9 @@ export default function Home(){
     <>
       <NavHeader />
       <div className='lg:mt-[92px]'>
-        <img src={banner} className='w-full max-h-[240px] lg:max-h-[600px] object-cover lg:p-5 lg:rounded-[30px] lg:max-w-[1200px] lg:mx-auto box-content'/>
+        <div className='lg:max-w-[1200px] lg:mx-auto box-content lg:p-5'>
+          <img src={banner} className='w-full max-h-[240px] lg:max-h-[600px] object-cover lg:rounded-[6px]'/>
+        </div>
         <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
           <div className='w-[80%] py-2'>
             <div className='flex'>
@@ -126,7 +128,7 @@ export default function Home(){
             </div>
           </Link>
         </header>
-        <main className='relative top-[-10px] lg:top-5 pb-[94px] desktop-sec'>
+        <main className='relative top-[-10px] lg:top-5 pb-[94px] desktop-sec lg:px-5'>
           <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-8 px-5 lg:px-10 lg:mt-[60px]'>
             {(dataShortcut ?? []).map((d) => 
               <a href={d.link} key={d.name} className='cursor-pointer lg:w-[75%] lg:h-[75%]'>
@@ -139,19 +141,19 @@ export default function Home(){
           </div>
 
           <div className="mt-[30px] lg:mt-[100px]">
-            <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10'>
-              <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
+            <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10 px-5 lg:px-0'>
+              <h2 className='font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
                 Promotion
                 <Link to='/blog'><SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/></Link>
               </h2>
-              <Link to='/blog' className='lg:flex hidden gap-x-2 px-5 text-[#66BC89]'>
+              <Link to='/blog' className='lg:flex hidden gap-x-2 text-[#66BC89]'>
                 ดูทั้งหมด
                 <SfIconArrowForward className="w-[18px] text-[#66BC89]"/>
               </Link>
             </div>
 
             {isDesktop ? (
-              <div className={`px-5 hidden lg:grid grid-cols-3 gap-x-6`}>
+              <div className={`hidden lg:grid grid-cols-3 gap-x-6`}>
                 {(dataBanner ?? []).map((banner) => 
                   <PromotionCardDesktop key={banner.name} link="/checkout" title={banner.title} image={banner.image} desc={banner.description} ratio='1'/>
                 )}
@@ -178,7 +180,7 @@ export default function Home(){
               </div>
             </div>
 
-            <div className="flex overflow-x-auto gap-x-5 gap-y-10 lg:grid lg:grid-cols-4 mx-auto px-5">
+            <div className="flex overflow-x-auto gap-x-5 gap-y-10 lg:grid lg:grid-cols-4 mx-auto px-5 lg:px-0">
               {(products ?? []).map((product) => (
                 <ProductCard
                   key={product.item_code}
@@ -244,7 +246,7 @@ export default function Home(){
           </div>
 
           <div className='lg:flex justify-between items-center mb-[14px] lg:mt-[100px] lg:mb-10'>
-            <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
+            <h2 className='px-5 lg:px-0 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
               Blogs
               <Link to='/blog'><SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/></Link>
             </h2>
@@ -255,7 +257,7 @@ export default function Home(){
           </div>
 
           {isDesktop ? (
-            <div className={`px-5 hidden lg:grid ${dataBlog?.length > 2 ? 'grid-cols-3' : dataBlog?.length == 2 ? 'grid-cols-2' : 'grid-cols-1'} gap-x-6`}>
+            <div className={`hidden lg:grid ${dataBlog?.length > 2 ? 'grid-cols-3' : dataBlog?.length == 2 ? 'grid-cols-2' : 'grid-cols-1'} gap-x-6`}>
               {(dataBlog ?? []).map((d) => 
                 <BlogCardDesktop key={d.name} image={d.meta_image} title={d.title} date={d.published_on} link={`/single-blog/${d.name}`} ratio='16/9' category={d.blog_category}/>
               )}
@@ -268,7 +270,7 @@ export default function Home(){
             </div>
           )}
 
-          <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] lg:mt-[100px] px-5'>
+          <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] lg:mt-[100px] px-5 lg:px-0'>
             <img src={promotion1} className='lg:w-1/2'/>
             <img src={promotion2} className='lg:w-1/2'/>
           </div>

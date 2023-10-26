@@ -58,6 +58,7 @@ export default function ShipToMyAddress(){
       loyalty_points: '',
       items: cart,
       payment_method: 'bank-transfer',
+      coupon_code: ''
     },
     validationSchema: orderSchema,
     validateOnChange: false,
@@ -134,7 +135,7 @@ export default function ShipToMyAddress(){
         </div>
       </form>
 
-      <CouponModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <CouponModal isOpen={isOpen} setIsOpen={setIsOpen} onChange={value => formik.setFieldValue('coupon_code', value)} value={formik.values.coupon_code} error={formik.errors.coupon_code}/>
     </>
   )
 }

@@ -37,6 +37,8 @@ export default function Product(){
     setAddedToCart(true);
   }
 
+  console.log(product?.wished)
+
   const [liked, setLiked] = useState(false)
 
   const productSizes = [36, 37, 38, 39, 40, 41]
@@ -211,7 +213,7 @@ export default function Product(){
               </div>
             </div>
 
-            <div className='flex p-[30px] lg:px-0 justify-between border-y border-y-[#E3E3E3] lg:border-0'>
+            <div className='flex p-[30px] lg:px-0 justify-between border-y border-y-[#F2F2F2] lg:border-0'>
               <button className='text-sm text-[#00B14F] text-center gap-x-[6px] flex items-center'>
                 <AnnotationDots viewBox='0 0 24 24' width="18" height="18"/>
                 ติดต่อเรา
@@ -226,7 +228,7 @@ export default function Product(){
               </button>
             </div>
 
-            <div className='p-[30px] lg:px-0 border-b border-b-[#E3E3E3] lg:pt-0'>
+            <div className='p-[30px] lg:px-0 border-b border-b-[#F2F2F2] lg:pt-0'>
               <div className="flex mt-4">
                 <CoinsStacked01 />
                 <div className='block ml-3'>
@@ -257,22 +259,24 @@ export default function Product(){
         <AddedToCartModal isModalOpen={addedToCart} setIsModalOpen={setAddedToCart}/>
       </main>
 
-      <footer className='desktop-sec px-5 lg:mt-[120px] mb-[106px] lg:mb-0'>
+      <footer className='desktop-sec mt-[60px] lg:mt-[120px] mb-[106px] lg:mb-0'>
         <div className='mt-[22px]'>
-          <h2 className='text-[#3D3D3D] lg:text-[32px] font-bold lg:block lg:text-center w-full flex items-center mb-[14px] lg:mb-10'>
+          <h2 className='text-[#3D3D3D] lg:text-[24px] font-bold lg:block lg:text-center w-full flex items-center mb-[14px] lg:mb-10 px-5'>
             หากคุณชอบสไตล์นี้
             <SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/>
           </h2>
 
-          <div className="flex overflow-x-auto gap-x-[14px] lg:gap-x-6 mx-auto lg:grid grid-cols-4">
+          <div className="flex overflow-x-auto gap-x-[14px] lg:gap-x-6 mx-auto lg:grid grid-cols-4 px-5">
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
                 title={product.item_name}
                 productId={product.name}
+                desc={product.item_group}
                 itemCode={product.item_code}
                 price={product.formatted_price}
-                thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product?.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+                category={product.item_category}
+                thumbnail={product.website_image ? `${import.meta.env.VITE_ERP_URL}${product.website_image}` : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
             ))}
           </div>
         </div>
