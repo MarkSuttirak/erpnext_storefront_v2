@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import TitleHeader from '../components/TitleHeader'
-import { useFrappeGetDoc } from 'frappe-react-sdk';
+import { useFrappeGetDoc, useFrappeGetDocList } from 'frappe-react-sdk';
 import { useParams } from 'react-router-dom';
 import { Calendar } from '@untitled-ui/icons-react';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -11,6 +11,9 @@ export default function SingleBlog() {
   const { data, isLoading, error } = useFrappeGetDoc('Blog Post', id, {
     fields: ['name','title','content','meta_image','published_on','blog_category','blogger']
   })
+
+  const { data:dataBlogger } = useFrappeGetDocList('Blogger')
+  console.log(dataBlogger)
 
   return (
     <>
@@ -28,14 +31,14 @@ export default function SingleBlog() {
 
           <article className='px-5 py-6 lg:px-0'>
             <h2 className='text-[#8A8A8A] mb-4'>{data?.blog_category}</h2>
-            <h1 className='text-base lg:text-[26px] text-[#111111] font-bold'>{data?.title}</h1>
-            <div className='flex items-center gap-x-3 mt-[18px] mb-3 text-xs lg:text-lg'>
+            <h1 className='text-base lg:text-[24px] text-[#111111] font-bold'>{data?.title}</h1>
+            <div className='flex items-center gap-x-3 [#8A8A8A] mt-[18px]'>
+              <Calendar color='#8A8A8A'/>
+              <p className='text-xs lg:text-base'>{data?.published_on}</p>
+            </div>
+            <div className='flex items-center gap-x-3 mt-3 text-xs lg:text-base [#8A8A8A]'>
               <div className='h-5 w-5 bg-[#646464] rounded-full'/>
               {data?.blogger}
-            </div>
-            <div className='flex items-center gap-x-3'>
-              <Calendar color='#8A8A8A'/>
-              <p className='text-xs text-[#8A8A8A] lg:text-lg'>{data?.published_on}</p>
             </div>
 
             <div className='mt-[30px]'>

@@ -1,6 +1,6 @@
 import { Gift01 } from "@untitled-ui/icons-react"
 import TitleHeader from "../components/TitleHeader"
-import { useFrappeGetDocList } from "frappe-react-sdk"
+import { useFrappeGetDocList, useFrappeGetDoc } from "frappe-react-sdk"
 import BlogCardDesktop from "../components/desktop/BlogCardDesktop"
 import { useMediaQuery } from "react-responsive"
 import { Link } from "react-router-dom"
@@ -12,6 +12,12 @@ export default function BlogPage(){
     fields: ['name', 'title', 'meta_image', 'published_on', 'post_display', 'blog_category'],
     filters: [['post_display', '=', 'Storefront']],
   })
+
+  const { data:dataTest } = useFrappeGetDoc('Blog Post', 'okay-lets-test', {
+    fields: ['name', 'content_json']
+  })
+
+  console.log(dataTest?.content_json)
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
 

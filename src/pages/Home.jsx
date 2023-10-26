@@ -89,7 +89,7 @@ export default function Home(){
     <>
       <NavHeader />
       <div className='lg:mt-[92px]'>
-        <img src={banner} className='w-full max-h-[240px] lg:max-h-[600px] object-cover lg:p-5 lg:rounded-[30px]'/>
+        <img src={banner} className='w-full max-h-[240px] lg:max-h-[600px] object-cover lg:p-5 lg:rounded-[30px] lg:max-w-[1200px] lg:mx-auto box-content'/>
         <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex lg:hidden' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
           <div className='w-[80%] py-2'>
             <div className='flex'>
@@ -138,7 +138,7 @@ export default function Home(){
             )}
           </div>
 
-          <div className="mt-[30px] lg:mt-[70px]">
+          <div className="mt-[30px] lg:mt-[100px]">
             <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10'>
               <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
                 Promotion
@@ -166,7 +166,7 @@ export default function Home(){
           </div>
 
           <div className='mt-[22px]'>
-            <div className='lg:mt-[78px] lg:mb-8'>
+            <div className='lg:mt-[100px] lg:mb-10'>
               <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6 lg:justify-center lg:text-[40px]'>
                 สินค้าลดราคา
                 <SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/>
@@ -243,7 +243,7 @@ export default function Home(){
             </div>
           </div>
 
-          <div className='lg:flex justify-between items-center mb-[14px] lg:mb-10'>
+          <div className='lg:flex justify-between items-center mb-[14px] lg:mt-[100px] lg:mb-10'>
             <h2 className='px-5 font-semibold text-[#3D3D3D] lg:text-[40px] lg:font-bold eventpop'>
               Blogs
               <Link to='/blog'><SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/></Link>
@@ -268,7 +268,7 @@ export default function Home(){
             </div>
           )}
 
-          <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] px-5'>
+          <div className='flex flex-col lg:flex-row gap-y-[11px] lg:gap-x-6 mt-[30px] lg:mt-[100px] px-5'>
             <img src={promotion1} className='lg:w-1/2'/>
             <img src={promotion2} className='lg:w-1/2'/>
           </div>

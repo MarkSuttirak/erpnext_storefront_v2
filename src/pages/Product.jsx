@@ -257,14 +257,14 @@ export default function Product(){
         <AddedToCartModal isModalOpen={addedToCart} setIsModalOpen={setAddedToCart}/>
       </main>
 
-      <footer className='desktop-sec hidden lg:block px-5'>
+      <footer className='desktop-sec px-5 lg:mt-[120px] mb-[106px] lg:mb-0'>
         <div className='mt-[22px]'>
-          <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[14px] leading-6'>
+          <h2 className='text-[#3D3D3D] lg:text-[32px] font-bold lg:block lg:text-center w-full flex items-center mb-[14px] lg:mb-10'>
             หากคุณชอบสไตล์นี้
-            <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+            <SfIconArrowForward className="w-[18px] text-black ml-2 lg:hidden"/>
           </h2>
 
-          <div className="flex overflow-x-auto gap-x-[14px] mx-auto">
+          <div className="flex overflow-x-auto gap-x-[14px] lg:gap-x-6 mx-auto lg:grid grid-cols-4">
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
