@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useFrappeGetDoc, useFrappeGetDocList } from 'frappe-react-sdk'
-import { XClose, ArrowRight, ArrowLeft } from '@untitled-ui/icons-react'
+import { XClose, ArrowRight, ArrowLeft, Check } from '@untitled-ui/icons-react'
 import brandLogo from '../../img/logo.svg'
 
 export default function CouponModal({isOpen, setIsOpen, value, onChange, error}) {
@@ -10,6 +10,7 @@ export default function CouponModal({isOpen, setIsOpen, value, onChange, error})
     filters: [['used', '=', '0']]
   })
 
+  const [showCoupon, setShowCoupon] = useState(false)
   const [coupon, setCoupon] = useState('');
   const [showDesc, setShowDesc] = useState(false)
 
@@ -19,9 +20,15 @@ export default function CouponModal({isOpen, setIsOpen, value, onChange, error})
 
   useEffect(() => {
     if (isOpen === false){
-      setTimeout(() => setCoupon(''), 500)
+      setTimeout(() => setShowCoupon(false), 500)
     }
-  }, [isOpen])
+  }, [showCoupon])
+
+  const handleShowCoupon = (c) => {
+    setShowCoupon(true);
+    setCoupon(c);
+    setTimeout(() => mutate(), 1)
+  }
 
   const CouponSheetDetail = ({proTitle, code, desc, condition}) => {
     return (
@@ -43,7 +50,7 @@ export default function CouponModal({isOpen, setIsOpen, value, onChange, error})
           </>
         ) : (
           <>
-            <div className='text-[#424242] text-xs font-medium text-left' dangerouslySetInnerHTML={{__html:condition}}/>
+            <div className='text-[#424242] text-xs font-medium text-left px-6' dangerouslySetInnerHTML={{__html:condition}}/>
 
             <div className='flex items-center gap-x-[14px] px-8 py-[18px] justify-center'>
               <button className='flex items-center gap-x-[5px] text-sm text-[#424242] justify-center mt-20' onClick={() => setShowDesc(false)}><ArrowLeft viewBox='0 0 24 24' width='18'/> กลับไปยังโค้ด</button>
@@ -58,9 +65,14 @@ export default function CouponModal({isOpen, setIsOpen, value, onChange, error})
     return (
       <div className='flex relative border border-[#E3E3E3] rounded-lg w-full h-full'>
         <div className='flex flex-col align-between p-5 w-full'>
-          <div className='inline-flex flex-col text-start mb-6'>
-            <h2 className='text-md text-[#333333] font-bold'>{proTitle}</h2>
-            <div className='text-xs text-[#424242] mt-[15px]' dangerouslySetInnerHTML={{__html:desc}}/>
+          <div className='flex justify-between items-center'>
+            <div className='inline-flex flex-col text-start mb-6'>
+              <h2 className='text-md text-[#333333] font-bold'>{proTitle}</h2>
+              <div className='text-xs text-[#424242] mt-[15px]' dangerouslySetInnerHTML={{__html:desc}}/>
+            </div>
+            <div className={`w-6 h-6 rounded-full border flex items-center justify-center ${value == nameVal ? 'bg-[#111111] border-[#111111]' : 'bg-white border-[#E3E3E3]'}`}>
+              <Check color="#FFFFFF" viewBox='0 0 24 24' width='20' height='20'/>
+            </div>
           </div>
           <div className='flex justify-between'>
             <p className='text-[#989898] text-xs'>ใช้ได้ถึง {date}</p>
@@ -101,11 +113,11 @@ export default function CouponModal({isOpen, setIsOpen, value, onChange, error})
                 <Dialog.Panel className="py-6 px-8 max-w-[500px] w-full relative lg:fixed lg:top-[92px] bg-white rounded-[10px] lg:right-0 lg:rounded-t-[0px] z-[499]">
 
                   <div className='flex flex-col gap-y-[30px]'>
-                    {coupon ? (
+                    {showCoupon ? (
                       <>
                         <div className='flex justify-between items-center'>
                           <h2 className='header-title'>ข้อมูลคูปอง</h2>
-                          <XClose onClick={() => setCoupon('')}/>
+                          <XClose onClick={() => setShowCoupon(false)}/>
                         </div>
                         <CouponSheetDetail proTitle={couponDetail?.coupon_name} desc={couponDetail?.description} code={couponDetail?.coupon_code} condition={couponDetail?.condition}/>
                       </>
@@ -121,7 +133,7 @@ export default function CouponModal({isOpen, setIsOpen, value, onChange, error})
                             onChange(nameVal)
                           }}>
                             <div className={`cursor-pointer rounded-md -outline-offset-2 ${value == nameVal ? "border border-black" : "border border-transparent"}`}>
-                              <CouponSheet key={nameVal} proTitle={coupon_name} date={valid_upto} type={coupon_type} onClick={() => {setCoupon(nameVal);mutate()}} desc={description} />
+                              <CouponSheet key={nameVal} proTitle={coupon_name} date={valid_upto} type={coupon_type} onClick={() => handleShowCoupon(nameVal)} desc={description} />
                             </div>
                           </label>
                         )}

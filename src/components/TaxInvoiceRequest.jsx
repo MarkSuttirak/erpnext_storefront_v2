@@ -35,7 +35,7 @@ export default function TaxInvoiceRequest(){
           <div className='flex flex-col'>
             <label htmlFor='email' className='text-[#333333] text-sm font-bold'>
               อีเมล
-              <span className="text-[#8A8A8A] text-xs inline-block ml-[10px]">(สำหรับส่งข้อมูล)</span>
+              <span className="text-[#8A8A8A] text-xs font-normal inline-block ml-[10px]">(สำหรับส่งข้อมูล)</span>
             </label>
             <input className='form-input mt-[11px]' name='email' type='email' id='email'/>
           </div>
