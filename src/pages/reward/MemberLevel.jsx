@@ -1,15 +1,15 @@
 import { ChevronRight, Gift01, CreditCard02, AnnotationQuestion, AnnotationDots } from "@untitled-ui/icons-react";
-import TitleHeader from "../components/TitleHeader";
-import silverFront from '../img/silver-front.png'
+import TitleHeader from "../../components/TitleHeader";
+import silverFront from '../../img/silver-front.png'
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import coin from '../img/coin2.svg'
-import couponImage1 from '../img/couponImage1.png';
-import couponImage2 from '../img/couponImage2.png';
-import ProductCard from '../components/ProductCard'
-import { useProducts } from '../hooks/useProducts'
+import coin from '../../img/coin2.svg'
+import couponImage1 from '../../img/couponImage1.png';
+import couponImage2 from '../../img/couponImage2.png';
+import ProductCard from '../../components/ProductCard'
+import { useProducts } from '../../hooks/useProducts'
 import { SfIconArrowForward } from "@storefront-ui/react";
-import { useUser } from '../hooks/useUser';
+import { useUser } from '../../hooks/useUser';
 
 export default function MemberLevel(){
   const [level, setLevel] = useState('Silver')

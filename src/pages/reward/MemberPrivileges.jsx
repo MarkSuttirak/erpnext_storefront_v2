@@ -1,31 +1,12 @@
 import { useState, useRef } from "react"
-import TitleHeader from "../components/TitleHeader"
-import bronzeMember from '../img/bronze-member.png'
-import silverMember from '../img/silver-member.png'
-import goldMember from '../img/gold-member.png'
-import diamondMember from '../img/diamond-member.png'
+import TitleHeader from "../../components/TitleHeader"
+import bronzeMember from '../../img/bronze-member.png'
+import silverMember from '../../img/silver-member.png'
+import goldMember from '../../img/gold-member.png'
+import diamondMember from '../../img/diamond-member.png'
 import { ShoppingBag02, Star01, Mail01, ChevronRight, HeartHand, MarkerPin01, Building02, Tag03, Gift01, User02 } from "@untitled-ui/icons-react"
 
 export default function MemberPrivileges(current){
-  const tabs = [
-    {
-      title: 'สมาชิก',
-      type: 'bronze'
-    },
-    {
-      title: 'ซิลเวอร์',
-      type: 'silver'
-    },
-    {
-      title: 'โกลด์',
-      type: 'gold'
-    },
-    {
-      title: 'ไดมอนด์',
-      type: 'diamond'
-    }
-  ]
-
   const content = useRef(null);
 
   const handleClick = (event) => {
