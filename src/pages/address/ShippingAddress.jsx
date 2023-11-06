@@ -13,7 +13,7 @@ import DeleteShippingAddress from '../../components/modals/ShippingAddressDelete
 const districts = ['สวนหลวง','บางกะปิ','สาทร','ลาดกระบัง','บางนา','พระโขนง','วัฒนา','ห้วยขวาง','พระนคร'];
 const provinces = ['กรุงเทพมหานคร','ปทุมธานี','สมุทรปราการ']
 
-const ShippingAddress = () => {
+export default function ShippingAddress(){
   const [openAdd, setOpenAdd] = useState(false)
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
@@ -93,5 +93,3 @@ const ShippingAddress = () => {
     </>
   )
 }
-
-export default ShippingAddress
