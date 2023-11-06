@@ -144,11 +144,11 @@ export default function MemberPrivileges(){
             </div>
           </header>
 
-          <main className="mt-[133px] lg:mt-0 lg:flex">
+          <main className="mt-[133px] lg:mt-0 lg:flex lg:gap-x-10">
             <section className='member-gradient'>
-              <div className={`py-[80px] w-3/4 h-full mx-auto relative bottom-0 member-card-img`} style={{background:`url(${type == 'bronze' ? bronzeMember : type == 'silver' ? silverMember : type == 'gold' ? goldMember : diamondMember}) 0% 0% / contain no-repeat`}}>
+              <div className={`member-card-img`} style={{background:`url(${type == 'สมาชิก' ? bronzeMember : type == 'ซิลเวอร์' ? silverMember : type == 'โกลด์' ? goldMember : diamondMember}) 0% 0% / contain no-repeat`}}>
                 <div className="m-auto z-[5] w-[90%] relative">
-                  <h2 className="text-[18px] text-[#333333]">ระดับ : สมาชิก</h2>
+                  <h2 className="text-[18px] text-[#333333] font-bold">ระดับ : {type}</h2>
                   <p className="text-[#424242] text-xs">
                     {type == 'สมาชิก' ? (
                       'คะแนนตั้งแต่ 0 - 49 คะแนน'
