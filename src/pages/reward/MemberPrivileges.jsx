@@ -5,6 +5,7 @@ import silverMember from '../../img/silver-member.png'
 import goldMember from '../../img/gold-member.png'
 import diamondMember from '../../img/diamond-member.png'
 import { ShoppingBag02, Star01, Mail01, ChevronRight, HeartHand, MarkerPin01, Building02, Tag03, Gift01, User02 } from "@untitled-ui/icons-react"
+import DesktopSidebar from "../../components/desktop/DesktopSidebar";
 
 export default function MemberPrivileges(current){
   const content = useRef(null);
@@ -111,90 +112,149 @@ export default function MemberPrivileges(current){
   return (
     <>
       <TitleHeader link='/member-level' title='สิทธิพิเศษจากระดับสมาชิก' />
-      <header className="mt-[53px] fixed w-full top-0 border-b border-b-[#F2F2F2]">
-        <button className='w-1/4' onClick={() => setType('bronze')}>
-          <span className={`p-4 inline-block text-xs ${type === 'bronze' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>สมาชิก</span>
-          {type === 'bronze' && (
-            <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
-          )}
-        </button>
-        <button className='w-1/4' onClick={() => setType('silver')}>
-          <span className={`p-4 inline-block text-xs ${type === 'silver' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>ซิลเวอร์</span>
-          {type === 'silver' && (
-            <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
-          )}
-        </button>
-        <button className='w-1/4' onClick={() => setType('gold')}>
-          <span className={`p-4 inline-block text-xs ${type === 'gold' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>โกลด์</span>
-          {type === 'gold' && (
-            <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
-          )}
-        </button>
-        <button className='w-1/4' onClick={() => setType('diamond')}>
-          <span className={`p-4 inline-block text-xs ${type === 'diamond' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>ไดมอนด์</span>
-          {type === 'diamond' && (
-            <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
-          )}
-        </button>
-      </header>
+      <div className="lg:hidden">
+        <header className="mt-[53px] fixed w-full top-0 border-b border-b-[#F2F2F2]">
+          <button className='w-1/4' onClick={() => setType('bronze')}>
+            <span className={`p-4 inline-block text-xs ${type === 'bronze' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>สมาชิก</span>
+            {type === 'bronze' && (
+              <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
+            )}
+          </button>
+          <button className='w-1/4' onClick={() => setType('silver')}>
+            <span className={`p-4 inline-block text-xs ${type === 'silver' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>ซิลเวอร์</span>
+            {type === 'silver' && (
+              <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
+            )}
+          </button>
+          <button className='w-1/4' onClick={() => setType('gold')}>
+            <span className={`p-4 inline-block text-xs ${type === 'gold' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>โกลด์</span>
+            {type === 'gold' && (
+              <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
+            )}
+          </button>
+          <button className='w-1/4' onClick={() => setType('diamond')}>
+            <span className={`p-4 inline-block text-xs ${type === 'diamond' ? "text-[#111111]" : "text-[#8A8A8A]"}`}>ไดมอนด์</span>
+            {type === 'diamond' && (
+              <div className="w-full h-[2px] bg-[#111111] border-anim"></div>
+            )}
+          </button>
+        </header>
 
-      <main className="mt-[133px]">
-        <section style={{background:"linear-gradient(180deg, #FFFFFF 50%, #D9D9D9 100%)"}}>
-          <div className={`py-[80px] w-3/4 h-full mx-auto relative bottom-0`} style={{background:`url(${type == 'bronze' ? bronzeMember : type == 'silver' ? silverMember : type == 'gold' ? goldMember : diamondMember}) 0% 0% / contain no-repeat`}}>
-            <div className="m-auto z-[5] w-[90%] relative">
-              <h2 className="text-[18px] text-[#333333]">ระดับ : สมาชิก</h2>
-              <p className="text-[#424242] text-xs">
-                {type == 'bronze' ? (
-                  'คะแนนตั้งแต่ 0 - 49 คะแนน'
-                ) : type == 'silver' ? (
-                  'คะแนนตั้งแต่ 50 - 99 คะแนน'
-                ) : type == 'gold' ? (
-                  'คะแนนตั้งแต่ 100 - 149 คะแนน'
-                ) : (
-                  'คะแนนตั้งแต่ 150 คะแนนขึ้นไป'
+        <main className="mt-[133px]">
+          <section style={{background:"linear-gradient(180deg, #FFFFFF 50%, #D9D9D9 100%)"}}>
+            <div className={`py-[80px] w-3/4 h-full mx-auto relative bottom-0`} style={{background:`url(${type == 'bronze' ? bronzeMember : type == 'silver' ? silverMember : type == 'gold' ? goldMember : diamondMember}) 0% 0% / contain no-repeat`}}>
+              <div className="m-auto z-[5] w-[90%] relative">
+                <h2 className="text-[18px] text-[#333333]">ระดับ : สมาชิก</h2>
+                <p className="text-[#424242] text-xs">
+                  {type == 'bronze' ? (
+                    'คะแนนตั้งแต่ 0 - 49 คะแนน'
+                  ) : type == 'silver' ? (
+                    'คะแนนตั้งแต่ 50 - 99 คะแนน'
+                  ) : type == 'gold' ? (
+                    'คะแนนตั้งแต่ 100 - 149 คะแนน'
+                  ) : (
+                    'คะแนนตั้งแต่ 150 คะแนนขึ้นไป'
+                  )}
+                </p>
+              </div>
+            </div>
+          </section>
+          <section className="px-5 pt-[30px] bg-white relative top-[-65px]">
+            <h2 className="text-[#333333] font-bold">สิทธิพิเศษทุกไลฟ์สไตล์</h2>
+            <div className="flex flex-col gap-y-[18px] mt-[10px]">
+              {type == 'bronze' ? (
+                <>
+                {bronzePrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
                 )}
-              </p>
+                </>
+              ) : type == 'silver' ? (
+                <>
+                {silverPrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+                )}
+                </>
+              ) : type == 'gold' ? (
+                <>
+                {goldPrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+                )}
+                </>
+              ) : (
+                <>
+                {diamondPrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+                )}
+                </>
+              )}
+            </div>
+          </section>
+          <div className="relative top-[-40px]">
+            <button onClick={handleClick} className={`p-5 w-full flex justify-between border-y border-y-[#E3E3E3] accordion-btn`}>
+              คำถามที่พบบ่อย
+              <ChevronRight className={`accordion-arrow-anim`}/>
+            </button>
+            <div ref={content} className={`accordion-detail`}>
+              <div className="p-5">ได้แต่ตั้งคําถาม แต่ไม่กล้าถามเธอสักครั้ง</div>
             </div>
           </div>
-        </section>
-        <section className="px-5 pt-[30px] bg-white relative top-[-65px]">
-          <h2 className="text-[#333333] font-bold">สิทธิพิเศษทุกไลฟ์สไตล์</h2>
-          <div className="flex flex-col gap-y-[18px] mt-[10px]">
-            {type == 'bronze' ? (
-              <>
-              {bronzePrivileges.map((privilege) => 
-                <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+        </main>
+      </div>
+
+      <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec main-margintop'>
+        <DesktopSidebar />
+
+        <div className="flex gap-x-10">
+          <section>
+            <img src={type == 'bronze' ? bronzeMember : type == 'silver' ? silverMember : type == 'gold' ? goldMember : diamondMember}/>
+            <div className={`h-full mx-auto`}>
+              <div className="m-auto z-[5] relative">
+                <h2 className="text-[18px] text-[#333333]">ระดับ : สมาชิก</h2>
+                <p className="text-[#424242] text-xs">
+                  {type == 'bronze' ? (
+                    'คะแนนตั้งแต่ 0 - 49 คะแนน'
+                  ) : type == 'silver' ? (
+                    'คะแนนตั้งแต่ 50 - 99 คะแนน'
+                  ) : type == 'gold' ? (
+                    'คะแนนตั้งแต่ 100 - 149 คะแนน'
+                  ) : (
+                    'คะแนนตั้งแต่ 150 คะแนนขึ้นไป'
+                  )}
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="px-5 bg-white relative">
+            <h2 className="text-[#333333] font-bold">สิทธิพิเศษทุกไลฟ์สไตล์</h2>
+            <div className="flex flex-col gap-y-[18px] mt-[10px]">
+              {type == 'bronze' ? (
+                <>
+                {bronzePrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+                )}
+                </>
+              ) : type == 'silver' ? (
+                <>
+                {silverPrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+                )}
+                </>
+              ) : type == 'gold' ? (
+                <>
+                {goldPrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+                )}
+                </>
+              ) : (
+                <>
+                {diamondPrivileges.map((privilege) => 
+                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
+                )}
+                </>
               )}
-              </>
-            ) : type == 'silver' ? (
-              <>
-              {silverPrivileges.map((privilege) => 
-                <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
-              )}
-              </>
-            ) : type == 'gold' ? (
-              <>
-              {goldPrivileges.map((privilege) => 
-                <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
-              )}
-              </>
-            ) : (
-              <>
-              {diamondPrivileges.map((privilege) => 
-                <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
-              )}
-              </>
-            )}
-          </div>
-        </section>
-        <div className="relative top-[-40px]">
-          <button onClick={handleClick} className={`p-5 w-full flex justify-between border-y border-y-[#E3E3E3] accordion-btn`}>
-            คำถามที่พบบ่อย
-            <ChevronRight className={`accordion-arrow-anim`}/>
-          </button>
-          <div ref={content} className={`accordion-detail`}>
-            <div className="p-5">ได้แต่ตั้งคําถาม แต่ไม่กล้าถามเธอสักครั้ง</div>
-          </div>
+            </div>
+          </section>
         </div>
       </main>
     </>
