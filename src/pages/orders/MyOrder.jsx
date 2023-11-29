@@ -91,7 +91,6 @@ export default function MyOrder(){
     }
   ]
 
-  const [status, setStatus] = useState()
   return (
     <>
       <header className='header-mobile gap-x-[7px] lg:hidden'>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import logo from '../../img/logo.svg'
 import { ArrowLeft, MarkerPin01, ArrowCircleRight } from '@untitled-ui/icons-react'
 
-const Signup = () => {
+export default function Signup(){
   const [phonePage, setPhonePage] = useState(true);
   const [getOTP, setGetOTP] = useState(false);
   const [filledPhone, setFilledPhone] = useState(false);
@@ -117,5 +117,3 @@ const Signup = () => {
     </>
   )
 }
-
-export default Signup

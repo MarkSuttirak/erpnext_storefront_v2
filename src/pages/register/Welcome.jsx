@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../../img/logo.svg'
 
-const Welcome = () => {
+export default function Welcome(){
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px]'>
@@ -18,5 +18,3 @@ const Welcome = () => {
     </>
   )
 }
-
-export default Welcome

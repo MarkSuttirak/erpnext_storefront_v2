@@ -205,62 +205,6 @@ export default function MemberPrivileges(){
           </main>
         </div>
       </div>
-
-      {/* <main className='px-5 relative top-[-40px] pb-[100px] lg:top-10 lg:flex desktop-sec main-margintop'>
-
-        <div className="flex gap-x-10">
-          <section>
-            <img src={type == 'bronze' ? bronzeMember : type == 'silver' ? silverMember : type == 'gold' ? goldMember : diamondMember}/>
-            <div className={`h-full mx-auto`}>
-              <div className="m-auto z-[5] relative">
-                <h2 className="text-[18px] text-[#333333]">ระดับ : สมาชิก</h2>
-                <p className="text-[#424242] text-xs">
-                  {type == 'bronze' ? (
-                    'คะแนนตั้งแต่ 0 - 49 คะแนน'
-                  ) : type == 'silver' ? (
-                    'คะแนนตั้งแต่ 50 - 99 คะแนน'
-                  ) : type == 'gold' ? (
-                    'คะแนนตั้งแต่ 100 - 149 คะแนน'
-                  ) : (
-                    'คะแนนตั้งแต่ 150 คะแนนขึ้นไป'
-                  )}
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="px-5 bg-white relative">
-            <h2 className="text-[#333333] font-bold">สิทธิพิเศษทุกไลฟ์สไตล์</h2>
-            <div className="flex flex-col gap-y-[18px] mt-[10px]">
-              {type == 'bronze' ? (
-                <>
-                {bronzePrivileges.map((privilege) => 
-                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
-                )}
-                </>
-              ) : type == 'silver' ? (
-                <>
-                {silverPrivileges.map((privilege) => 
-                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
-                )}
-                </>
-              ) : type == 'gold' ? (
-                <>
-                {goldPrivileges.map((privilege) => 
-                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
-                )}
-                </>
-              ) : (
-                <>
-                {diamondPrivileges.map((privilege) => 
-                  <PrivilegeList icon={privilege.icon} title={privilege.title} desc={privilege.desc}/>
-                )}
-                </>
-              )}
-            </div>
-          </section>
-        </div>
-      </main> */}
     </>
   )
 }

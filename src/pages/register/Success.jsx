@@ -6,7 +6,7 @@ import germanflag from '../../img/german-flag.svg'
 import { ArrowLeft, MarkerPin01 } from '@untitled-ui/icons-react'
 import successIcon from '../../img/success.svg'
 
-const Success = () => {
+export default function Success(){
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px]'>
@@ -26,5 +26,3 @@ const Success = () => {
     </>
   )
 }
-
-export default Success

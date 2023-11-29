@@ -6,7 +6,7 @@ import germanflag from '../../img/german-flag.svg'
 import { ArrowLeft, MarkerPin01 } from '@untitled-ui/icons-react'
 import { useFrappeCreateDoc } from 'frappe-react-sdk'
 
-const FillInfo = () => {
+export default function FillInfo(){
   const [filledInfo, setFilledInfo] = useState(true)
 
   const { createDoc } = useFrappeCreateDoc()
@@ -63,5 +63,3 @@ const FillInfo = () => {
     </>
   )
 }
-
-export default FillInfo

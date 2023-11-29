@@ -24,8 +24,8 @@ export default function Home(){
   const { products, userdata } = useProducts();
 
   const { data:blogCount } = useFrappeGetDocCount("Blog Post", 
-  [['post_display', '=', 'storefront']]
-)
+    [['post_display', '=', 'Storefront']]
+  )
 
   const BlogCardDesktop = ({title, image, date, link, category, ratio}) => {
     return (
