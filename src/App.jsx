@@ -71,7 +71,7 @@ export default function App() {
         <ProductsProvider>
           <CartProvider>
             <HeaderDesktop />
-            <Routes>
+            <Routes basename='/erpnext_storefront_v2'>
               <Route path="/" element={<Home />} />
               <Route path="/consent" element={<Consent />} />
               <Route path="/cart" element={<CartPage />}/>

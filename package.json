@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/assets/erpstorefront_version2/erpnext_storefront_v2 && yarn copy-html-entry",
+    "copy-html-entry": "cp ../erpstorefront_version2/public/erpnext_storefront_v2/index.html ../erpstorefront_version2/www/erpnext_storefront_v2.html",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
