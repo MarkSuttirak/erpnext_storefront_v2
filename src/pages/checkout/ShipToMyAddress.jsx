@@ -78,7 +78,8 @@ export default function ShipToMyAddress(){
       }
     }
     if (error) {
-      setErrorAlert(JSON.parse(JSON.parse(error?._server_messages)[0]).message);
+      // setErrorAlert(JSON.parse(JSON.parse(error?._server_messages)[0]).message);
+      console.log('There is an error.')
     }
   }, [isCompleted, error])
 
